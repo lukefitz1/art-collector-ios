@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
                 if error != nil {
                     return
                 } else {
-                    self!.performSegue(withIdentifier: "GeneralInformationSegue", sender: nil)
+                    self!.performSegue(withIdentifier: "TabBarSegue", sender: nil)
                 }
             }
         }
