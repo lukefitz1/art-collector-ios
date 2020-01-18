@@ -25,7 +25,7 @@ struct GeneralInformationService {
                     
                     AF.request(endpoint,
                                headers: headers).responseJSON { responseJSON in
-                         debugPrint(responseJSON)
+//                         debugPrint(responseJSON)
                                 
                                 switch responseJSON.result {
                                     case .success:
