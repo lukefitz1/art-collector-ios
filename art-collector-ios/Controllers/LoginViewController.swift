@@ -13,6 +13,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameInputField: UITextField!
     @IBOutlet weak var passwordInputField: UITextField!
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,6 +23,8 @@ class LoginViewController: UIViewController {
         let login = LoginService()
         
         if let username = usernameInputField.text, let password = passwordInputField.text {
+            
+            progressHUD.show(onView: view, animated: true)
             login.login(username: username, password: password) { [weak self] success, error in
                 if let e = error {
                     print(e)
@@ -29,6 +33,7 @@ class LoginViewController: UIViewController {
                 if error != nil {
                     return
                 } else {
+                    self?.progressHUD.hide(onView: self!.view, animated: true)
                     self!.performSegue(withIdentifier: "TabBarSegue", sender: nil)
                 }
             }
