@@ -37,6 +37,7 @@ struct ArtistCreateService {
         AF.request(fullEndpoint,
                    method: .post,
                    parameters: parameters,
+                   encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in
                      debugPrint(responseJSON)
                     
