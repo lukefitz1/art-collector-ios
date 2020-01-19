@@ -62,6 +62,17 @@ class ArtistsViewController: UIViewController {
     @IBAction func addArtist(_ sender: Any) {
         print("buttonPressed")
     }
+    
+    @IBAction func unwindToArtistsViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+//                self.tableView.reloadData()s
+//                print("Unwinding the segue!!")
+//                self.artistsTableView.reloadData()
+                self.getArtists()
+            }
+        }
+    }
 }
 
 extension ArtistsViewController: UITableViewDataSource {

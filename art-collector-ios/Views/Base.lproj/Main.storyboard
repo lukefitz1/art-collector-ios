@@ -217,9 +217,11 @@
                         <outlet property="biographyTextField" destination="9FG-cd-AzS" id="sf9-hQ-y0J"/>
                         <outlet property="firstNameTextField" destination="yKk-jf-UV2" id="GKW-Ll-fsZ"/>
                         <outlet property="lastNameTextField" destination="fqo-BO-hsl" id="TxP-QR-HFC"/>
+                        <segue destination="Cex-qt-7qb" kind="unwind" identifier="unwindToArtistsSegue" unwindAction="unwindToArtistsViewControllerWithSegue:" id="mQq-BW-neV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZdY-K8-qWg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Cex-qt-7qb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4507.2463768115949" y="-1199.3303571428571"/>
         </scene>

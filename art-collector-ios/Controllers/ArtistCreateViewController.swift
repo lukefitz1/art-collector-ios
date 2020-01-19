@@ -34,8 +34,9 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         let biography = biographyTextField.text ?? ""
         
         createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
+//        navigationController?.popViewController(animated: true)
+//        dismiss(animated: true, completion: nil)
     }
     
     func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
