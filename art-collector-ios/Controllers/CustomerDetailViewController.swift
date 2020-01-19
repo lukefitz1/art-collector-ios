@@ -18,6 +18,7 @@ class CustomerDetailViewController: UIViewController {
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var collectionsTableView: UITableView!
     
+    var selectedCollection: Collection?
     var customer: Customer?
     var collections: [Collection]? = []
     
@@ -63,24 +64,22 @@ extension CustomerDetailViewController: UITableViewDataSource {
 
 extension CustomerDetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let customer = customers[indexPath.row]
-//        selectedCustomer = customer
+        let collection = collections?[indexPath.row]
+        selectedCollection = collection
 
-//        let customerDetailViewController = CustomerDetailViewController()
-//        customerDetailViewController.customer = customer
+        let collectionDetailViewController = CollectionDetailViewController()
+        collectionDetailViewController.collection = collection
         
-//        self.performSegue(withIdentifier: "CustomerDetailSegue", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
-        
-        print(indexPath.row)
+        self.performSegue(withIdentifier: "CollectionDetailSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "CustomerDetailSegue" {
-//            let destinationVC = segue.destination as! CustomerDetailViewController
-//
-//            destinationVC.customer = selectedCustomer
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CollectionDetailSegue" {
+            let destinationVC = segue.destination as! CollectionDetailViewController
+
+            destinationVC.customer = customer
+            destinationVC.collection = selectedCollection
+        }
+    }
 }

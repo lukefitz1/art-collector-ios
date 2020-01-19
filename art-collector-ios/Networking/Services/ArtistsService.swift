@@ -44,20 +44,20 @@ struct ArtistsService {
             }
         }
         
-        func parseJSON(artistData: Data) -> [Artist] {
-                let decoder = JSONDecoder()
-                
-                do {
-                    let decodedData = try decoder.decode([Artist].self, from: artistData)
-                    return decodedData
-                } catch  {
-                    print(error)
-                }
-            
-                return []
-            }
+    func parseJSON(artistData: Data) -> [Artist] {
+        let decoder = JSONDecoder()
         
-        private func buildEndpoint() -> URL {
-            return URL(string: "\(ApiClient.baseUrl)artist")!
+        do {
+            let decodedData = try decoder.decode([Artist].self, from: artistData)
+            return decodedData
+        } catch  {
+            print(error)
         }
+        
+        return []
+    }
+        
+    private func buildEndpoint() -> URL {
+        return URL(string: "\(ApiClient.baseUrl)artist")!
+    }
 }

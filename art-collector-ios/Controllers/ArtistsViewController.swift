@@ -27,9 +27,14 @@ class ArtistsViewController: UIViewController {
         super.viewDidLoad()
         
         title = "Artists"
+        
 //        artistsTableView.delegate = self
         artistsTableView.dataSource = self
         getArtists()
+    }
+    
+    @objc func newArtist() {
+        print("Button pressed")
     }
     
     func getArtists() {
@@ -52,6 +57,10 @@ class ArtistsViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func addArtist(_ sender: Any) {
+        print("buttonPressed")
     }
 }
 
