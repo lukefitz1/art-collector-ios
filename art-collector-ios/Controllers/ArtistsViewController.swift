@@ -12,6 +12,7 @@ class ArtistsViewController: UIViewController {
     
     @IBOutlet weak var artistsTableView: UITableView!
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedCustomer: Artist?
     
     var artists: [Artist] = [] {
@@ -41,6 +42,7 @@ class ArtistsViewController: UIViewController {
         artists = []
         let artistService = ArtistsService()
         
+        progressHUD.show(onView: view, animated: true)
         artistService.getArtists { [weak self] artistData, error in
             guard let self = self else {
                 return
@@ -53,6 +55,7 @@ class ArtistsViewController: UIViewController {
                 print("SUCCESS - Artists GET request")
                 
                 if let artists = artistData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
                     self.artists = artists
                 }
             }

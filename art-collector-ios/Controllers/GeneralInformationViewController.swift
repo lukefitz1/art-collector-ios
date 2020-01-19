@@ -12,6 +12,7 @@ class GeneralInformationViewController: UIViewController {
     
     @IBOutlet weak var generalInformationTableView: UITableView!
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedGeneralInformation: GeneralInformation?
     
     var generalInformation: [GeneralInformation] = [] {
@@ -36,6 +37,7 @@ class GeneralInformationViewController: UIViewController {
         generalInformation = []
         let generalInformationService = GeneralInformationService()
         
+        progressHUD.show(onView: view, animated: true)
         generalInformationService.getGeneralInformation { [weak self] generalInformationData, error in
             guard let self = self else {
                 return
@@ -48,6 +50,7 @@ class GeneralInformationViewController: UIViewController {
                 print("SUCCESS - GeneralInformation GET request")
                 
                 if let generalInfo = generalInformationData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
                     self.generalInformation = generalInfo
                 }
             }

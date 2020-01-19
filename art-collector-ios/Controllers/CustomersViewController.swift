@@ -12,6 +12,7 @@ class CustomersViewController: UIViewController {
 
     @IBOutlet weak var customersTableView: UITableView!
 
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedCustomer: Customer?
     
     var customers: [Customer] = [] {
@@ -36,6 +37,7 @@ class CustomersViewController: UIViewController {
         customers = []
         let customerService = CustomersService()
         
+        progressHUD.show(onView: view, animated: true)
         customerService.getCustomers { [weak self] customerData, error in
             guard let self = self else {
                 return
@@ -48,6 +50,7 @@ class CustomersViewController: UIViewController {
                 print("SUCCESS - Customers GET request")
                 
                 if let customers = customerData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
                     self.customers = customers
                 }
             }
