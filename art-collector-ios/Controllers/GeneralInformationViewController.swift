@@ -12,6 +12,8 @@ class GeneralInformationViewController: UIViewController {
     
     @IBOutlet weak var generalInformationTableView: UITableView!
     
+    private let refreshControl = UIRefreshControl()
+    
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedGeneralInformation: GeneralInformation?
     
@@ -24,20 +26,30 @@ class GeneralInformationViewController: UIViewController {
         }
     }
     
+    @objc private func refreshGeneralInformationData(_ sender: Any) {
+        getGeneralInformation(refresh: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "General Information"
 //        generalInformationTableView.delegate = self
         generalInformationTableView.dataSource = self
-        getGeneralInformation()
+        
+        generalInformationTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshGeneralInformationData(_:)), for: .valueChanged)
+        
+        getGeneralInformation(refresh: false)
     }
     
-    private func getGeneralInformation() {
+    private func getGeneralInformation(refresh: Bool) {
         generalInformation = []
         let generalInformationService = GeneralInformationService()
         
-        progressHUD.show(onView: view, animated: true)
+        if !refresh {
+            progressHUD.show(onView: view, animated: true)
+        }
         generalInformationService.getGeneralInformation { [weak self] generalInformationData, error in
             guard let self = self else {
                 return
@@ -50,7 +62,11 @@ class GeneralInformationViewController: UIViewController {
                 print("SUCCESS - GeneralInformation GET request")
                 
                 if let generalInfo = generalInformationData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
+                    if !refresh {
+                        self.progressHUD.hide(onView: self.view, animated: true)
+                    } else {
+                        self.refreshControl.endRefreshing()
+                    }
                     self.generalInformation = generalInfo
                 }
             }
@@ -60,7 +76,7 @@ class GeneralInformationViewController: UIViewController {
     @IBAction func unwindToGeneralInformationViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.getGeneralInformation()
+                self.getGeneralInformation(refresh: false)
             }
         }
     }

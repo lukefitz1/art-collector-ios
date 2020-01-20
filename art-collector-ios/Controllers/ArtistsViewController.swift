@@ -12,6 +12,8 @@ class ArtistsViewController: UIViewController {
     
     @IBOutlet weak var artistsTableView: UITableView!
     
+    private let refreshControl = UIRefreshControl()
+    
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedCustomer: Artist?
     
@@ -24,6 +26,10 @@ class ArtistsViewController: UIViewController {
         }
     }
     
+    @objc private func refreshArtistsData(_ sender: Any) {
+        getArtists(refresh: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,18 +37,24 @@ class ArtistsViewController: UIViewController {
         
 //        artistsTableView.delegate = self
         artistsTableView.dataSource = self
-        getArtists()
+        
+        artistsTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshArtistsData(_:)), for: .valueChanged)
+        
+        getArtists(refresh: false)
     }
     
     @objc func newArtist() {
         print("Button pressed")
     }
     
-    func getArtists() {
+    func getArtists(refresh: Bool) {
         artists = []
         let artistService = ArtistsService()
         
-        progressHUD.show(onView: view, animated: true)
+        if !refresh {
+            progressHUD.show(onView: view, animated: true)
+        }
         artistService.getArtists { [weak self] artistData, error in
             guard let self = self else {
                 return
@@ -55,7 +67,11 @@ class ArtistsViewController: UIViewController {
                 print("SUCCESS - Artists GET request")
                 
                 if let artists = artistData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
+                    if !refresh {
+                        self.progressHUD.hide(onView: self.view, animated: true)
+                    } else {
+                        self.refreshControl.endRefreshing()
+                    }
                     self.artists = artists
                 }
             }
@@ -69,7 +85,7 @@ class ArtistsViewController: UIViewController {
     @IBAction func unwindToArtistsViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.getArtists()
+                self.getArtists(refresh: false)
             }
         }
     }
