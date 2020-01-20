@@ -69,9 +69,6 @@ class ArtistsViewController: UIViewController {
     @IBAction func unwindToArtistsViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-//                self.tableView.reloadData()s
-//                print("Unwinding the segue!!")
-//                self.artistsTableView.reloadData()
                 self.getArtists()
             }
         }

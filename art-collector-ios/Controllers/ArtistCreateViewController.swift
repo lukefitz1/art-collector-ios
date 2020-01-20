@@ -22,6 +22,9 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         lastNameTextField.delegate = self
         additionalInfoTextField.delegate = self
         biographyTextField.delegate = self
+        
+        biographyTextField.layer.borderWidth = 0.5
+        biographyTextField.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     @IBAction func newArtistBtnPressed(_ sender: Any) {
@@ -35,11 +38,9 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         
         createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
         self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
-//        navigationController?.popViewController(animated: true)
-//        dismiss(animated: true, completion: nil)
     }
     
-    func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
+    private func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
         let artistCreateService = ArtistCreateService()
         
         artistCreateService.createArtist(fName: fName, lName: lName, bio: bio, additionalInfo: addInfo, image: "") { [weak self] artistData, error in
@@ -48,10 +49,10 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
             }
             
             if let e = error {
-                print("Issue getting artist data (Artists GET request) - \(e)")
+                print("Issue posting artist data (Artists POST request) - \(e)")
                 return
             } else {
-                print("SUCCESS - Artists GET request")
+                print("SUCCESS - Artists POST request")
                 
                 if let artist = artistData {
 //                    self.artists = artists

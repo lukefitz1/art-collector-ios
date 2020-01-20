@@ -56,6 +56,14 @@ class GeneralInformationViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToGeneralInformationViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.getGeneralInformation()
+            }
+        }
+    }
 }
 
 extension GeneralInformationViewController: UITableViewDataSource {
