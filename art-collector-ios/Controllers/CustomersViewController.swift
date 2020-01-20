@@ -12,6 +12,8 @@ class CustomersViewController: UIViewController {
 
     @IBOutlet weak var customersTableView: UITableView!
 
+    private let refreshControl = UIRefreshControl()
+    
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedCustomer: Customer?
     
@@ -24,20 +26,30 @@ class CustomersViewController: UIViewController {
         }
     }
     
+    @objc private func refreshCustomerData(_ sender: Any) {
+        getCustomers(refresh: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Customers"
         customersTableView.delegate = self
         customersTableView.dataSource = self
-        getCustomers()
+        
+        customersTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshCustomerData(_:)), for: .valueChanged)
+        
+        getCustomers(refresh: false)
     }
     
-    func getCustomers() {
+    func getCustomers(refresh: Bool) {
         customers = []
         let customerService = CustomersService()
         
-        progressHUD.show(onView: view, animated: true)
+        if !refresh {
+            progressHUD.show(onView: view, animated: true)
+        }
         customerService.getCustomers { [weak self] customerData, error in
             guard let self = self else {
                 return
@@ -50,7 +62,11 @@ class CustomersViewController: UIViewController {
                 print("SUCCESS - Customers GET request")
                 
                 if let customers = customerData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
+                    if !refresh {
+                        self.progressHUD.hide(onView: self.view, animated: true)
+                    } else {
+                        self.refreshControl.endRefreshing()
+                    }
                     self.customers = customers
                 }
             }
@@ -79,10 +95,7 @@ extension CustomersViewController: UITableViewDelegate {
         let customerDetailViewController = CustomerDetailViewController()
         customerDetailViewController.customer = customer
         
-        // This is how to perform a segue in code only - you have to set up the view programmatically as well
-        // navigationController?.pushViewController(customerDetailViewController, animated: true)
         self.performSegue(withIdentifier: "CustomerDetailSegue", sender: self)
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
