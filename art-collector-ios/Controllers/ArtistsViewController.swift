@@ -30,6 +30,17 @@ class ArtistsViewController: UIViewController {
         getArtists(refresh: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("displaying artists view")
+        
+        super.viewWillAppear(true)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,8 +75,6 @@ class ArtistsViewController: UIViewController {
                 print("Issue getting artist data (Artists GET request) - \(e)")
                 return
             } else {
-                print("SUCCESS - Artists GET request")
-                
                 if let artists = artistData {
                     if !refresh {
                         self.progressHUD.hide(onView: self.view, animated: true)

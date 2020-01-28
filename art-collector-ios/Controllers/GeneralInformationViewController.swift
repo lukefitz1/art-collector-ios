@@ -30,6 +30,15 @@ class GeneralInformationViewController: UIViewController {
         getGeneralInformation(refresh: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("displaying gi view")
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +68,6 @@ class GeneralInformationViewController: UIViewController {
                 print("Issue getting GeneralInformation data (GeneralInformation GET request) - \(e)")
                 return
             } else {
-                print("SUCCESS - GeneralInformation GET request")
-                
                 if let generalInfo = generalInformationData {
                     if !refresh {
                         self.progressHUD.hide(onView: self.view, animated: true)

@@ -30,6 +30,15 @@ class CustomersViewController: UIViewController {
         getCustomers(refresh: true)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("displaying customers view")
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+//        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,8 +68,6 @@ class CustomersViewController: UIViewController {
                 print("Issue getting customer data (Customers GET request) - \(e)")
                 return
             } else {
-                print("SUCCESS - Customers GET request")
-                
                 if let customers = customerData {
                     if !refresh {
                         self.progressHUD.hide(onView: self.view, animated: true)
@@ -69,6 +76,18 @@ class CustomersViewController: UIViewController {
                     }
                     self.customers = customers
                 }
+            }
+        }
+    }
+    
+    @IBAction func addNewCustomerBtnPressed(_ sender: Any) {
+    
+    }
+    
+    @IBAction func unwindToCustomersViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.getCustomers(refresh: false)
             }
         }
     }

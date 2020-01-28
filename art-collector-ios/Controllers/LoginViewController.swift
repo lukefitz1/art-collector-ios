@@ -15,6 +15,10 @@ class LoginViewController: UIViewController {
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

@@ -47,6 +47,11 @@ class CustomerDetailViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("displaying customer detail view")
+        navigationController?.isNavigationBarHidden = false
+    }
 }
 
 extension CustomerDetailViewController: UITableViewDataSource {

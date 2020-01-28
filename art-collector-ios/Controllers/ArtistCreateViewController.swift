@@ -29,8 +29,6 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
     
     @IBAction func newArtistBtnPressed(_ sender: Any) {
         
-        print("fName: \(firstNameTextField.text) - lName: \(lastNameTextField.text) - info: \(additionalInfoTextField.text) - bio: \(biographyTextField.text)")
-        
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
         let additionalInfo = additionalInfoTextField.text ?? ""
