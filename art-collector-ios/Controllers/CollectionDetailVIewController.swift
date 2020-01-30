@@ -20,6 +20,9 @@ class CollectionDetailViewController: UIViewController {
     var artworks: [Artwork]? = []
     var selectedArtwork: Artwork?
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,8 +34,49 @@ class CollectionDetailViewController: UIViewController {
         collectionIdentifier.text = collection?.identifier
         collectionId.text = collection?.id
         
+        artworkTableView.refreshControl = refreshControl
+        
         if let artworksArray = collection?.artworks {
             self.artworks = artworksArray
+        }
+    }
+    
+    @IBAction func unwindToCollectionViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.getCollection(refresh: false)
+            }
+        }
+    }
+    
+    func getCollection(refresh: Bool) {
+        let collectionService = CollectionService()
+        
+        if !refresh {
+            progressHUD.show(onView: view, animated: true)
+        }
+        
+        collectionService.getCollection { [weak self] collectionData, error in
+            guard let self = self else {
+                return
+            }
+            
+            if let e = error {
+                print("Issue getting collection data (Collection GET request) - \(e)")
+                return
+            } else {
+                if let collection = collectionData {
+                    if !refresh {
+                        self.progressHUD.hide(onView: self.view, animated: true)
+                    } else {
+                        self.refreshControl.endRefreshing()
+                    }
+                    self.collection = collection
+                    self.artworks = collection.artworks
+                    
+                    self.artworkTableView.reloadData()
+                }
+            }
         }
     }
 }

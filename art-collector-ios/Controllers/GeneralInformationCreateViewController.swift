@@ -28,7 +28,7 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         let information = informationTextView.text ?? ""
         
         createGeneralInformation(infoLabel: informationLabel, info: information)
-         self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
+        self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
     }
     
     private func createGeneralInformation(infoLabel: String, info: String) {
