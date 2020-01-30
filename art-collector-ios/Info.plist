@@ -60,5 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Accessing camera to take pictures of the art</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Accessing images on your phone</string>
 </dict>
 </plist>

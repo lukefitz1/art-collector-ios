@@ -53,6 +53,7 @@
 		9BDB59A223E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A123E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift */; };
 		9BDB59A423E0BE1900AB8C20 /* CustomerCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A323E0BE1900AB8C20 /* CustomerCreateServiceDeserializer.swift */; };
 		9BDB59A623E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A523E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift */; };
+		9BDB59A823E0D42500AB8C20 /* ArtworkCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A723E0D42500AB8C20 /* ArtworkCreateViewController.swift */; };
 		9BF0F98C23B64F20009ACE3E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98B23B64F20009ACE3E /* ApiClient.swift */; };
 		9BF0F98E23B64F7F009ACE3E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98D23B64F7F009ACE3E /* LoginService.swift */; };
 		9BF0F99023B6AF9A009ACE3E /* CustomersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */; };
@@ -116,6 +117,7 @@
 		9BDB59A123E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCreateServiceSerializerProtocol.swift; sourceTree = "<group>"; };
 		9BDB59A323E0BE1900AB8C20 /* CustomerCreateServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCreateServiceDeserializer.swift; sourceTree = "<group>"; };
 		9BDB59A523E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCreateServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
+		9BDB59A723E0D42500AB8C20 /* ArtworkCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCreateViewController.swift; sourceTree = "<group>"; };
 		9BF0F98B23B64F20009ACE3E /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		9BF0F98D23B64F7F009ACE3E /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersService.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				9BF12F1D23D3B26D00BE8AA8 /* ArtistCreateViewController.swift */,
 				9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */,
 				9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */,
+				9BDB59A723E0D42500AB8C20 /* ArtworkCreateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				9B144DA623A29FED00E0FE85 /* AppDelegate.swift in Sources */,
 				9B144DA823A29FED00E0FE85 /* SceneDelegate.swift in Sources */,
 				9BDB59A023E0BDEF00AB8C20 /* CustomerCreateServiceSerializer.swift in Sources */,
+				9BDB59A823E0D42500AB8C20 /* ArtworkCreateViewController.swift in Sources */,
 				9B2A919523BF94E100CC7552 /* Artwork.swift in Sources */,
 				9B267D6C23BA6EDD00203D3B /* LoginServiceProtocol.swift in Sources */,
 				9BF0F99023B6AF9A009ACE3E /* CustomersService.swift in Sources */,
