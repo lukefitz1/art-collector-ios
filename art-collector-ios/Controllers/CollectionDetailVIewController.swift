@@ -35,6 +35,7 @@ class CollectionDetailViewController: UIViewController {
         collectionId.text = collection?.id
         
         artworkTableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshCollectionData(_:)), for: .valueChanged)
         
         if let artworksArray = collection?.artworks {
             self.artworks = artworksArray
@@ -73,11 +74,14 @@ class CollectionDetailViewController: UIViewController {
                     }
                     self.collection = collection
                     self.artworks = collection.artworks
-                    
                     self.artworkTableView.reloadData()
                 }
             }
         }
+    }
+    
+    @objc private func refreshCollectionData(_ sender: Any) {
+        getCollection(refresh: true)
     }
 }
 
