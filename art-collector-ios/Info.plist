@@ -64,5 +64,7 @@
 	<string>Accessing camera to take pictures of the art</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Accessing images on your phone</string>
+	<key>CFBundleDisplayName</key>
+	<string>Spire</string>
 </dict>
 </plist>

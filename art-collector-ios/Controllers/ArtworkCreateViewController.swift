@@ -44,6 +44,12 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     let additionalInfoImagePicker = UIImagePickerController()
     let additionalInfoTwoImagePicker = UIImagePickerController()
     
+    var decodedMainImage: String?
+    var decodedNotesImage: String?
+    var decodedNotesTwoImage: String?
+    var decodedAdditionalInfoImage: String?
+    var decodedAdditionalInfoTwoImage: String?
+    
     var selected = 1
     
     override func viewDidLoad() {
@@ -118,22 +124,47 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         case 1:
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 mainImageView.image = image
+                
+                let imageData = image.jpegData(compressionQuality: 0.1)! as Data
+                if let newImage = UIImage(data: imageData) {
+                    decodedMainImage = ArtworkCreateViewController.convertImageToBase64String(image: newImage)
+                }
             }
         case 2:
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 notesImageView.image = image
+                
+                let imageData = image.jpegData(compressionQuality: 0.1)! as Data
+                if let newImage = UIImage(data: imageData) {
+                    decodedNotesImage = ArtworkCreateViewController.convertImageToBase64String(image: newImage)
+                }
             }
         case 3:
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 notesImageTwoImageView.image = image
+                
+                let imageData = image.jpegData(compressionQuality: 0.1)! as Data
+                if let newImage = UIImage(data: imageData) {
+                    decodedNotesTwoImage = ArtworkCreateViewController.convertImageToBase64String(image: newImage)
+                }
             }
         case 4:
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 additionalInfoImageView.image = image
+                
+                let imageData = image.jpegData(compressionQuality: 0.1)! as Data
+                if let newImage = UIImage(data: imageData) {
+                    decodedAdditionalInfoImage = ArtworkCreateViewController.convertImageToBase64String(image: newImage)
+                }
             }
         case 5:
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 additionalInfoImageTwoImageView.image = image
+                
+                let imageData = image.jpegData(compressionQuality: 0.1)! as Data
+                if let newImage = UIImage(data: imageData) {
+                    decodedAdditionalInfoTwoImage = ArtworkCreateViewController.convertImageToBase64String(image: newImage)
+                }
             }
         default:
             print("No image")
@@ -143,7 +174,6 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     }
     
     @IBAction func addNewArtworkBtnPressed(_ sender: Any) {
-        print("addNewArtworkBtnPressed")
         
         let objectId = objectIdTextField.text ?? ""
         let artType = artTypeTextField.text ?? ""
@@ -152,8 +182,8 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let medium = mediumTextField.text ?? ""
         let description = descriptionTextView.text ?? ""
         let dimensions = dimensionsTextField.text ?? ""
-//        let mainImage = mainImageView.image ?? nil
-        let mainImage = ""
+        let mainImage = decodedMainImage ?? ""
+//        let mainImage = ""
         let frameDimensions = frameDimensionsTextField.text ?? ""
         let condition = conditionTextField.text ?? ""
         let currentLocation = currentLocationTextField.text ?? ""
@@ -163,16 +193,16 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let amountPaid = amountPaidTextField.text ?? ""
         let currentValue = currentValueTextField.text ?? ""
         let notes = notesTextView.text ?? ""
-//        let notesImage = notesImageView.image ?? nil
-        let notesImage = ""
-//        let notesImageTwo = notesImageTwoImageView.image ?? nil
-        let notesImageTwo = ""
+        let notesImage = decodedNotesImage ?? ""
+//        let notesImage = ""
+        let notesImageTwo = decodedNotesTwoImage ?? ""
+//        let notesImageTwo = ""
         let additionalInfoLabel = additionalInfoLabelTextField.text ?? ""
         let additionalInfoText = additionalInfoTextView.text ?? ""
-//        let additionalInfoImage = additionalInfoImageView.image ?? nil
-        let additionalInfoImage = ""
-//        let additionalInfoImageTwo = additionalInfoImageTwoImageView.image ?? nil
-        let additionalInfoImageTwo = ""
+        let additionalInfoImage = decodedAdditionalInfoImage ?? ""
+//        let additionalInfoImage = ""
+        let additionalInfoImageTwo = decodedAdditionalInfoTwoImage ?? ""
+//        let additionalInfoImageTwo = ""
         let reviewedBy = reviewedByTextField.text ?? ""
         let reviewedDate = reviewedDateTextField.text ?? ""
         let provenance = provenanceTextView.text ?? ""
@@ -188,7 +218,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         
         let artworkCreateService = ArtworkCreateService()
         
-        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: description, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo) { [weak self] artworkData, error in
+        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo) { [weak self] artworkData, error in
             guard let self = self else {
                 return
             }
@@ -200,9 +230,15 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
                 print("SUCCESS - artwork request")
                 
                 if let artworkInfo = artworkData {
-                    print(artworkInfo)
+//                    print(artworkInfo)
                 }
             }
         }
+    }
+    
+    public static func  convertImageToBase64String(image : UIImage ) -> String
+    {
+        let strBase64 =  image.pngData()?.base64EncodedString()
+        return ("data:image/jpeg;base64,\(strBase64!)")
     }
 }

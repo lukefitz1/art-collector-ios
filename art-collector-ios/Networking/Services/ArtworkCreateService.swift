@@ -64,7 +64,7 @@ struct ArtworkCreateService {
                    parameters: parameters,
                    encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in
-                     debugPrint(responseJSON)
+//                     debugPrint(responseJSON)
                     
                     switch responseJSON.result {
                     case .success:
