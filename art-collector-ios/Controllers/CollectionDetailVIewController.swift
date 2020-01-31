@@ -106,7 +106,6 @@ extension CollectionDetailViewController: UITableViewDelegate {
         let artworkDetailViewController = ArtworkDetailViewController()
         artworkDetailViewController.artwork = artwork
         
-        print("Row: \(indexPath)")
         self.performSegue(withIdentifier: "ArtworkDetailSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -116,6 +115,19 @@ extension CollectionDetailViewController: UITableViewDelegate {
             let destinationVC = segue.destination as! ArtworkDetailViewController
 
             destinationVC.artwork = selectedArtwork
+        }
+        
+        if segue.identifier == "AddNewArtworkSegue" {
+            print("AddNewArtworkSegue")
+            
+            let destinationVC = segue.destination as! ArtworkCreateViewController
+            
+            if let custId = customer?.id {
+                destinationVC.customerId = custId
+            }
+            if let collId = collection?.id {
+                destinationVC.collectionId = collId
+            }
         }
     }
 }

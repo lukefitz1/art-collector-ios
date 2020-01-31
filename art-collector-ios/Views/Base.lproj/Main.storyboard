@@ -913,7 +913,7 @@
                                 <rect key="frame" x="163" y="253" width="88" height="30"/>
                                 <state key="normal" title="Add New Art"/>
                                 <connections>
-                                    <segue destination="XhJ-xb-3fZ" kind="presentation" id="h87-Bo-RLH"/>
+                                    <segue destination="XhJ-xb-3fZ" kind="presentation" identifier="AddNewArtworkSegue" id="h87-Bo-RLH"/>
                                 </connections>
                             </button>
                         </subviews>

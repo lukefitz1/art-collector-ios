@@ -37,6 +37,8 @@ protocol ArtworkCreateServiceProtocol {
                        provenance: String,
                        customTitle: String,
                        additionalInfo: String,
+                       customerId: String,
+                       collectionId: String,
                        completionHandler: ((Artwork?, Error?) -> Void)?)
 }
 
