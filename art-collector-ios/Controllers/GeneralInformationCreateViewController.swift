@@ -13,6 +13,8 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
     @IBOutlet weak var informationLabelTextField: UITextField!
     @IBOutlet weak var informationTextView: UITextView!
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,12 +30,13 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         let information = informationTextView.text ?? ""
         
         createGeneralInformation(infoLabel: informationLabel, info: information)
-        self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
+//        self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
     }
     
     private func createGeneralInformation(infoLabel: String, info: String) {
         let giCreateService = GeneralInformationCreateService()
         
+        progressHUD.show(onView: view, animated: true)
         giCreateService.createGeneralInformation(infoLabel: infoLabel, info: infoLabel) { [weak self] giData, error in
             guard let self = self else {
                 return
@@ -47,6 +50,8 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
                 
                 if let generalInfo = giData {
                     print(generalInfo)
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
                 }
             }
         }

@@ -48,9 +48,6 @@ struct ArtistCreateService {
                         }
                         
                         completionHandler?(data, nil)
-                        // let deserializedResponse = self.deserializer.deserialize(response: data)
-                        // print(deserializedResponse)
-                        // completionHandler?(deserializedResponse, nil)
                     case let .failure(error):
                         print(error)
                         completionHandler?(nil, error)

@@ -22,6 +22,9 @@ class CustomerDetailViewController: UIViewController {
     var customer: Customer?
     var collections: [Collection]? = []
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,14 +46,56 @@ class CustomerDetailViewController: UIViewController {
             
             if let collectionsArray = cust.collections {
                 self.collections = collectionsArray
-                print(collectionsArray[0].id)
             }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("displaying customer detail view")
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                // RELOAD COLLLECTION TABLE ON CUSTOMER DETAIL
+                if let customer = self.customer?.id {
+                    print("Customer ID - Reload Segue: \(customer)")
+//                    self.getCustomer(customerId: customer)
+                    self.getCustomer(customerId: customer, refresh: false)
+                }
+            }
+        }
+    }
+    
+    private func getCustomer(customerId: String, refresh: Bool) {
+        print("getCustomer function call")
+        let getCustomerService = GetCustomerService()
+        
+        if !refresh {
+            progressHUD.show(onView: view, animated: true)
+        }
+        
+        getCustomerService.getCustomer { [weak self] customerData, error in
+            guard let self = self else {
+                return
+            }
+            
+            if let e = error {
+                print("Issue getting customer data (Customer GET request) - \(e)")
+                return
+            } else {
+                if let customer = customerData {
+                    if !refresh {
+                        self.progressHUD.hide(onView: self.view, animated: true)
+                    } else {
+                        self.refreshControl.endRefreshing()
+                    }
+                    
+                    self.collections = customer.collections
+                    self.collectionsTableView.reloadData()
+                }
+            }
+        }
     }
 }
 
@@ -85,6 +130,16 @@ extension CustomerDetailViewController: UITableViewDelegate {
 
             destinationVC.customer = customer
             destinationVC.collection = selectedCollection
+        }
+        
+        if segue.identifier == "AddNewCollectionSegue" {
+            print("AddNewCollectionSegue")
+            
+            let destinationVC = segue.destination as! CollectionCreateViewController
+            
+            if let custId = customer?.id {
+                destinationVC.customerId = custId
+            }
         }
     }
 }

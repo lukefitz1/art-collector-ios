@@ -31,7 +31,6 @@ class GeneralInformationViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("displaying gi view")
         navigationController?.isNavigationBarHidden = true
     }
     

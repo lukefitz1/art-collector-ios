@@ -20,6 +20,8 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
     @IBOutlet weak var referredByTextField: UITextField!
     @IBOutlet weak var projectNotesTextView: UITextView!
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,14 +54,15 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         print("First name: \(firstName) - Last name: \(lastName) - Email: \(email) - Phone: \(phone) - Street Address: \(streetAddress) - City: \(city) - Zip: \(zip) - Referred by: \(referredBy)")
 
         createCustomer(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
-        self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
+//        self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
     }
 
     private func createCustomer(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
 
         let customerCreateService = CustomerCreateService()
-
         let state = "CO"
+        
+        progressHUD.show(onView: view, animated: true)
         customerCreateService.createCustomer(fName: fName, lName: lName, email: lName, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
             guard let self = self else {
                 return
@@ -73,6 +76,8 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
 
                 if let customer = customerData {
                     print(customer)
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
                 }
             }
         }
