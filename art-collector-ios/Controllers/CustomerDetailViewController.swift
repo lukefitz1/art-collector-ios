@@ -57,10 +57,7 @@ class CustomerDetailViewController: UIViewController {
     @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                // RELOAD COLLLECTION TABLE ON CUSTOMER DETAIL
                 if let customer = self.customer?.id {
-                    print("Customer ID - Reload Segue: \(customer)")
-//                    self.getCustomer(customerId: customer)
                     self.getCustomer(customerId: customer, refresh: false)
                 }
             }
@@ -68,14 +65,13 @@ class CustomerDetailViewController: UIViewController {
     }
     
     private func getCustomer(customerId: String, refresh: Bool) {
-        print("getCustomer function call")
         let getCustomerService = GetCustomerService()
         
         if !refresh {
             progressHUD.show(onView: view, animated: true)
         }
         
-        getCustomerService.getCustomer { [weak self] customerData, error in
+        getCustomerService.getCustomer(customerId: customerId) { [weak self] customerData, error in
             guard let self = self else {
                 return
             }

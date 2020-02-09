@@ -15,6 +15,8 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var additionalInfoTextField: UITextField!
     @IBOutlet weak var biographyTextField: UITextView!
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,12 +37,12 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         let biography = biographyTextField.text ?? ""
         
         createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
-        self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
     }
     
     private func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
         let artistCreateService = ArtistCreateService()
         
+        progressHUD.show(onView: view, animated: true)
         artistCreateService.createArtist(fName: fName, lName: lName, bio: bio, additionalInfo: addInfo, image: "") { [weak self] artistData, error in
             guard let self = self else {
                 return
@@ -55,6 +57,8 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
                 if let artist = artistData {
 //                    self.artists = artists
                     print(artist)
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
                 }
             }
         }

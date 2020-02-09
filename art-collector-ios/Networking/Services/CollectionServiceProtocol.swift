@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CollectionServiceProtocol {
-    func getCollection(completionHandler: ((Collection?, Error?) -> Void)?)
+    func getCollection(collectionId: String, completionHandler: ((Collection?, Error?) -> Void)?)
 }
 
 extension CollectionService: CollectionServiceProtocol {}

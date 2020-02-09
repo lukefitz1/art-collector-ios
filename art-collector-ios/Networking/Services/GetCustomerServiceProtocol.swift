@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GetCustomerServiceProtocol {
-    func getCustomer(completionHandler: ((Customer?, Error?) -> Void)?)
+    func getCustomer(customerId: String, completionHandler: ((Customer?, Error?) -> Void)?)
 }
 
 extension GetCustomerService: GetCustomerServiceProtocol {}

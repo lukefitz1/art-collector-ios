@@ -75,7 +75,6 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
                 print("SUCCESS - Customer POST request")
 
                 if let customer = customerData {
-                    print(customer)
                     self.progressHUD.hide(onView: self.view, animated: true)
                     self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
                 }

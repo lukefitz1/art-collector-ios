@@ -16,8 +16,8 @@ struct GetCustomerService {
         self.deserializer = deserializer
     }
     
-    func getCustomer(completionHandler: ((Customer?, Error?) -> Void)?) {
-        let endpoint = buildEndpoint()
+    func getCustomer(customerId: String, completionHandler: ((Customer?, Error?) -> Void)?) {
+        let endpoint = buildEndpoint(customerId: customerId)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
@@ -54,8 +54,7 @@ struct GetCustomerService {
         return nil
     }
     
-    private func buildEndpoint() -> URL {
-        let customerId = "866ad16d-ace2-4e3f-aa07-db973863e9a6"
+    private func buildEndpoint(customerId: String) -> URL {
         return URL(string: "\(ApiClient.baseUrl)customer/\(customerId)")!
     }
 }

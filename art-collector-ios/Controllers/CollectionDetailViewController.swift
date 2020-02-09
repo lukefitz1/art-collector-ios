@@ -1,5 +1,5 @@
 //
-//  CollectionDetailVIewController.swift
+//  CollectionDetailViewController.swift
 //  art-collector-ios
 //
 //  Created by Luke Fitzgerald on 1/18/20.
@@ -45,19 +45,21 @@ class CollectionDetailViewController: UIViewController {
     @IBAction func unwindToCollectionViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.getCollection(refresh: false)
+                if let collection = self.collection?.id {
+                    self.getCollection(collectionId: collection, refresh: false)
+                }
             }
         }
     }
     
-    func getCollection(refresh: Bool) {
+    func getCollection(collectionId: String, refresh: Bool) {
         let collectionService = CollectionService()
         
         if !refresh {
             progressHUD.show(onView: view, animated: true)
         }
         
-        collectionService.getCollection { [weak self] collectionData, error in
+        collectionService.getCollection(collectionId: collectionId) { [weak self] collectionData, error in
             guard let self = self else {
                 return
             }
@@ -81,7 +83,9 @@ class CollectionDetailViewController: UIViewController {
     }
     
     @objc private func refreshCollectionData(_ sender: Any) {
-        getCollection(refresh: true)
+        if let collection = self.collection?.id {
+            getCollection(collectionId: collection, refresh: true)
+        }
     }
 }
 

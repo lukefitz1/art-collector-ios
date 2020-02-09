@@ -16,6 +16,8 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
     
     var customerId: String = ""
     
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,12 +33,12 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
         let collIdentifier = collectionIdentifierTextField.text ?? ""
         
         createCollection(name: collName, year: collYear, identifier: collIdentifier)
-        self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
     }
     
     private func createCollection(name: String, year: String, identifier: String) {
         let collectionCreateService = CollectionCreateService()
         
+        progressHUD.show(onView: view, animated: true)
         collectionCreateService.createCollection(name: name, year: year, identifier: identifier, customerId: customerId) { [weak self] collectionData, error in
             guard let self = self else {
                 return
@@ -49,7 +51,8 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
                 print("SUCCESS - Collection POST request")
                 
                 if let collection = collectionData {
-                    print(collection)
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
                 }
             }
         }

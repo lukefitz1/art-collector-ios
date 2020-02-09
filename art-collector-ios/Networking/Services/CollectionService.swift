@@ -16,8 +16,8 @@ struct CollectionService {
         self.deserializer = deserializer
     }
     
-    func getCollection(completionHandler: ((Collection?, Error?) -> Void)?) {
-        let endpoint = buildEndpoint()
+    func getCollection(collectionId: String, completionHandler: ((Collection?, Error?) -> Void)?) {
+        let endpoint = buildEndpoint(collectionId: collectionId)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
@@ -53,8 +53,7 @@ struct CollectionService {
         return nil
     }
     
-    private func buildEndpoint() -> URL {
-        let collectionId = "b4b5b89c-dd16-4d98-9dab-b26de817611e"
+    private func buildEndpoint(collectionId: String) -> URL {
         return URL(string: "\(ApiClient.baseUrl)collections/\(collectionId)")!
     }
 }
