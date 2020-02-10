@@ -915,8 +915,8 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Js1-iI-h6g">
-                                <rect key="frame" x="140" y="382" width="135" height="30"/>
-                                <state key="normal" title="Add New Collection"/>
+                                <rect key="frame" x="20" y="382" width="374" height="30"/>
+                                <state key="normal" title="Add Collection"/>
                                 <connections>
                                     <segue destination="8xb-zT-IIo" kind="presentation" identifier="AddNewCollectionSegue" id="qk0-st-vvs"/>
                                 </connections>
@@ -930,7 +930,7 @@
                             <constraint firstItem="FIz-Eb-str" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="125" id="5Yt-Sd-WBO"/>
                             <constraint firstItem="o49-xX-YRW" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="125" id="5lo-6Q-l8I"/>
                             <constraint firstItem="zEz-nS-fJF" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="20" id="7Pa-Nw-JXV"/>
-                            <constraint firstItem="bm8-pL-Rab" firstAttribute="trailing" secondItem="Js1-iI-h6g" secondAttribute="trailing" constant="139" id="7lH-Wj-bGE"/>
+                            <constraint firstItem="bm8-pL-Rab" firstAttribute="trailing" secondItem="Js1-iI-h6g" secondAttribute="trailing" constant="20" id="7lH-Wj-bGE"/>
                             <constraint firstItem="FIz-Eb-str" firstAttribute="top" secondItem="o49-xX-YRW" secondAttribute="bottom" constant="10" id="8Zo-bi-mpD"/>
                             <constraint firstItem="Rzx-1q-Bg2" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="125" id="9eq-0a-Xtx"/>
                             <constraint firstItem="P5S-lK-ebI" firstAttribute="top" secondItem="yWd-B7-vjn" secondAttribute="bottom" constant="25" id="Dvy-rG-Hrd"/>
@@ -947,7 +947,7 @@
                             <constraint firstItem="Fl3-wA-347" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="125" id="aFP-p1-4jA"/>
                             <constraint firstItem="Js1-iI-h6g" firstAttribute="top" secondItem="FIz-Eb-str" secondAttribute="bottom" constant="33" id="aXW-Da-igW"/>
                             <constraint firstItem="Rzx-1q-Bg2" firstAttribute="top" secondItem="2SJ-Hx-AhC" secondAttribute="bottom" constant="25" id="aqo-HW-drh"/>
-                            <constraint firstItem="Js1-iI-h6g" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="140" id="dCc-Jo-fgm"/>
+                            <constraint firstItem="Js1-iI-h6g" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="20" id="dCc-Jo-fgm"/>
                             <constraint firstItem="P5S-lK-ebI" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="20" id="gRI-Qw-0F6"/>
                             <constraint firstItem="bm8-pL-Rab" firstAttribute="trailing" secondItem="o49-xX-YRW" secondAttribute="trailing" constant="20" id="gkR-8c-SlG"/>
                             <constraint firstItem="yWd-B7-vjn" firstAttribute="leading" secondItem="bm8-pL-Rab" secondAttribute="leading" constant="20" id="hFa-OH-hAd"/>
