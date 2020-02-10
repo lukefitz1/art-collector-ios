@@ -12,18 +12,6 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameInputField: UITextField!
     @IBOutlet weak var passwordInputField: UITextField!
-//    @IBOutlet var loginView: UIView!
-    
-//    let btnLogin:UIButton = {
-//        let btn = UIButton(type:.system)
-//        btn.backgroundColor = .blue
-//        btn.setTitle("Logins", for: .normal)
-//        btn.tintColor = .white
-//        btn.layer.cornerRadius = 5
-//        btn.clipsToBounds = true
-//        btn.translatesAutoresizingMaskIntoConstraints = false
-//        return btn
-//    }()
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
@@ -33,8 +21,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        loginView.addSubview(btnLogin)
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
