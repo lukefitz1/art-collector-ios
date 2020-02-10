@@ -12,6 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var usernameInputField: UITextField!
     @IBOutlet weak var passwordInputField: UITextField!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
@@ -21,6 +22,18 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func loginBtnPressed(_ sender: UIButton) {
@@ -44,4 +57,11 @@ class LoginViewController: UIViewController {
         }
     }
 }
+
+extension LoginViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        view.frame.origin.y = -75
+    }
+}
+
 
