@@ -37,6 +37,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var provenanceTextView: UITextView!
     @IBOutlet weak var customTitleTextField: UITextField!
     @IBOutlet weak var additionalInfoTextView: UITextView!
+    @IBOutlet weak var addNewArtworkBtn: UIButton!
     
     let imagePicker = UIImagePickerController()
     let notesImagePicker = UIImagePickerController()
@@ -190,7 +191,6 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let description = descriptionTextView.text ?? ""
         let dimensions = dimensionsTextField.text ?? ""
         let mainImage = decodedMainImage ?? ""
-//        let mainImage = ""
         let frameDimensions = frameDimensionsTextField.text ?? ""
         let condition = conditionTextField.text ?? ""
         let currentLocation = currentLocationTextField.text ?? ""
@@ -201,15 +201,11 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let currentValue = currentValueTextField.text ?? ""
         let notes = notesTextView.text ?? ""
         let notesImage = decodedNotesImage ?? ""
-//        let notesImage = ""
         let notesImageTwo = decodedNotesTwoImage ?? ""
-//        let notesImageTwo = ""
         let additionalInfoLabel = additionalInfoLabelTextField.text ?? ""
         let additionalInfoText = additionalInfoTextView.text ?? ""
         let additionalInfoImage = decodedAdditionalInfoImage ?? ""
-//        let additionalInfoImage = ""
         let additionalInfoImageTwo = decodedAdditionalInfoTwoImage ?? ""
-//        let additionalInfoImageTwo = ""
         let reviewedBy = reviewedByTextField.text ?? ""
         let reviewedDate = reviewedDateTextField.text ?? ""
         let provenance = provenanceTextView.text ?? ""
@@ -223,6 +219,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         
         let artworkCreateService = ArtworkCreateService()
         
+        addNewArtworkBtn.isEnabled = false
         progressHUD.show(onView: view, animated: true)
         artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId) { [weak self] artworkData, error in
             guard let self = self else {
@@ -237,6 +234,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
                 
                 if let artworkInfo = artworkData {
                     self.progressHUD.hide(onView: self.view, animated: true)
+                    self.addNewArtworkBtn.isEnabled = true
                     self.performSegue(withIdentifier: "unwindToCollectionSegue", sender: self)
                 }
             }

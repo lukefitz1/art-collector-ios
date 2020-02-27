@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameInputField: UITextField!
     @IBOutlet weak var passwordInputField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var passwordToggleSwtch: UISwitch!
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
@@ -27,6 +28,9 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        passwordToggleSwtch.isOn = false
+        passwordToggleSwtch.onTintColor =  UIColor.blue
     }
     
     deinit {
@@ -54,6 +58,14 @@ class LoginViewController: UIViewController {
                     self!.performSegue(withIdentifier: "TabBarSegue", sender: nil)
                 }
             }
+        }
+    }
+    
+    @IBAction func passwordTogglePressed(_ sender: Any) {
+        if passwordToggleSwtch.isOn {
+            passwordInputField.isSecureTextEntry = false
+        } else {
+            passwordInputField.isSecureTextEntry = true
         }
     }
 }
