@@ -30,7 +30,8 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         
         passwordToggleSwtch.isOn = false
-        passwordToggleSwtch.onTintColor =  UIColor.blue
+//        passwordToggleSwtch.onTintColor =  UIColor.blue
+        passwordToggleSwtch.onTintColor = UIColor(red: 2/255, green: 99/255, blue: 150/255, alpha: 1.0)
     }
     
     deinit {
