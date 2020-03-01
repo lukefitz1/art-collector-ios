@@ -63,11 +63,7 @@ class CustomerDetailViewController: UIViewController {
     
     @objc
     private func editTapped() {
-//        let editGIViewController = GeneralInformationEditViewController()
-//        editGIViewController.customer = customer
-        
         self.performSegue(withIdentifier: "EditCustomerSegue", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {
@@ -145,13 +141,17 @@ extension CustomerDetailViewController: UITableViewDelegate {
         }
         
         if segue.identifier == "AddNewCollectionSegue" {
-            print("AddNewCollectionSegue")
-            
             let destinationVC = segue.destination as! CollectionCreateViewController
             
             if let custId = customer?.id {
                 destinationVC.customerId = custId
             }
+        }
+        
+        if segue.identifier == "EditCustomerSegue" {
+            let destinationVC = segue.destination as! CustomerEditViewController
+            
+            destinationVC.customer = customer
         }
     }
 }

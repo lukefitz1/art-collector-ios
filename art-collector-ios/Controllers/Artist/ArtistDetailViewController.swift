@@ -38,19 +38,15 @@ class ArtistDetailViewController: UIViewController {
     
     @objc
     private func editTapped() {
-//        let editGIViewController = GeneralInformationEditViewController()
-//        editGIViewController.customer = customer
-        
         self.performSegue(withIdentifier: "EditArtistSegue", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//       if segue.identifier == "EditGeneralInformationSegue" {
-//           let destinationVC = segue.destination as! GeneralInformationEditViewController
-//
-//           destinationVC.customer = selectedCustomer
-//       }
+       if segue.identifier == "EditArtistSegue" {
+           let destinationVC = segue.destination as! ArtistEditViewController
+
+           destinationVC.artist = artist
+       }
    }
     
 //    private func loadImage(url: String) {

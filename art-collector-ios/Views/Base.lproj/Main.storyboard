@@ -2154,6 +2154,9 @@
                                 <rect key="frame" x="112" y="502" width="190" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Update New Artist"/>
+                                <connections>
+                                    <action selector="updateArtistBtnPressed:" destination="1My-k8-q3H" eventType="touchUpInside" id="Kqf-PL-rD9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2191,6 +2194,10 @@
                         <viewLayoutGuide key="safeArea" id="rlF-y2-udD"/>
                     </view>
                     <connections>
+                        <outlet property="additionalInfo" destination="E1E-nK-E9A" id="33N-M7-As9"/>
+                        <outlet property="biography" destination="t1O-Ld-Qei" id="Psx-3y-Ecz"/>
+                        <outlet property="firstName" destination="zdv-X7-a04" id="2gd-fp-nDS"/>
+                        <outlet property="lastName" destination="2AZ-Ex-gMv" id="JpN-EZ-jO2"/>
                         <segue destination="8OX-e1-k7Q" kind="unwind" identifier="unwindToArtistsSegue" unwindAction="unwindToArtistsViewControllerWithSegue:" id="VAr-aZ-I1a"/>
                     </connections>
                 </viewController>
@@ -2337,6 +2344,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVV-P9-wbQ" userLabel="AddNewCustomerBtn">
                                                 <rect key="frame" x="146" y="1017" width="122" height="30"/>
                                                 <state key="normal" title="Update Customer"/>
+                                                <connections>
+                                                    <action selector="updateCustomerBtnPressed:" destination="Vkc-JK-1ih" eventType="touchUpInside" id="AgG-D8-LaQ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2433,6 +2443,16 @@
                     </view>
                     <size key="freeformSize" width="414" height="1150"/>
                     <connections>
+                        <outlet property="city" destination="Vsa-ad-dVh" id="n8R-Og-Qki"/>
+                        <outlet property="emailAddress" destination="uez-Si-zVd" id="TTw-sN-4AO"/>
+                        <outlet property="firstName" destination="bCK-Rw-qSd" id="ke2-BP-WHW"/>
+                        <outlet property="lastName" destination="1T3-pj-mgW" id="dVP-O4-Odz"/>
+                        <outlet property="phoneNumber" destination="2t3-Hg-BJc" id="hqt-19-MGZ"/>
+                        <outlet property="projectNotes" destination="feP-pK-vkp" id="R8I-g6-YLa"/>
+                        <outlet property="referredBy" destination="xus-RV-KAY" id="52f-5G-uMe"/>
+                        <outlet property="state" destination="Hox-DA-YAJ" id="9Ld-kZ-RZn"/>
+                        <outlet property="streetAddress" destination="2th-oS-XdE" id="hm5-s2-5Di"/>
+                        <outlet property="zipCode" destination="JER-62-hyZ" id="GTm-yN-8hl"/>
                         <segue destination="cQs-WI-Fh5" kind="unwind" identifier="unwindToCustomersSegue" unwindAction="unwindToCustomersViewControllerWithSegue:" id="GB5-Pa-PvA"/>
                     </connections>
                 </viewController>
