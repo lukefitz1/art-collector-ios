@@ -50,6 +50,8 @@
 		9B40784E23F0A142002E4398 /* GetCustomerServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */; };
 		9B68BDA023D39BCE006ACF15 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */; };
 		9B68BDA223D3A65F006ACF15 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */; };
+		9B6F9AC9240C5B31003C6E28 /* GeneralInformationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */; };
+		9B6F9ACB240C5B74003C6E28 /* ArtistEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */; };
 		9B7A475723D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475623D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift */; };
 		9B7A475923D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */; };
 		9B7A475B23D5E17E006D1BA4 /* GeneralInformationCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */; };
@@ -137,6 +139,8 @@
 		9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerServiceDeserializer.swift; sourceTree = "<group>"; };
 		9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewController.swift; sourceTree = "<group>"; };
+		9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationEditViewController.swift; sourceTree = "<group>"; };
+		9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistEditViewController.swift; sourceTree = "<group>"; };
 		9B7A475623D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDProtocol.swift; sourceTree = "<group>"; };
 		9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateViewController.swift; sourceTree = "<group>"; };
 		9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateService.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */,
+				9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */,
 			);
 			path = Artist;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				9B3DDBC72409F44B006D440C /* GeneralInformationDetailViewController.swift */,
+				9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */,
 			);
 			path = GeneralInformation;
 			sourceTree = "<group>";
@@ -525,6 +531,7 @@
 				9B40784223F09735002E4398 /* CollectionCreateServiceDeserializer.swift in Sources */,
 				9B40783C23F09616002E4398 /* CollectionCreateService.swift in Sources */,
 				9B2A919B23BF991300CC7552 /* Image.swift in Sources */,
+				9B6F9ACB240C5B74003C6E28 /* ArtistEditViewController.swift in Sources */,
 				9B7A475923D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift in Sources */,
 				9BF12F2523D3BAB800BE8AA8 /* ArtistCreateServiceSerializerProtocol.swift in Sources */,
 				9B7A476323D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift in Sources */,
@@ -534,6 +541,7 @@
 				9B2A919D23BF991D00CC7552 /* Pdf.swift in Sources */,
 				9B7A475B23D5E17E006D1BA4 /* GeneralInformationCreateService.swift in Sources */,
 				9B242C45240A0068001E0145 /* ArtistDetailViewController.swift in Sources */,
+				9B6F9AC9240C5B31003C6E28 /* GeneralInformationEditViewController.swift in Sources */,
 				9BF12F2723D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift in Sources */,
 				9BDB599E23E0BCA100AB8C20 /* CustomerCreateServiceProtocol.swift in Sources */,
 				9B222A1123D265F400A2A8D0 /* ArtistsViewController.swift in Sources */,

@@ -30,6 +30,18 @@ class GeneralInformationDetailViewController: UIViewController {
     
     @objc
     private func editTapped() {
-        print("Edit button tapped")
+//        let editGIViewController = GeneralInformationEditViewController()
+//        editGIViewController.customer = customer
+        
+        self.performSegue(withIdentifier: "EditGeneralInformationSegue", sender: self)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//       if segue.identifier == "EditGeneralInformationSegue" {
+//           let destinationVC = segue.destination as! GeneralInformationEditViewController
+//           
+//           destinationVC.customer = selectedCustomer
+//       }
+   }
 }
