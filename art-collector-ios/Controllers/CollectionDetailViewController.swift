@@ -45,13 +45,7 @@ class CollectionDetailViewController: UIViewController {
     
     @objc
     private func editTapped() {
-        print("Edit button tapped")
-        // EditCollectionSegue
-//        let editGIViewController = GeneralInformationEditViewController()
-//        editGIViewController.customer = customer
-        
         self.performSegue(withIdentifier: "EditCollectionSegue", sender: self)
-//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func unwindToCollectionViewController(segue: UIStoryboardSegue) {
@@ -134,8 +128,6 @@ extension CollectionDetailViewController: UITableViewDelegate {
         }
         
         if segue.identifier == "AddNewArtworkSegue" {
-            print("AddNewArtworkSegue")
-            
             let destinationVC = segue.destination as! ArtworkCreateViewController
             
             if let custId = customer?.id {
@@ -144,6 +136,12 @@ extension CollectionDetailViewController: UITableViewDelegate {
             if let collId = collection?.id {
                 destinationVC.collectionId = collId
             }
+        }
+        
+        if segue.identifier == "EditCollectionSegue" {
+            let destinationVC = segue.destination as! CollectionEditViewController
+            
+            destinationVC.collection = collection
         }
     }
 }

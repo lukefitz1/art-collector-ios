@@ -2533,6 +2533,9 @@
                         <viewLayoutGuide key="safeArea" id="eCH-8W-jy2"/>
                     </view>
                     <connections>
+                        <outlet property="collectionIdentifier" destination="5NN-Th-5m4" id="pZQ-A6-23f"/>
+                        <outlet property="collectionName" destination="er7-JT-0XY" id="tXO-kF-6r0"/>
+                        <outlet property="year" destination="mlg-Ku-e4N" id="bHQ-7u-4fG"/>
                         <segue destination="Ryq-pf-nbx" kind="unwind" identifier="unwindToCustomerDetailSegue" unwindAction="unwindToCustomerDetailViewControllerWithSegue:" id="OoD-XT-gaC"/>
                     </connections>
                 </viewController>
@@ -2620,7 +2623,7 @@
                                                 <rect key="frame" x="20" y="452" width="374" height="30"/>
                                                 <state key="normal" title="Take Image Screenshot"/>
                                                 <connections>
-                                                    <action selector="takeImageBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="KjP-4H-ILt"/>
+                                                    <action selector="mainImageBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="PFh-Qg-lZy"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E38-ip-uiR">
@@ -2771,6 +2774,7 @@
                                                 <rect key="frame" x="104.5" y="1566" width="205" height="30"/>
                                                 <state key="normal" title="Take Notes Image Screenshot"/>
                                                 <connections>
+                                                    <action selector="notesImageBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="ozD-8T-2fm"/>
                                                     <action selector="takeNotesImageBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="9Hq-bJ-IUi"/>
                                                 </connections>
                                             </button>
@@ -2790,6 +2794,7 @@
                                                 <rect key="frame" x="98" y="1725" width="218" height="30"/>
                                                 <state key="normal" title="Take Notes Image 2 Screenshot"/>
                                                 <connections>
+                                                    <action selector="NotesImageTwoBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="hTV-l9-woJ"/>
                                                     <action selector="takeNotesImageTwoBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="DIr-ip-fcb"/>
                                                 </connections>
                                             </button>
@@ -2802,6 +2807,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SH-PL-j7m">
                                                 <rect key="frame" x="152.5" y="2879" width="109" height="30"/>
                                                 <state key="normal" title="Update Artwork"/>
+                                                <connections>
+                                                    <action selector="updateArtworkBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="bhG-Pr-eus"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Info Label:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96j-dB-Xop">
                                                 <rect key="frame" x="20" y="1855" width="374" height="21"/>
@@ -2840,7 +2848,7 @@
                                                 <rect key="frame" x="135" y="2120" width="144" height="30"/>
                                                 <state key="normal" title="Additional Info Image"/>
                                                 <connections>
-                                                    <action selector="additionalInfoImageBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="s9q-U8-3mq"/>
+                                                    <action selector="additionalInfoImageBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="maF-pw-etd"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PiF-sz-Crq">
@@ -2859,7 +2867,7 @@
                                                 <rect key="frame" x="119" y="2279" width="176" height="30"/>
                                                 <state key="normal" title="Additional Info Image Two"/>
                                                 <connections>
-                                                    <action selector="additionalInfoImageTwoBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="m1o-sq-oIq"/>
+                                                    <action selector="additionalInfoImageTwoBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="rmm-ct-Tea"/>
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K6R-wD-4MN">
@@ -3122,6 +3130,33 @@
                     </view>
                     <size key="freeformSize" width="414" height="3000"/>
                     <connections>
+                        <outlet property="additionalInfo" destination="nJr-uV-f9f" id="v9H-tg-Vsb"/>
+                        <outlet property="additionalInfoImage" destination="PiF-sz-Crq" id="pl2-wM-SFD"/>
+                        <outlet property="additionalInfoImageTwo" destination="K6R-wD-4MN" id="B5w-49-V71"/>
+                        <outlet property="additionalInfoLabel" destination="6cO-Pf-nIQ" id="vsX-aA-DZh"/>
+                        <outlet property="amountPaid" destination="oNA-vS-Hlj" id="qeJ-AA-RCl"/>
+                        <outlet property="artDescription" destination="5fq-7d-p8O" id="hOD-i9-drC"/>
+                        <outlet property="artTitle" destination="qkf-F2-0FK" id="lgT-Bh-Oin"/>
+                        <outlet property="artType" destination="isl-po-fOd" id="vdh-91-pbu"/>
+                        <outlet property="condition" destination="N9S-Zv-pqy" id="aBL-nq-5O0"/>
+                        <outlet property="currentLocation" destination="Hzg-YN-k0M" id="RJ4-2G-3gc"/>
+                        <outlet property="currentValue" destination="dIc-qC-Cln" id="qPL-t3-r66"/>
+                        <outlet property="customTitle" destination="lGr-ZI-fI3" id="8b5-F0-OBi"/>
+                        <outlet property="date" destination="5eS-P9-Qcl" id="K30-qz-IB7"/>
+                        <outlet property="dateAcquired" destination="eZu-hK-ZwJ" id="VuY-gV-TWh"/>
+                        <outlet property="dateAcquiredLabel" destination="LXZ-k7-MPl" id="uop-f2-gLL"/>
+                        <outlet property="dimensions" destination="Twg-Bv-1pt" id="Zpp-gR-2Gp"/>
+                        <outlet property="frameDimensions" destination="fJx-1H-pgj" id="oux-Os-Bcg"/>
+                        <outlet property="mainImage" destination="LKi-pf-26S" id="jC9-k9-g74"/>
+                        <outlet property="medium" destination="aML-J6-Bxi" id="7F7-xb-sCJ"/>
+                        <outlet property="notes" destination="WIK-Mb-SNp" id="3dO-rN-xlE"/>
+                        <outlet property="notesImage" destination="hLx-ZK-yag" id="OL1-bg-JVc"/>
+                        <outlet property="notesImageTwo" destination="d8G-ng-Got" id="p2p-Kn-MKU"/>
+                        <outlet property="objectId" destination="BcA-W1-gpT" id="qZU-ha-oXM"/>
+                        <outlet property="provenance" destination="mTH-gu-vVE" id="QLs-3b-kRz"/>
+                        <outlet property="reviewedBy" destination="AQ1-xs-tka" id="eh1-Pb-pbN"/>
+                        <outlet property="reviewedDate" destination="LyN-HA-9qY" id="N9U-AZ-Ry2"/>
+                        <outlet property="source" destination="IyJ-te-kZK" id="xKr-7Y-CtT"/>
                         <segue destination="Lb6-wK-nmb" kind="unwind" identifier="unwindToCollectionSegue" unwindAction="unwindToCollectionViewControllerWithSegue:" id="gcv-PP-kpK"/>
                     </connections>
                 </viewController>
