@@ -33,16 +33,21 @@ class CustomerDetailViewController: UIViewController {
         
         if let cust = customer {
             firstName.text = "\(cust.firstName) \(cust.lastName)"
-            
-            let city = cust.city ?? ""
-            let state = cust.state ?? ""
-            let zip = cust.zip ?? ""
-            
-            address.text = cust.address ?? ""
-            addressTwo.text = "\(city), \(state) \(zip)"
             phone.text = cust.phone ?? ""
             email.text = cust.email ?? ""
             id.text = cust.id
+            address.text = cust.address ?? ""
+            
+            let zip = cust.zip ?? ""
+            if let city = cust.city {
+                if let state = cust.state {
+                    addressTwo.text = "\(city), \(state) \(zip)"
+                } else {
+                    addressTwo.text = "\(city), \(zip)"
+                }
+            } else {
+                addressTwo.text = ""
+            }
             
             if let collectionsArray = cust.collections {
                 self.collections = collectionsArray
