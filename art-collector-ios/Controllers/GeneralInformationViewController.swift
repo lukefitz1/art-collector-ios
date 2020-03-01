@@ -17,6 +17,8 @@ class GeneralInformationViewController: UIViewController {
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedGeneralInformation: GeneralInformation?
     
+    var selectedGI: GeneralInformation?
+    
     var generalInformation: [GeneralInformation] = [] {
         didSet {
             guard isViewLoaded else {
@@ -42,7 +44,7 @@ class GeneralInformationViewController: UIViewController {
         super.viewDidLoad()
         
         title = "General Information"
-//        generalInformationTableView.delegate = self
+        generalInformationTableView.delegate = self
         generalInformationTableView.dataSource = self
         
         generalInformationTableView.refreshControl = refreshControl
@@ -98,5 +100,24 @@ extension GeneralInformationViewController: UITableViewDataSource {
         
         cell.textLabel?.text = "\(generalInformation[indexPath.row].infoLabel ?? "label")"
         return cell
+    }
+}
+
+extension GeneralInformationViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let gi = generalInformation[indexPath.row]
+        selectedGI = gi
+
+        let giViewController = GeneralInformationDetailViewController()
+        giViewController.generalInfo = selectedGI
+
+        self.performSegue(withIdentifier: "GeneralInformationDetailSegue", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! GeneralInformationDetailViewController
+
+        destinationVC.generalInfo = selectedGI
     }
 }

@@ -15,7 +15,7 @@ class ArtistsViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
-    var selectedCustomer: Artist?
+    var selectedArtist: Artist?
     
     var artists: [Artist] = [] {
         didSet {
@@ -46,7 +46,7 @@ class ArtistsViewController: UIViewController {
         
         title = "Artists"
         
-//        artistsTableView.delegate = self
+        artistsTableView.delegate = self
         artistsTableView.dataSource = self
         
         artistsTableView.refreshControl = refreshControl
@@ -113,26 +113,23 @@ extension ArtistsViewController: UITableViewDataSource {
     }
 }
 
-//extension ArtistsViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let customer = customers[indexPath.row]
-//        selectedCustomer = customer
-//
-//        let customerDetailViewController = CustomerDetailViewController()
-//        customerDetailViewController.customer = customer
-//
-//        // This is how to perform a segue in code only - you have to set up the view programmatically as well
-//        // navigationController?.pushViewController(customerDetailViewController, animated: true)
-//        self.performSegue(withIdentifier: "CustomerDetailSegue", sender: self)
-//
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "CustomerDetailSegue" {
-//            let destinationVC = segue.destination as! CustomerDetailViewController
-//
-//            destinationVC.customer = selectedCustomer
-//        }
-//    }
-//}
+extension ArtistsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let artist = artists[indexPath.row]
+        selectedArtist = artist
+
+        let artistDetailViewController = ArtistDetailViewController()
+        artistDetailViewController.artist = selectedArtist
+
+        self.performSegue(withIdentifier: "ArtistDetailSegue", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ArtistDetailSegue" {
+            let destinationVC = segue.destination as! ArtistDetailViewController
+
+            destinationVC.artist = selectedArtist
+        }
+    }
+}

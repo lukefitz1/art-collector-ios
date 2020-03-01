@@ -31,7 +31,6 @@ class CustomersViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("displaying customers view")
         navigationController?.isNavigationBarHidden = true
     }
     
