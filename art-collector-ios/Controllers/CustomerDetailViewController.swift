@@ -31,6 +31,8 @@ class CustomerDetailViewController: UIViewController {
         collectionsTableView.delegate = self
         collectionsTableView.dataSource = self
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        
         if let cust = customer {
             firstName.text = "\(cust.firstName) \(cust.lastName)"
             phone.text = cust.phone ?? ""
@@ -57,6 +59,11 @@ class CustomerDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    @objc
+    private func editTapped() {
+        print("Edit button tapped")
     }
     
     @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {

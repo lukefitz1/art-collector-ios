@@ -26,12 +26,19 @@ class ArtistDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        
         firstName.text = artist?.firstName
         lastName.text = artist?.lastName
         artistInfo.text = artist?.additionalInfo
         biography.text = artist?.biography
         
 //        loadImage(url: artist?.artistImage?.url!)
+    }
+    
+    @objc
+    private func editTapped() {
+        print("Edit button tapped")
     }
     
 //    private func loadImage(url: String) {

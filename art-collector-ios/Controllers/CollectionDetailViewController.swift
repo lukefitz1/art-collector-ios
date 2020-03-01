@@ -26,9 +26,10 @@ class CollectionDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        title = "Customers"
         artworkTableView.delegate = self
         artworkTableView.dataSource = self
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
         collectionName.text = collection?.collectionName
         collectionIdentifier.text = collection?.identifier
@@ -40,6 +41,11 @@ class CollectionDetailViewController: UIViewController {
         if let artworksArray = collection?.artworks {
             self.artworks = artworksArray
         }
+    }
+    
+    @objc
+    private func editTapped() {
+        print("Edit button tapped")
     }
     
     @IBAction func unwindToCollectionViewController(segue: UIStoryboardSegue) {

@@ -22,7 +22,14 @@ class GeneralInformationDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        
         giLabel.text = generalInfo?.infoLabel
         giText.text = generalInfo?.information
+    }
+    
+    @objc
+    private func editTapped() {
+        print("Edit button tapped")
     }
 }

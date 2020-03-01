@@ -31,8 +31,6 @@ class ArtistsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("displaying artists view")
-        
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
     }
