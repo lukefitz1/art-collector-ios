@@ -255,7 +255,9 @@
 		9B242C43240A0055001E0145 /* Artist */ = {
 			isa = PBXGroup;
 			children = (
+				9B222A1023D265F400A2A8D0 /* ArtistsViewController.swift */,
 				9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */,
+				9BF12F1D23D3B26D00BE8AA8 /* ArtistCreateViewController.swift */,
 				9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */,
 			);
 			path = Artist;
@@ -264,7 +266,9 @@
 		9B3DDBC92409F452006D440C /* GeneralInformation */ = {
 			isa = PBXGroup;
 			children = (
+				9B222A1A23D2B04A00A2A8D0 /* GeneralInformationViewController.swift */,
 				9B3DDBC72409F44B006D440C /* GeneralInformationDetailViewController.swift */,
+				9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */,
 				9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */,
 			);
 			path = GeneralInformation;
@@ -273,6 +277,8 @@
 		9B6F9ACC240C6B2F003C6E28 /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */,
+				9BDB59A723E0D42500AB8C20 /* ArtworkCreateViewController.swift */,
 				9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */,
 			);
 			path = Artwork;
@@ -281,6 +287,8 @@
 		9B6F9ACD240C6B37003C6E28 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */,
+				9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */,
 				9B6F9AD1240C6B6D003C6E28 /* CollectionEditViewController.swift */,
 			);
 			path = Collection;
@@ -289,6 +297,9 @@
 		9B6F9ACE240C6B4C003C6E28 /* Customer */ = {
 			isa = PBXGroup;
 			children = (
+				9B90893023B2BBCF00FBE693 /* CustomersViewController.swift */,
+				9B267D7123BA8A9700203D3B /* CustomerDetailViewController.swift */,
+				9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */,
 				9B6F9AD3240C6B78003C6E28 /* CustomerEditViewController.swift */,
 			);
 			path = Customer;
@@ -325,17 +336,6 @@
 				9B242C43240A0055001E0145 /* Artist */,
 				9B3DDBC92409F452006D440C /* GeneralInformation */,
 				9B144DA923A29FED00E0FE85 /* LoginViewController.swift */,
-				9B90893023B2BBCF00FBE693 /* CustomersViewController.swift */,
-				9B267D7123BA8A9700203D3B /* CustomerDetailViewController.swift */,
-				9B222A1023D265F400A2A8D0 /* ArtistsViewController.swift */,
-				9B222A1A23D2B04A00A2A8D0 /* GeneralInformationViewController.swift */,
-				9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */,
-				9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */,
-				9BF12F1D23D3B26D00BE8AA8 /* ArtistCreateViewController.swift */,
-				9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */,
-				9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */,
-				9BDB59A723E0D42500AB8C20 /* ArtworkCreateViewController.swift */,
-				9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
