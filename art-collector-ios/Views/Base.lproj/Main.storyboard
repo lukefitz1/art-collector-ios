@@ -2052,6 +2052,9 @@
                                 <rect key="frame" x="41" y="358" width="332" height="78"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Update New General Information"/>
+                                <connections>
+                                    <action selector="updateGIBtnPressed:" destination="nNE-6N-ekA" eventType="touchUpInside" id="VUd-ck-nKl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2074,6 +2077,8 @@
                         <viewLayoutGuide key="safeArea" id="sb5-9p-NVk"/>
                     </view>
                     <connections>
+                        <outlet property="giInfo" destination="5Aa-ug-GFt" id="cSQ-Nv-Cl1"/>
+                        <outlet property="giLabel" destination="ncX-Rx-INL" id="ZdM-M0-o10"/>
                         <segue destination="QVP-dy-8Gk" kind="unwind" identifier="unwindToGeneralInformationSegue" unwindAction="unwindToGeneralInformationViewControllerWithSegue:" id="8bf-a5-07F"/>
                     </connections>
                 </viewController>
