@@ -63,7 +63,11 @@ class CustomerDetailViewController: UIViewController {
     
     @objc
     private func editTapped() {
-        print("Edit button tapped")
+//        let editGIViewController = GeneralInformationEditViewController()
+//        editGIViewController.customer = customer
+        
+        self.performSegue(withIdentifier: "EditCustomerSegue", sender: self)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {

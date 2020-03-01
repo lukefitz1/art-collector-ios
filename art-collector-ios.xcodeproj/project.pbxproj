@@ -52,6 +52,9 @@
 		9B68BDA223D3A65F006ACF15 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */; };
 		9B6F9AC9240C5B31003C6E28 /* GeneralInformationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */; };
 		9B6F9ACB240C5B74003C6E28 /* ArtistEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */; };
+		9B6F9AD0240C6B60003C6E28 /* ArtworkEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */; };
+		9B6F9AD2240C6B6D003C6E28 /* CollectionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AD1240C6B6D003C6E28 /* CollectionEditViewController.swift */; };
+		9B6F9AD4240C6B78003C6E28 /* CustomerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AD3240C6B78003C6E28 /* CustomerEditViewController.swift */; };
 		9B7A475723D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475623D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift */; };
 		9B7A475923D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */; };
 		9B7A475B23D5E17E006D1BA4 /* GeneralInformationCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */; };
@@ -141,6 +144,9 @@
 		9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewController.swift; sourceTree = "<group>"; };
 		9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationEditViewController.swift; sourceTree = "<group>"; };
 		9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistEditViewController.swift; sourceTree = "<group>"; };
+		9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkEditViewController.swift; sourceTree = "<group>"; };
+		9B6F9AD1240C6B6D003C6E28 /* CollectionEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEditViewController.swift; sourceTree = "<group>"; };
+		9B6F9AD3240C6B78003C6E28 /* CustomerEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditViewController.swift; sourceTree = "<group>"; };
 		9B7A475623D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBProgressHUDProtocol.swift; sourceTree = "<group>"; };
 		9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateViewController.swift; sourceTree = "<group>"; };
 		9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateService.swift; sourceTree = "<group>"; };
@@ -264,6 +270,30 @@
 			path = GeneralInformation;
 			sourceTree = "<group>";
 		};
+		9B6F9ACC240C6B2F003C6E28 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
+		9B6F9ACD240C6B37003C6E28 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F9AD1240C6B6D003C6E28 /* CollectionEditViewController.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9B6F9ACE240C6B4C003C6E28 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				9B6F9AD3240C6B78003C6E28 /* CustomerEditViewController.swift */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
 		9B755BF723A2AA7A004574A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +319,9 @@
 		9B755BF923A2AA85004574A0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9B6F9ACE240C6B4C003C6E28 /* Customer */,
+				9B6F9ACD240C6B37003C6E28 /* Collection */,
+				9B6F9ACC240C6B2F003C6E28 /* Artwork */,
 				9B242C43240A0055001E0145 /* Artist */,
 				9B3DDBC92409F452006D440C /* GeneralInformation */,
 				9B144DA923A29FED00E0FE85 /* LoginViewController.swift */,
@@ -514,6 +547,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B6F9AD4240C6B78003C6E28 /* CustomerEditViewController.swift in Sources */,
 				9B7A476523D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift in Sources */,
 				9B3DDBC82409F44B006D440C /* GeneralInformationDetailViewController.swift in Sources */,
 				9BDB599A23E0B48C00AB8C20 /* CustomerCreateViewController.swift in Sources */,
@@ -539,6 +573,7 @@
 				9BF12F2B23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift in Sources */,
 				9B222A1923D26C3E00A2A8D0 /* ArtistsServiceDeserializerProtocol.swift in Sources */,
 				9B2A919D23BF991D00CC7552 /* Pdf.swift in Sources */,
+				9B6F9AD0240C6B60003C6E28 /* ArtworkEditViewController.swift in Sources */,
 				9B7A475B23D5E17E006D1BA4 /* GeneralInformationCreateService.swift in Sources */,
 				9B242C45240A0068001E0145 /* ArtistDetailViewController.swift in Sources */,
 				9B6F9AC9240C5B31003C6E28 /* GeneralInformationEditViewController.swift in Sources */,
@@ -591,6 +626,7 @@
 				9B96E34523E383590024F388 /* ArtworkCreateServiceSerializer.swift in Sources */,
 				9B222A2123D2B3A200A2A8D0 /* GeneralInformationServiceDeserializer.swift in Sources */,
 				9B96E35123E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift in Sources */,
+				9B6F9AD2240C6B6D003C6E28 /* CollectionEditViewController.swift in Sources */,
 				9B40784823F0A06C002E4398 /* GetCustomerService.swift in Sources */,
 				9B222A1723D26C3300A2A8D0 /* ArtistsServiceDeserializer.swift in Sources */,
 			);

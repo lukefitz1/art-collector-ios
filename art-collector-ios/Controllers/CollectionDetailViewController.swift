@@ -46,6 +46,12 @@ class CollectionDetailViewController: UIViewController {
     @objc
     private func editTapped() {
         print("Edit button tapped")
+        // EditCollectionSegue
+//        let editGIViewController = GeneralInformationEditViewController()
+//        editGIViewController.customer = customer
+        
+        self.performSegue(withIdentifier: "EditCollectionSegue", sender: self)
+//        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @IBAction func unwindToCollectionViewController(segue: UIStoryboardSegue) {
