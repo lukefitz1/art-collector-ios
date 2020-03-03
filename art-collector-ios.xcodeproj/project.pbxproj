@@ -263,6 +263,61 @@
 			path = Artist;
 			sourceTree = "<group>";
 		};
+		9B2985B8240DF494009E73D9 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */,
+				9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */,
+				9BDB599B23E0BC6200AB8C20 /* CustomerCreateService.swift */,
+				9BDB599D23E0BCA100AB8C20 /* CustomerCreateServiceProtocol.swift */,
+				9B40784723F0A06C002E4398 /* GetCustomerService.swift */,
+				9B40784923F0A081002E4398 /* GetCustomerServiceProtocol.swift */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		9B2985B9240DF49E009E73D9 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9B96E34C23E389B90024F388 /* CollectionService.swift */,
+				9B96E34E23E38A540024F388 /* CollectionServiceProtocol.swift */,
+				9B40783B23F09616002E4398 /* CollectionCreateService.swift */,
+				9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9B2985BA240DF4A2009E73D9 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				9B96E34023E380650024F388 /* ArtworkCreateService.swift */,
+				9B96E34223E380890024F388 /* ArtworkCreateServiceProtocol.swift */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
+		9B2985BB240DF4AB009E73D9 /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				9B222A1223D26B6500A2A8D0 /* ArtistsService.swift */,
+				9B222A1423D26BA600A2A8D0 /* ArtistsServiceProtocol.swift */,
+				9BF12F1F23D3B7F800BE8AA8 /* ArtistCreateService.swift */,
+				9BF12F2123D3B80800BE8AA8 /* ArtistCreateServiceProtocol.swift */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
+		9B2985BC240DF4B1009E73D9 /* GeneralInformation */ = {
+			isa = PBXGroup;
+			children = (
+				9B222A1C23D2B30700A2A8D0 /* GeneralInformationService.swift */,
+				9B222A1E23D2B33C00A2A8D0 /* GeneralInformationServiceProtocol.swift */,
+				9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */,
+				9B7A475C23D5E1A1006D1BA4 /* GeneralInformationCreateServiceProtocol.swift */,
+			);
+			path = GeneralInformation;
+			sourceTree = "<group>";
+		};
 		9B3DDBC92409F452006D440C /* GeneralInformation */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,28 +417,13 @@
 		9BF0F98923B64C6A009ACE3E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9B2985BC240DF4B1009E73D9 /* GeneralInformation */,
+				9B2985BB240DF4AB009E73D9 /* Artist */,
+				9B2985BA240DF4A2009E73D9 /* Artwork */,
+				9B2985B9240DF49E009E73D9 /* Collection */,
+				9B2985B8240DF494009E73D9 /* Customer */,
 				9BF0F98D23B64F7F009ACE3E /* LoginService.swift */,
 				9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */,
-				9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */,
-				9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */,
-				9B222A1223D26B6500A2A8D0 /* ArtistsService.swift */,
-				9B222A1423D26BA600A2A8D0 /* ArtistsServiceProtocol.swift */,
-				9B222A1C23D2B30700A2A8D0 /* GeneralInformationService.swift */,
-				9B222A1E23D2B33C00A2A8D0 /* GeneralInformationServiceProtocol.swift */,
-				9BF12F1F23D3B7F800BE8AA8 /* ArtistCreateService.swift */,
-				9BF12F2123D3B80800BE8AA8 /* ArtistCreateServiceProtocol.swift */,
-				9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */,
-				9B7A475C23D5E1A1006D1BA4 /* GeneralInformationCreateServiceProtocol.swift */,
-				9BDB599B23E0BC6200AB8C20 /* CustomerCreateService.swift */,
-				9BDB599D23E0BCA100AB8C20 /* CustomerCreateServiceProtocol.swift */,
-				9B96E34023E380650024F388 /* ArtworkCreateService.swift */,
-				9B96E34223E380890024F388 /* ArtworkCreateServiceProtocol.swift */,
-				9B96E34C23E389B90024F388 /* CollectionService.swift */,
-				9B96E34E23E38A540024F388 /* CollectionServiceProtocol.swift */,
-				9B40783B23F09616002E4398 /* CollectionCreateService.swift */,
-				9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */,
-				9B40784723F0A06C002E4398 /* GetCustomerService.swift */,
-				9B40784923F0A081002E4398 /* GetCustomerServiceProtocol.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
