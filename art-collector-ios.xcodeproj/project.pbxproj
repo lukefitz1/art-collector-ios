@@ -30,6 +30,8 @@
 		9B267D6E23BA713900203D3B /* CustomersServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6D23BA713900203D3B /* CustomersServiceDeserializer.swift */; };
 		9B267D7023BA71AD00203D3B /* CustomersServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6F23BA71AD00203D3B /* CustomersServiceDeserializerProtocol.swift */; };
 		9B267D7223BA8A9700203D3B /* CustomerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D7123BA8A9700203D3B /* CustomerDetailViewController.swift */; };
+		9B2985BE240DF577009E73D9 /* CustomerEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2985BD240DF577009E73D9 /* CustomerEditService.swift */; };
+		9B2985C0240DF583009E73D9 /* CustomerEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2985BF240DF583009E73D9 /* CustomerEditServiceProtocol.swift */; };
 		9B2A919323BF94D600CC7552 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919223BF94D600CC7552 /* Collection.swift */; };
 		9B2A919523BF94E100CC7552 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919423BF94E100CC7552 /* Artwork.swift */; };
 		9B2A919723BF94EB00CC7552 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919623BF94EB00CC7552 /* Artist.swift */; };
@@ -122,6 +124,8 @@
 		9B267D6D23BA713900203D3B /* CustomersServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceDeserializer.swift; sourceTree = "<group>"; };
 		9B267D6F23BA71AD00203D3B /* CustomersServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
 		9B267D7123BA8A9700203D3B /* CustomerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDetailViewController.swift; sourceTree = "<group>"; };
+		9B2985BD240DF577009E73D9 /* CustomerEditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditService.swift; sourceTree = "<group>"; };
+		9B2985BF240DF583009E73D9 /* CustomerEditServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditServiceProtocol.swift; sourceTree = "<group>"; };
 		9B2A919223BF94D600CC7552 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		9B2A919423BF94E100CC7552 /* Artwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
 		9B2A919623BF94EB00CC7552 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 				9BDB599D23E0BCA100AB8C20 /* CustomerCreateServiceProtocol.swift */,
 				9B40784723F0A06C002E4398 /* GetCustomerService.swift */,
 				9B40784923F0A081002E4398 /* GetCustomerServiceProtocol.swift */,
+				9B2985BD240DF577009E73D9 /* CustomerEditService.swift */,
+				9B2985BF240DF583009E73D9 /* CustomerEditServiceProtocol.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -606,11 +612,13 @@
 				9B40783C23F09616002E4398 /* CollectionCreateService.swift in Sources */,
 				9B2A919B23BF991300CC7552 /* Image.swift in Sources */,
 				9B6F9ACB240C5B74003C6E28 /* ArtistEditViewController.swift in Sources */,
+				9B2985BE240DF577009E73D9 /* CustomerEditService.swift in Sources */,
 				9B7A475923D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift in Sources */,
 				9BF12F2523D3BAB800BE8AA8 /* ArtistCreateServiceSerializerProtocol.swift in Sources */,
 				9B7A476323D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift in Sources */,
 				9B96E34B23E383860024F388 /* ArtworkCreateServiceDeserializer.swift in Sources */,
 				9BF12F2B23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift in Sources */,
+				9B2985C0240DF583009E73D9 /* CustomerEditServiceProtocol.swift in Sources */,
 				9B222A1923D26C3E00A2A8D0 /* ArtistsServiceDeserializerProtocol.swift in Sources */,
 				9B2A919D23BF991D00CC7552 /* Pdf.swift in Sources */,
 				9B6F9AD0240C6B60003C6E28 /* ArtworkEditViewController.swift in Sources */,

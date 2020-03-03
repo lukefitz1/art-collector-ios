@@ -63,7 +63,7 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         let state = "CO"
         
         progressHUD.show(onView: view, animated: true)
-        customerCreateService.createCustomer(fName: fName, lName: lName, email: lName, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
+        customerCreateService.createCustomer(fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
             guard let self = self else {
                 return
             }

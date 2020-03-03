@@ -2443,17 +2443,17 @@
                     </view>
                     <size key="freeformSize" width="414" height="1150"/>
                     <connections>
-                        <outlet property="city" destination="Vsa-ad-dVh" id="n8R-Og-Qki"/>
-                        <outlet property="emailAddress" destination="uez-Si-zVd" id="TTw-sN-4AO"/>
-                        <outlet property="firstName" destination="bCK-Rw-qSd" id="ke2-BP-WHW"/>
-                        <outlet property="lastName" destination="1T3-pj-mgW" id="dVP-O4-Odz"/>
-                        <outlet property="phoneNumber" destination="2t3-Hg-BJc" id="hqt-19-MGZ"/>
-                        <outlet property="projectNotes" destination="feP-pK-vkp" id="R8I-g6-YLa"/>
-                        <outlet property="referredBy" destination="xus-RV-KAY" id="52f-5G-uMe"/>
-                        <outlet property="state" destination="Hox-DA-YAJ" id="9Ld-kZ-RZn"/>
-                        <outlet property="streetAddress" destination="2th-oS-XdE" id="hm5-s2-5Di"/>
-                        <outlet property="zipCode" destination="JER-62-hyZ" id="GTm-yN-8hl"/>
-                        <segue destination="cQs-WI-Fh5" kind="unwind" identifier="unwindToCustomersSegue" unwindAction="unwindToCustomersViewControllerWithSegue:" id="GB5-Pa-PvA"/>
+                        <outlet property="cityTextField" destination="Vsa-ad-dVh" id="Y56-Vp-cel"/>
+                        <outlet property="emailTextField" destination="uez-Si-zVd" id="2x1-9S-DZi"/>
+                        <outlet property="firstNameTextField" destination="bCK-Rw-qSd" id="NCp-ni-qJu"/>
+                        <outlet property="lastNameTextField" destination="1T3-pj-mgW" id="2os-mq-O5N"/>
+                        <outlet property="phoneTextField" destination="2t3-Hg-BJc" id="WWd-K7-fVK"/>
+                        <outlet property="projectNotesTextView" destination="feP-pK-vkp" id="VLy-OQ-1EK"/>
+                        <outlet property="referredByTextField" destination="xus-RV-KAY" id="EZP-3W-yoy"/>
+                        <outlet property="stateTextField" destination="Hox-DA-YAJ" id="qmB-qu-Xhe"/>
+                        <outlet property="streetAddressTextField" destination="2th-oS-XdE" id="u3k-n8-JjJ"/>
+                        <outlet property="zipTextField" destination="JER-62-hyZ" id="Psc-dJ-mWO"/>
+                        <segue destination="cQs-WI-Fh5" kind="unwind" identifier="unwindToCustomerDetailSegue" unwindAction="unwindToCustomerDetailViewControllerWithSegue:" id="L5a-0O-VDK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2p-Qt-OPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

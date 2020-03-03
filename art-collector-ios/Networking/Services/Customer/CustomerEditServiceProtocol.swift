@@ -1,15 +1,16 @@
 //
-//  CustomerCreateServiceProtocol.swift
+//  CustomerEditServiceProtocol.swift
 //  art-collector-ios
 //
-//  Created by Luke Fitzgerald on 1/28/20.
+//  Created by Luke Fitzgerald on 3/2/20.
 //  Copyright © 2020 Luke Fitzgerald. All rights reserved.
 //
 
 import Foundation
 
-protocol CustomerCreateServiceProtocol {
-    func createCustomer(fName: String,
+protocol CustomerEditServiceProtocol {
+    func updateCustomer(id: String,
+                        fName: String,
                         lName: String,
                         email: String,
                         phone: String,
@@ -22,4 +23,4 @@ protocol CustomerCreateServiceProtocol {
                         completionHandler: ((Customer?, Error?) -> Void)?)
 }
 
-extension CustomerCreateService: CustomerCreateServiceProtocol {}
+extension CustomerEditService: CustomerEditServiceProtocol {}

@@ -40,16 +40,8 @@ class CustomerDetailViewController: UIViewController {
             id.text = cust.id
             address.text = cust.address ?? ""
             
-            let zip = cust.zip ?? ""
-            if let city = cust.city {
-                if let state = cust.state {
-                    addressTwo.text = "\(city), \(state) \(zip)"
-                } else {
-                    addressTwo.text = "\(city), \(zip)"
-                }
-            } else {
-                addressTwo.text = ""
-            }
+            let addTwo = generateAddressTwo(customer: cust)
+            addressTwo.text = addTwo
             
             if let collectionsArray = cust.collections {
                 self.collections = collectionsArray
@@ -70,7 +62,7 @@ class CustomerDetailViewController: UIViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 if let customer = self.customer?.id {
-                    self.getCustomer(customerId: customer, refresh: false)
+                    self.getCustomer(customerId: customer, refresh: true)
                 }
             }
         }
@@ -100,10 +92,78 @@ class CustomerDetailViewController: UIViewController {
                     }
                     
                     self.collections = customer.collections
+                    self.refreshCustomerData(customer: customer)
                     self.collectionsTableView.reloadData()
                 }
             }
         }
+    }
+    
+    private func refreshCustomerData(customer: Customer) {
+        if firstName.text != "\(customer.firstName) \(customer.lastName)" {
+            firstName.text = "\(customer.firstName) \(customer.lastName)"
+        }
+
+        if phone.text != customer.phone {
+            phone.text = customer.phone
+        }
+        
+        if email.text != customer.email {
+            email.text = customer.email
+        }
+        
+        if address.text != customer.address {
+            address.text = customer.address
+        }
+        
+        let addTwo = generateAddressTwo(customer: customer)
+        addressTwo.text = addTwo
+    }
+    
+    private func generateAddressTwo(customer: Customer) -> String {
+        let city = customer.city
+        let state = customer.state
+        let zip = customer.zip
+        
+        if city != "" && state != "" && zip != "" {
+            if let city = city {
+                if let state = state {
+                    if let zip = zip {
+                        return "\(city), \(state) \(zip)"
+                    }
+                }
+            }
+        }
+        
+        if city != "" && state != "" {
+            if let city = city {
+                if let state = state {
+                    return "\(city), \(state)"
+                }
+            }
+        }
+        
+        if state != "" && zip != "" {
+            if let state = state {
+                if let zip = zip {
+                    return "\(state) \(zip)"
+                }
+            }
+        }
+        
+        if city != "" && zip != "" {
+            if let city = city {
+                if let zip = zip {
+                    return "\(city) \(zip)"
+                }
+            }
+        }
+        
+        if let zip = zip {
+            return "\(zip)"
+        }
+        
+        return ""
     }
 }
 
