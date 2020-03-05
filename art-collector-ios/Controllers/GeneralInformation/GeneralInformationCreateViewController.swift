@@ -30,14 +30,13 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         let information = informationTextView.text ?? ""
         
         createGeneralInformation(infoLabel: informationLabel, info: information)
-//        self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
     }
     
     private func createGeneralInformation(infoLabel: String, info: String) {
         let giCreateService = GeneralInformationCreateService()
         
         progressHUD.show(onView: view, animated: true)
-        giCreateService.createGeneralInformation(infoLabel: infoLabel, info: infoLabel) { [weak self] giData, error in
+        giCreateService.createGeneralInformation(infoLabel: infoLabel, info: info) { [weak self] giData, error in
             guard let self = self else {
                 return
             }

@@ -2077,9 +2077,10 @@
                         <viewLayoutGuide key="safeArea" id="sb5-9p-NVk"/>
                     </view>
                     <connections>
-                        <outlet property="giInfo" destination="5Aa-ug-GFt" id="cSQ-Nv-Cl1"/>
-                        <outlet property="giLabel" destination="ncX-Rx-INL" id="ZdM-M0-o10"/>
+                        <outlet property="informationLabelTextField" destination="ncX-Rx-INL" id="TKj-nH-4YA"/>
+                        <outlet property="informationTextView" destination="5Aa-ug-GFt" id="GVc-su-Mam"/>
                         <segue destination="QVP-dy-8Gk" kind="unwind" identifier="unwindToGeneralInformationSegue" unwindAction="unwindToGeneralInformationViewControllerWithSegue:" id="8bf-a5-07F"/>
+                        <segue destination="QVP-dy-8Gk" kind="unwind" identifier="unwindToGeneralInformationDetailSegue" unwindAction="unwindToGeneralInformationDetailViewControllerWithSegue:" id="HNW-0S-j9F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIx-qc-u1z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
