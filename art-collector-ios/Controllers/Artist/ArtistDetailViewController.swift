@@ -18,6 +18,7 @@ class ArtistDetailViewController: UIViewController {
     @IBOutlet weak var biography: UILabel!
 
     var artist: Artist?
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
@@ -32,8 +33,6 @@ class ArtistDetailViewController: UIViewController {
         lastName.text = artist?.lastName
         artistInfo.text = artist?.additionalInfo
         biography.text = artist?.biography
-        
-//        loadImage(url: artist?.artistImage?.url!)
     }
     
     @objc
@@ -41,29 +40,49 @@ class ArtistDetailViewController: UIViewController {
         self.performSegue(withIdentifier: "EditArtistSegue", sender: self)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if segue.identifier == "EditArtistSegue" {
-           let destinationVC = segue.destination as! ArtistEditViewController
-
-           destinationVC.artist = artist
-       }
-   }
+    @IBAction func unwindToArtistDetailViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                if let artist = self.artist?.id {
+                    self.getArtistInfo(artistId: artist)
+                }
+            }
+        }
+    }
     
-//    private func loadImage(url: String) {
-//        UIImageView.load(url: "")
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EditArtistSegue" {
+            let destinationVC = segue.destination as! ArtistEditViewController
+            
+            destinationVC.artist = artist
+        }
+    }
+    
+    private func getArtistInfo(artistId: String) {
+        let getArtistService = GetArtistService()
+        
+        progressHUD.show(onView: view, animated: true)
+        getArtistService.getArtistInfo(artistId: artistId) { [weak self] artistData, error in
+            guard let self = self else {
+                return
+            }
+            
+            if let e = error {
+                print("Issue getting artist info data (Artist GET request) - \(e)")
+                return
+            } else {
+                if let artist = artistData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.refreshArtistInfo(artist: artist)
+                }
+            }
+        }
+    }
+    
+    private func refreshArtistInfo(artist: Artist) {
+        firstName.text = artist.firstName
+        lastName.text = artist.lastName
+        artistInfo.text = artist.additionalInfo
+        biography.text = artist.biography
+    }
 }
-
-//extension UIImageView {
-//    func load(url: URL) {
-//        DispatchQueue.global().async { [weak self] in
-//            if let data = try? Data(contentsOf: url) {
-//                if let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        self?.image = image
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}

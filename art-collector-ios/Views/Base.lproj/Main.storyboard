@@ -2195,11 +2195,12 @@
                         <viewLayoutGuide key="safeArea" id="rlF-y2-udD"/>
                     </view>
                     <connections>
-                        <outlet property="additionalInfo" destination="E1E-nK-E9A" id="33N-M7-As9"/>
-                        <outlet property="biography" destination="t1O-Ld-Qei" id="Psx-3y-Ecz"/>
-                        <outlet property="firstName" destination="zdv-X7-a04" id="2gd-fp-nDS"/>
-                        <outlet property="lastName" destination="2AZ-Ex-gMv" id="JpN-EZ-jO2"/>
+                        <outlet property="additionalInfoTextField" destination="E1E-nK-E9A" id="HiY-Mc-DGY"/>
+                        <outlet property="biographyTextField" destination="t1O-Ld-Qei" id="sgq-np-PRP"/>
+                        <outlet property="firstNameTextField" destination="zdv-X7-a04" id="6DS-Og-2ez"/>
+                        <outlet property="lastNameTextField" destination="2AZ-Ex-gMv" id="a40-RM-sR9"/>
                         <segue destination="8OX-e1-k7Q" kind="unwind" identifier="unwindToArtistsSegue" unwindAction="unwindToArtistsViewControllerWithSegue:" id="VAr-aZ-I1a"/>
+                        <segue destination="8OX-e1-k7Q" kind="unwind" identifier="unwindToArtistDetailSegue" unwindAction="unwindToArtistDetailViewControllerWithSegue:" id="TWo-HD-GZh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M8p-5G-tjj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
