@@ -21,7 +21,6 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Customer: \(customerId)")
         collectionNameTextField.delegate = self
         collectionYearTextField.delegate = self
         collectionIdentifierTextField.delegate = self

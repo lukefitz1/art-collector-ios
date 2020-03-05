@@ -19,8 +19,8 @@ class CollectionDetailViewController: UIViewController {
     var collection: Collection?
     var artworks: [Artwork]? = []
     var selectedArtwork: Artwork?
-    
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
     private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
@@ -93,6 +93,43 @@ class CollectionDetailViewController: UIViewController {
             getCollection(collectionId: collection, refresh: true)
         }
     }
+    
+    @IBAction func unwindToCollectionDetailViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                if let collection = self.collection?.id {
+                    self.getCollectionInfo(collectionId: collection)
+                }
+            }
+        }
+    }
+    
+    private func getCollectionInfo(collectionId: String) {
+        let getCollectionService = GetCollectionService()
+        
+        progressHUD.show(onView: view, animated: true)
+        getCollectionService.getCollectionInfo(collectionId: collectionId) { [weak self] collectionData, error in
+            guard let self = self else {
+                return
+            }
+            
+            if let e = error {
+                print("Issue getting collection info data (Collection GET request) - \(e)")
+                return
+            } else {
+                if let collection = collectionData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.refreshCollectionInfo(collection: collection)
+                }
+            }
+        }
+    }
+    
+    private func refreshCollectionInfo(collection: Collection) {
+        collectionName.text = collection.collectionName
+        collectionIdentifier.text = collection.identifier
+        collectionId.text = collection.id
+    }
 }
 
 extension CollectionDetailViewController: UITableViewDataSource {
@@ -141,6 +178,7 @@ extension CollectionDetailViewController: UITableViewDelegate {
         if segue.identifier == "EditCollectionSegue" {
             let destinationVC = segue.destination as! CollectionEditViewController
             
+            destinationVC.customer = customer
             destinationVC.collection = collection
         }
     }

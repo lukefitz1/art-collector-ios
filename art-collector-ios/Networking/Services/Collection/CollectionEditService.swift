@@ -1,16 +1,15 @@
 //
-//  CollectionCreateService.swift
+//  CollectionEditService.swift
 //  art-collector-ios
 //
-//  Created by Luke Fitzgerald on 2/9/20.
+//  Created by Luke Fitzgerald on 3/4/20.
 //  Copyright © 2020 Luke Fitzgerald. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-struct CollectionCreateService {
-    
+struct CollectionEditService {
     let serializer: CollectionCreateServiceSerializerProtocol
     let deserializer: CollectionCreateServiceDeserializerProtocol
     
@@ -20,13 +19,14 @@ struct CollectionCreateService {
         self.serializer = serializer
     }
     
-    func createCollection(name: String,
+    func updateCollection(id: String,
+                          name: String,
                           year: String,
                           identifier: String,
                           customerId: String,
                           completionHandler: ((Collection?, Error?) -> Void)?) {
         
-        let fullEndpoint = buildEndpoint()
+        let fullEndpoint = buildEndpoint(collectionId: id)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
@@ -35,11 +35,10 @@ struct CollectionCreateService {
         var data : Collection?
         
         AF.request(fullEndpoint,
-                   method: .post,
+                   method: .put,
                    parameters: parameters,
                    encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in
-                     debugPrint(responseJSON)
                     
                     switch responseJSON.result {
                     case .success:
@@ -68,8 +67,8 @@ struct CollectionCreateService {
         return nil
     }
     
-    private func buildEndpoint() -> URL {
-        return URL(string: "\(ApiClient.baseUrl)collections")!
+    private func buildEndpoint(collectionId: String) -> URL {
+        return URL(string: "\(ApiClient.baseUrl)collections/\(collectionId)")!
     }
     
     private func buildParameters(name: String,
@@ -80,5 +79,4 @@ struct CollectionCreateService {
         let parameters = serializer.serialize(name: name, year: year, identifier: identifier, customerId: customerId)
         return parameters
     }
-    
 }

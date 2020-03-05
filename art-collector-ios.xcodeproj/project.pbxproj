@@ -96,6 +96,12 @@
 		9BDE7238241096AC00307EFC /* GetArtistServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7237241096AC00307EFC /* GetArtistServiceProtocol.swift */; };
 		9BDE723A241099A000307EFC /* GetArtistServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7239241099A000307EFC /* GetArtistServiceDeserializer.swift */; };
 		9BDE723C241099AA00307EFC /* GetArtistServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE723B241099AA00307EFC /* GetArtistServiceDeserializerProtocol.swift */; };
+		9BDE723E2410A85F00307EFC /* CollectionEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE723D2410A85F00307EFC /* CollectionEditService.swift */; };
+		9BDE72402410A86A00307EFC /* CollectionEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE723F2410A86A00307EFC /* CollectionEditServiceProtocol.swift */; };
+		9BDE72422410ABE400307EFC /* GetCollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72412410ABE400307EFC /* GetCollectionService.swift */; };
+		9BDE72442410ABEC00307EFC /* GetCollectionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72432410ABEC00307EFC /* GetCollectionServiceProtocol.swift */; };
+		9BDE72462410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72452410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift */; };
+		9BDE72482410ACE800307EFC /* GetCollectionServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72472410ACE800307EFC /* GetCollectionServiceDeserializer.swift */; };
 		9BF0F98C23B64F20009ACE3E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98B23B64F20009ACE3E /* ApiClient.swift */; };
 		9BF0F98E23B64F7F009ACE3E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98D23B64F7F009ACE3E /* LoginService.swift */; };
 		9BF0F99023B6AF9A009ACE3E /* CustomersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */; };
@@ -202,6 +208,12 @@
 		9BDE7237241096AC00307EFC /* GetArtistServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArtistServiceProtocol.swift; sourceTree = "<group>"; };
 		9BDE7239241099A000307EFC /* GetArtistServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArtistServiceDeserializer.swift; sourceTree = "<group>"; };
 		9BDE723B241099AA00307EFC /* GetArtistServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArtistServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
+		9BDE723D2410A85F00307EFC /* CollectionEditService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEditService.swift; sourceTree = "<group>"; };
+		9BDE723F2410A86A00307EFC /* CollectionEditServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEditServiceProtocol.swift; sourceTree = "<group>"; };
+		9BDE72412410ABE400307EFC /* GetCollectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectionService.swift; sourceTree = "<group>"; };
+		9BDE72432410ABEC00307EFC /* GetCollectionServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectionServiceProtocol.swift; sourceTree = "<group>"; };
+		9BDE72452410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectionServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
+		9BDE72472410ACE800307EFC /* GetCollectionServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCollectionServiceDeserializer.swift; sourceTree = "<group>"; };
 		9BF0F98B23B64F20009ACE3E /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		9BF0F98D23B64F7F009ACE3E /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersService.swift; sourceTree = "<group>"; };
@@ -313,6 +325,10 @@
 				9B96E34E23E38A540024F388 /* CollectionServiceProtocol.swift */,
 				9B40783B23F09616002E4398 /* CollectionCreateService.swift */,
 				9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */,
+				9BDE723D2410A85F00307EFC /* CollectionEditService.swift */,
+				9BDE723F2410A86A00307EFC /* CollectionEditServiceProtocol.swift */,
+				9BDE72412410ABE400307EFC /* GetCollectionService.swift */,
+				9BDE72432410ABEC00307EFC /* GetCollectionServiceProtocol.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -474,6 +490,8 @@
 				9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */,
 				9B40783F23F09729002E4398 /* CollectionCreateServiceDeserializerProtocol.swift */,
 				9B40784123F09735002E4398 /* CollectionCreateServiceDeserializer.swift */,
+				9BDE72452410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift */,
+				9BDE72472410ACE800307EFC /* GetCollectionServiceDeserializer.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -670,6 +688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B6F9AD4240C6B78003C6E28 /* CustomerEditViewController.swift in Sources */,
+				9BDE72422410ABE400307EFC /* GetCollectionService.swift in Sources */,
 				9B7A476523D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift in Sources */,
 				9BDE72342410968400307EFC /* ArtistEditServiceProtocol.swift in Sources */,
 				9B3DDBC82409F44B006D440C /* GeneralInformationDetailViewController.swift in Sources */,
@@ -696,6 +715,7 @@
 				9B2985BE240DF577009E73D9 /* CustomerEditService.swift in Sources */,
 				9B7A475923D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift in Sources */,
 				9BF12F2523D3BAB800BE8AA8 /* ArtistCreateServiceSerializerProtocol.swift in Sources */,
+				9BDE72402410A86A00307EFC /* CollectionEditServiceProtocol.swift in Sources */,
 				9B7A476323D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift in Sources */,
 				9B96E34B23E383860024F388 /* ArtworkCreateServiceDeserializer.swift in Sources */,
 				9BF12F2B23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift in Sources */,
@@ -703,6 +723,8 @@
 				9B222A1923D26C3E00A2A8D0 /* ArtistsServiceDeserializerProtocol.swift in Sources */,
 				9BDE722324108BD300307EFC /* GeneralInformationEditServiceProtocol.swift in Sources */,
 				9B2A919D23BF991D00CC7552 /* Pdf.swift in Sources */,
+				9BDE723E2410A85F00307EFC /* CollectionEditService.swift in Sources */,
+				9BDE72482410ACE800307EFC /* GetCollectionServiceDeserializer.swift in Sources */,
 				9B6F9AD0240C6B60003C6E28 /* ArtworkEditViewController.swift in Sources */,
 				9B7A475B23D5E17E006D1BA4 /* GeneralInformationCreateService.swift in Sources */,
 				9B242C45240A0068001E0145 /* ArtistDetailViewController.swift in Sources */,
@@ -724,8 +746,10 @@
 				9B96E34123E380650024F388 /* ArtworkCreateService.swift in Sources */,
 				9B267D6E23BA713900203D3B /* CustomersServiceDeserializer.swift in Sources */,
 				9BF12F2223D3B80800BE8AA8 /* ArtistCreateServiceProtocol.swift in Sources */,
+				9BDE72462410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift in Sources */,
 				9B40784423F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift in Sources */,
 				9BF12F2023D3B7F800BE8AA8 /* ArtistCreateService.swift in Sources */,
+				9BDE72442410ABEC00307EFC /* GetCollectionServiceProtocol.swift in Sources */,
 				9B222A1323D26B6500A2A8D0 /* ArtistsService.swift in Sources */,
 				9B7A475723D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift in Sources */,
 				9B96E34F23E38A540024F388 /* CollectionServiceProtocol.swift in Sources */,

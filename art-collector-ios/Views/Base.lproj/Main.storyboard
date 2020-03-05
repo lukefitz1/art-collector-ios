@@ -2507,6 +2507,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xny-He-fAk">
                                 <rect key="frame" x="145.5" y="319" width="123" height="30"/>
                                 <state key="normal" title="Update Collection"/>
+                                <connections>
+                                    <action selector="updateCollectionBtnPressed:" destination="ldD-kf-eQR" eventType="touchUpInside" id="AHe-m9-g1s"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -2535,10 +2538,11 @@
                         <viewLayoutGuide key="safeArea" id="eCH-8W-jy2"/>
                     </view>
                     <connections>
-                        <outlet property="collectionIdentifier" destination="5NN-Th-5m4" id="pZQ-A6-23f"/>
-                        <outlet property="collectionName" destination="er7-JT-0XY" id="tXO-kF-6r0"/>
-                        <outlet property="year" destination="mlg-Ku-e4N" id="bHQ-7u-4fG"/>
+                        <outlet property="collectionIdentifierTextField" destination="5NN-Th-5m4" id="23q-oZ-458"/>
+                        <outlet property="collectionNameTextField" destination="er7-JT-0XY" id="YzT-q6-IR8"/>
+                        <outlet property="collectionYearTextField" destination="mlg-Ku-e4N" id="RJ1-Q5-Wom"/>
                         <segue destination="Ryq-pf-nbx" kind="unwind" identifier="unwindToCustomerDetailSegue" unwindAction="unwindToCustomerDetailViewControllerWithSegue:" id="OoD-XT-gaC"/>
+                        <segue destination="Ryq-pf-nbx" kind="unwind" identifier="unwindToCollectionDetailSegue" unwindAction="unwindToCollectionDetailViewControllerWithSegue:" id="mRw-xC-ee7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FeO-eA-0V7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
