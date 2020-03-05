@@ -1,15 +1,15 @@
 //
-//  ArtworkCreateService.swift
+//  ArtworkEditService.swift
 //  art-collector-ios
 //
-//  Created by Luke Fitzgerald on 1/30/20.
+//  Created by Luke Fitzgerald on 3/4/20.
 //  Copyright © 2020 Luke Fitzgerald. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-struct ArtworkCreateService {
+struct ArtworkEditService {
     
     let serializer: ArtworkCreateServiceSerializerProtocol
     let deserializer: ArtworkCreateServiceDeserializerProtocol
@@ -20,7 +20,8 @@ struct ArtworkCreateService {
         self.serializer = serializer
     }
     
-    func createArtwork(objectId: String,
+    func udpateArtwork(id: String,
+                       objectId: String,
                        artType: String,
                        title: String,
                        date: String,
@@ -52,7 +53,7 @@ struct ArtworkCreateService {
                        collectionId: String,
                        completionHandler: ((Artwork?, Error?) -> Void)?) {
         
-        let fullEndpoint = buildEndpoint()
+        let fullEndpoint = buildEndpoint(artworkId: id)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
@@ -81,7 +82,7 @@ struct ArtworkCreateService {
         }
     }
     
-    func parseJSON(artworkData: Data) -> Artwork? {
+    private func parseJSON(artworkData: Data) -> Artwork? {
         let decoder = JSONDecoder()
         
         do {
@@ -94,8 +95,8 @@ struct ArtworkCreateService {
         return nil
     }
     
-    private func buildEndpoint() -> URL {
-        return URL(string: "\(ApiClient.baseUrl)artwork")!
+    private func buildEndpoint(artworkId: String) -> URL {
+        return URL(string: "\(ApiClient.baseUrl)artwork/\(artworkId)")!
     }
     
     private func buildParameters(objectId: String,
@@ -133,3 +134,4 @@ struct ArtworkCreateService {
         return parameters
     }
 }
+

@@ -61,8 +61,6 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("Customer: \(customerId)")
-        print("Collection: \(collectionId)")
         descriptionTextView.layer.borderWidth = 0.5
         descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         

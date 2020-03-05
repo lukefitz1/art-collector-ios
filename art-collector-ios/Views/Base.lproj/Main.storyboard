@@ -3136,33 +3136,61 @@
                     </view>
                     <size key="freeformSize" width="414" height="3000"/>
                     <connections>
+                        <outlet property="addNewArtworkBtn" destination="3SH-PL-j7m" id="8Po-oC-OCW"/>
                         <outlet property="additionalInfo" destination="nJr-uV-f9f" id="v9H-tg-Vsb"/>
                         <outlet property="additionalInfoImage" destination="PiF-sz-Crq" id="pl2-wM-SFD"/>
                         <outlet property="additionalInfoImageTwo" destination="K6R-wD-4MN" id="B5w-49-V71"/>
+                        <outlet property="additionalInfoImageTwoImageView" destination="K6R-wD-4MN" id="Qh5-Eg-eFn"/>
+                        <outlet property="additionalInfoImageView" destination="PiF-sz-Crq" id="VUO-P2-QAX"/>
                         <outlet property="additionalInfoLabel" destination="6cO-Pf-nIQ" id="vsX-aA-DZh"/>
+                        <outlet property="additionalInfoLabelTextField" destination="6cO-Pf-nIQ" id="gWo-lh-HYt"/>
+                        <outlet property="additionalInfoTextView" destination="nJr-uV-f9f" id="juN-Mb-Fgg"/>
                         <outlet property="amountPaid" destination="oNA-vS-Hlj" id="qeJ-AA-RCl"/>
+                        <outlet property="amountPaidTextField" destination="oNA-vS-Hlj" id="lEc-Ia-TZ8"/>
                         <outlet property="artDescription" destination="5fq-7d-p8O" id="hOD-i9-drC"/>
                         <outlet property="artTitle" destination="qkf-F2-0FK" id="lgT-Bh-Oin"/>
                         <outlet property="artType" destination="isl-po-fOd" id="vdh-91-pbu"/>
+                        <outlet property="artTypeTextField" destination="isl-po-fOd" id="eHp-uG-zaD"/>
                         <outlet property="condition" destination="N9S-Zv-pqy" id="aBL-nq-5O0"/>
+                        <outlet property="conditionTextField" destination="N9S-Zv-pqy" id="VT2-E0-ab4"/>
                         <outlet property="currentLocation" destination="Hzg-YN-k0M" id="RJ4-2G-3gc"/>
+                        <outlet property="currentLocationTextField" destination="Hzg-YN-k0M" id="zG4-hx-WBP"/>
                         <outlet property="currentValue" destination="dIc-qC-Cln" id="qPL-t3-r66"/>
+                        <outlet property="currentValueTextField" destination="dIc-qC-Cln" id="NJ2-4n-43X"/>
                         <outlet property="customTitle" destination="lGr-ZI-fI3" id="8b5-F0-OBi"/>
+                        <outlet property="customTitleTextField" destination="lGr-ZI-fI3" id="Mja-3f-jzc"/>
                         <outlet property="date" destination="5eS-P9-Qcl" id="K30-qz-IB7"/>
                         <outlet property="dateAcquired" destination="eZu-hK-ZwJ" id="VuY-gV-TWh"/>
                         <outlet property="dateAcquiredLabel" destination="LXZ-k7-MPl" id="uop-f2-gLL"/>
+                        <outlet property="dateAcquiredLabelTextField" destination="LXZ-k7-MPl" id="t3H-2b-EwL"/>
+                        <outlet property="dateAcquiredTextField" destination="eZu-hK-ZwJ" id="09Z-as-soD"/>
+                        <outlet property="dateTextField" destination="5eS-P9-Qcl" id="iAW-7u-Iae"/>
+                        <outlet property="descriptionTextView" destination="5fq-7d-p8O" id="lec-Z2-XGW"/>
                         <outlet property="dimensions" destination="Twg-Bv-1pt" id="Zpp-gR-2Gp"/>
+                        <outlet property="dimensionsTextField" destination="Twg-Bv-1pt" id="zFX-sQ-Cqr"/>
                         <outlet property="frameDimensions" destination="fJx-1H-pgj" id="oux-Os-Bcg"/>
+                        <outlet property="frameDimensionsTextField" destination="fJx-1H-pgj" id="tDS-FM-Lpi"/>
                         <outlet property="mainImage" destination="LKi-pf-26S" id="jC9-k9-g74"/>
+                        <outlet property="mainImageView" destination="LKi-pf-26S" id="n4H-uv-Qbs"/>
                         <outlet property="medium" destination="aML-J6-Bxi" id="7F7-xb-sCJ"/>
+                        <outlet property="mediumTextField" destination="aML-J6-Bxi" id="SIK-aj-z01"/>
                         <outlet property="notes" destination="WIK-Mb-SNp" id="3dO-rN-xlE"/>
                         <outlet property="notesImage" destination="hLx-ZK-yag" id="OL1-bg-JVc"/>
                         <outlet property="notesImageTwo" destination="d8G-ng-Got" id="p2p-Kn-MKU"/>
+                        <outlet property="notesImageTwoImageView" destination="d8G-ng-Got" id="IJ6-MV-P05"/>
+                        <outlet property="notesImageView" destination="hLx-ZK-yag" id="UEM-3g-I3t"/>
+                        <outlet property="notesTextView" destination="WIK-Mb-SNp" id="Clt-lB-xFB"/>
                         <outlet property="objectId" destination="BcA-W1-gpT" id="qZU-ha-oXM"/>
+                        <outlet property="objectIdTextField" destination="BcA-W1-gpT" id="37r-uO-9hC"/>
                         <outlet property="provenance" destination="mTH-gu-vVE" id="QLs-3b-kRz"/>
+                        <outlet property="provenanceTextView" destination="mTH-gu-vVE" id="XPS-dC-cmv"/>
                         <outlet property="reviewedBy" destination="AQ1-xs-tka" id="eh1-Pb-pbN"/>
+                        <outlet property="reviewedByTextField" destination="AQ1-xs-tka" id="kPU-fw-iXg"/>
                         <outlet property="reviewedDate" destination="LyN-HA-9qY" id="N9U-AZ-Ry2"/>
+                        <outlet property="reviewedDateTextField" destination="LyN-HA-9qY" id="Fwu-IA-xR6"/>
                         <outlet property="source" destination="IyJ-te-kZK" id="xKr-7Y-CtT"/>
+                        <outlet property="sourceTextField" destination="IyJ-te-kZK" id="4cE-Wr-e0y"/>
+                        <outlet property="titleTextField" destination="qkf-F2-0FK" id="CcX-u9-KNw"/>
                         <segue destination="Lb6-wK-nmb" kind="unwind" identifier="unwindToCollectionSegue" unwindAction="unwindToCollectionViewControllerWithSegue:" id="gcv-PP-kpK"/>
                     </connections>
                 </viewController>
