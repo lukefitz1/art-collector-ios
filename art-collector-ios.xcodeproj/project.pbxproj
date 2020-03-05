@@ -425,6 +425,63 @@
 			path = ProtocolWrappers;
 			sourceTree = "<group>";
 		};
+		9BDE722C2410954B00307EFC /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				9B267D6D23BA713900203D3B /* CustomersServiceDeserializer.swift */,
+				9B267D6F23BA71AD00203D3B /* CustomersServiceDeserializerProtocol.swift */,
+				9BDB59A323E0BE1900AB8C20 /* CustomerCreateServiceDeserializer.swift */,
+				9BDB59A523E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift */,
+				9B40784B23F0A137002E4398 /* GetCustomerServiceDeserializerProtocol.swift */,
+				9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		9BDE722D2410955700307EFC /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				9B222A1623D26C3300A2A8D0 /* ArtistsServiceDeserializer.swift */,
+				9B222A1823D26C3E00A2A8D0 /* ArtistsServiceDeserializerProtocol.swift */,
+				9BF12F2A23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift */,
+				9BF12F2823D3BD0400BE8AA8 /* ArtistCreateServiceDeserializerProtocol.swift */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
+		9BDE722E2410956000307EFC /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */,
+				9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */,
+				9B40783F23F09729002E4398 /* CollectionCreateServiceDeserializerProtocol.swift */,
+				9B40784123F09735002E4398 /* CollectionCreateServiceDeserializer.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9BDE722F2410956500307EFC /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				9B96E34A23E383860024F388 /* ArtworkCreateServiceDeserializer.swift */,
+				9B96E34823E383760024F388 /* ArtworkCreateServiceDeserializerProtocol.swift */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
+		9BDE72302410956A00307EFC /* GeneralInformation */ = {
+			isa = PBXGroup;
+			children = (
+				9B222A2023D2B3A200A2A8D0 /* GeneralInformationServiceDeserializer.swift */,
+				9B222A2223D2B3AF00A2A8D0 /* GeneralInformationServiceDeserializerProtocol.swift */,
+				9B7A476223D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift */,
+				9B7A476423D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift */,
+				9BDE722824108F4600307EFC /* GetGeneralInformationServiceDeserializerProtocol.swift */,
+				9BDE722A24108F4F00307EFC /* GetGeneralInformationServiceDeserializer.swift */,
+			);
+			path = GeneralInformation;
+			sourceTree = "<group>";
+		};
 		9BF0F98723B64C09009ACE3E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,28 +510,11 @@
 		9BF0F98A23B64C72009ACE3E /* Deserializers */ = {
 			isa = PBXGroup;
 			children = (
-				9B267D6D23BA713900203D3B /* CustomersServiceDeserializer.swift */,
-				9B267D6F23BA71AD00203D3B /* CustomersServiceDeserializerProtocol.swift */,
-				9B222A1623D26C3300A2A8D0 /* ArtistsServiceDeserializer.swift */,
-				9B222A1823D26C3E00A2A8D0 /* ArtistsServiceDeserializerProtocol.swift */,
-				9B222A2023D2B3A200A2A8D0 /* GeneralInformationServiceDeserializer.swift */,
-				9B222A2223D2B3AF00A2A8D0 /* GeneralInformationServiceDeserializerProtocol.swift */,
-				9BF12F2A23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift */,
-				9BF12F2823D3BD0400BE8AA8 /* ArtistCreateServiceDeserializerProtocol.swift */,
-				9B7A476223D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift */,
-				9B7A476423D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift */,
-				9BDB59A323E0BE1900AB8C20 /* CustomerCreateServiceDeserializer.swift */,
-				9BDB59A523E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift */,
-				9B96E34A23E383860024F388 /* ArtworkCreateServiceDeserializer.swift */,
-				9B96E34823E383760024F388 /* ArtworkCreateServiceDeserializerProtocol.swift */,
-				9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */,
-				9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */,
-				9B40783F23F09729002E4398 /* CollectionCreateServiceDeserializerProtocol.swift */,
-				9B40784123F09735002E4398 /* CollectionCreateServiceDeserializer.swift */,
-				9B40784B23F0A137002E4398 /* GetCustomerServiceDeserializerProtocol.swift */,
-				9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */,
-				9BDE722824108F4600307EFC /* GetGeneralInformationServiceDeserializerProtocol.swift */,
-				9BDE722A24108F4F00307EFC /* GetGeneralInformationServiceDeserializer.swift */,
+				9BDE72302410956A00307EFC /* GeneralInformation */,
+				9BDE722D2410955700307EFC /* Artist */,
+				9BDE722F2410956500307EFC /* Artwork */,
+				9BDE722E2410956000307EFC /* Collection */,
+				9BDE722C2410954B00307EFC /* Customer */,
 			);
 			path = Deserializers;
 			sourceTree = "<group>";
