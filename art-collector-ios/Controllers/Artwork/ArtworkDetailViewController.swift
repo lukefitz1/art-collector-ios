@@ -15,6 +15,7 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var artType: UILabel!
     
     var artwork: Artwork?
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,42 @@ class ArtworkDetailViewController: UIViewController {
 
            destinationVC.artwork = artwork
        }
-   }
+    }
     
+    @IBAction func unwindToArtworkDetailViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                if let art = self.artwork?.id {
+                    self.getArtworkInfo(artId: art)
+                }
+            }
+        }
+    }
+    
+    private func getArtworkInfo(artId: String) {
+        let getArtworkService = GetArtworkService()
+
+        progressHUD.show(onView: view, animated: true)
+        getArtworkService.getArtworkInfo(artworkId: artId) { [weak self] artData, error in
+            guard let self = self else {
+                return
+            }
+
+            if let e = error {
+                print("Issue getting artwork info data (Artwork GET request) - \(e)")
+                return
+            } else {
+                if let art = artData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.refreshArtwork(artwork: art)
+                }
+            }
+        }
+    }
+    
+    private func refreshArtwork(artwork: Artwork) {
+        objectId.text = artwork.objectId
+        artTitle.text = artwork.title
+        artType.text = artwork.artType
+    }
 }

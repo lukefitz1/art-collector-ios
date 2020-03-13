@@ -11,6 +11,7 @@ import UIKit
 class ArtworkEditViewController: UIViewController {
     
     var artwork: Artwork?
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     @IBOutlet weak var objectIdTextField: UITextField!
     @IBOutlet weak var artTypeTextField: UITextField!
@@ -41,7 +42,11 @@ class ArtworkEditViewController: UIViewController {
     @IBOutlet weak var customTitleTextField: UITextField!
     @IBOutlet weak var addNewArtworkBtn: UIButton!
     
-    
+    var decodedMainImage: String?
+    var decodedNotesImage: String?
+    var decodedNotesTwoImage: String?
+    var decodedAdditionalInfoImage: String?
+    var decodedAdditionalInfoTwoImage: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +88,39 @@ class ArtworkEditViewController: UIViewController {
     }
     
     @IBAction func updateArtworkBtnPressed(_ sender: Any) {
-    
+        let objectId = objectIdTextField.text ?? ""
+        let artType = artTypeTextField.text ?? ""
+        let title = titleTextField.text ?? ""
+        let date = dateTextField.text ?? ""
+        let medium = mediumTextField.text ?? ""
+        let description = descriptionTextView.text ?? ""
+        let mainImage = decodedMainImage ?? ""
+        let dimensions = dimensionsTextField.text ?? ""
+        let frameDimensions = frameDimensionsTextField.text ?? ""
+        let condition = conditionTextField.text ?? ""
+        let currentLocation = currentLocationTextField.text ?? ""
+        let source = sourceTextField.text ?? ""
+        let dateAcquiredLabel = dateAcquiredLabelTextField.text ?? ""
+        let dateAcquired = dateAcquiredTextField.text ?? ""
+        let amountPaid = amountPaidTextField.text ?? ""
+        let currentValue = currentValueTextField.text ?? ""
+        let notes = notesTextView.text ?? ""
+        let notesImage = decodedNotesImage ?? ""
+        let notesImageTwo = decodedNotesTwoImage ?? ""
+        let additionalInfoLabel = additionalInfoLabelTextField.text ?? ""
+        let additionalInfoText = additionalInfoTextView.text ?? ""
+        let additionalInfoImage = decodedAdditionalInfoImage ?? ""
+        let additionalInfoImageTwo = decodedAdditionalInfoTwoImage ?? ""
+        let reviewedBy = reviewedByTextField.text ?? ""
+        let reviewedDate = reviewedDateTextField.text ?? ""
+        let provenance = provenanceTextView.text ?? ""
+        let customTitle = customTitleTextField.text ?? ""
+        let additionalInfo = additionalInfoTextView.text ?? ""
+        let artworkId = artwork?.id ?? ""
+        let customerId = artwork?.customerId ?? ""
+        let collectionId = artwork?.collectionId ?? ""
+            
+        updateArtwork(id: artworkId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId)
     }
     
     @IBAction func mainImageBtnPressed(_ sender: Any) {
@@ -104,5 +141,29 @@ class ArtworkEditViewController: UIViewController {
     
     @IBAction func additionalInfoImageTwoBtnPressed(_ sender: Any) {
     
+    }
+    
+    private func updateArtwork(id: String, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String) {
+        
+        let artworkEditService = ArtworkEditService()
+        
+        progressHUD.show(onView: view, animated: true)
+        artworkEditService.udpateArtwork(id: id, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId) { [weak self] artworkData, error in
+            guard let self = self else {
+                return
+            }
+            
+            if let e = error {
+                print("Issue editing artwork data (Artwork PUT request) - \(e)")
+                return
+            } else {
+                print("SUCCESS - Artwork PUT request")
+                
+                if let artwork = artworkData {
+                    self.progressHUD.hide(onView: self.view, animated: true)
+                    self.performSegue(withIdentifier: "unwindToArtworkDetailSegue", sender: self)
+                }
+            }
+        }
     }
 }

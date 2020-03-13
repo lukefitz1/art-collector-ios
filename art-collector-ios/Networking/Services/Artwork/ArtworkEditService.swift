@@ -62,8 +62,9 @@ struct ArtworkEditService {
         
         var data : Artwork?
         
+        print("artwork parameters")
         AF.request(fullEndpoint,
-                   method: .post,
+                   method: .put,
                    parameters: parameters,
                    encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in

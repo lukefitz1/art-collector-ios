@@ -44,7 +44,7 @@ class GeneralInformationEditViewController: UIViewController {
             }
             
             if let e = error {
-                print("Issue creating GI data (GI PUT request) - \(e)")
+                print("Issue editing GI data (GI PUT request) - \(e)")
                 return
             } else {
                 print("SUCCESS - GI PUT request")
