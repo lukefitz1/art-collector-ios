@@ -14,6 +14,9 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var artTitle: UILabel!
     @IBOutlet weak var artType: UILabel!
     @IBOutlet weak var mainImageImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var mediumLabel: UILabel!
+    
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -26,6 +29,8 @@ class ArtworkDetailViewController: UIViewController {
         objectId.text = artwork?.objectId
         artTitle.text = artwork?.title
         artType.text = artwork?.artType
+        dateLabel.text = artwork?.date
+        mediumLabel.text = artwork?.medium
         
         if let imageUrl = artwork?.image?.url {
             setImage(from: imageUrl)
