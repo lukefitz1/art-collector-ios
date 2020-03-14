@@ -13,6 +13,7 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var objectId: UILabel!
     @IBOutlet weak var artTitle: UILabel!
     @IBOutlet weak var artType: UILabel!
+    @IBOutlet weak var mainImageImageView: UIImageView!
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -25,6 +26,10 @@ class ArtworkDetailViewController: UIViewController {
         objectId.text = artwork?.objectId
         artTitle.text = artwork?.title
         artType.text = artwork?.artType
+        
+        if let imageUrl = artwork?.image?.url {
+            setImage(from: imageUrl)
+        }
     }
     
     @objc
@@ -75,5 +80,19 @@ class ArtworkDetailViewController: UIViewController {
         objectId.text = artwork.objectId
         artTitle.text = artwork.title
         artType.text = artwork.artType
+    }
+    
+    private func setImage(from url: String) {
+        guard let imageURL = URL(string: url) else { return }
+
+            // just not to cause a deadlock in UI!
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: imageURL) else { return }
+
+            let image = UIImage(data: imageData)
+            DispatchQueue.main.async {
+                self.mainImageImageView.image = image
+            }
+        }
     }
 }
