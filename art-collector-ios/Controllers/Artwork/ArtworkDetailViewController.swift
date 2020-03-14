@@ -16,7 +16,27 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var mainImageImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var mediumLabel: UILabel!
-    
+    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var dimensionsLabel: UILabel!
+    @IBOutlet weak var frameDimensionsLabel: UILabel!
+    @IBOutlet weak var conditionLabel: UILabel!
+    @IBOutlet weak var currentLocationLabel: UILabel!
+    @IBOutlet weak var sourceLabel: UILabel!
+    @IBOutlet weak var dateAcquiredLabelLabel: UILabel!
+    @IBOutlet weak var dateAcquiredLabel: UILabel!
+    @IBOutlet weak var amountPaidLabel: UILabel!
+    @IBOutlet weak var currentValueLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var notesImageImageView: UIImageView!
+    @IBOutlet weak var notesImageTwoImageView: UIImageView!
+    @IBOutlet weak var additionalInfoLabelLabel: UILabel!
+    @IBOutlet weak var additionalInfoTextView: UITextView!
+    @IBOutlet weak var additionalInfoImageImageView: UIImageView!
+    @IBOutlet weak var additionalInfoImageTwoImageView: UIImageView!
+    @IBOutlet weak var reviewedByLabel: UILabel!
+    @IBOutlet weak var reviewedDateLabel: UILabel!
+    @IBOutlet weak var provenanceTextView: UITextView!
+    @IBOutlet weak var customTitleLabel: UILabel!
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -31,9 +51,40 @@ class ArtworkDetailViewController: UIViewController {
         artType.text = artwork?.artType
         dateLabel.text = artwork?.date
         mediumLabel.text = artwork?.medium
+        descriptionTextView.text = artwork?.description
+        dimensionsLabel.text = artwork?.dimensions
+        frameDimensionsLabel.text = artwork?.frameDimensions
+        conditionLabel.text = artwork?.condition
+        currentLocationLabel.text = artwork?.currentLocation
+        sourceLabel.text = artwork?.source
+        dateAcquiredLabelLabel.text = artwork?.dateAcquiredLabel
+        dateAcquiredLabel.text = artwork?.dateAcquired
+        amountPaidLabel.text = artwork?.amountPaid
+        currentValueLabel.text = artwork?.currentValue
+        notesTextView.text = artwork?.notes
+        additionalInfoLabelLabel.text = artwork?.additionalInfoLabel
+        additionalInfoTextView.text = artwork?.additionalInfoText
+        provenanceTextView.text = artwork?.provenance
+        customTitleLabel.text = artwork?.customTitle
         
         if let imageUrl = artwork?.image?.url {
-            setImage(from: imageUrl)
+            setImage(from: imageUrl, imageType: "mainImage")
+        }
+        
+        if let imageUrl = artwork?.notesImage?.url {
+            setImage(from: imageUrl, imageType: "notesImage")
+        }
+        
+        if let imageUrl = artwork?.notesImageTwo?.url {
+            setImage(from: imageUrl, imageType: "notesImageTwo")
+        }
+        
+        if let imageUrl = artwork?.additionalInfoImage?.url {
+            setImage(from: imageUrl, imageType: "addInfoImage")
+        }
+        
+        if let imageUrl = artwork?.additionalInfoImageTwo?.url {
+            setImage(from: imageUrl, imageType: "addInfoImageTwo")
         }
     }
     
@@ -87,16 +138,29 @@ class ArtworkDetailViewController: UIViewController {
         artType.text = artwork.artType
     }
     
-    private func setImage(from url: String) {
+    private func setImage(from url: String, imageType: String) {
         guard let imageURL = URL(string: url) else { return }
 
             // just not to cause a deadlock in UI!
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
-
+            
             let image = UIImage(data: imageData)
             DispatchQueue.main.async {
-                self.mainImageImageView.image = image
+                switch imageType {
+                case "mainImage":
+                    self.mainImageImageView.image = image
+                case "notesImage":
+                    self.notesImageImageView.image = image
+                case "notesImageTwo":
+                    self.notesImageTwoImageView.image = image
+                case "addInfoImage":
+                    self.additionalInfoImageImageView.image = image
+                case "addInfoImageTwo":
+                    self.additionalInfoImageTwoImageView.image = image
+                default:
+                    return
+                }
             }
         }
     }
