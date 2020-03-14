@@ -1962,7 +1962,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d1K-IW-hZI">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spire-logo" translatesAutoresizingMaskIntoConstraints="NO" id="d1K-IW-hZI">
                                 <rect key="frame" x="87" y="117" width="240" height="192"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="192" id="HmW-Ob-Aqv"/>
