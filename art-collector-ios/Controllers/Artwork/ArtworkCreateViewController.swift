@@ -57,6 +57,11 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     var selected = 1
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    var artists: [Artist] = [] {
+        didSet {
+            print("List of artists was retrieved")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +77,8 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         
         provenanceTextView.layer.borderWidth = 0.5
         provenanceTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        getArtists()
     }
     
     @IBAction func takeImageBtnPressed(_ sender: Any) {
@@ -122,6 +129,10 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         selected = 5
         
         present(additionalInfoTwoImagePicker, animated: true, completion: nil)
+    }
+    
+    @IBAction func selectArtistBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "viewArtistListFromCreate", sender: self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -239,9 +250,35 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         }
     }
     
-    public static func  convertImageToBase64String(image : UIImage ) -> String
-    {
+    private func getArtists() {
+        let getArtistsService = ArtistsService()
+        
+        getArtistsService.getArtists { [weak self] artistData, error in
+            guard let self = self else {
+                return
+            }
+
+            if let e = error {
+                print("Issue getting artist info data (Artist GET request) - \(e)")
+                return
+            } else {
+                if let artists = artistData {
+                    self.artists = artists
+                }
+            }
+        }
+    }
+    
+    public static func  convertImageToBase64String(image : UIImage ) -> String {
         let strBase64 =  image.pngData()?.base64EncodedString()
         return ("data:image/jpeg;base64,\(strBase64!)")
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewArtistListFromCreate" {
+            let destinationVC = segue.destination as! ArtistListViewController
+
+            destinationVC.artists = artists
+        }
     }
 }

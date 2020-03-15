@@ -12,6 +12,12 @@ class ArtworkEditViewController: UIViewController {
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    var selectedArtistId: String?
+    var artists: [Artist] = [] {
+        didSet {
+            print("Artist information was set!")
+        }
+    }
     
     @IBOutlet weak var objectIdTextField: UITextField!
     @IBOutlet weak var artTypeTextField: UITextField!
@@ -85,6 +91,12 @@ class ArtworkEditViewController: UIViewController {
         reviewedDateTextField.text = artwork?.reviewedDate
         provenanceTextView.text = artwork?.provenance
         customTitleTextField.text = artwork?.customTitle
+        
+        if let artistId = artwork?.artistId {
+            selectedArtistId = artistId
+        }
+        
+        getArtists()
     }
     
     @IBAction func updateArtworkBtnPressed(_ sender: Any) {
@@ -143,6 +155,10 @@ class ArtworkEditViewController: UIViewController {
     
     }
     
+    @IBAction func selectArtistBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "viewArtistListFromEdit", sender: self)
+    }
+    
     private func updateArtwork(id: String, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String) {
         
         let artworkEditService = ArtworkEditService()
@@ -163,6 +179,37 @@ class ArtworkEditViewController: UIViewController {
                     self.progressHUD.hide(onView: self.view, animated: true)
                     self.performSegue(withIdentifier: "unwindToArtworkDetailSegue", sender: self)
                 }
+            }
+        }
+    }
+    
+    private func getArtists() {
+        let getArtistsService = ArtistsService()
+        
+        getArtistsService.getArtists { [weak self] artistData, error in
+            guard let self = self else {
+                return
+            }
+
+            if let e = error {
+                print("Issue getting artist info data (Artist GET request) - \(e)")
+                return
+            } else {
+                if let artists = artistData {
+                    self.artists = artists
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewArtistListFromEdit" {
+            let destinationVC = segue.destination as! ArtistListViewController
+
+            destinationVC.artists = artists
+            
+            if let artistId = selectedArtistId {
+                destinationVC.selectedArtist = artistId
             }
         }
     }

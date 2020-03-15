@@ -37,14 +37,36 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var reviewedDateLabel: UILabel!
     @IBOutlet weak var provenanceTextView: UITextView!
     @IBOutlet weak var customTitleLabel: UILabel!
+    @IBOutlet weak var artistNameLabel: UILabel!
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    var artist: Artist? {
+        didSet {
+            if let fName = artist?.firstName {
+                if let lName = artist?.lastName {
+                    artistNameLabel.text = "\(fName) \(lName)"
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
+        
+        descriptionTextView.layer.borderWidth = 0.5
+        descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        notesTextView.layer.borderWidth = 0.5
+        notesTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        additionalInfoTextView.layer.borderWidth = 0.5
+        additionalInfoTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        provenanceTextView.layer.borderWidth = 0.5
+        provenanceTextView.layer.borderColor = UIColor.lightGray.cgColor
         
         objectId.text = artwork?.objectId
         artTitle.text = artwork?.title
@@ -85,6 +107,10 @@ class ArtworkDetailViewController: UIViewController {
         
         if let imageUrl = artwork?.additionalInfoImageTwo?.url {
             setImage(from: imageUrl, imageType: "addInfoImageTwo")
+        }
+        
+        if let artistId = artwork?.artistId {
+            self.getArtistInfo(id: artistId)
         }
     }
     
@@ -127,6 +153,25 @@ class ArtworkDetailViewController: UIViewController {
                 if let art = artData {
                     self.progressHUD.hide(onView: self.view, animated: true)
                     self.refreshArtwork(artwork: art)
+                }
+            }
+        }
+    }
+    
+    private func getArtistInfo(id: String) {
+        let getArtistService = GetArtistService()
+        
+        getArtistService.getArtistInfo(artistId: id) { [weak self] artistData, error in
+            guard let self = self else {
+                return
+            }
+
+            if let e = error {
+                print("Issue getting artist info data (Artist GET request) - \(e)")
+                return
+            } else {
+                if let artist = artistData {
+                    self.artist = artist
                 }
             }
         }

@@ -65,6 +65,7 @@
 		9B7A476123D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A476023D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift */; };
 		9B7A476323D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A476223D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift */; };
 		9B7A476523D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A476423D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift */; };
+		9B7B1D9D241DA3DF00563D91 /* ArtistListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7B1D9C241DA3DF00563D91 /* ArtistListViewController.swift */; };
 		9B90893123B2BBCF00FBE693 /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90893023B2BBCF00FBE693 /* CustomersViewController.swift */; };
 		9B96E34123E380650024F388 /* ArtworkCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34023E380650024F388 /* ArtworkCreateService.swift */; };
 		9B96E34323E380890024F388 /* ArtworkCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34223E380890024F388 /* ArtworkCreateServiceProtocol.swift */; };
@@ -183,6 +184,7 @@
 		9B7A476023D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateServiceSerializerProtocol.swift; sourceTree = "<group>"; };
 		9B7A476223D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
 		9B7A476423D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateServiceDeserializer.swift; sourceTree = "<group>"; };
+		9B7B1D9C241DA3DF00563D91 /* ArtistListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistListViewController.swift; sourceTree = "<group>"; };
 		9B90893023B2BBCF00FBE693 /* CustomersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersViewController.swift; sourceTree = "<group>"; };
 		9B96E34023E380650024F388 /* ArtworkCreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCreateService.swift; sourceTree = "<group>"; };
 		9B96E34223E380890024F388 /* ArtworkCreateServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkCreateServiceProtocol.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */,
 				9BF12F1D23D3B26D00BE8AA8 /* ArtistCreateViewController.swift */,
 				9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */,
+				9B7B1D9C241DA3DF00563D91 /* ArtistListViewController.swift */,
 			);
 			path = Artist;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				9B267D6C23BA6EDD00203D3B /* LoginServiceProtocol.swift in Sources */,
 				9B40783A23F094B0002E4398 /* CollectionCreateViewController.swift in Sources */,
 				9BF0F99023B6AF9A009ACE3E /* CustomersService.swift in Sources */,
+				9B7B1D9D241DA3DF00563D91 /* ArtistListViewController.swift in Sources */,
 				9B267D7223BA8A9700203D3B /* CustomerDetailViewController.swift in Sources */,
 				9B2A919723BF94EB00CC7552 /* Artist.swift in Sources */,
 				9BF0F98C23B64F20009ACE3E /* ApiClient.swift in Sources */,
