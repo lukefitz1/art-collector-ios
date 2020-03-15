@@ -38,6 +38,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var customTitleTextField: UITextField!
     @IBOutlet weak var additionalInfoTextView: UITextView!
     @IBOutlet weak var addNewArtworkBtn: UIButton!
+    @IBOutlet weak var artistNameLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     let notesImagePicker = UIImagePickerController()
@@ -53,15 +54,11 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     
     var customerId: String = ""
     var collectionId: String = ""
-    
+    var selectedArtistId: String? { didSet { print("New selected artist: \(selectedArtistId)")}}
     var selected = 1
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
-    var artists: [Artist] = [] {
-        didSet {
-            print("List of artists was retrieved")
-        }
-    }
+    var artists: [Artist] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +74,9 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         
         provenanceTextView.layer.borderWidth = 0.5
         provenanceTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        let artistId = selectedArtistId ?? ""
+        artistNameLabel.text = artistId
         
         getArtists()
     }
@@ -220,17 +220,18 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let provenance = provenanceTextView.text ?? ""
         let customTitle = customTitleTextField.text ?? ""
         let additionalInfo = additionalInfoTextView.text ?? ""
+        let artistId = selectedArtistId ?? ""
         
-        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId)
+        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId)
     }
     
-    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String) {
+    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String, artistId: String) {
         
         let artworkCreateService = ArtworkCreateService()
         
         addNewArtworkBtn.isEnabled = false
         progressHUD.show(onView: view, animated: true)
-        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId) { [weak self] artworkData, error in
+        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId) { [weak self] artworkData, error in
             guard let self = self else {
                 return
             }
@@ -274,11 +275,30 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         return ("data:image/jpeg;base64,\(strBase64!)")
     }
     
+    @IBAction func unwindToArtworkCreateViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.setArtistName()
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewArtistListFromCreate" {
             let destinationVC = segue.destination as! ArtistListViewController
 
+            destinationVC.source = "ArtworkCreateViewController"
+            
             destinationVC.artists = artists
+        }
+    }
+    
+    private func setArtistName() {
+        if let artist = self.artists.first(where: { $0.id == self.selectedArtistId }) {
+            let fName = artist.firstName ?? ""
+            let lName = artist.lastName ?? ""
+            
+            self.artistNameLabel.text = "\(fName) \(lName)"
         }
     }
 }

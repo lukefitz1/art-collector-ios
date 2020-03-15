@@ -181,6 +181,27 @@ class ArtworkDetailViewController: UIViewController {
         objectId.text = artwork.objectId
         artTitle.text = artwork.title
         artType.text = artwork.artType
+        dateLabel.text = artwork.date
+        mediumLabel.text = artwork.medium
+        descriptionTextView.text = artwork.description
+        dimensionsLabel.text = artwork.dimensions
+        frameDimensionsLabel.text = artwork.frameDimensions
+        conditionLabel.text = artwork.condition
+        currentLocationLabel.text = artwork.currentLocation
+        sourceLabel.text = artwork.source
+        dateAcquiredLabelLabel.text = artwork.dateAcquiredLabel
+        dateAcquiredLabel.text = artwork.dateAcquired
+        amountPaidLabel.text = artwork.amountPaid
+        currentValueLabel.text = artwork.currentValue
+        notesTextView.text = artwork.notes
+        additionalInfoLabelLabel.text = artwork.additionalInfoLabel
+        additionalInfoTextView.text = artwork.additionalInfoText
+        provenanceTextView.text = artwork.provenance
+        customTitleLabel.text = artwork.customTitle
+
+        if let id = artwork.artistId {
+            getArtistInfo(id: id)
+        }
     }
     
     private func setImage(from url: String, imageType: String) {

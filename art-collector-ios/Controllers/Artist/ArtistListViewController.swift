@@ -12,8 +12,9 @@ class ArtistListViewController: UIViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var artistsTableView: UITableView!
     
-    var selectedArtist: String?
     var artists: [Artist] = []
+    var selectedArtist: String?
+    var source: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,29 +30,44 @@ class ArtistListViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistListCell", for: indexPath)
         
+        let id = artists[indexPath.row].id
         let fName = artists[indexPath.row].firstName ?? ""
         let lName = artists[indexPath.row].lastName ?? ""
+        
         cell.textLabel?.text = "\(fName) \(lName)"
+        if id == selectedArtist {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let artist = artists[indexPath.row]
         selectedArtist = artist.id
-//        selectedCustomer = customer
-        
-//        let customerDetailViewController = CustomerDetailViewController()
-//        customerDetailViewController.customer = customer
 
-//        self.performSegue(withIdentifier: "CustomerDetailSegue", sender: self)
+        if source == "ArtworkEditViewController" {
+            self.performSegue(withIdentifier: "unwindToArtworkEditSegue", sender: self)
+        } else if source == "ArtworkCreateViewController" {
+            self.performSegue(withIdentifier: "unwindToArtworkCreateSegue", sender: self)
+        }
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "CustomerDetailSegue" {
-//            let destinationVC = segue.destination as! CustomerDetailViewController
-//
-//            destinationVC.customer = selectedCustomer
-//        }
-//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "unwindToArtworkEditSegue" {
+            let destinationVC = segue.destination as! ArtworkEditViewController
+            
+            destinationVC.selectedArtistId = selectedArtist
+        }
+        
+        if segue.identifier == "unwindToArtworkCreateSegue" {
+           let destinationVC = segue.destination as! ArtworkCreateViewController
+            
+           destinationVC.selectedArtistId = selectedArtist
+       }
+    }
 }

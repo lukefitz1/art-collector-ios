@@ -39,6 +39,7 @@ protocol ArtworkCreateServiceProtocol {
                        additionalInfo: String,
                        customerId: String,
                        collectionId: String,
+                       artistId: String,
                        completionHandler: ((Artwork?, Error?) -> Void)?)
 }
 

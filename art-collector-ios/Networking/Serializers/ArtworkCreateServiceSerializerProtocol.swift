@@ -39,7 +39,8 @@ protocol ArtworkCreateServiceSerializerProtocol {
                    customTitle: String,
                    additionalInfo: String,
                    customerId: String,
-                   collectionId: String) -> Parameters
+                   collectionId: String,
+                   artistId: String) -> Parameters
 }
 
 extension ArtworkCreateServiceSerializer: ArtworkCreateServiceSerializerProtocol {}

@@ -15,7 +15,7 @@ class ArtworkEditViewController: UIViewController {
     var selectedArtistId: String?
     var artists: [Artist] = [] {
         didSet {
-            print("Artist information was set!")
+            setArtistName()
         }
     }
     
@@ -47,6 +47,7 @@ class ArtworkEditViewController: UIViewController {
     @IBOutlet weak var provenanceTextView: UITextView!
     @IBOutlet weak var customTitleTextField: UITextField!
     @IBOutlet weak var addNewArtworkBtn: UIButton!
+    @IBOutlet weak var artistNameLabel: UILabel!
     
     var decodedMainImage: String?
     var decodedNotesImage: String?
@@ -98,7 +99,7 @@ class ArtworkEditViewController: UIViewController {
         
         getArtists()
     }
-    
+
     @IBAction func updateArtworkBtnPressed(_ sender: Any) {
         let objectId = objectIdTextField.text ?? ""
         let artType = artTypeTextField.text ?? ""
@@ -131,8 +132,9 @@ class ArtworkEditViewController: UIViewController {
         let artworkId = artwork?.id ?? ""
         let customerId = artwork?.customerId ?? ""
         let collectionId = artwork?.collectionId ?? ""
+        let artistId = selectedArtistId ?? ""
             
-        updateArtwork(id: artworkId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId)
+        updateArtwork(id: artworkId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId)
     }
     
     @IBAction func mainImageBtnPressed(_ sender: Any) {
@@ -159,12 +161,12 @@ class ArtworkEditViewController: UIViewController {
         self.performSegue(withIdentifier: "viewArtistListFromEdit", sender: self)
     }
     
-    private func updateArtwork(id: String, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String) {
+    private func updateArtwork(id: String, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String, artistId: String) {
         
         let artworkEditService = ArtworkEditService()
         
         progressHUD.show(onView: view, animated: true)
-        artworkEditService.udpateArtwork(id: id, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId) { [weak self] artworkData, error in
+        artworkEditService.udpateArtwork(id: id, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId) { [weak self] artworkData, error in
             guard let self = self else {
                 return
             }
@@ -202,15 +204,33 @@ class ArtworkEditViewController: UIViewController {
         }
     }
     
+    @IBAction func unwindToArtworkEditViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.setArtistName()
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewArtistListFromEdit" {
             let destinationVC = segue.destination as! ArtistListViewController
 
             destinationVC.artists = artists
+            destinationVC.source = "ArtworkEditViewController"
             
             if let artistId = selectedArtistId {
                 destinationVC.selectedArtist = artistId
             }
+        }
+    }
+    
+    private func setArtistName() {
+        if let artist = self.artists.first(where: { $0.id == self.selectedArtistId }) {
+            let fName = artist.firstName ?? ""
+            let lName = artist.lastName ?? ""
+            
+            self.artistNameLabel.text = "\(fName) \(lName)"
         }
     }
 }
