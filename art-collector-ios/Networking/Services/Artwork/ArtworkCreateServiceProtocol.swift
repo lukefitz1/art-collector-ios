@@ -40,6 +40,8 @@ protocol ArtworkCreateServiceProtocol {
                        customerId: String,
                        collectionId: String,
                        artistId: String,
+                       generalInformationId: String,
+                       showGeneralInfo: Bool,
                        completionHandler: ((Artwork?, Error?) -> Void)?)
 }
 

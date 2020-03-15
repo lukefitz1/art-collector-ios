@@ -39,6 +39,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var additionalInfoTextView: UITextView!
     @IBOutlet weak var addNewArtworkBtn: UIButton!
     @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var generalInfoLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
     let notesImagePicker = UIImagePickerController()
@@ -54,11 +55,13 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     
     var customerId: String = ""
     var collectionId: String = ""
-    var selectedArtistId: String? { didSet { print("New selected artist: \(selectedArtistId)")}}
+    var selectedArtistId: String?
+    var selectedGeneralInfoId: String?
     var selected = 1
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var artists: [Artist] = []
+    var generalInformation: [GeneralInformation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +81,11 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let artistId = selectedArtistId ?? ""
         artistNameLabel.text = artistId
         
+        let generalInfoId = selectedGeneralInfoId ?? ""
+        generalInfoLabel.text = generalInfoId
+        
         getArtists()
+        getGeneralInformation()
     }
     
     @IBAction func takeImageBtnPressed(_ sender: Any) {
@@ -133,6 +140,10 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     
     @IBAction func selectArtistBtnPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "viewArtistListFromCreate", sender: self)
+    }
+    
+    @IBAction func selectGeneralInformationBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "viewGIListFromCreate", sender: self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -221,17 +232,25 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let customTitle = customTitleTextField.text ?? ""
         let additionalInfo = additionalInfoTextView.text ?? ""
         let artistId = selectedArtistId ?? ""
+        let generalInfoId = selectedGeneralInfoId ?? ""
         
-        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId)
+        var showGeneralInfo = false
+        if generalInfoId != "" {
+            showGeneralInfo = true
+        } else {
+            showGeneralInfo = false
+        }
+        
+        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo)
     }
     
-    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String, artistId: String) {
+    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool) {
         
         let artworkCreateService = ArtworkCreateService()
         
         addNewArtworkBtn.isEnabled = false
         progressHUD.show(onView: view, animated: true)
-        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId) { [weak self] artworkData, error in
+        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo) { [weak self] artworkData, error in
             guard let self = self else {
                 return
             }
@@ -270,6 +289,25 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         }
     }
     
+    private func getGeneralInformation() {
+        let getGeneralInformationService = GeneralInformationService()
+        
+        getGeneralInformationService.getGeneralInformation() { [weak self] generalInformationData, error in
+            guard let self = self else {
+                return
+            }
+
+            if let e = error {
+                print("Issue getting general info data (General Info GET request) - \(e)")
+                return
+            } else {
+                if let gi = generalInformationData {
+                    self.generalInformation = gi
+                }
+            }
+        }
+    }
+    
     public static func  convertImageToBase64String(image : UIImage ) -> String {
         let strBase64 =  image.pngData()?.base64EncodedString()
         return ("data:image/jpeg;base64,\(strBase64!)")
@@ -283,6 +321,14 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         }
     }
     
+    @IBAction func unwindToArtworkCreateFromGIViewController(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.setGeneralInfo()
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewArtistListFromCreate" {
             let destinationVC = segue.destination as! ArtistListViewController
@@ -290,6 +336,14 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             destinationVC.source = "ArtworkCreateViewController"
             
             destinationVC.artists = artists
+        }
+        
+        if segue.identifier == "viewGIListFromCreate" {
+            let destinationVC = segue.destination as! GeneralInformationListViewController
+
+            destinationVC.source = "ArtworkCreateViewController"
+            
+            destinationVC.generalInformations = generalInformation
         }
     }
     
@@ -299,6 +353,14 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             let lName = artist.lastName ?? ""
             
             self.artistNameLabel.text = "\(fName) \(lName)"
+        }
+    }
+    
+    private func setGeneralInfo() {
+        if let gi = self.generalInformation.first(where: { $0.id == self.selectedGeneralInfoId }) {
+            let infoLabel = gi.infoLabel ?? ""
+            
+            self.generalInfoLabel.text = infoLabel
         }
     }
 }

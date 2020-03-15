@@ -40,7 +40,9 @@ struct ArtworkCreateServiceSerializer {
                    additionalInfo: String,
                    customerId: String,
                    collectionId: String,
-                   artistId: String) -> Parameters {
+                   artistId: String,
+                   generalInformationId: String,
+                   showGeneralInfo: Bool) -> Parameters {
         
         let parameters: Parameters = [ "ojbId": objectId,
                                        "artType": artType,
@@ -70,7 +72,9 @@ struct ArtworkCreateServiceSerializer {
                                        "notesImageTwo": notesImageTwo,
                                        "additionalInfoImageTwo": additionalInfoImageTwo,
                                        "customer_id": customerId,
-                                       "collection_id": collectionId]
+                                       "collection_id": collectionId,
+                                       "general_information_id": generalInformationId,
+                                       "show_general_info": showGeneralInfo]
         
         return parameters
     }

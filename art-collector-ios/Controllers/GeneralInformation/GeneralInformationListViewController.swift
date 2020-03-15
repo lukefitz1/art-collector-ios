@@ -1,41 +1,40 @@
 //
-//  ArtistListViewController.swift
+//  GeneralInformationListViewController.swift
 //  art-collector-ios
 //
-//  Created by Luke Fitzgerald on 3/14/20.
+//  Created by Luke Fitzgerald on 3/15/20.
 //  Copyright © 2020 Luke Fitzgerald. All rights reserved.
 //
 
 import UIKit
 
-class ArtistListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GeneralInformationListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var artistsTableView: UITableView!
+    @IBOutlet weak var generalInformationsTableView: UITableView!
     
-    var artists: [Artist] = []
-    var selectedArtist: String?
+    var generalInformations: [GeneralInformation] = []
+    var selectedGI: String?
     var source: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        artistsTableView.delegate = self
-        artistsTableView.dataSource = self
+        generalInformationsTableView.delegate = self
+        generalInformationsTableView.dataSource = self
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return artists.count
+        return generalInformations.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "GeneralInformationListCell", for: indexPath)
         
-        let id = artists[indexPath.row].id
-        let fName = artists[indexPath.row].firstName ?? ""
-        let lName = artists[indexPath.row].lastName ?? ""
+        let id = generalInformations[indexPath.row].id
+        let infoName = generalInformations[indexPath.row].infoLabel ?? ""
         
-        cell.textLabel?.text = "\(fName) \(lName)"
-        if id == selectedArtist {
+        cell.textLabel?.text = infoName
+        if id == selectedGI {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -45,8 +44,8 @@ class ArtistListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let artist = artists[indexPath.row]
-        selectedArtist = artist.id
+        let gi = generalInformations[indexPath.row]
+        selectedGI = gi.id
 
         if source == "ArtworkEditViewController" {
             self.performSegue(withIdentifier: "unwindToArtworkEditSegue", sender: self)
@@ -60,14 +59,14 @@ class ArtistListViewController: UIViewController, UITableViewDataSource, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "unwindToArtworkEditSegue" {
             let destinationVC = segue.destination as! ArtworkEditViewController
-            
-            destinationVC.selectedArtistId = selectedArtist
+         
+            destinationVC.selectedGeneralInfoId = selectedGI
         }
-
+         
         if segue.identifier == "unwindToArtworkCreateSegue" {
-           let destinationVC = segue.destination as! ArtworkCreateViewController
-            
-           destinationVC.selectedArtistId = selectedArtist
+            let destinationVC = segue.destination as! ArtworkCreateViewController
+         
+            destinationVC.selectedGeneralInfoId = selectedGI
         }
     }
 }

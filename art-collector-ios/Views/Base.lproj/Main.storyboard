@@ -1713,7 +1713,8 @@
                                                 <rect key="frame" x="115.5" y="2899" width="183" height="30"/>
                                                 <state key="normal" title="Select General Information"/>
                                                 <connections>
-                                                    <segue destination="U9D-qx-D8T" kind="presentation" id="wwl-4V-Kre"/>
+                                                    <action selector="selectGeneralInformationBtnPressed:" destination="XhJ-xb-3fZ" eventType="touchUpInside" id="xbi-7L-G3Z"/>
+                                                    <segue destination="U9D-qx-D8T" kind="presentation" identifier="viewGIListFromCreate" id="wwl-4V-Kre"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1956,6 +1957,7 @@
                         <outlet property="descriptionTextView" destination="Mca-uq-vYX" id="S4x-Eq-gYq"/>
                         <outlet property="dimensionsTextField" destination="eLK-fh-3Po" id="gxZ-NO-AK0"/>
                         <outlet property="frameDimensionsTextField" destination="oW9-qD-rc7" id="fy5-H6-n6L"/>
+                        <outlet property="generalInfoLabel" destination="j7r-pp-KCg" id="urg-q6-BQN"/>
                         <outlet property="mainImageView" destination="e3v-C5-uC2" id="EvK-3C-KCX"/>
                         <outlet property="mediumTextField" destination="hBs-7j-0uF" id="3EF-FD-8lw"/>
                         <outlet property="notesImageTwoImageView" destination="sap-Fw-GcV" id="gIf-6M-bBn"/>
@@ -2024,10 +2026,10 @@
             </objects>
             <point key="canvasLocation" x="6838" y="3111"/>
         </scene>
-        <!--View Controller-->
+        <!--General Information List View Controller-->
         <scene sceneID="2fP-Hi-931">
             <objects>
-                <viewController id="U9D-qx-D8T" sceneMemberID="viewController">
+                <viewController id="U9D-qx-D8T" customClass="GeneralInformationListViewController" customModule="art_collector_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SPG-te-Zfc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2061,8 +2063,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4a8-nz-HbL"/>
                     </view>
+                    <connections>
+                        <outlet property="generalInformationsTableView" destination="ywH-u8-i5E" id="jd5-j9-9pb"/>
+                        <segue destination="XVz-oh-rrw" kind="unwind" identifier="unwindToArtworkCreateSegue" unwindAction="unwindToArtworkCreateFromGIViewControllerWithSegue:" id="4vz-Z6-6ih"/>
+                        <segue destination="XVz-oh-rrw" kind="unwind" identifier="unwindToArtworkEditSegue" unwindAction="unwindToArtworkEditFromGIViewControllerWithSegue:" id="eec-Mw-KWO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bl-Vi-TU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="XVz-oh-rrw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7944.9275362318849" y="3109.8214285714284"/>
         </scene>
@@ -2423,6 +2431,18 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="General Info:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1r-qS-KGS">
+                                                <rect key="frame" x="20" y="1599" width="98" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="generalInfoLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M73-LG-xHP">
+                                                <rect key="frame" x="128" y="1599" width="266" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -2437,6 +2457,7 @@
                                             <constraint firstItem="hrL-gf-vRE" firstAttribute="top" secondItem="12P-Ts-V69" secondAttribute="bottom" constant="8" id="4gn-F4-EuU"/>
                                             <constraint firstItem="IUe-Nb-rX1" firstAttribute="top" secondItem="461-St-zQQ" secondAttribute="bottom" constant="8" id="56K-02-8fT"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="27m-qm-Zjh" secondAttribute="trailing" constant="20" id="56Y-IT-cix"/>
+                                            <constraint firstItem="T1r-qS-KGS" firstAttribute="top" secondItem="D8G-Pz-xZe" secondAttribute="bottom" constant="8" id="78z-VS-LKN"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="oZe-P6-nGZ" secondAttribute="trailing" constant="315" id="7K4-Ew-6C9"/>
                                             <constraint firstItem="nac-Ie-jbx" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="7hy-XI-iot"/>
                                             <constraint firstItem="oZe-P6-nGZ" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="8Jk-bW-jr7"/>
@@ -2444,6 +2465,7 @@
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zgo-K1-kmj" secondAttribute="trailing" constant="20" id="8b1-tf-Pao"/>
                                             <constraint firstItem="rkO-jt-NQA" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="9w1-aX-K8v"/>
                                             <constraint firstItem="sHc-6t-7nM" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="AES-sT-Kwh"/>
+                                            <constraint firstItem="M73-LG-xHP" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="128" id="AJf-ys-pXB"/>
                                             <constraint firstItem="Dhk-RH-fJo" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="138" id="AnY-Mg-lPN"/>
                                             <constraint firstItem="HPg-Hw-78z" firstAttribute="centerX" secondItem="Beu-Bx-wtm" secondAttribute="centerX" id="BCf-8X-34a"/>
                                             <constraint firstItem="U5D-Bh-Yld" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="BSZ-p7-Qfh"/>
@@ -2493,6 +2515,7 @@
                                             <constraint firstItem="d1K-IW-hZI" firstAttribute="centerX" secondItem="Beu-Bx-wtm" secondAttribute="centerX" id="OKl-vi-fI7"/>
                                             <constraint firstItem="Ily-4F-MXQ" firstAttribute="top" secondItem="sHc-6t-7nM" secondAttribute="bottom" constant="8" id="PZR-Pe-nXI"/>
                                             <constraint firstAttribute="trailing" secondItem="lHg-lm-fRI" secondAttribute="trailing" constant="20" id="Pbt-uV-VxE"/>
+                                            <constraint firstAttribute="bottom" secondItem="T1r-qS-KGS" secondAttribute="bottom" constant="42" id="Pqo-7g-t3P"/>
                                             <constraint firstItem="HPg-Hw-78z" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="QM4-UY-mep"/>
                                             <constraint firstItem="oZe-P6-nGZ" firstAttribute="top" secondItem="q45-7S-Cz0" secondAttribute="bottom" constant="8" id="QUU-KV-Ee5"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="69K-2s-yVd" secondAttribute="trailing" constant="261" id="RLH-QN-wIa"/>
@@ -2506,7 +2529,6 @@
                                             <constraint firstItem="SR4-wm-IKt" firstAttribute="top" secondItem="HPg-Hw-78z" secondAttribute="bottom" constant="8" id="TFC-vm-Ibq"/>
                                             <constraint firstItem="MqK-Ew-CgP" firstAttribute="centerX" secondItem="Beu-Bx-wtm" secondAttribute="centerX" id="TL5-s4-YFm"/>
                                             <constraint firstItem="Tf7-VU-8vq" firstAttribute="top" secondItem="oZe-P6-nGZ" secondAttribute="bottom" constant="8" id="TOS-rA-O9o"/>
-                                            <constraint firstAttribute="bottom" secondItem="D8G-Pz-xZe" secondAttribute="bottom" constant="71" id="Te1-8e-0XL"/>
                                             <constraint firstItem="4vI-Fu-J6n" firstAttribute="top" secondItem="PCx-1G-ghf" secondAttribute="bottom" constant="8" id="V9L-pS-1Iw"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="l8n-RR-DoO" secondAttribute="trailing" constant="20" id="VVK-9v-IoR"/>
                                             <constraint firstItem="WRj-rC-R2R" firstAttribute="top" secondItem="dfA-wl-qoR" secondAttribute="bottom" constant="8" id="VXl-Mw-Pls"/>
@@ -2518,6 +2540,7 @@
                                             <constraint firstItem="iLO-sY-0xp" firstAttribute="top" secondItem="ogs-Nn-0tZ" secondAttribute="bottom" constant="8" id="X3O-mx-hJ2"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="5kg-yj-H66" secondAttribute="trailing" constant="284" id="Xdb-lr-6xs"/>
                                             <constraint firstItem="yTY-lM-fd4" firstAttribute="top" secondItem="iLO-sY-0xp" secondAttribute="bottom" constant="8" id="Xfc-L2-Ovo"/>
+                                            <constraint firstItem="M73-LG-xHP" firstAttribute="top" secondItem="D8G-Pz-xZe" secondAttribute="bottom" constant="8" id="Xmo-kY-HjQ"/>
                                             <constraint firstItem="ooH-1I-mch" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="87" id="YA8-KW-Ke8"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ogs-Nn-0tZ" secondAttribute="trailing" constant="234" id="ZSo-aL-uFC"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="6vz-bY-jHf" secondAttribute="trailing" constant="351" id="ZwP-gh-l43"/>
@@ -2525,18 +2548,21 @@
                                             <constraint firstItem="lHr-Vs-cFF" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="180" id="a2H-KA-01N"/>
                                             <constraint firstItem="Tf7-VU-8vq" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="172" id="a2e-Y8-LvE"/>
                                             <constraint firstItem="12P-Ts-V69" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="azT-n0-JPe"/>
+                                            <constraint firstItem="T1r-qS-KGS" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="b2z-of-a4K"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="PCx-1G-ghf" secondAttribute="trailing" constant="292" id="b4a-QP-Dip"/>
                                             <constraint firstItem="hrL-gf-vRE" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="b6b-Rs-gHw"/>
                                             <constraint firstItem="12P-Ts-V69" firstAttribute="top" secondItem="6vz-bY-jHf" secondAttribute="bottom" constant="8" id="bt8-Oy-gAy"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="D8G-Pz-xZe" secondAttribute="trailing" constant="347" id="byP-s3-ice"/>
                                             <constraint firstItem="LRe-lA-6fH" firstAttribute="top" secondItem="L01-Gf-hFn" secondAttribute="bottom" constant="8" id="c16-sH-a1m"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="iLO-sY-0xp" secondAttribute="trailing" constant="280" id="cTA-n4-AAB"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="M73-LG-xHP" secondAttribute="trailing" constant="20" id="cq3-Gx-xXn"/>
                                             <constraint firstItem="2Fb-sb-lLy" firstAttribute="top" secondItem="MqK-Ew-CgP" secondAttribute="bottom" constant="8" id="dwe-3R-ubQ"/>
                                             <constraint firstItem="zgo-K1-kmj" firstAttribute="top" secondItem="gjd-7D-ncx" secondAttribute="bottom" constant="8" id="eF4-e3-plu"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="SR4-wm-IKt" secondAttribute="trailing" constant="292" id="eFF-Mv-hXq"/>
                                             <constraint firstItem="HCK-qg-hmB" firstAttribute="top" secondItem="IUe-Nb-rX1" secondAttribute="bottom" constant="8" id="ej9-Ic-iSP"/>
                                             <constraint firstItem="MqK-Ew-CgP" firstAttribute="top" secondItem="rkO-jt-NQA" secondAttribute="bottom" constant="8" id="evB-zh-fwT"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="lHr-Vs-cFF" secondAttribute="trailing" constant="20" id="fed-9E-Uvt"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="T1r-qS-KGS" secondAttribute="trailing" constant="296" id="g0i-q3-FjX"/>
                                             <constraint firstItem="5kg-yj-H66" firstAttribute="top" secondItem="PCx-1G-ghf" secondAttribute="bottom" constant="8" id="gag-R5-RWp"/>
                                             <constraint firstItem="MqK-Ew-CgP" firstAttribute="leading" secondItem="Beu-Bx-wtm" secondAttribute="leading" constant="20" id="ghU-ec-Uzp"/>
                                             <constraint firstItem="2u8-5P-mQn" firstAttribute="top" secondItem="2Yh-yU-Qxd" secondAttribute="bottom" constant="8" id="gwT-tZ-14i"/>
@@ -2625,6 +2651,7 @@
                         <outlet property="descriptionTextView" destination="MqK-Ew-CgP" id="0jq-Vt-6pd"/>
                         <outlet property="dimensionsLabel" destination="uHv-Zq-717" id="7I6-kt-V0w"/>
                         <outlet property="frameDimensionsLabel" destination="lHr-Vs-cFF" id="CfR-kI-FlZ"/>
+                        <outlet property="generalInfoNameLabel" destination="M73-LG-xHP" id="pIs-b4-0Ux"/>
                         <outlet property="mainImageImageView" destination="d1K-IW-hZI" id="bnJ-Nz-XCz"/>
                         <outlet property="mediumLabel" destination="l8n-RR-DoO" id="eBC-NI-P7F"/>
                         <outlet property="notesImageImageView" destination="2u8-5P-mQn" id="WhI-v2-Mpz"/>
@@ -3614,7 +3641,8 @@
                                                 <rect key="frame" x="115.5" y="2899" width="183" height="30"/>
                                                 <state key="normal" title="Select General Information"/>
                                                 <connections>
-                                                    <segue destination="U9D-qx-D8T" kind="presentation" id="4No-Cq-j8A"/>
+                                                    <action selector="selectGeneralInformationBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="NPD-nM-9LW"/>
+                                                    <segue destination="U9D-qx-D8T" kind="presentation" identifier="viewGIListFromEdit" id="4No-Cq-j8A"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -3857,6 +3885,7 @@
                         <outlet property="descriptionTextView" destination="5fq-7d-p8O" id="lec-Z2-XGW"/>
                         <outlet property="dimensionsTextField" destination="Twg-Bv-1pt" id="zFX-sQ-Cqr"/>
                         <outlet property="frameDimensionsTextField" destination="fJx-1H-pgj" id="tDS-FM-Lpi"/>
+                        <outlet property="generalInfoLabel" destination="u7g-69-Sw1" id="EOV-rD-Lh8"/>
                         <outlet property="mainImageView" destination="LKi-pf-26S" id="n4H-uv-Qbs"/>
                         <outlet property="mediumTextField" destination="aML-J6-Bxi" id="SIK-aj-z01"/>
                         <outlet property="notesImageTwoImageView" destination="d8G-ng-Got" id="IJ6-MV-P05"/>

@@ -40,7 +40,9 @@ protocol ArtworkCreateServiceSerializerProtocol {
                    additionalInfo: String,
                    customerId: String,
                    collectionId: String,
-                   artistId: String) -> Parameters
+                   artistId: String,
+                   generalInformationId: String,
+                   showGeneralInfo: Bool) -> Parameters
 }
 
 extension ArtworkCreateServiceSerializer: ArtworkCreateServiceSerializerProtocol {}

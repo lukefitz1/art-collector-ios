@@ -38,6 +38,7 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var provenanceTextView: UITextView!
     @IBOutlet weak var customTitleLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
+    @IBOutlet weak var generalInfoNameLabel: UILabel!
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -47,6 +48,13 @@ class ArtworkDetailViewController: UIViewController {
                 if let lName = artist?.lastName {
                     artistNameLabel.text = "\(fName) \(lName)"
                 }
+            }
+        }
+    }
+    var generalInfo: GeneralInformation? {
+        didSet {
+            if let label = generalInfo?.infoLabel {
+                generalInfoNameLabel.text = label
             }
         }
     }
@@ -111,6 +119,10 @@ class ArtworkDetailViewController: UIViewController {
         
         if let artistId = artwork?.artistId {
             self.getArtistInfo(id: artistId)
+        }
+        
+        if let generalInfoId = artwork?.generalInfoId {
+            self.getGeneralInfo(id: generalInfoId)
         }
     }
     
@@ -177,6 +189,25 @@ class ArtworkDetailViewController: UIViewController {
         }
     }
     
+    private func getGeneralInfo(id: String) {
+        let getGeneralInfoService = GetGeneralInformationService()
+        
+        getGeneralInfoService.getGeneralInfo(giId: id){ [weak self] giData, error in
+            guard let self = self else {
+                return
+            }
+
+            if let e = error {
+                print("Issue getting GI info data (General Info GET request) - \(e)")
+                return
+            } else {
+                if let gi = giData {
+                    self.generalInfo = gi
+                }
+            }
+        }
+    }
+    
     private func refreshArtwork(artwork: Artwork) {
         objectId.text = artwork.objectId
         artTitle.text = artwork.title
@@ -201,6 +232,10 @@ class ArtworkDetailViewController: UIViewController {
 
         if let id = artwork.artistId {
             getArtistInfo(id: id)
+        }
+        
+        if let giId = artwork.generalInfoId {
+            getGeneralInfo(id: giId)
         }
     }
     
