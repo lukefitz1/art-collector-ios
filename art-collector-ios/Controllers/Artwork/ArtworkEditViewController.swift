@@ -102,10 +102,14 @@ class ArtworkEditViewController: UIViewController {
         
         if let artistId = artwork?.artistId {
             selectedArtistId = artistId
+        } else {
+            artistNameLabel.text = ""
         }
         
         if let giId = artwork?.generalInfoId {
             selectedGeneralInfoId = giId
+        } else {
+            generalInfoLabel.text = ""
         }
         
         getArtists()
@@ -278,9 +282,12 @@ class ArtworkEditViewController: UIViewController {
         if segue.identifier == "viewGIListFromEdit" {
             let destinationVC = segue.destination as! GeneralInformationListViewController
 
+            destinationVC.generalInformations = generalInformation
             destinationVC.source = "ArtworkEditViewController"
             
-            destinationVC.generalInformations = generalInformation
+            if let giId = selectedGeneralInfoId {
+                destinationVC.selectedGI = giId
+            }
         }
     }
     

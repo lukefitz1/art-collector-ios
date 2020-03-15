@@ -97,6 +97,7 @@ class ArtworkDetailViewController: UIViewController {
         provenanceTextView.text = artwork?.provenance
         customTitleLabel.text = artwork?.customTitle
         
+        
         if let imageUrl = artwork?.image?.url {
             setImage(from: imageUrl, imageType: "mainImage")
         }
@@ -119,10 +120,14 @@ class ArtworkDetailViewController: UIViewController {
         
         if let artistId = artwork?.artistId {
             self.getArtistInfo(id: artistId)
+        } else {
+            artistNameLabel.text = ""
         }
         
         if let generalInfoId = artwork?.generalInfoId {
             self.getGeneralInfo(id: generalInfoId)
+        } else {
+            generalInfoNameLabel.text = ""
         }
     }
     
