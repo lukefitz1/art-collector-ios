@@ -94,6 +94,8 @@ class ArtworkDetailViewController: UIViewController {
         notesTextView.text = artwork?.notes
         additionalInfoLabelLabel.text = artwork?.additionalInfoLabel
         additionalInfoTextView.text = artwork?.additionalInfoText
+        reviewedByLabel.text = artwork?.reviewedBy
+        reviewedDateLabel.text = artwork?.reviewedDate
         provenanceTextView.text = artwork?.provenance
         customTitleLabel.text = artwork?.customTitle
         
@@ -169,6 +171,7 @@ class ArtworkDetailViewController: UIViewController {
             } else {
                 if let art = artData {
                     self.progressHUD.hide(onView: self.view, animated: true)
+                    self.artwork = art
                     self.refreshArtwork(artwork: art)
                 }
             }
