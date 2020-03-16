@@ -10,13 +10,8 @@ import Foundation
 import Alamofire
 
 struct LoginService {
-//    let apiClient: ApiClient
-//
-//    init() {
-//         self.apiClient = ApiClient()
-//    }
     
-    func login(username: String, password: String, completionHandler: ((LoginData?, Error?) -> Void)?) {
+    func login(username: String, password: String, completionHandler: ((String?, String?) -> Void)?) {
         let endpoint = buildEndpoint()
         
         let parameters = [
@@ -28,37 +23,35 @@ struct LoginService {
                    method: .post,
                    parameters: parameters,
                    encoder: URLEncodedFormParameterEncoder.default).responseJSON { response in
-//             debugPrint(response)
                     
-                    switch response.result {
-                        case .success:
-//                            print("Validation Successful")
-                            
-                            if let safeData = response.data {
-                                self.parseJSON(loginData: safeData)
-                            }
+                    switch response.response?.statusCode {
+                    case 200:
+                        if let safeData = response.data {
+                            let token = self.parseJSON(loginData: safeData)
+                            completionHandler?(token, nil)
+                        } else {
                             completionHandler?(nil, nil)
-                        case let .failure(error):
-                            print(error)
-                            completionHandler?(nil, error)
+                        }
+                    default:
+                        completionHandler?(nil, response.response?.description)
                     }
         }
     }
     
-    func parseJSON(loginData: Data) {
+    func parseJSON(loginData: Data) -> String {
         let decoder = JSONDecoder()
         
         do {
             let decodedData = try decoder.decode(LoginData.self, from: loginData)
             let authToken = decodedData.auth_token
-            
-//            print(authToken)
             ApiClient.authToken = authToken
-//            print("Test \(ApiClient.authToken)")
-//            return decodedData
+            
+            return authToken
         } catch  {
             print(error)
         }
+        
+        return ""
     }
     
     private func buildEndpoint() -> URL {
