@@ -15,6 +15,8 @@ struct Artist: Decodable {
     let biography: String?
     let additionalInfo: String?
     let artistImage: Image?
+    let createdAt: String
+    let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -23,5 +25,7 @@ struct Artist: Decodable {
         case biography
         case additionalInfo
         case artistImage = "artist_image"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }

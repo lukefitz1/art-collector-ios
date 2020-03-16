@@ -14,4 +14,16 @@ struct Collection: Decodable {
     let identifier: String?
     let year: String?
     let artworks: [Artwork]?
+    let createdAt: String
+    let updatedAt: String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case collectionName
+        case identifier
+        case year
+        case artworks
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+    }
 }

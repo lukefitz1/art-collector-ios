@@ -19,6 +19,8 @@ struct Customer: Decodable {
     let phone: String?
     let email: String?
     let collections: [Collection]?
+    let createdAt: String
+    let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -31,5 +33,7 @@ struct Customer: Decodable {
         case phone = "phone_number"
         case email = "email_address"
         case collections
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }

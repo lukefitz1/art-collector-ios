@@ -43,6 +43,8 @@ struct Artwork: Decodable {
     let generalInfoId: String?
     let showGeneralInfo: Bool?
     let customTitle: String?
+    let createdAt: String
+    let updatedAt: String
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -79,5 +81,7 @@ struct Artwork: Decodable {
         case generalInfoId = "general_information_id"
         case showGeneralInfo = "show_general_info"
         case customTitle = "custom_title"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
     }
 }
