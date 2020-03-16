@@ -250,7 +250,7 @@ class ArtworkDetailViewController: UIViewController {
     private func setImage(from url: String, imageType: String) {
         guard let imageURL = URL(string: url) else { return }
 
-            // just not to cause a deadlock in UI!
+        // just not to cause a deadlock in UI!
         DispatchQueue.global().async {
             guard let imageData = try? Data(contentsOf: imageURL) else { return }
             

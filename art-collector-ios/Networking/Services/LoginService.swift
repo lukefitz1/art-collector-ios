@@ -57,10 +57,6 @@ struct LoginService {
     private func buildEndpoint() -> URL {
         return URL(string: "\(ApiClient.baseUrl)sign-in")!
     }
-    
-//    private func buildParameters(username: String, password: String) -> Parameters {
-//        return serializer.serialize(username: username, password: password)
-//    }
 }
 
 struct LoginData: Decodable {
@@ -73,8 +69,6 @@ struct Login: Encodable {
 }
 
 struct LoginInfo {
-    // MARK: - Public methods
-    
     func serialize(username: String, password: String) -> Parameters {
         let parameters: Parameters = ["user_login[email]": username,
                                       "user_login[password]": password]

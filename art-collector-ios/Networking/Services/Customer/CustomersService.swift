@@ -25,8 +25,6 @@ struct CustomersService {
         
         AF.request(endpoint,
                    headers: headers).responseJSON { responseJSON in
-//             debugPrint(response)
-                    
                     switch responseJSON.result {
                         case .success:
                             if let safeData = responseJSON.data {
