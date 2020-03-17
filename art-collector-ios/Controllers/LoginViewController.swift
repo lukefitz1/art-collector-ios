@@ -40,8 +40,8 @@ class LoginViewController: UIViewController {
         passwordToggleSwtch.onTintColor = UIColor(red: 2/255, green: 99/255, blue: 150/255, alpha: 1.0)
         
         
-        usernameInputField.text = "lukefitz1@gmail.com"
-        passwordInputField.text = "pass4luke"
+        usernameInputField.text = ""
+        passwordInputField.text = ""
         
         checkOnline()
     }

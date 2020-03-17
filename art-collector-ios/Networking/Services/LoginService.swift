@@ -67,12 +67,3 @@ struct Login: Encodable {
     let email: String
     let password: String
 }
-
-struct LoginInfo {
-    func serialize(username: String, password: String) -> Parameters {
-        let parameters: Parameters = ["user_login[email]": username,
-                                      "user_login[password]": password]
-        
-        return parameters
-    }
-}
