@@ -50,6 +50,7 @@
 		9B40784A23F0A081002E4398 /* GetCustomerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784923F0A081002E4398 /* GetCustomerServiceProtocol.swift */; };
 		9B40784C23F0A137002E4398 /* GetCustomerServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784B23F0A137002E4398 /* GetCustomerServiceDeserializerProtocol.swift */; };
 		9B40784E23F0A142002E4398 /* GetCustomerServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */; };
+		9B616F7F242432F400204467 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B616F7D242432F400204467 /* DataModel.xcdatamodeld */; };
 		9B68BDA023D39BCE006ACF15 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */; };
 		9B68BDA223D3A65F006ACF15 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */; };
 		9B6F9AC9240C5B31003C6E28 /* GeneralInformationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */; };
@@ -170,6 +171,7 @@
 		9B40784923F0A081002E4398 /* GetCustomerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerServiceProtocol.swift; sourceTree = "<group>"; };
 		9B40784B23F0A137002E4398 /* GetCustomerServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
 		9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCustomerServiceDeserializer.swift; sourceTree = "<group>"; };
+		9B616F7E242432F400204467 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewController.swift; sourceTree = "<group>"; };
 		9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationEditViewController.swift; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 				9B2A919823BF94F700CC7552 /* GeneralInformation.swift */,
 				9B2A919A23BF991300CC7552 /* Image.swift */,
 				9B2A919C23BF991D00CC7552 /* Pdf.swift */,
+				9B616F7D242432F400204467 /* DataModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -813,6 +816,7 @@
 				9B7B1D9D241DA3DF00563D91 /* ArtistListViewController.swift in Sources */,
 				9B267D7223BA8A9700203D3B /* CustomerDetailViewController.swift in Sources */,
 				9B2A919723BF94EB00CC7552 /* Artist.swift in Sources */,
+				9B616F7F242432F400204467 /* DataModel.xcdatamodeld in Sources */,
 				9BF0F98C23B64F20009ACE3E /* ApiClient.swift in Sources */,
 				9BDE722124108BC700307EFC /* GeneralInformationEditService.swift in Sources */,
 				9B96E34523E383590024F388 /* ArtworkCreateServiceSerializer.swift in Sources */,
@@ -1028,6 +1032,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9B616F7D242432F400204467 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9B616F7E242432F400204467 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 9B616F7E242432F400204467 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9B144D9A23A29FED00E0FE85 /* Project object */;
 }
