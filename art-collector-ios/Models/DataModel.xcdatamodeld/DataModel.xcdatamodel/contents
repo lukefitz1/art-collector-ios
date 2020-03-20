@@ -4,11 +4,11 @@
         <attribute name="additionalInfo" optional="YES" attributeType="String"/>
         <attribute name="artistImage" optional="YES" attributeType="String"/>
         <attribute name="biography" optional="YES" attributeType="String"/>
-        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="String"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="String"/>
     </entity>
     <entity name="ArtworkCore" representedClassName=".ArtworkCore" syncable="YES" codeGenerationType="class">
         <attribute name="additionalInfoImage" optional="YES" attributeType="String"/>
@@ -21,7 +21,7 @@
         <attribute name="artType" optional="YES" attributeType="String"/>
         <attribute name="collectionId" optional="YES" attributeType="String"/>
         <attribute name="condition" optional="YES" attributeType="String"/>
-        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="String"/>
         <attribute name="currentLocation" optional="YES" attributeType="String"/>
         <attribute name="currentValue" optional="YES" attributeType="String"/>
         <attribute name="customerId" optional="YES" attributeType="String"/>
@@ -32,7 +32,7 @@
         <attribute name="dimensions" optional="YES" attributeType="String"/>
         <attribute name="frameDimensions" optional="YES" attributeType="String"/>
         <attribute name="generalInformationId" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="medium" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
@@ -45,44 +45,44 @@
         <attribute name="showGeneralInfo" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="source" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="String"/>
     </entity>
     <entity name="CollectionCore" representedClassName=".CollectionCore" syncable="YES" codeGenerationType="class">
         <attribute name="collectionName" optional="YES" attributeType="String"/>
-        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="String"/>
         <attribute name="customerId" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="identifier" optional="YES" attributeType="String"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="String"/>
         <attribute name="year" optional="YES" attributeType="String"/>
     </entity>
     <entity name="CustomerCore" representedClassName=".CustomerCore" syncable="YES" codeGenerationType="class">
         <attribute name="city" optional="YES" attributeType="String"/>
-        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" attributeType="String"/>
         <attribute name="emailAddress" optional="YES" attributeType="String"/>
         <attribute name="firstName" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="phoneNumber" optional="YES" attributeType="String"/>
         <attribute name="projectNotes" optional="YES" attributeType="String"/>
         <attribute name="referredBy" optional="YES" attributeType="String"/>
         <attribute name="state" optional="YES" attributeType="String"/>
         <attribute name="streetAddress" optional="YES" attributeType="String"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="String"/>
         <attribute name="zip" optional="YES" attributeType="String"/>
     </entity>
     <entity name="GeneralInformationCore" representedClassName=".GeneralInformationCore" syncable="YES" codeGenerationType="class">
-        <attribute name="createdAt" optional="YES" attributeType="String"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="createdAt" attributeType="String"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="information" optional="YES" attributeType="String"/>
         <attribute name="informationLabel" optional="YES" attributeType="String"/>
-        <attribute name="updatedAt" optional="YES" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="String"/>
     </entity>
     <elements>
-        <element name="GeneralInformationCore" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="ArtistCore" positionX="-63" positionY="18" width="128" height="163"/>
-        <element name="CustomerCore" positionX="-54" positionY="27" width="128" height="238"/>
-        <element name="CollectionCore" positionX="-36" positionY="36" width="128" height="148"/>
         <element name="ArtworkCore" positionX="-18" positionY="45" width="128" height="568"/>
+        <element name="CollectionCore" positionX="-36" positionY="36" width="128" height="148"/>
+        <element name="CustomerCore" positionX="-54" positionY="27" width="128" height="238"/>
+        <element name="GeneralInformationCore" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class GeneralInformationViewController: UIViewController {
     
@@ -14,11 +15,12 @@ class GeneralInformationViewController: UIViewController {
     
     private let refreshControl = UIRefreshControl()
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedGeneralInformation: GeneralInformation?
-    
     var selectedGI: GeneralInformation?
-    
+    var giCoreArray: [GeneralInformationCore] = []
     var generalInformation: [GeneralInformation] = [] {
         didSet {
             guard isViewLoaded else {
@@ -50,6 +52,7 @@ class GeneralInformationViewController: UIViewController {
         generalInformationTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshGeneralInformationData(_:)), for: .valueChanged)
         
+//        loadItems()
         getGeneralInformation(refresh: false)
     }
     
@@ -86,6 +89,16 @@ class GeneralInformationViewController: UIViewController {
             DispatchQueue.main.async {
                 self.getGeneralInformation(refresh: false)
             }
+        }
+    }
+    
+    private func loadItems() {
+        let request: NSFetchRequest<GeneralInformationCore> = GeneralInformationCore.fetchRequest()
+        
+        do {
+            giCoreArray = try context.fetch(request)
+        } catch {
+            print("Error fetching general information data for core - \(error)")
         }
     }
 }
