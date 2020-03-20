@@ -116,8 +116,10 @@ extension GeneralInformationViewController: UITableViewDelegate {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! GeneralInformationDetailViewController
+        if segue.identifier == "GeneralInformationDetailSegue" {
+            let destinationVC = segue.destination as! GeneralInformationDetailViewController
 
-        destinationVC.generalInfo = selectedGI
+            destinationVC.generalInfo = selectedGI
+        }
     }
 }
