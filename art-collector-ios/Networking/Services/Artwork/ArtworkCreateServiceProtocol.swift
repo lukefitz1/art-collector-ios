@@ -36,7 +36,6 @@ protocol ArtworkCreateServiceProtocol {
                        reviewedDate: String,
                        provenance: String,
                        customTitle: String,
-                       additionalInfo: String,
                        customerId: String,
                        collectionId: String,
                        artistId: String,

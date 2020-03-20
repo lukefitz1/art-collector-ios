@@ -55,13 +55,7 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         let projectNotes = projectNotesTextView.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-        let entity = NSEntityDescription.entity(forEntityName: "CustomerCore", in: context)!
-        let newGI = NSManagedObject(entity: entity, insertInto: context)
-        newGI.setValue(UUID(), forKey: "id")
-        newGI.setValue(createDate, forKey: "createdAt")
-        newGI.setValue(createDate, forKey: "updatedAt")
-        
-//        saveNewItem()
+//        createCustomerCoreData(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes, createdAt: createDate)
         createCustomer(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
     }
 
@@ -90,11 +84,31 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         }
     }
     
+    private func createCustomerCoreData(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String, createdAt: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "CustomerCore", in: context)!
+        let newCustomer = NSManagedObject(entity: entity, insertInto: context)
+        
+        newCustomer.setValue(UUID(), forKey: "id")
+        newCustomer.setValue(createdAt, forKey: "createdAt")
+        newCustomer.setValue(createdAt, forKey: "updatedAt")
+        newCustomer.setValue(fName, forKey: "firstName")
+        newCustomer.setValue(lName, forKey: "lastName")
+        newCustomer.setValue(email, forKey: "emailAddress")
+        newCustomer.setValue(phone, forKey: "phoneNumber")
+        newCustomer.setValue(street, forKey: "streetAddress")
+        newCustomer.setValue(city, forKey: "city")
+        newCustomer.setValue(zip, forKey: "zip")
+        newCustomer.setValue(referred, forKey: "referredBy")
+        newCustomer.setValue(notes, forKey: "projectNotes")
+        
+        saveNewItem()
+    }
+    
     private func saveNewItem() {
         do {
             try context.save()
         } catch {
-            print("Error saving the new GI to database = \(error)")
+            print("Error saving the new customer to database = \(error)")
         }
     }
 }

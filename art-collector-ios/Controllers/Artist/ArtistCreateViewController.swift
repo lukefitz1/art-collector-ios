@@ -39,13 +39,7 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         let biography = biographyTextField.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-        let entity = NSEntityDescription.entity(forEntityName: "ArtistCore", in: context)!
-        let newGI = NSManagedObject(entity: entity, insertInto: context)
-        newGI.setValue(UUID(), forKey: "id")
-        newGI.setValue(createDate, forKey: "createdAt")
-        newGI.setValue(createDate, forKey: "updatedAt")
-        
-//        saveNewItem()
+//        createArtistCoreData(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography, createdAt: createDate)
         createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
     }
     
@@ -66,7 +60,6 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
                 
                 if let artist = artistData {
 //                    self.artists = artists
-                    print(artist)
                     self.progressHUD.hide(onView: self.view, animated: true)
                     self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
                 }
@@ -74,11 +67,27 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         }
     }
     
+    private func createArtistCoreData(fName: String, lName: String, addInfo: String, bio: String, createdAt: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "ArtistCore", in: context)!
+        let newArtist = NSManagedObject(entity: entity, insertInto: context)
+        
+        newArtist.setValue(UUID(), forKey: "id")
+        newArtist.setValue(createdAt, forKey: "createdAt")
+        newArtist.setValue(createdAt, forKey: "updatedAt")
+        newArtist.setValue(fName, forKey: "firstName")
+        newArtist.setValue(lName, forKey: "lastName")
+        newArtist.setValue(bio, forKey: "biography")
+        newArtist.setValue(addInfo, forKey: "additionalInfo")
+        newArtist.setValue("", forKey: "artistImage")
+        
+        saveNewItem()
+    }
+    
     private func saveNewItem() {
         do {
             try context.save()
         } catch {
-            print("Error saving the new GI to database = \(error)")
+            print("Error saving the new artist to database = \(error)")
         }
     }
 }

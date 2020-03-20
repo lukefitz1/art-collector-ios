@@ -233,7 +233,6 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let reviewedDate = reviewedDateTextField.text ?? ""
         let provenance = provenanceTextView.text ?? ""
         let customTitle = customTitleTextField.text ?? ""
-        let additionalInfo = additionalInfoTextView.text ?? ""
         let artistId = selectedArtistId ?? ""
         let generalInfoId = selectedGeneralInfoId ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
@@ -245,23 +244,18 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             showGeneralInfo = false
         }
         
-        let entity = NSEntityDescription.entity(forEntityName: "ArtworkCore", in: context)!
-        let newGI = NSManagedObject(entity: entity, insertInto: context)
-        newGI.setValue(UUID(), forKey: "id")
-        newGI.setValue(createDate, forKey: "createdAt")
-        newGI.setValue(createDate, forKey: "updatedAt")
+//        createArtworkCoreData(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo, createdAt: createDate)
         
-//        saveNewItem()
-        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo)
+        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo)
     }
     
-    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, additionalInfo: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool) {
+    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool) {
         
         let artworkCreateService = ArtworkCreateService()
         
         addNewArtworkBtn.isEnabled = false
         progressHUD.show(onView: view, animated: true)
-        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo) { [weak self] artworkData, error in
+        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo) { [weak self] artworkData, error in
             guard let self = self else {
                 return
             }
@@ -373,6 +367,50 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             
             self.generalInfoLabel.text = infoLabel
         }
+    }
+    
+    private func createArtworkCoreData(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool, createdAt: String) {
+        
+        let entity = NSEntityDescription.entity(forEntityName: "ArtworkCore", in: context)!
+        let newArt = NSManagedObject(entity: entity, insertInto: context)
+        
+        newArt.setValue(UUID(), forKey: "id")
+        newArt.setValue(createdAt, forKey: "createdAt")
+        newArt.setValue(createdAt, forKey: "updatedAt")
+        newArt.setValue(objectId, forKey: "objectId")
+        newArt.setValue(artType, forKey: "artType")
+        newArt.setValue(title, forKey: "title")
+        newArt.setValue(date, forKey: "date")
+        newArt.setValue(medium, forKey: "medium")
+        newArt.setValue(description, forKey: "artDescription")
+        newArt.setValue(mainImage, forKey: "image")
+        newArt.setValue(dimensions, forKey: "dimensions")
+        newArt.setValue(frameDimensions, forKey: "frameDimensions")
+        newArt.setValue(condition, forKey: "condition")
+        newArt.setValue(currentLocation, forKey: "currentLocation")
+        newArt.setValue(source, forKey: "source")
+        newArt.setValue(dateAcquiredLabel, forKey: "dateAcquiredLabel")
+        newArt.setValue(dateAcquired, forKey: "dateAcquired")
+        newArt.setValue(amountPaid, forKey: "amountPaid")
+        newArt.setValue(currentValue, forKey: "currentValue")
+        newArt.setValue(notes, forKey: "notes")
+        newArt.setValue(notesImage, forKey: "notesImage")
+        newArt.setValue(notesImageTwo, forKey: "notesImageTwo")
+        newArt.setValue(additionalInfoLabel, forKey: "additionalInfoLabel")
+        newArt.setValue(additionalInfoText, forKey: "additionalInfoText")
+        newArt.setValue(additionalInfoImage, forKey: "additionalInfoImage")
+        newArt.setValue(additionalInfoImageTwo, forKey: "additionalInfoImageTwo")
+        newArt.setValue(reviewedBy, forKey: "reviewedBy")
+        newArt.setValue(reviewedDate, forKey: "reviewedDate")
+        newArt.setValue(provenance, forKey: "provenance")
+        newArt.setValue(customTitle, forKey: "customTitle")
+        newArt.setValue(customerId, forKey: "customerId")
+        newArt.setValue(collectionId, forKey: "collectionId")
+        newArt.setValue(artistId, forKey: "artistId")
+        newArt.setValue(generalInformationId, forKey: "generalInformationId")
+        newArt.setValue(showGeneralInfo, forKey: "showGeneralInfo")
+        
+        saveNewItem()
     }
     
     private func saveNewItem() {

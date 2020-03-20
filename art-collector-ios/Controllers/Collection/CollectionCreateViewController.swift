@@ -34,13 +34,7 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
         let collIdentifier = collectionIdentifierTextField.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-        let entity = NSEntityDescription.entity(forEntityName: "CollectionCore", in: context)!
-        let newGI = NSManagedObject(entity: entity, insertInto: context)
-        newGI.setValue(UUID(), forKey: "id")
-        newGI.setValue(createDate, forKey: "createdAt")
-        newGI.setValue(createDate, forKey: "updatedAt")
-        
-//        saveNewItem()
+//         createCollectionCoreData(name: collName, year: collYear, identifier: collIdentifier, createdAt: createDate)
         createCollection(name: collName, year: collYear, identifier: collIdentifier)
     }
     
@@ -67,11 +61,26 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    private func createCollectionCoreData(name: String, year: String, identifier: String, createdAt: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "CollectionCore", in: context)!
+        let newCollection = NSManagedObject(entity: entity, insertInto: context)
+        
+        newCollection.setValue(UUID(), forKey: "id")
+        newCollection.setValue(createdAt, forKey: "createdAt")
+        newCollection.setValue(createdAt, forKey: "updatedAt")
+        newCollection.setValue(name, forKey: "collectionName")
+        newCollection.setValue(year, forKey: "year")
+        newCollection.setValue(identifier, forKey: "identifier")
+        newCollection.setValue(customerId, forKey: "customerId")
+        
+        saveNewItem()
+    }
+    
     private func saveNewItem() {
         do {
             try context.save()
         } catch {
-            print("Error saving the new GI to database = \(error)")
+            print("Error saving the new collection to database = \(error)")
         }
     }
 }

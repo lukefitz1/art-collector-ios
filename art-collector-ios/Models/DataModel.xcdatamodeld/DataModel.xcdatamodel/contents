@@ -31,6 +31,7 @@
         <attribute name="dateAcquiredLabel" optional="YES" attributeType="String"/>
         <attribute name="dimensions" optional="YES" attributeType="String"/>
         <attribute name="frameDimensions" optional="YES" attributeType="String"/>
+        <attribute name="generalInformationId" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="medium" optional="YES" attributeType="String"/>
@@ -82,6 +83,6 @@
         <element name="ArtistCore" positionX="-63" positionY="18" width="128" height="163"/>
         <element name="CustomerCore" positionX="-54" positionY="27" width="128" height="238"/>
         <element name="CollectionCore" positionX="-36" positionY="36" width="128" height="148"/>
-        <element name="ArtworkCore" positionX="-18" positionY="45" width="128" height="553"/>
+        <element name="ArtworkCore" positionX="-18" positionY="45" width="128" height="568"/>
     </elements>
 </model>

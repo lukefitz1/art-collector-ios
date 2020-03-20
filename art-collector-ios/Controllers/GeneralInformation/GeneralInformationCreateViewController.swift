@@ -38,16 +38,7 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         print("Information label: \(informationLabel)")
         print("Information label: \(information)")
         
-        let entity = NSEntityDescription.entity(forEntityName: "GeneralInformationCore", in: context)!
-        let newGI = NSManagedObject(entity: entity, insertInto: context)
-        
-        newGI.setValue(UUID(), forKey: "id")
-        newGI.setValue(createDate, forKey: "createdAt")
-        newGI.setValue(createDate, forKey: "updatedAt")
-        newGI.setValue(information, forKey: "information")
-        newGI.setValue(informationLabel, forKey: "informationLabel")
-        
-//        saveNewItem()
+//        createArtistCoreData(infoLabel: informationLabel, info: information, createdAt: createDate)
         createGeneralInformation(infoLabel: informationLabel, info: information)
     }
     
@@ -73,6 +64,19 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
                 }
             }
         }
+    }
+    
+    private func createArtistCoreData(infoLabel: String, info: String, createdAt: String) {
+        let entity = NSEntityDescription.entity(forEntityName: "GeneralInformationCore", in: context)!
+        let newGI = NSManagedObject(entity: entity, insertInto: context)
+        
+        newGI.setValue(UUID(), forKey: "id")
+        newGI.setValue(createdAt, forKey: "createdAt")
+        newGI.setValue(createdAt, forKey: "updatedAt")
+        newGI.setValue(info, forKey: "information")
+        newGI.setValue(infoLabel, forKey: "informationLabel")
+        
+        saveNewItem()
     }
     
     private func saveNewItem() {
