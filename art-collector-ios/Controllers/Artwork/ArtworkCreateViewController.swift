@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -40,6 +41,8 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var addNewArtworkBtn: UIButton!
     @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var generalInfoLabel: UILabel!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     let imagePicker = UIImagePickerController()
     let notesImagePicker = UIImagePickerController()
@@ -233,6 +236,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         let additionalInfo = additionalInfoTextView.text ?? ""
         let artistId = selectedArtistId ?? ""
         let generalInfoId = selectedGeneralInfoId ?? ""
+        let createDate = DateUtility.getFormattedDateAsString()
         
         var showGeneralInfo = false
         if generalInfoId != "" {
@@ -241,6 +245,13 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             showGeneralInfo = false
         }
         
+        let entity = NSEntityDescription.entity(forEntityName: "ArtworkCore", in: context)!
+        let newGI = NSManagedObject(entity: entity, insertInto: context)
+        newGI.setValue(UUID(), forKey: "id")
+        newGI.setValue(createDate, forKey: "createdAt")
+        newGI.setValue(createDate, forKey: "updatedAt")
+        
+//        saveNewItem()
         createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, additionalInfo: additionalInfo, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo)
     }
     
@@ -361,6 +372,14 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             let infoLabel = gi.infoLabel ?? ""
             
             self.generalInfoLabel.text = infoLabel
+        }
+    }
+    
+    private func saveNewItem() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving the new GI to database = \(error)")
         }
     }
 }

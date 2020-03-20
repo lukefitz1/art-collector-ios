@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -19,6 +20,8 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var referredByTextField: UITextField!
     @IBOutlet weak var projectNotesTextView: UITextView!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
@@ -50,11 +53,16 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         let zip = zipTextField.text ?? ""
         let referredBy = referredByTextField.text ?? ""
         let projectNotes = projectNotesTextView.text ?? ""
-
-        print("First name: \(firstName) - Last name: \(lastName) - Email: \(email) - Phone: \(phone) - Street Address: \(streetAddress) - City: \(city) - Zip: \(zip) - Referred by: \(referredBy)")
-
+        let createDate = DateUtility.getFormattedDateAsString()
+        
+        let entity = NSEntityDescription.entity(forEntityName: "CustomerCore", in: context)!
+        let newGI = NSManagedObject(entity: entity, insertInto: context)
+        newGI.setValue(UUID(), forKey: "id")
+        newGI.setValue(createDate, forKey: "createdAt")
+        newGI.setValue(createDate, forKey: "updatedAt")
+        
+//        saveNewItem()
         createCustomer(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
-//        self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
     }
 
     private func createCustomer(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
@@ -79,6 +87,14 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
                     self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
                 }
             }
+        }
+    }
+    
+    private func saveNewItem() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving the new GI to database = \(error)")
         }
     }
 }

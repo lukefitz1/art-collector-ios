@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
@@ -14,6 +15,8 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var additionalInfoTextField: UITextField!
     @IBOutlet weak var biographyTextField: UITextView!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
@@ -30,12 +33,19 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
     }
     
     @IBAction func newArtistBtnPressed(_ sender: Any) {
-        
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
         let additionalInfo = additionalInfoTextField.text ?? ""
         let biography = biographyTextField.text ?? ""
+        let createDate = DateUtility.getFormattedDateAsString()
         
+        let entity = NSEntityDescription.entity(forEntityName: "ArtistCore", in: context)!
+        let newGI = NSManagedObject(entity: entity, insertInto: context)
+        newGI.setValue(UUID(), forKey: "id")
+        newGI.setValue(createDate, forKey: "createdAt")
+        newGI.setValue(createDate, forKey: "updatedAt")
+        
+//        saveNewItem()
         createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
     }
     
@@ -61,6 +71,14 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
                     self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
                 }
             }
+        }
+    }
+    
+    private func saveNewItem() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving the new GI to database = \(error)")
         }
     }
 }

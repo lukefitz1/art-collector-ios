@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
     
@@ -14,8 +15,9 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var collectionYearTextField: UITextField!
     @IBOutlet weak var collectionIdentifierTextField: UITextField!
     
-    var customerId: String = ""
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var customerId: String = ""
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     override func viewDidLoad() {
@@ -30,7 +32,15 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
         let collName = collectionNameTextField.text ?? ""
         let collYear = collectionYearTextField.text ?? ""
         let collIdentifier = collectionIdentifierTextField.text ?? ""
+        let createDate = DateUtility.getFormattedDateAsString()
         
+        let entity = NSEntityDescription.entity(forEntityName: "CollectionCore", in: context)!
+        let newGI = NSManagedObject(entity: entity, insertInto: context)
+        newGI.setValue(UUID(), forKey: "id")
+        newGI.setValue(createDate, forKey: "createdAt")
+        newGI.setValue(createDate, forKey: "updatedAt")
+        
+//        saveNewItem()
         createCollection(name: collName, year: collYear, identifier: collIdentifier)
     }
     
@@ -54,6 +64,14 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
                     self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
                 }
             }
+        }
+    }
+    
+    private func saveNewItem() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving the new GI to database = \(error)")
         }
     }
 }
