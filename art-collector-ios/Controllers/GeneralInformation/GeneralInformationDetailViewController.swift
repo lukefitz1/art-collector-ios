@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import CoreData
 
 class GeneralInformationDetailViewController: UIViewController {
     
     @IBOutlet weak var giLabel: UILabel!
     @IBOutlet weak var giText: UILabel!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var generalInfo: GeneralInformation?
+    var generalInfoCore: GeneralInformationCore?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,8 +29,11 @@ class GeneralInformationDetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
-        giLabel.text = generalInfo?.infoLabel
-        giText.text = generalInfo?.information
+//        giLabel.text = generalInfo?.infoLabel
+//        giText.text = generalInfo?.information
+        
+        giLabel.text = generalInfoCore?.informationLabel
+        giText.text = generalInfoCore?.information
     }
     
     @objc
@@ -37,8 +44,11 @@ class GeneralInformationDetailViewController: UIViewController {
     @IBAction func unwindToGeneralInformationDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                if let gi = self.generalInfo?.id {
-                    self.getGeneralInfo(giId: gi)
+//                if let gi = self.generalInfo?.id {
+//                    self.getGeneralInfo(giId: gi)
+//                }
+                if let gi = self.generalInfoCore?.id {
+                    self.getGeneralInfoCore(id: gi)
                 }
             }
         }
@@ -48,7 +58,8 @@ class GeneralInformationDetailViewController: UIViewController {
        if segue.identifier == "EditGeneralInformationSegue" {
            let destinationVC = segue.destination as! GeneralInformationEditViewController
 
-           destinationVC.generalInfo = generalInfo
+//           destinationVC.generalInfo = generalInfo
+        destinationVC.generalInfoCore = generalInfoCore
        }
    }
     
@@ -71,6 +82,27 @@ class GeneralInformationDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func getGeneralInfoCore(id: UUID) {
+        let request: NSFetchRequest<GeneralInformationCore> = GeneralInformationCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let gi = try context.fetch(request)
+//            let updatedGI = gi[0] as NSManagedObject
+            let updatedGI2 = gi[0] as GeneralInformationCore
+            refreshGeneralInfoCore(gi: updatedGI2)
+        } catch {
+            print("Error getting updated general information = \(error)")
+        }
+        self.progressHUD.hide(onView: self.view, animated: true)
+    }
+    
+    private func refreshGeneralInfoCore(gi: GeneralInformationCore) {
+        giLabel.text = gi.informationLabel
+        giText.text = gi.information
     }
     
     private func refreshGeneralInfo(gi: GeneralInformation) {

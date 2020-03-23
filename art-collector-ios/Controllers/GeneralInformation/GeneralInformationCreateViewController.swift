@@ -38,8 +38,8 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         print("Information label: \(informationLabel)")
         print("Information label: \(information)")
         
-//        createArtistCoreData(infoLabel: informationLabel, info: information, createdAt: createDate)
-        createGeneralInformation(infoLabel: informationLabel, info: information)
+        createGeneralInformationCoreData(infoLabel: informationLabel, info: information, createdAt: createDate)
+//        createGeneralInformation(infoLabel: informationLabel, info: information)
     }
     
     private func createGeneralInformation(infoLabel: String, info: String) {
@@ -66,7 +66,7 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         }
     }
     
-    private func createArtistCoreData(infoLabel: String, info: String, createdAt: String) {
+    private func createGeneralInformationCoreData(infoLabel: String, info: String, createdAt: String) {
         let entity = NSEntityDescription.entity(forEntityName: "GeneralInformationCore", in: context)!
         let newGI = NSManagedObject(entity: entity, insertInto: context)
         

@@ -718,7 +718,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aQI-g8-R3T">
-                                <rect key="frame" x="0.0" y="166" width="414" height="647"/>
+                                <rect key="frame" x="0.0" y="203" width="414" height="610"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GeneralInformationCell" id="noc-Ro-nJ1">
@@ -738,15 +738,24 @@
                                     <segue destination="K6L-jR-6LE" kind="presentation" id="RvE-RX-XzN"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hq-iH-dox">
+                                <rect key="frame" x="172" y="148" width="70" height="30"/>
+                                <state key="normal" title="Sync Data"/>
+                                <connections>
+                                    <action selector="syncGeneralInformatioData:" destination="h3c-E8-cp9" eventType="touchUpInside" id="OJh-Vo-GiD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="aQI-g8-R3T" firstAttribute="leading" secondItem="AZU-tZ-Nxv" secondAttribute="leading" id="0A0-n8-w2T"/>
-                            <constraint firstItem="aQI-g8-R3T" firstAttribute="top" secondItem="md8-GZ-Bpi" secondAttribute="bottom" constant="26" id="MTw-wh-uvJ"/>
                             <constraint firstItem="aQI-g8-R3T" firstAttribute="trailing" secondItem="AZU-tZ-Nxv" secondAttribute="trailing" id="aSY-ZL-cu9"/>
                             <constraint firstItem="md8-GZ-Bpi" firstAttribute="centerX" secondItem="AZU-tZ-Nxv" secondAttribute="centerX" id="bJ9-2J-Biy"/>
+                            <constraint firstItem="3hq-iH-dox" firstAttribute="centerX" secondItem="AZU-tZ-Nxv" secondAttribute="centerX" id="djr-TR-r96"/>
                             <constraint firstItem="md8-GZ-Bpi" firstAttribute="top" secondItem="AZU-tZ-Nxv" secondAttribute="top" constant="22" id="fpe-1h-QcY"/>
                             <constraint firstItem="aQI-g8-R3T" firstAttribute="bottom" secondItem="AZU-tZ-Nxv" secondAttribute="bottom" id="jVQ-Zl-vUc"/>
+                            <constraint firstItem="3hq-iH-dox" firstAttribute="top" secondItem="md8-GZ-Bpi" secondAttribute="bottom" constant="8" id="nis-2M-r4B"/>
+                            <constraint firstItem="aQI-g8-R3T" firstAttribute="top" secondItem="3hq-iH-dox" secondAttribute="bottom" constant="25" id="s9I-Dr-otG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AZU-tZ-Nxv"/>
                     </view>

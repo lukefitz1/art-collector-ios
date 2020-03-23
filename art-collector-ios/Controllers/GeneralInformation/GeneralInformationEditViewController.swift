@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class GeneralInformationEditViewController: UIViewController {
     
     var generalInfo: GeneralInformation?
+    var generalInfoCore: GeneralInformationCore?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var informationLabelTextField: UITextField!
     @IBOutlet weak var informationTextView: UITextView!
@@ -19,8 +23,11 @@ class GeneralInformationEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        informationLabelTextField.text = generalInfo?.infoLabel
-        informationTextView.text = generalInfo?.information
+//        informationLabelTextField.text = generalInfo?.infoLabel
+//        informationTextView.text = generalInfo?.information
+        
+        informationLabelTextField.text = generalInfoCore?.informationLabel
+        informationTextView.text = generalInfoCore?.information
         
         informationTextView.layer.borderWidth = 0.5
         informationTextView.layer.borderColor = UIColor.lightGray.cgColor
@@ -29,9 +36,31 @@ class GeneralInformationEditViewController: UIViewController {
     @IBAction func updateGIBtnPressed(_ sender: Any) {
         let informationLabel = informationLabelTextField.text ?? ""
         let information = informationTextView.text ?? ""
-        let generalInfoId = generalInfo?.id ?? ""
+//        let generalInfoId = generalInfo?.id ?? ""
+        guard let generalInfoCoreId = generalInfoCore?.id else { return }
+        let updateDate = DateUtility.getFormattedDateAsString()
         
-        updateGeneralInformation(giId: generalInfoId, infoLabel: informationLabel, info: information)
+        updateArtistCoreData(id: generalInfoCoreId, infoLabel: informationLabel, info: information, updatedAt: updateDate)
+//        updateGeneralInformation(giId: generalInfoId, infoLabel: informationLabel, info: information)
+    }
+    
+    private func updateArtistCoreData(id: UUID, infoLabel: String, info: String, updatedAt: String) {
+        let request: NSFetchRequest<GeneralInformationCore> = GeneralInformationCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let gi = try context.fetch(request)
+            
+            let updateGI = gi[0] as NSManagedObject
+            updateGI.setValue(updatedAt, forKey: "updatedAt")
+            updateGI.setValue(info, forKey: "information")
+            updateGI.setValue(infoLabel, forKey: "informationLabel")
+            
+        } catch {
+            print("Error updating general information = \(error)")
+        }
+        
+        saveUpdatedItem()
     }
     
     private func updateGeneralInformation(giId: String, infoLabel: String, info: String) {
@@ -54,6 +83,16 @@ class GeneralInformationEditViewController: UIViewController {
                     self.performSegue(withIdentifier: "unwindToGeneralInformationDetailSegue", sender: self)
                 }
             }
+        }
+    }
+    
+    private func saveUpdatedItem() {
+        do {
+            try context.save()
+            self.progressHUD.hide(onView: self.view, animated: true)
+            self.performSegue(withIdentifier: "unwindToGeneralInformationDetailSegue", sender: self)
+        } catch {
+            print("Error saving the updated GI to database = \(error)")
         }
     }
 }
