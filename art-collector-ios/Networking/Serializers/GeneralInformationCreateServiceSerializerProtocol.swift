@@ -10,8 +10,11 @@ import Foundation
 import Alamofire
 
 protocol GeneralInformationCreateServiceSerializerProtocol {
-    func serialize(infoLabel: String,
-                   info: String) -> Parameters
+    func serialize(id: String,
+                   infoLabel: String,
+                   info: String,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters
 }
 
 extension GeneralInformationCreateServiceSerializer: GeneralInformationCreateServiceSerializerProtocol {}

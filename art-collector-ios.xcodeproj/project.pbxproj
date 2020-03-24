@@ -14,6 +14,9 @@
 		9B144DAD23A29FED00E0FE85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B144DAB23A29FED00E0FE85 /* Main.storyboard */; };
 		9B144DAF23A29FEF00E0FE85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B144DAE23A29FEF00E0FE85 /* Assets.xcassets */; };
 		9B144DB223A29FEF00E0FE85 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B144DB023A29FEF00E0FE85 /* LaunchScreen.storyboard */; };
+		9B16D374242A776200593898 /* GeneralInformationDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16D373242A776200593898 /* GeneralInformationDataSync.swift */; };
+		9B16D376242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16D375242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift */; };
+		9B16D378242A891100593898 /* GeneralInformationEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16D377242A891100593898 /* GeneralInformationEditServiceSerializer.swift */; };
 		9B222A1123D265F400A2A8D0 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1023D265F400A2A8D0 /* ArtistsViewController.swift */; };
 		9B222A1323D26B6500A2A8D0 /* ArtistsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1223D26B6500A2A8D0 /* ArtistsService.swift */; };
 		9B222A1523D26BA600A2A8D0 /* ArtistsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1423D26BA600A2A8D0 /* ArtistsServiceProtocol.swift */; };
@@ -136,6 +139,9 @@
 		9B144DAE23A29FEF00E0FE85 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B144DB123A29FEF00E0FE85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B144DB323A29FEF00E0FE85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B16D373242A776200593898 /* GeneralInformationDataSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationDataSync.swift; sourceTree = "<group>"; };
+		9B16D375242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationEditServiceSerializerProtocol.swift; sourceTree = "<group>"; };
+		9B16D377242A891100593898 /* GeneralInformationEditServiceSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationEditServiceSerializer.swift; sourceTree = "<group>"; };
 		9B222A1023D265F400A2A8D0 /* ArtistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsViewController.swift; sourceTree = "<group>"; };
 		9B222A1223D26B6500A2A8D0 /* ArtistsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsService.swift; sourceTree = "<group>"; };
 		9B222A1423D26BA600A2A8D0 /* ArtistsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsServiceProtocol.swift; sourceTree = "<group>"; };
@@ -406,6 +412,7 @@
 				9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */,
 				9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */,
 				9B937C49241EC43D00AFEE3B /* GeneralInformationListViewController.swift */,
+				9B16D373242A776200593898 /* GeneralInformationDataSync.swift */,
 			);
 			path = GeneralInformation;
 			sourceTree = "<group>";
@@ -606,6 +613,8 @@
 				9B96E34623E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift */,
 				9B40784323F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift */,
 				9B40784523F097C6002E4398 /* CollectionCreateServiceSerializer.swift */,
+				9B16D375242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift */,
+				9B16D377242A891100593898 /* GeneralInformationEditServiceSerializer.swift */,
 			);
 			path = Serializers;
 			sourceTree = "<group>";
@@ -735,6 +744,7 @@
 				9B96E34723E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift in Sources */,
 				9BDE72322410967700307EFC /* ArtistEditService.swift in Sources */,
 				9BDE72502410AF7000307EFC /* GetArtworkServiceProtocol.swift in Sources */,
+				9B16D378242A891100593898 /* GeneralInformationEditServiceSerializer.swift in Sources */,
 				9B7A475F23D5E462006D1BA4 /* GeneralInformationCreateServiceSerializer.swift in Sources */,
 				9B222A1523D26BA600A2A8D0 /* ArtistsServiceProtocol.swift in Sources */,
 				9B937C4A241EC43D00AFEE3B /* GeneralInformationListViewController.swift in Sources */,
@@ -779,6 +789,7 @@
 				9BD34DB824246D7B00B9E47C /* DateUtility.swift in Sources */,
 				9BDB599E23E0BCA100AB8C20 /* CustomerCreateServiceProtocol.swift in Sources */,
 				9B222A1123D265F400A2A8D0 /* ArtistsViewController.swift in Sources */,
+				9B16D374242A776200593898 /* GeneralInformationDataSync.swift in Sources */,
 				9BF0F98E23B64F7F009ACE3E /* LoginService.swift in Sources */,
 				9B40784A23F0A081002E4398 /* GetCustomerServiceProtocol.swift in Sources */,
 				9BDB59A623E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift in Sources */,
@@ -793,6 +804,7 @@
 				9B267D6E23BA713900203D3B /* CustomersServiceDeserializer.swift in Sources */,
 				9BF12F2223D3B80800BE8AA8 /* ArtistCreateServiceProtocol.swift in Sources */,
 				9BDE72462410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift in Sources */,
+				9B16D376242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift in Sources */,
 				9B40784423F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift in Sources */,
 				9BF12F2023D3B7F800BE8AA8 /* ArtistCreateService.swift in Sources */,
 				9BDE72442410ABEC00307EFC /* GetCollectionServiceProtocol.swift in Sources */,

@@ -20,15 +20,18 @@ struct GeneralInformationCreateService {
         self.serializer = serializer
     }
     
-    func createGeneralInformation(infoLabel: String,
+    func createGeneralInformation(id: String,
+                                  infoLabel: String,
                                   info: String,
+                                  createdAt: String,
+                                  updatedAt: String,
                                   completionHandler: ((GeneralInformation?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint()
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
-        let parameters = buildParameters(informationLabel: infoLabel, information: info)
+        let parameters = buildParameters(id: id, informationLabel: infoLabel, information: info, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : GeneralInformation?
         
@@ -70,10 +73,13 @@ struct GeneralInformationCreateService {
         return URL(string: "\(ApiClient.baseUrl)general_informations")!
     }
     
-    private func buildParameters(informationLabel: String,
-                                 information: String) -> Parameters {
+    private func buildParameters(id: String,
+                                 informationLabel: String,
+                                 information: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(infoLabel: informationLabel, info: information)
+        let parameters = serializer.serialize(id: id, infoLabel: informationLabel, info: information, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }

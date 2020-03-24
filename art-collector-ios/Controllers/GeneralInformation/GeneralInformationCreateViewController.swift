@@ -35,41 +35,14 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         let information = informationTextView.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-        print("Information label: \(informationLabel)")
-        print("Information label: \(information)")
-        
         createGeneralInformationCoreData(infoLabel: informationLabel, info: information, createdAt: createDate)
-//        createGeneralInformation(infoLabel: informationLabel, info: information)
-    }
-    
-    private func createGeneralInformation(infoLabel: String, info: String) {
-        let giCreateService = GeneralInformationCreateService()
-        
-        progressHUD.show(onView: view, animated: true)
-        giCreateService.createGeneralInformation(infoLabel: infoLabel, info: info) { [weak self] giData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue creating GI data (GI POST request) - \(e)")
-                return
-            } else {
-                print("SUCCESS - GI POST request")
-                
-                if let generalInfo = giData {
-                    print(generalInfo)
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
-                }
-            }
-        }
     }
     
     private func createGeneralInformationCoreData(infoLabel: String, info: String, createdAt: String) {
         let entity = NSEntityDescription.entity(forEntityName: "GeneralInformationCore", in: context)!
         let newGI = NSManagedObject(entity: entity, insertInto: context)
         
+        progressHUD.show(onView: view, animated: true)
         newGI.setValue(UUID(), forKey: "id")
         newGI.setValue(createdAt, forKey: "createdAt")
         newGI.setValue(createdAt, forKey: "updatedAt")
@@ -77,6 +50,8 @@ class GeneralInformationCreateViewController: UIViewController, UITextFieldDeleg
         newGI.setValue(infoLabel, forKey: "informationLabel")
         
         saveNewItem()
+        progressHUD.hide(onView: self.view, animated: true)
+        performSegue(withIdentifier: "unwindToGeneralInformationSegue", sender: self)
     }
     
     private func saveNewItem() {

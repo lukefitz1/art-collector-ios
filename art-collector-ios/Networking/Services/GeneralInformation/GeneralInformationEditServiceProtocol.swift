@@ -12,6 +12,8 @@ protocol GeneralInformationEditServiceProtocol {
     func updateGeneralInformation(id: String,
                                   infoLabel: String,
                                   info: String,
+                                  createdAt: String,
+                                  updatedAt: String,
                                   completionHandler: ((GeneralInformation?, Error?) -> Void)?)
 }
 

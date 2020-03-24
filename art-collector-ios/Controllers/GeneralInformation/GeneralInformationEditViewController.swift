@@ -23,9 +23,6 @@ class GeneralInformationEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        informationLabelTextField.text = generalInfo?.infoLabel
-//        informationTextView.text = generalInfo?.information
-        
         informationLabelTextField.text = generalInfoCore?.informationLabel
         informationTextView.text = generalInfoCore?.information
         
@@ -36,12 +33,10 @@ class GeneralInformationEditViewController: UIViewController {
     @IBAction func updateGIBtnPressed(_ sender: Any) {
         let informationLabel = informationLabelTextField.text ?? ""
         let information = informationTextView.text ?? ""
-//        let generalInfoId = generalInfo?.id ?? ""
         guard let generalInfoCoreId = generalInfoCore?.id else { return }
         let updateDate = DateUtility.getFormattedDateAsString()
         
         updateArtistCoreData(id: generalInfoCoreId, infoLabel: informationLabel, info: information, updatedAt: updateDate)
-//        updateGeneralInformation(giId: generalInfoId, infoLabel: informationLabel, info: information)
     }
     
     private func updateArtistCoreData(id: UUID, infoLabel: String, info: String, updatedAt: String) {
@@ -61,29 +56,6 @@ class GeneralInformationEditViewController: UIViewController {
         }
         
         saveUpdatedItem()
-    }
-    
-    private func updateGeneralInformation(giId: String, infoLabel: String, info: String) {
-        let giEditService = GeneralInformationEditService()
-        
-        progressHUD.show(onView: view, animated: true)
-        giEditService.updateGeneralInformation(id: giId, infoLabel: infoLabel, info: info) { [weak self] giData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue editing GI data (GI PUT request) - \(e)")
-                return
-            } else {
-                print("SUCCESS - GI PUT request")
-                
-                if let generalInfo = giData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.performSegue(withIdentifier: "unwindToGeneralInformationDetailSegue", sender: self)
-                }
-            }
-        }
     }
     
     private func saveUpdatedItem() {

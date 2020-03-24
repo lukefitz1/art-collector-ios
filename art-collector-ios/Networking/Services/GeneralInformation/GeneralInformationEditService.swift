@@ -11,11 +11,11 @@ import Alamofire
 
 struct GeneralInformationEditService {
     
-    let serializer: GeneralInformationCreateServiceSerializerProtocol
+    let serializer: GeneralInformationEditServiceSerializerProtocol
     let deserializer: GeneralInformationCreateServiceDeserializerProtocol
     
     init(deserializer: GeneralInformationCreateServiceDeserializerProtocol = GeneralInformationCreateServiceDeserializer(),
-         serializer: GeneralInformationCreateServiceSerializerProtocol = GeneralInformationCreateServiceSerializer()) {
+         serializer: GeneralInformationEditServiceSerializerProtocol = GeneralInformationEditServiceSerializer()) {
         self.deserializer = deserializer
         self.serializer = serializer
     }
@@ -23,13 +23,15 @@ struct GeneralInformationEditService {
     func updateGeneralInformation(id: String,
                                   infoLabel: String,
                                   info: String,
+                                  createdAt: String,
+                                  updatedAt: String,
                                   completionHandler: ((GeneralInformation?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint(giId: id)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
-        let parameters = buildParameters(informationLabel: infoLabel, information: info)
+        let parameters = buildParameters(informationLabel: infoLabel, information: info, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : GeneralInformation?
         
@@ -38,7 +40,7 @@ struct GeneralInformationEditService {
                    parameters: parameters,
                    encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in
-                    debugPrint(responseJSON)
+//                    debugPrint(responseJSON)
                     
                     switch responseJSON.result {
                     case .success:
@@ -72,9 +74,11 @@ struct GeneralInformationEditService {
     }
     
     private func buildParameters(informationLabel: String,
-                                 information: String) -> Parameters {
+                                 information: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(infoLabel: informationLabel, info: information)
+        let parameters = serializer.serialize(infoLabel: informationLabel, info: information, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }

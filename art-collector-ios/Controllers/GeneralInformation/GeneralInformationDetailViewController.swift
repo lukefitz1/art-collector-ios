@@ -29,9 +29,6 @@ class GeneralInformationDetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
-//        giLabel.text = generalInfo?.infoLabel
-//        giText.text = generalInfo?.information
-        
         giLabel.text = generalInfoCore?.informationLabel
         giText.text = generalInfoCore?.information
     }
@@ -44,9 +41,6 @@ class GeneralInformationDetailViewController: UIViewController {
     @IBAction func unwindToGeneralInformationDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-//                if let gi = self.generalInfo?.id {
-//                    self.getGeneralInfo(giId: gi)
-//                }
                 if let gi = self.generalInfoCore?.id {
                     self.getGeneralInfoCore(id: gi)
                 }
@@ -56,10 +50,9 @@ class GeneralInformationDetailViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "EditGeneralInformationSegue" {
-           let destinationVC = segue.destination as! GeneralInformationEditViewController
+            let destinationVC = segue.destination as! GeneralInformationEditViewController
 
-//           destinationVC.generalInfo = generalInfo
-        destinationVC.generalInfoCore = generalInfoCore
+            destinationVC.generalInfoCore = generalInfoCore
        }
    }
     

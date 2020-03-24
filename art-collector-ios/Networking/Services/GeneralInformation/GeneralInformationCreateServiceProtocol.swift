@@ -9,8 +9,11 @@
 import Foundation
 
 protocol GeneralInformationCreateServiceProtocol {
-    func createGeneralInformation(infoLabel: String,
+    func createGeneralInformation(id: String,
+                                  infoLabel: String,
                                   info: String,
+                                  createdAt: String,
+                                  updatedAt: String,
                                   completionHandler: ((GeneralInformation?, Error?) -> Void)?)
 }
 
