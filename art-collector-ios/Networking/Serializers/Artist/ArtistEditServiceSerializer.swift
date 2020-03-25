@@ -29,4 +29,3 @@ struct ArtistEditServiceSerializer {
         return parameters
     }
 }
-
