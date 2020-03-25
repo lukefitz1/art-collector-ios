@@ -7,16 +7,29 @@
 //
 
 import UIKit
+import CoreData
+import SystemConfiguration
 
-class ArtistsViewController: UIViewController {
+class ArtistsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var artistsTableView: UITableView!
     
     private let refreshControl = UIRefreshControl()
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://spire-art-services.herokuapp.com/")
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedArtist: Artist?
-    
+    var selectedArtistCore: ArtistCore?
+    var artistsCoreArray: [ArtistCore] = [] {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            artistsTableView.reloadData()
+        }
+    }
     var artists: [Artist] = [] {
         didSet {
             guard isViewLoaded else {
@@ -33,10 +46,8 @@ class ArtistsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.isNavigationBarHidden = false
+        
+        loadItems()
     }
     
     override func viewDidLoad() {
@@ -49,14 +60,35 @@ class ArtistsViewController: UIViewController {
         
         artistsTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshArtistsData(_:)), for: .valueChanged)
+    }
+    
+    private func checkReachable() -> Bool {
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(self.reachability!, &flags)
         
-        getArtists(refresh: false)
+        if (isNetworkReachable(with: flags))
+        {
+            print (flags)
+            if flags.contains(.isWWAN) {
+                return true
+            }
+            
+            return true
+        }
+        else if (!isNetworkReachable(with: flags)) {
+            return false
+        }
+        return false
     }
-    
-    @objc func newArtist() {
-        print("Button pressed")
+
+    private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
     }
-    
+
     func getArtists(refresh: Bool) {
         artists = []
         let artistService = ArtistsService()
@@ -92,32 +124,43 @@ class ArtistsViewController: UIViewController {
     @IBAction func unwindToArtistsViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.getArtists(refresh: false)
+//                self.getArtists(refresh: false)
+                self.loadItems()
             }
         }
     }
-}
-
-extension ArtistsViewController: UITableViewDataSource {
+    
+    @objc func newArtist() {
+        print("Button pressed")
+    }
+    
+    func loadItems() {
+        let request: NSFetchRequest<ArtistCore> = ArtistCore.fetchRequest()
+        
+        do {
+            artistsCoreArray = try context.fetch(request)
+        } catch {
+            print("Error fetching artist data from core - \(error)")
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return artists.count
+        return artistsCoreArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArtistCell", for: indexPath)
         
-        cell.textLabel?.text = "\(artists[indexPath.row].firstName ?? "test") \(artists[indexPath.row].lastName ?? "test")"
+        cell.textLabel?.text = "\(artistsCoreArray[indexPath.row].firstName ?? "test") \(artistsCoreArray[indexPath.row].lastName ?? "test")"
         return cell
     }
-}
-
-extension ArtistsViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let artist = artists[indexPath.row]
-        selectedArtist = artist
+        let artist = artistsCoreArray[indexPath.row]
+        selectedArtistCore = artist
 
         let artistDetailViewController = ArtistDetailViewController()
-        artistDetailViewController.artist = selectedArtist
+        artistDetailViewController.artistCore = selectedArtistCore
 
         self.performSegue(withIdentifier: "ArtistDetailSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -127,7 +170,7 @@ extension ArtistsViewController: UITableViewDelegate {
         if segue.identifier == "ArtistDetailSegue" {
             let destinationVC = segue.destination as! ArtistDetailViewController
 
-            destinationVC.artist = selectedArtist
+            destinationVC.artistCore = selectedArtistCore
         }
     }
 }

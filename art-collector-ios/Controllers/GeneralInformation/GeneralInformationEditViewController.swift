@@ -36,10 +36,10 @@ class GeneralInformationEditViewController: UIViewController {
         guard let generalInfoCoreId = generalInfoCore?.id else { return }
         let updateDate = DateUtility.getFormattedDateAsString()
         
-        updateArtistCoreData(id: generalInfoCoreId, infoLabel: informationLabel, info: information, updatedAt: updateDate)
+        updateGeneralInformationCoreData(id: generalInfoCoreId, infoLabel: informationLabel, info: information, updatedAt: updateDate)
     }
     
-    private func updateArtistCoreData(id: UUID, infoLabel: String, info: String, updatedAt: String) {
+    private func updateGeneralInformationCoreData(id: UUID, infoLabel: String, info: String, updatedAt: String) {
         let request: NSFetchRequest<GeneralInformationCore> = GeneralInformationCore.fetchRequest()
         request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
         progressHUD.show(onView: view, animated: true)

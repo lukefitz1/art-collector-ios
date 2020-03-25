@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-//import Reachability
 import SystemConfiguration
 
 class GeneralInformationViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -49,7 +48,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationController?.isNavigationBarHidden = true
         
         loadItems()
@@ -66,8 +64,8 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
         refreshControl.addTarget(self, action: #selector(refreshGeneralInformationData(_:)), for: .valueChanged)
     }
     
-    private func checkReachable() -> Bool
-    {
+    private func checkReachable() -> Bool {
+        
         var flags = SCNetworkReachabilityFlags()
         SCNetworkReachabilityGetFlags(self.reachability!, &flags)
         
@@ -153,7 +151,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return generalInformation.count
         return giCoreArray.count
     }
     

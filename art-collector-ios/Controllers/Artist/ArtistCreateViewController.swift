@@ -39,38 +39,15 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         let biography = biographyTextField.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-//        createArtistCoreData(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography, createdAt: createDate)
-        createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
-    }
-    
-    private func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
-        let artistCreateService = ArtistCreateService()
-        
-        progressHUD.show(onView: view, animated: true)
-        artistCreateService.createArtist(fName: fName, lName: lName, bio: bio, additionalInfo: addInfo, image: "") { [weak self] artistData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue posting artist data (Artists POST request) - \(e)")
-                return
-            } else {
-                print("SUCCESS - Artists POST request")
-                
-                if let artist = artistData {
-//                    self.artists = artists
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
-                }
-            }
-        }
+        createArtistCoreData(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography, createdAt: createDate)
+//        createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
     }
     
     private func createArtistCoreData(fName: String, lName: String, addInfo: String, bio: String, createdAt: String) {
         let entity = NSEntityDescription.entity(forEntityName: "ArtistCore", in: context)!
         let newArtist = NSManagedObject(entity: entity, insertInto: context)
         
+        progressHUD.show(onView: view, animated: true)
         newArtist.setValue(UUID(), forKey: "id")
         newArtist.setValue(createdAt, forKey: "createdAt")
         newArtist.setValue(createdAt, forKey: "updatedAt")
@@ -81,6 +58,8 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         newArtist.setValue("", forKey: "artistImage")
         
         saveNewItem()
+        self.progressHUD.hide(onView: self.view, animated: true)
+        self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
     }
     
     private func saveNewItem() {
@@ -90,4 +69,27 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
             print("Error saving the new artist to database = \(error)")
         }
     }
+    
+//    private func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
+//        let artistCreateService = ArtistCreateService()
+//
+//        progressHUD.show(onView: view, animated: true)
+//        artistCreateService.createArtist(fName: fName, lName: lName, bio: bio, additionalInfo: addInfo, image: "") { [weak self] artistData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue posting artist data (Artists POST request) - \(e)")
+//                return
+//            } else {
+//                print("SUCCESS - Artists POST request")
+//
+//                if let artist = artistData {
+//                    self.progressHUD.hide(onView: self.view, animated: true)
+//                    self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
+//                }
+//            }
+//        }
+//    }
 }

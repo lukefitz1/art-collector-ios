@@ -17,6 +17,7 @@ class ArtistDetailViewController: UIViewController {
     @IBOutlet weak var biography: UILabel!
 
     var artist: Artist?
+    var artistCore: ArtistCore?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     override func viewWillAppear(_ animated: Bool) {
