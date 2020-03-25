@@ -11,11 +11,11 @@ import Alamofire
 
 struct ArtworkEditService {
     
-    let serializer: ArtworkCreateServiceSerializerProtocol
+    let serializer: ArtworkEditServiceSerializerProtocol
     let deserializer: ArtworkCreateServiceDeserializerProtocol
     
     init(deserializer: ArtworkCreateServiceDeserializerProtocol = ArtworkCreateServiceDeserializer(),
-         serializer: ArtworkCreateServiceSerializerProtocol = ArtworkCreateServiceSerializer()) {
+         serializer: ArtworkEditServiceSerializerProtocol = ArtworkEditServiceSerializer()) {
         self.deserializer = deserializer
         self.serializer = serializer
     }

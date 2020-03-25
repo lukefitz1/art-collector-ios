@@ -10,11 +10,12 @@ import Foundation
 import Alamofire
 
 struct CollectionEditService {
-    let serializer: CollectionCreateServiceSerializerProtocol
+    
+    let serializer: CollectionEditServiceSerializerProtocol
     let deserializer: CollectionCreateServiceDeserializerProtocol
     
     init(deserializer: CollectionCreateServiceDeserializerProtocol = CollectionCreateServiceDeserializer(),
-         serializer: CollectionCreateServiceSerializerProtocol = CollectionCreateServiceSerializer()) {
+         serializer: CollectionEditServiceSerializerProtocol = CollectionEditServiceSerializer()) {
         self.deserializer = deserializer
         self.serializer = serializer
     }

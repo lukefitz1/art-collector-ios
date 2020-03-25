@@ -11,11 +11,11 @@ import Alamofire
 
 struct CustomerEditService {
     
-    let serializer: CustomerCreateServiceSerializerProtocol
+    let serializer: CustomerEditServiceSerializerProtocol
     let deserializer: CustomerCreateServiceDeserializerProtocol
     
     init(deserializer: CustomerCreateServiceDeserializerProtocol = CustomerCreateServiceDeserializer(),
-         serializer: CustomerCreateServiceSerializerProtocol = CustomerCreateServiceSerializer()) {
+         serializer: CustomerEditServiceSerializerProtocol = CustomerEditServiceSerializer()) {
         self.deserializer = deserializer
         self.serializer = serializer
     }
