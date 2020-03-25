@@ -10,10 +10,13 @@ import Foundation
 import Alamofire
 
 protocol CollectionCreateServiceSerializerProtocol {
-    func serialize(name: String,
+    func serialize(id: String,
+                   name: String,
                    year: String,
                    identifier: String,
-                   customerId: String) -> Parameters
+                   customerId: String,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters
 }
 
 extension CollectionCreateServiceSerializer: CollectionCreateServiceSerializerProtocol {}

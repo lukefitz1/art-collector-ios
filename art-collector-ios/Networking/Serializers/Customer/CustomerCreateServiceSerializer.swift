@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 struct CustomerCreateServiceSerializer {
-    func serialize(firstName: String,
+    func serialize(id: String,
+                   firstName: String,
                    lastName: String,
                    email: String,
                    phone: String,
@@ -19,9 +20,12 @@ struct CustomerCreateServiceSerializer {
                    state: String,
                    zip: String,
                    referredBy: String,
-                   projectNotes: String) -> Parameters {
+                   projectNotes: String,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters {
         
-        let parameters: Parameters = [ "firstName": firstName,
+        let parameters: Parameters = [ "id": id,
+                                       "firstName": firstName,
                                        "lastName": lastName,
                                        "email_address": email,
                                        "phone_number": phone,
@@ -30,7 +34,9 @@ struct CustomerCreateServiceSerializer {
                                        "state": state,
                                        "zip": zip,
                                        "referred_by": referredBy,
-                                       "project_notes": projectNotes]
+                                       "project_notes": projectNotes,
+                                       "created_at": createdAt,
+                                       "updated_at": updatedAt]
         
         return parameters
     }

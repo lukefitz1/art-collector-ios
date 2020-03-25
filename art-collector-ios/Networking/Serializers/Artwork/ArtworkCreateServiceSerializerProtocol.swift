@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 protocol ArtworkCreateServiceSerializerProtocol {
-    func serialize(objectId: String,
+    func serialize(id: String,
+                   objectId: String,
                    artType: String,
                    title: String,
                    date: String,
@@ -41,7 +42,9 @@ protocol ArtworkCreateServiceSerializerProtocol {
                    collectionId: String,
                    artistId: String,
                    generalInformationId: String,
-                   showGeneralInfo: Bool) -> Parameters
+                   showGeneralInfo: Bool,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters
 }
 
 extension ArtworkCreateServiceSerializer: ArtworkCreateServiceSerializerProtocol {}

@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 protocol CustomerCreateServiceSerializerProtocol {
-    func serialize(firstName: String,
+    func serialize(id: String,
+                   firstName: String,
                    lastName: String,
                    email: String,
                    phone: String,
@@ -19,7 +20,9 @@ protocol CustomerCreateServiceSerializerProtocol {
                    state: String,
                    zip: String,
                    referredBy: String,
-                   projectNotes: String) -> Parameters
+                   projectNotes: String,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters
 }
 
 extension CustomerCreateServiceSerializer: CustomerCreateServiceSerializerProtocol {}

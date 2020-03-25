@@ -10,15 +10,21 @@ import Foundation
 import Alamofire
 
 struct CollectionCreateServiceSerializer {
-    func serialize(name: String,
+    func serialize(id: String,
+                   name: String,
                    year: String,
                    identifier: String,
-                   customerId: String) -> Parameters {
+                   customerId: String,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters {
         
-        let parameters: Parameters = [ "collectionName": name,
+        let parameters: Parameters = [ "id": id,
+                                       "collectionName": name,
                                        "year": year,
                                        "identifier": identifier,
-                                       "customer_id": customerId]
+                                       "customer_id": customerId,
+                                       "created_at": createdAt,
+                                       "updated_at": updatedAt]
         
         return parameters
     }

@@ -10,7 +10,8 @@ import Foundation
 import Alamofire
 
 struct ArtworkCreateServiceSerializer {
-    func serialize(objectId: String,
+    func serialize(id: String,
+                   objectId: String,
                    artType: String,
                    title: String,
                    date: String,
@@ -41,9 +42,12 @@ struct ArtworkCreateServiceSerializer {
                    collectionId: String,
                    artistId: String,
                    generalInformationId: String,
-                   showGeneralInfo: Bool) -> Parameters {
+                   showGeneralInfo: Bool,
+                   createdAt: String,
+                   updatedAt: String) -> Parameters {
         
-        let parameters: Parameters = [ "ojbId": objectId,
+        let parameters: Parameters = [ "id": id,
+                                       "ojbId": objectId,
                                        "artType": artType,
                                        "title": title,
                                        "date": date,
@@ -73,7 +77,9 @@ struct ArtworkCreateServiceSerializer {
                                        "customer_id": customerId,
                                        "collection_id": collectionId,
                                        "general_information_id": generalInformationId,
-                                       "show_general_info": showGeneralInfo]
+                                       "show_general_info": showGeneralInfo,
+                                       "created_at": createdAt,
+                                       "updated_at": updatedAt]
         
         return parameters
     }
