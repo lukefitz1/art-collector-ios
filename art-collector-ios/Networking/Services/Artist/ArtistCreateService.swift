@@ -20,17 +20,20 @@ struct ArtistCreateService {
         self.serializer = serializer
     }
     
-    func createArtist(fName: String,
+    func createArtist(id: String,
+                      fName: String,
                       lName: String,
                       bio: String,
                       additionalInfo: String,
                       image: String,
+                      createdAt: String,
+                      updatedAt: String,
                       completionHandler: ((Artist?, Error?) -> Void)?) {
         let fullEndpoint = buildEndpoint()
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
-        let parameters = buildParameters(firstName: fName, lastName: lName, biography: bio, additionalInfo: additionalInfo, artistImage: image)
+        let parameters = buildParameters(id: id, firstName: fName, lastName: lName, biography: bio, additionalInfo: additionalInfo, artistImage: image, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : Artist?
         
@@ -39,7 +42,6 @@ struct ArtistCreateService {
                    parameters: parameters,
                    encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in
-                     debugPrint(responseJSON)
                     
                     switch responseJSON.result {
                     case .success:
@@ -72,13 +74,16 @@ struct ArtistCreateService {
         return URL(string: "\(ApiClient.baseUrl)artist")!
     }
     
-    private func buildParameters(firstName: String,
+    private func buildParameters(id: String,
+                                 firstName: String,
                                  lastName: String,
                                  biography: String,
                                  additionalInfo: String,
-                                 artistImage: String) -> Parameters {
+                                 artistImage: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(firstName: firstName, lastName: lastName, additionalInfo: additionalInfo, biography: biography, artistImage: artistImage)
+        let parameters = serializer.serialize(id: id, firstName: firstName, lastName: lastName, additionalInfo: additionalInfo, biography: biography, artistImage: artistImage, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }

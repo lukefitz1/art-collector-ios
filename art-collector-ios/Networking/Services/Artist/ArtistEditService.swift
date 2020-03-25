@@ -11,11 +11,11 @@ import Alamofire
 
 struct ArtistEditService {
     
-    let serializer: ArtistCreateServiceSerializerProtocol
+    let serializer: ArtistEditServiceSerializerProtocol
     let deserializer: ArtistCreateServiceDeserializerProtocol
     
     init(deserializer: ArtistCreateServiceDeserializerProtocol = ArtistCreateServiceDeserializer(),
-         serializer: ArtistCreateServiceSerializerProtocol = ArtistCreateServiceSerializer()) {
+         serializer: ArtistEditServiceSerializerProtocol = ArtistEditServiceSerializer()) {
         self.deserializer = deserializer
         self.serializer = serializer
     }
@@ -26,13 +26,15 @@ struct ArtistEditService {
                       bio: String,
                       additionalInfo: String,
                       image: String,
+                      createdAt: String,
+                      updatedAt: String,
                       completionHandler: ((Artist?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint(artistId: id)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
-        let parameters = buildParameters(firstName: fName, lastName: lName, biography: bio, additionalInfo: additionalInfo, artistImage: image)
+        let parameters = buildParameters(firstName: fName, lastName: lName, biography: bio, additionalInfo: additionalInfo, artistImage: image, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : Artist?
         
@@ -78,9 +80,11 @@ struct ArtistEditService {
                                  lastName: String,
                                  biography: String,
                                  additionalInfo: String,
-                                 artistImage: String) -> Parameters {
+                                 artistImage: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(firstName: firstName, lastName: lastName, additionalInfo: additionalInfo, biography: biography, artistImage: artistImage)
+        let parameters = serializer.serialize(firstName: firstName, lastName: lastName, additionalInfo: additionalInfo, biography: biography, artistImage: artistImage, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }

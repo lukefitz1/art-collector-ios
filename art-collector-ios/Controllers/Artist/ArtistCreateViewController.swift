@@ -40,7 +40,6 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         let createDate = DateUtility.getFormattedDateAsString()
         
         createArtistCoreData(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography, createdAt: createDate)
-//        createArtist(fName: firstName, lName: lastName, addInfo: additionalInfo, bio: biography)
     }
     
     private func createArtistCoreData(fName: String, lName: String, addInfo: String, bio: String, createdAt: String) {
@@ -69,27 +68,4 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
             print("Error saving the new artist to database = \(error)")
         }
     }
-    
-//    private func createArtist(fName: String, lName: String, addInfo: String, bio: String) {
-//        let artistCreateService = ArtistCreateService()
-//
-//        progressHUD.show(onView: view, animated: true)
-//        artistCreateService.createArtist(fName: fName, lName: lName, bio: bio, additionalInfo: addInfo, image: "") { [weak self] artistData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue posting artist data (Artists POST request) - \(e)")
-//                return
-//            } else {
-//                print("SUCCESS - Artists POST request")
-//
-//                if let artist = artistData {
-//                    self.progressHUD.hide(onView: self.view, animated: true)
-//                    self.performSegue(withIdentifier: "unwindToArtistsSegue", sender: self)
-//                }
-//            }
-//        }
-//    }
 }

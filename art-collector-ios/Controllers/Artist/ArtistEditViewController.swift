@@ -74,27 +74,4 @@ class ArtistEditViewController: UIViewController {
             print("Error saving the updated Artist to database = \(error)")
         }
     }
-    
-//    private func updateArtist(artistId: String, fName: String, lName: String, addInfo: String, bio: String) {
-//        let artistEditService = ArtistEditService()
-//
-//        progressHUD.show(onView: view, animated: true)
-//        artistEditService.updateArtist(id: artistId, fName: fName, lName: lName, bio: bio, additionalInfo: addInfo, image: "") { [weak self] artistData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue creating artist data (GI PUT request) - \(e)")
-//                return
-//            } else {
-//                print("SUCCESS - artist PUT request")
-//
-//                if let artist = artistData {
-//                    self.progressHUD.hide(onView: self.view, animated: true)
-//                    self.performSegue(withIdentifier: "unwindToArtistDetailSegue", sender: self)
-//                }
-//            }
-//        }
-//    }
 }

@@ -1,17 +1,16 @@
 //
-//  ArtistCreateServiceSerializer.swift
+//  ArtistEditServiceSerializer.swift
 //  art-collector-ios
 //
-//  Created by Luke Fitzgerald on 1/18/20.
+//  Created by Luke Fitzgerald on 3/25/20.
 //  Copyright © 2020 Luke Fitzgerald. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-struct ArtistCreateServiceSerializer {
-    func serialize(id: String,
-                   firstName: String,
+struct ArtistEditServiceSerializer {
+    func serialize(firstName: String,
                    lastName: String,
                    additionalInfo: String,
                    biography: String,
@@ -19,15 +18,15 @@ struct ArtistCreateServiceSerializer {
                    createdAt: String,
                    updatedAt: String) -> Parameters {
         
-        let parameters: Parameters = [ "id": id,
-                                       "firstName": firstName,
+        let parameters: Parameters = [ "firstName": firstName,
                                        "lastName": lastName,
                                        "biography": biography,
                                        "additionalInfo": additionalInfo,
                                        "artist_image": artistImage,
                                        "created_at": createdAt,
-                                       "updated_at": updatedAt ]
+                                       "updated_at": updatedAt]
         
         return parameters
     }
 }
+

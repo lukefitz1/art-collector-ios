@@ -148,7 +148,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LTq-zc-bij">
-                                <rect key="frame" x="0.0" y="186" width="414" height="627"/>
+                                <rect key="frame" x="0.0" y="224" width="414" height="589"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistCell" id="jnL-0k-pIe">
@@ -165,18 +165,26 @@
                                 <rect key="frame" x="155" y="120" width="104" height="30"/>
                                 <state key="normal" title="Add New Artist"/>
                                 <connections>
-                                    <action selector="addArtist:" destination="qTq-wV-XXP" eventType="touchUpInside" id="BiI-xA-9NO"/>
                                     <segue destination="zYK-62-7My" kind="presentation" id="dDD-zv-2pE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hb5-H9-ZfW">
+                                <rect key="frame" x="172" y="158" width="70" height="30"/>
+                                <state key="normal" title="Sync Data"/>
+                                <connections>
+                                    <action selector="syncArtistDataBtnPressed:" destination="qTq-wV-XXP" eventType="touchUpInside" id="KVq-b8-8Ka"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="LTq-zc-bij" firstAttribute="top" secondItem="Hb5-H9-ZfW" secondAttribute="bottom" constant="36" id="0Gf-lv-u7g"/>
                             <constraint firstItem="LTq-zc-bij" firstAttribute="bottom" secondItem="eQY-ZP-pfO" secondAttribute="bottom" id="0ST-rm-2Ga"/>
                             <constraint firstItem="LTq-zc-bij" firstAttribute="trailing" secondItem="eQY-ZP-pfO" secondAttribute="trailing" id="Dm9-Qd-1WA"/>
                             <constraint firstItem="xfP-nz-vil" firstAttribute="top" secondItem="eQY-ZP-pfO" secondAttribute="top" constant="32" id="OOE-fq-DGB"/>
-                            <constraint firstItem="LTq-zc-bij" firstAttribute="top" secondItem="xfP-nz-vil" secondAttribute="bottom" constant="36" id="hQi-9J-AKY"/>
+                            <constraint firstItem="Hb5-H9-ZfW" firstAttribute="top" secondItem="xfP-nz-vil" secondAttribute="bottom" constant="8" id="QHr-0S-r2M"/>
                             <constraint firstItem="xfP-nz-vil" firstAttribute="centerX" secondItem="eQY-ZP-pfO" secondAttribute="centerX" id="tlj-ka-mJ0"/>
+                            <constraint firstItem="Hb5-H9-ZfW" firstAttribute="centerX" secondItem="eQY-ZP-pfO" secondAttribute="centerX" id="wIS-JK-vvJ"/>
                             <constraint firstItem="LTq-zc-bij" firstAttribute="leading" secondItem="eQY-ZP-pfO" secondAttribute="leading" id="xKm-0q-ytw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eQY-ZP-pfO"/>

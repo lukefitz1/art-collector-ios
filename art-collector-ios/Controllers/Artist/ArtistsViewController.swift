@@ -18,6 +18,8 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://spire-art-services.herokuapp.com/")
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let notOnlineMessage = "Syncing data requires internet access"
+    let notOnlineTitle = "No Internet Access"
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedArtist: Artist?
@@ -122,6 +124,17 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
             DispatchQueue.main.async {
                 self.loadItems()
             }
+        }
+    }
+    
+    @IBAction func syncArtistDataBtnPressed(_ sender: Any) {
+        if checkReachable() {
+            self.syncData()
+        } else {
+            let alert = UIAlertController(title: notOnlineTitle, message: notOnlineMessage, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
     

@@ -56,10 +56,10 @@ extension GeneralInformationViewController {
             if !found {
                 let newGI = NSManagedObject(entity: entity, insertInto: context)
                 let infoId = UUID(uuidString: gi.id)
-                let infoLabel = gi.infoLabel
-                let info = gi.information
                 let infoCreatedAt = gi.createdAt
                 let infoUpdatedAt = gi.updatedAt
+                let infoLabel = gi.infoLabel
+                let info = gi.information
                 
                 newGI.setValue(infoId, forKey: "id")
                 newGI.setValue(infoCreatedAt, forKey: "createdAt")
@@ -85,10 +85,10 @@ extension GeneralInformationViewController {
                     if coreUpdatedAt != networkUpdatedAt {
 //                        let nId = networkId
                         let cId = updateGI.id?.uuidString ?? ""
-                        let cInfo = updateGI.information ?? ""
-                        let cInfoLabel = updateGI.informationLabel ?? ""
                         let cCreatedAt = updateGI.createdAt ?? ""
                         let cUpdatedAt = DateUtility.getFormattedDateAsString()
+                        let cInfo = updateGI.information ?? ""
+                        let cInfoLabel = updateGI.informationLabel ?? ""
                         
                         print("The updated at dates differ, let's make an update!")
                         
@@ -183,10 +183,9 @@ extension GeneralInformationViewController {
                 print("Issue creating GI data (GI POST request) - \(e)")
                 return
             } else {
-                if let generalInfo = giData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                }
+                print("SUCCESS - GI POST request")
             }
+            self.progressHUD.hide(onView: self.view, animated: true)
         }
     }
     
@@ -204,11 +203,8 @@ extension GeneralInformationViewController {
                 return
             } else {
                 print("SUCCESS - GI PUT request")
-                
-                if let generalInfo = giData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                }
             }
+            self.progressHUD.hide(onView: self.view, animated: true)
         }
     }
 }

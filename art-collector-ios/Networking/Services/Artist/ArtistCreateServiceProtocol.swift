@@ -9,11 +9,14 @@
 import Foundation
 
 protocol ArtistCreateServiceProtocol {
-    func createArtist(fName: String,
+    func createArtist(id: String,
+                      fName: String,
                       lName: String,
                       bio: String,
                       additionalInfo: String,
                       image: String,
+                      createdAt: String,
+                      updatedAt: String,
                       completionHandler: ((Artist?, Error?) -> Void)?)
 }
 

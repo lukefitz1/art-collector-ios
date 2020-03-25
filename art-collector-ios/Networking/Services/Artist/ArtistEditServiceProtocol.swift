@@ -15,6 +15,8 @@ protocol ArtistEditServiceProtocol {
                       bio: String,
                       additionalInfo: String,
                       image: String,
+                      createdAt: String,
+                      updatedAt: String,
                       completionHandler: ((Artist?, Error?) -> Void)?)
 }
 
