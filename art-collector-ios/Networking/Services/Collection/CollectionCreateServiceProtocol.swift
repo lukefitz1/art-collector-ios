@@ -9,10 +9,13 @@
 import Foundation
 
 protocol CollectionCreateServiceProtocol {
-    func createCollection(name: String,
+    func createCollection(id: String,
+                          name: String,
                           year: String,
                           identifier: String,
                           customerId: String,
+                          createdAt: String,
+                          updatedAt: String,
                           completionHandler: ((Collection?, Error?) -> Void)?)
 }
 

@@ -42,6 +42,8 @@ protocol ArtworkEditServiceProtocol {
                        artistId: String,
                        generalInformationId: String,
                        showGeneralInfo: Bool,
+                       createdAt: String,
+                       updatedAt: String,
                        completionHandler: ((Artwork?, Error?) -> Void)?)
 }
 

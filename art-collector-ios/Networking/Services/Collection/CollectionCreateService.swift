@@ -20,17 +20,20 @@ struct CollectionCreateService {
         self.serializer = serializer
     }
     
-    func createCollection(name: String,
+    func createCollection(id: String,
+                          name: String,
                           year: String,
                           identifier: String,
                           customerId: String,
+                          createdAt: String,
+                          updatedAt: String,
                           completionHandler: ((Collection?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint()
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
-        let parameters = buildParameters(name: name, year: year, identifier: identifier, customerId: customerId)
+        let parameters = buildParameters(id: id, name: name, year: year, identifier: identifier, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : Collection?
         
@@ -72,12 +75,15 @@ struct CollectionCreateService {
         return URL(string: "\(ApiClient.baseUrl)collections")!
     }
     
-    private func buildParameters(name: String,
+    private func buildParameters(id: String,
+                                 name: String,
                                  year: String,
                                  identifier: String,
-                                 customerId: String) -> Parameters {
+                                 customerId: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(name: name, year: year, identifier: identifier, customerId: customerId)
+        let parameters = serializer.serialize(id: id, name: name, year: year, identifier: identifier, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
     

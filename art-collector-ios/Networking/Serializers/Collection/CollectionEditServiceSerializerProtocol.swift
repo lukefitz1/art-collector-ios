@@ -13,6 +13,7 @@ protocol CollectionEditServiceSerializerProtocol {
     func serialize(collectionName: String,
                    identifier: String,
                    year: String,
+                   customerId: String,
                    createdAt: String,
                    updatedAt: String) -> Parameters
 }

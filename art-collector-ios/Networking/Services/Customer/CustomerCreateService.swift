@@ -20,7 +20,8 @@ struct CustomerCreateService {
         self.serializer = serializer
     }
     
-    func createCustomer(fName: String,
+    func createCustomer(id: String,
+                        fName: String,
                         lName: String,
                         email: String,
                         phone: String,
@@ -30,6 +31,8 @@ struct CustomerCreateService {
                         zip: String,
                         referredBy: String,
                         projectNotes: String,
+                        createdAt: String,
+                        updatedAt: String,
                         completionHandler: ((Customer?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint()
@@ -37,7 +40,7 @@ struct CustomerCreateService {
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
         
-        let parameters = buildParameters(firstName: fName, lastName: lName, email: email, phone: phone, street: address, city: city, state: state, zip: zip, referredBy: referredBy, projectNotes: projectNotes)
+        let parameters = buildParameters(id: id, firstName: fName, lastName: lName, email: email, phone: phone, street: address, city: city, state: state, zip: zip, referredBy: referredBy, projectNotes: projectNotes, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : Customer?
         
@@ -79,7 +82,8 @@ struct CustomerCreateService {
         return URL(string: "\(ApiClient.baseUrl)customer")!
     }
     
-    private func buildParameters(firstName: String,
+    private func buildParameters(id: String,
+                                 firstName: String,
                                  lastName: String,
                                  email: String,
                                  phone: String,
@@ -88,9 +92,11 @@ struct CustomerCreateService {
                                  state: String,
                                  zip: String,
                                  referredBy: String,
-                                 projectNotes: String) -> Parameters {
+                                 projectNotes: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(firstName: firstName, lastName: lastName, email: email, phone: phone, streetAddress: street, city: city, state: state, zip: zip, referredBy: referredBy, projectNotes: projectNotes)
+        let parameters = serializer.serialize(id: id, firstName: firstName, lastName: lastName, email: email, phone: phone, streetAddress: street, city: city, state: state, zip: zip, referredBy: referredBy, projectNotes: projectNotes, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }

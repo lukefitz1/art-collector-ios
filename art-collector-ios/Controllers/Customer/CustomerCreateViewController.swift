@@ -55,33 +55,8 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         let projectNotes = projectNotesTextView.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-//        createCustomerCoreData(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes, createdAt: createDate)
-        createCustomer(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
-    }
-
-    private func createCustomer(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
-
-        let customerCreateService = CustomerCreateService()
-        let state = "CO"
-        
-        progressHUD.show(onView: view, animated: true)
-        customerCreateService.createCustomer(fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
-            guard let self = self else {
-                return
-            }
-
-            if let e = error {
-                print("Issue posting customer data (Customer POST request) - \(e)")
-                return
-            } else {
-                print("SUCCESS - Customer POST request")
-
-                if let customer = customerData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
-                }
-            }
-        }
+        createCustomerCoreData(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes, createdAt: createDate)
+//        createCustomer(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
     }
     
     private func createCustomerCoreData(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String, createdAt: String) {
@@ -111,4 +86,29 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
             print("Error saving the new customer to database = \(error)")
         }
     }
+    
+//    private func createCustomer(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
+//
+//        let customerCreateService = CustomerCreateService()
+//        let state = "CO"
+//        
+//        progressHUD.show(onView: view, animated: true)
+//        customerCreateService.createCustomer(fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue posting customer data (Customer POST request) - \(e)")
+//                return
+//            } else {
+//                print("SUCCESS - Customer POST request")
+//
+//                if let customer = customerData {
+//                    self.progressHUD.hide(onView: self.view, animated: true)
+//                    self.performSegue(withIdentifier: "unwindToCustomersSegue", sender: self)
+//                }
+//            }
+//        }
+//    }
 }

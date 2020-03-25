@@ -9,7 +9,8 @@
 import Foundation
 
 protocol ArtworkCreateServiceProtocol {
-    func createArtwork(objectId: String,
+    func createArtwork(id: String,
+                       objectId: String,
                        artType: String,
                        title: String,
                        date: String,
@@ -41,6 +42,8 @@ protocol ArtworkCreateServiceProtocol {
                        artistId: String,
                        generalInformationId: String,
                        showGeneralInfo: Bool,
+                       createdAt: String,
+                       updatedAt: String,
                        completionHandler: ((Artwork?, Error?) -> Void)?)
 }
 

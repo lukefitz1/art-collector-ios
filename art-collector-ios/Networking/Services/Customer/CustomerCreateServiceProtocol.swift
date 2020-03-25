@@ -9,7 +9,8 @@
 import Foundation
 
 protocol CustomerCreateServiceProtocol {
-    func createCustomer(fName: String,
+    func createCustomer(id: String,
+                        fName: String,
                         lName: String,
                         email: String,
                         phone: String,
@@ -19,6 +20,8 @@ protocol CustomerCreateServiceProtocol {
                         zip: String,
                         referredBy: String,
                         projectNotes: String,
+                        createdAt: String,
+                        updatedAt: String,
                         completionHandler: ((Customer?, Error?) -> Void)?)
 }
 

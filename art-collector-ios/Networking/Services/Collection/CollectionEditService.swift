@@ -25,13 +25,15 @@ struct CollectionEditService {
                           year: String,
                           identifier: String,
                           customerId: String,
+                          createdAt: String,
+                          updatedAt: String,
                           completionHandler: ((Collection?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint(collectionId: id)
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
-        let parameters = buildParameters(name: name, year: year, identifier: identifier, customerId: customerId)
+        let parameters = buildParameters(name: name, year: year, identifier: identifier, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : Collection?
         
@@ -75,9 +77,11 @@ struct CollectionEditService {
     private func buildParameters(name: String,
                                  year: String,
                                  identifier: String,
-                                 customerId: String) -> Parameters {
+                                 customerId: String,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(name: name, year: year, identifier: identifier, customerId: customerId)
+        let parameters = serializer.serialize(collectionName: name, identifier: identifier, year: year, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }

@@ -20,6 +20,8 @@ protocol CustomerEditServiceProtocol {
                         zip: String,
                         referredBy: String,
                         projectNotes: String,
+                        createdAt: String,
+                        updatedAt: String,
                         completionHandler: ((Customer?, Error?) -> Void)?)
 }
 

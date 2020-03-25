@@ -51,31 +51,31 @@ class CustomerEditViewController: UIViewController, UITextFieldDelegate, UITextV
         let projectNotes = projectNotesTextView.text ?? ""
         let customerId = customer?.id ?? ""
         
-        updateCustomer(id: customerId, fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
+//        updateCustomer(id: customerId, fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
     }
     
-    private func updateCustomer(id: String, fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
-
-        let customerEditService = CustomerEditService()
-        let state = "CO"
-        
-        progressHUD.show(onView: view, animated: true)
-        customerEditService.updateCustomer(id: id, fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
-            guard let self = self else {
-                return
-            }
-
-            if let e = error {
-                print("Issue putting customer data (Customer POST request) - \(e)")
-                return
-            } else {
-                print("SUCCESS - Customer PUT request")
-
-                if let customer = customerData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
-                }
-            }
-        }
-    }
+//    private func updateCustomer(id: String, fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
+//
+//        let customerEditService = CustomerEditService()
+//        let state = "CO"
+//
+//        progressHUD.show(onView: view, animated: true)
+//        customerEditService.updateCustomer(id: id, fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue putting customer data (Customer POST request) - \(e)")
+//                return
+//            } else {
+//                print("SUCCESS - Customer PUT request")
+//
+//                if let customer = customerData {
+//                    self.progressHUD.hide(onView: self.view, animated: true)
+//                    self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
+//                }
+//            }
+//        }
+//    }
 }

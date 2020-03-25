@@ -20,7 +20,8 @@ struct ArtworkCreateService {
         self.serializer = serializer
     }
     
-    func createArtwork(objectId: String,
+    func createArtwork(id: String,
+                       objectId: String,
                        artType: String,
                        title: String,
                        date: String,
@@ -52,6 +53,8 @@ struct ArtworkCreateService {
                        artistId: String,
                        generalInformationId: String,
                        showGeneralInfo: Bool,
+                       createdAt: String,
+                       updatedAt: String,
                        completionHandler: ((Artwork?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint()
@@ -59,7 +62,7 @@ struct ArtworkCreateService {
             "Authorization": "Bearer \(ApiClient.authToken)"
         ]
         
-        let parameters = buildParameters(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo)
+        let parameters = buildParameters(id: id, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt)
         
         var data : Artwork?
         
@@ -100,7 +103,8 @@ struct ArtworkCreateService {
         return URL(string: "\(ApiClient.baseUrl)artwork")!
     }
     
-    private func buildParameters(objectId: String,
+    private func buildParameters(id: String,
+                                 objectId: String,
                                  artType: String,
                                  title: String,
                                  date: String,
@@ -131,9 +135,11 @@ struct ArtworkCreateService {
                                  collectionId: String,
                                  artistId: String,
                                  generalInformationId: String,
-                                 showGeneralInfo: Bool) -> Parameters {
+                                 showGeneralInfo: Bool,
+                                 createdAt: String,
+                                 updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo)
+        let parameters = serializer.serialize(id: id, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt)
         return parameters
     }
 }
