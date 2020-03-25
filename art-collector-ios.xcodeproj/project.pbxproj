@@ -325,6 +325,55 @@
 			path = "art-collector-ios";
 			sourceTree = "<group>";
 		};
+		9B225715242C059600332C8C /* GeneralInformation */ = {
+			isa = PBXGroup;
+			children = (
+				9B7A475E23D5E462006D1BA4 /* GeneralInformationCreateServiceSerializer.swift */,
+				9B7A476023D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift */,
+				9B16D377242A891100593898 /* GeneralInformationEditServiceSerializer.swift */,
+				9B16D375242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift */,
+			);
+			path = GeneralInformation;
+			sourceTree = "<group>";
+		};
+		9B225716242C059F00332C8C /* Artist */ = {
+			isa = PBXGroup;
+			children = (
+				9BF12F2623D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift */,
+				9BF12F2423D3BAB800BE8AA8 /* ArtistCreateServiceSerializerProtocol.swift */,
+				9B225711242BF76600332C8C /* ArtistEditServiceSerializer.swift */,
+				9B225713242BF77400332C8C /* ArtistEditServiceSerializerProtocol.swift */,
+			);
+			path = Artist;
+			sourceTree = "<group>";
+		};
+		9B225717242C05A900332C8C /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				9BDB599F23E0BDEF00AB8C20 /* CustomerCreateServiceSerializer.swift */,
+				9BDB59A123E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		9B225718242C05AD00332C8C /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9B40784523F097C6002E4398 /* CollectionCreateServiceSerializer.swift */,
+				9B40784323F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9B225719242C05B300332C8C /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				9B96E34423E383590024F388 /* ArtworkCreateServiceSerializer.swift */,
+				9B96E34623E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift */,
+			);
+			path = Artwork;
+			sourceTree = "<group>";
+		};
 		9B242C43240A0055001E0145 /* Artist */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,10 +530,10 @@
 		9B755BF923A2AA85004574A0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9B6F9ACE240C6B4C003C6E28 /* Customer */,
-				9B6F9ACD240C6B37003C6E28 /* Collection */,
-				9B6F9ACC240C6B2F003C6E28 /* Artwork */,
 				9B242C43240A0055001E0145 /* Artist */,
+				9B6F9ACC240C6B2F003C6E28 /* Artwork */,
+				9B6F9ACD240C6B37003C6E28 /* Collection */,
+				9B6F9ACE240C6B4C003C6E28 /* Customer */,
 				9B3DDBC92409F452006D440C /* GeneralInformation */,
 				9B144DA923A29FED00E0FE85 /* LoginViewController.swift */,
 			);
@@ -584,11 +633,11 @@
 		9BF0F98923B64C6A009ACE3E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				9B2985BC240DF4B1009E73D9 /* GeneralInformation */,
 				9B2985BB240DF4AB009E73D9 /* Artist */,
 				9B2985BA240DF4A2009E73D9 /* Artwork */,
 				9B2985B9240DF49E009E73D9 /* Collection */,
 				9B2985B8240DF494009E73D9 /* Customer */,
+				9B2985BC240DF4B1009E73D9 /* GeneralInformation */,
 				9BF0F98D23B64F7F009ACE3E /* LoginService.swift */,
 				9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */,
 			);
@@ -598,11 +647,11 @@
 		9BF0F98A23B64C72009ACE3E /* Deserializers */ = {
 			isa = PBXGroup;
 			children = (
-				9BDE72302410956A00307EFC /* GeneralInformation */,
 				9BDE722D2410955700307EFC /* Artist */,
 				9BDE722F2410956500307EFC /* Artwork */,
 				9BDE722E2410956000307EFC /* Collection */,
 				9BDE722C2410954B00307EFC /* Customer */,
+				9BDE72302410956A00307EFC /* GeneralInformation */,
 			);
 			path = Deserializers;
 			sourceTree = "<group>";
@@ -610,20 +659,11 @@
 		9BF12F2323D3B85800BE8AA8 /* Serializers */ = {
 			isa = PBXGroup;
 			children = (
-				9BF12F2623D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift */,
-				9BF12F2423D3BAB800BE8AA8 /* ArtistCreateServiceSerializerProtocol.swift */,
-				9B7A475E23D5E462006D1BA4 /* GeneralInformationCreateServiceSerializer.swift */,
-				9B7A476023D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift */,
-				9BDB599F23E0BDEF00AB8C20 /* CustomerCreateServiceSerializer.swift */,
-				9BDB59A123E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift */,
-				9B96E34423E383590024F388 /* ArtworkCreateServiceSerializer.swift */,
-				9B96E34623E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift */,
-				9B40784323F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift */,
-				9B40784523F097C6002E4398 /* CollectionCreateServiceSerializer.swift */,
-				9B16D377242A891100593898 /* GeneralInformationEditServiceSerializer.swift */,
-				9B16D375242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift */,
-				9B225711242BF76600332C8C /* ArtistEditServiceSerializer.swift */,
-				9B225713242BF77400332C8C /* ArtistEditServiceSerializerProtocol.swift */,
+				9B225716242C059F00332C8C /* Artist */,
+				9B225719242C05B300332C8C /* Artwork */,
+				9B225718242C05AD00332C8C /* Collection */,
+				9B225717242C05A900332C8C /* Customer */,
+				9B225715242C059600332C8C /* GeneralInformation */,
 			);
 			path = Serializers;
 			sourceTree = "<group>";
