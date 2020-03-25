@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ArtistDetailViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class ArtistDetailViewController: UIViewController {
     @IBOutlet weak var artistInfo: UILabel!
     @IBOutlet weak var biography: UILabel!
 
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var artist: Artist?
     var artistCore: ArtistCore?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -29,14 +32,15 @@ class ArtistDetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
-        firstName.text = artist?.firstName
-        lastName.text = artist?.lastName
-        artistInfo.text = artist?.additionalInfo
-        biography.text = artist?.biography
+        firstName.text = artistCore?.firstName
+        lastName.text = artistCore?.lastName
+        artistInfo.text = artistCore?.additionalInfo
+        biography.text = artistCore?.biography
         
-        if let imageUrl = artist?.artistImage?.thumb?.url {
-            setImage(from: imageUrl)
-        }
+        // TODO - Image for artist
+//        if let imageUrl = artistCore?.artistImage?.thumb?.url {
+//            setImage(from: imageUrl)
+//        }
     }
     
     @objc
@@ -47,8 +51,8 @@ class ArtistDetailViewController: UIViewController {
     @IBAction func unwindToArtistDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                if let artist = self.artist?.id {
-                    self.getArtistInfo(artistId: artist)
+                if let artist = self.artistCore?.id {
+                    self.getArtistInfoCore(id: artist)
                 }
             }
         }
@@ -58,29 +62,30 @@ class ArtistDetailViewController: UIViewController {
         if segue.identifier == "EditArtistSegue" {
             let destinationVC = segue.destination as! ArtistEditViewController
             
-            destinationVC.artist = artist
+            destinationVC.artistCore = artistCore
         }
     }
     
-    private func getArtistInfo(artistId: String) {
-        let getArtistService = GetArtistService()
-        
-        progressHUD.show(onView: view, animated: true)
-        getArtistService.getArtistInfo(artistId: artistId) { [weak self] artistData, error in
-            guard let self = self else {
-                return
+    private func getArtistInfoCore(id: UUID) {
+            let request: NSFetchRequest<ArtistCore> = ArtistCore.fetchRequest()
+            request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+
+            progressHUD.show(onView: view, animated: true)
+            do {
+                let artist = try context.fetch(request)
+                let updatedArtist = artist[0] as ArtistCore
+                refreshArtistInfoCore(artist: updatedArtist)
+            } catch {
+                print("Error getting updated artist information = \(error)")
             }
-            
-            if let e = error {
-                print("Issue getting artist info data (Artist GET request) - \(e)")
-                return
-            } else {
-                if let artist = artistData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.refreshArtistInfo(artist: artist)
-                }
-            }
+            self.progressHUD.hide(onView: self.view, animated: true)
         }
+    
+    private func refreshArtistInfoCore(artist: ArtistCore) {
+        firstName.text = artist.firstName
+        lastName.text = artist.lastName
+        artistInfo.text = artist.additionalInfo
+        biography.text = artist.biography
     }
     
     private func refreshArtistInfo(artist: Artist) {
@@ -103,4 +108,25 @@ class ArtistDetailViewController: UIViewController {
             }
         }
     }
+    
+//    private func getArtistInfo(artistId: String) {
+//        let getArtistService = GetArtistService()
+//
+//        progressHUD.show(onView: view, animated: true)
+//        getArtistService.getArtistInfo(artistId: artistId) { [weak self] artistData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue getting artist info data (Artist GET request) - \(e)")
+//                return
+//            } else {
+//                if let artist = artistData {
+//                    self.progressHUD.hide(onView: self.view, animated: true)
+//                    self.refreshArtistInfo(artist: artist)
+//                }
+//            }
+//        }
+//    }
 }

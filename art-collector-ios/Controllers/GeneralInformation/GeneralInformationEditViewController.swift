@@ -52,6 +52,7 @@ class GeneralInformationEditViewController: UIViewController {
             updateGI.setValue(infoLabel, forKey: "informationLabel")
             
         } catch {
+            self.progressHUD.hide(onView: self.view, animated: true)
             print("Error updating general information = \(error)")
         }
         
@@ -64,6 +65,7 @@ class GeneralInformationEditViewController: UIViewController {
             self.progressHUD.hide(onView: self.view, animated: true)
             self.performSegue(withIdentifier: "unwindToGeneralInformationDetailSegue", sender: self)
         } catch {
+            self.progressHUD.hide(onView: self.view, animated: true)
             print("Error saving the updated GI to database = \(error)")
         }
     }

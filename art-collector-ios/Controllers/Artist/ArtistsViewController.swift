@@ -117,21 +117,12 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    @IBAction func addArtist(_ sender: Any) {
-        print("buttonPressed")
-    }
-    
     @IBAction func unwindToArtistsViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-//                self.getArtists(refresh: false)
                 self.loadItems()
             }
         }
-    }
-    
-    @objc func newArtist() {
-        print("Button pressed")
     }
     
     func loadItems() {
