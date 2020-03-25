@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CustomerDetailViewController: UIViewController {
 
@@ -18,8 +19,11 @@ class CustomerDetailViewController: UIViewController {
     @IBOutlet weak var id: UILabel!
     @IBOutlet weak var collectionsTableView: UITableView!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var selectedCollection: Collection?
     var customer: Customer?
+    var customerCore: CustomerCore?
     var collections: [Collection]? = []
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -33,19 +37,23 @@ class CustomerDetailViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
-        if let cust = customer {
-            firstName.text = "\(cust.firstName) \(cust.lastName)"
-            phone.text = cust.phone ?? ""
-            email.text = cust.email ?? ""
-            id.text = cust.id
-            address.text = cust.address ?? ""
+        if let cust = customerCore {
+            let fName = cust.firstName ?? ""
+            let lName = cust.lastName ?? ""
             
-            let addTwo = generateAddressTwo(customer: cust)
-            addressTwo.text = addTwo
+            firstName.text = "\(fName) \(lName)"
             
-            if let collectionsArray = cust.collections {
-                self.collections = collectionsArray
-            }
+            phone.text = cust.phoneNumber ?? ""
+            email.text = cust.emailAddress ?? ""
+//            id.text = cust.idx
+            address.text = cust.streetAddress ?? ""
+            
+//            let addTwo = generateAddressTwo(customer: cust)
+//            addressTwo.text = addTwo
+//
+//            if let collectionsArray = cust.collections {
+//                self.collections = collectionsArray
+//            }
         }
     }
     
@@ -61,66 +69,87 @@ class CustomerDetailViewController: UIViewController {
     @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                if let customer = self.customer?.id {
-                    self.getCustomer(customerId: customer, refresh: true)
+//                if let customer = self.customer?.id {
+//                    self.getCustomer(customerId: customer, refresh: true)
+//                }
+                if let customer = self.customerCore?.id {
+                    self.getCustomerInfoCore(id: customer)
                 }
             }
         }
     }
     
-    private func getCustomer(customerId: String, refresh: Bool) {
-        let getCustomerService = GetCustomerService()
-        
-        if !refresh {
-            progressHUD.show(onView: view, animated: true)
+    private func getCustomerInfoCore(id: UUID) {
+        let request: NSFetchRequest<CustomerCore> = CustomerCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let customer = try context.fetch(request)
+            let updatedCustomer = customer[0] as CustomerCore
+            refreshCustomerInfoCore(customer: updatedCustomer)
+        } catch {
+            print("Error getting updated customer information = \(error)")
         }
-        
-        getCustomerService.getCustomer(customerId: customerId) { [weak self] customerData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue getting customer data (Customer GET request) - \(e)")
-                return
-            } else {
-                if let customer = customerData {
-                    if !refresh {
-                        self.progressHUD.hide(onView: self.view, animated: true)
-                    } else {
-                        self.refreshControl.endRefreshing()
-                    }
-                    
-                    self.collections = customer.collections
-                    self.refreshCustomerData(customer: customer)
-                    self.collectionsTableView.reloadData()
-                }
-            }
-        }
+        self.progressHUD.hide(onView: self.view, animated: true)
     }
     
-    private func refreshCustomerData(customer: Customer) {
-        if firstName.text != "\(customer.firstName) \(customer.lastName)" {
-            firstName.text = "\(customer.firstName) \(customer.lastName)"
+//    private func getCustomer(customerId: String, refresh: Bool) {
+//        let getCustomerService = GetCustomerService()
+//
+//        if !refresh {
+//            progressHUD.show(onView: view, animated: true)
+//        }
+//
+//        getCustomerService.getCustomer(customerId: customerId) { [weak self] customerData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue getting customer data (Customer GET request) - \(e)")
+//                return
+//            } else {
+//                if let customer = customerData {
+//                    if !refresh {
+//                        self.progressHUD.hide(onView: self.view, animated: true)
+//                    } else {
+//                        self.refreshControl.endRefreshing()
+//                    }
+//
+//                    self.collections = customer.collections
+//                    self.refreshCustomerData(customer: customer)
+//                    self.collectionsTableView.reloadData()
+//                }
+//            }
+//        }
+//    }
+    
+    private func refreshCustomerInfoCore(customer: CustomerCore) {
+        let fName = customer.firstName ?? ""
+        let lName = customer.lastName ?? ""
+        
+        if firstName.text != "\(fName) \(lName)" {
+            firstName.text = "\(fName) \(lName)"
         }
 
-        if phone.text != customer.phone {
-            phone.text = customer.phone
+        if phone.text != customer.phoneNumber {
+            phone.text = customer.phoneNumber
         }
         
-        if email.text != customer.email {
-            email.text = customer.email
+        if email.text != customer.emailAddress {
+            email.text = customer.emailAddress
         }
         
-        if address.text != customer.address {
-            address.text = customer.address
+        if address.text != customer.streetAddress {
+            address.text = customer.streetAddress
         }
         
         let addTwo = generateAddressTwo(customer: customer)
         addressTwo.text = addTwo
     }
     
-    private func generateAddressTwo(customer: Customer) -> String {
+    private func generateAddressTwo(customer: CustomerCore) -> String {
         let city = customer.city
         let state = customer.state
         let zip = customer.zip

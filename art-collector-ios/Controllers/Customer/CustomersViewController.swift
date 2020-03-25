@@ -7,15 +7,31 @@
 //
 
 import UIKit
+import CoreData
+import SystemConfiguration
 
-class CustomersViewController: UIViewController {
+class CustomersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var customersTableView: UITableView!
 
     private let refreshControl = UIRefreshControl()
+    private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://spire-art-services.herokuapp.com/")
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let notOnlineMessage = "Syncing data requires internet access"
+    let notOnlineTitle = "No Internet Access"
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedCustomer: Customer?
+    var selectedCustomerCore: CustomerCore?
+    var customersCoreArray: [CustomerCore] = [] {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            customersTableView.reloadData()
+        }
+    }
     
     var customers: [Customer] = [] {
         didSet {
@@ -31,11 +47,10 @@ class CustomersViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-//        navigationController?.isNavigationBarHidden = false
+        
+        loadItems()
     }
     
     override func viewDidLoad() {
@@ -47,8 +62,33 @@ class CustomersViewController: UIViewController {
         
         customersTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshCustomerData(_:)), for: .valueChanged)
+    }
+    
+    private func checkReachable() -> Bool {
+        var flags = SCNetworkReachabilityFlags()
+        SCNetworkReachabilityGetFlags(self.reachability!, &flags)
         
-        getCustomers(refresh: false)
+        if (isNetworkReachable(with: flags))
+        {
+            print (flags)
+            if flags.contains(.isWWAN) {
+                return true
+            }
+            
+            return true
+        }
+        else if (!isNetworkReachable(with: flags)) {
+            return false
+        }
+        return false
+    }
+
+    private func isNetworkReachable(with flags: SCNetworkReachabilityFlags) -> Bool {
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
+        let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
+        return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
     }
     
     func getCustomers(refresh: Bool) {
@@ -86,32 +126,42 @@ class CustomersViewController: UIViewController {
     @IBAction func unwindToCustomersViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                self.getCustomers(refresh: false)
+//                self.getCustomers(refresh: false)
+                self.loadItems()
             }
         }
     }
-}
-
-extension CustomersViewController: UITableViewDataSource {
+    
+    func loadItems() {
+        let request: NSFetchRequest<CustomerCore> = CustomerCore.fetchRequest()
+        
+        do {
+            customersCoreArray = try context.fetch(request)
+        } catch {
+            print("Error fetching customer data from core - \(error)")
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return customers.count
+        return customersCoreArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CustomerCell", for: indexPath)
         
-        cell.textLabel?.text = "\(customers[indexPath.row].firstName) \(customers[indexPath.row].lastName)"
+        let firstName = customersCoreArray[indexPath.row].firstName ?? ""
+        let lastName = customersCoreArray[indexPath.row].lastName ?? ""
+        
+        cell.textLabel?.text = "\(firstName) \(lastName)"
         return cell
     }
-}
-
-extension CustomersViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let customer = customers[indexPath.row]
-        selectedCustomer = customer
+        let customer = customersCoreArray[indexPath.row]
+        selectedCustomerCore = customer
         
         let customerDetailViewController = CustomerDetailViewController()
-        customerDetailViewController.customer = customer
+        customerDetailViewController.customerCore = customer
         
         self.performSegue(withIdentifier: "CustomerDetailSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -121,7 +171,7 @@ extension CustomersViewController: UITableViewDelegate {
         if segue.identifier == "CustomerDetailSegue" {
             let destinationVC = segue.destination as! CustomerDetailViewController
             
-            destinationVC.customer = selectedCustomer
+            destinationVC.customerCore = selectedCustomerCore
         }
     }
 }

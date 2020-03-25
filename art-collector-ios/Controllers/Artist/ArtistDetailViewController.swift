@@ -67,19 +67,19 @@ class ArtistDetailViewController: UIViewController {
     }
     
     private func getArtistInfoCore(id: UUID) {
-            let request: NSFetchRequest<ArtistCore> = ArtistCore.fetchRequest()
-            request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+        let request: NSFetchRequest<ArtistCore> = ArtistCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
 
-            progressHUD.show(onView: view, animated: true)
-            do {
-                let artist = try context.fetch(request)
-                let updatedArtist = artist[0] as ArtistCore
-                refreshArtistInfoCore(artist: updatedArtist)
-            } catch {
-                print("Error getting updated artist information = \(error)")
-            }
-            self.progressHUD.hide(onView: self.view, animated: true)
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let artist = try context.fetch(request)
+            let updatedArtist = artist[0] as ArtistCore
+            refreshArtistInfoCore(artist: updatedArtist)
+        } catch {
+            print("Error getting updated artist information = \(error)")
         }
+        self.progressHUD.hide(onView: self.view, animated: true)
+    }
     
     private func refreshArtistInfoCore(artist: ArtistCore) {
         firstName.text = artist.firstName
