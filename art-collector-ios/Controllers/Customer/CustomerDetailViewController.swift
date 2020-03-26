@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CustomerDetailViewController: UIViewController {
+class CustomerDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var firstName: UILabel!
     @IBOutlet weak var address: UILabel!
@@ -94,37 +94,6 @@ class CustomerDetailViewController: UIViewController {
         self.progressHUD.hide(onView: self.view, animated: true)
     }
     
-//    private func getCustomer(customerId: String, refresh: Bool) {
-//        let getCustomerService = GetCustomerService()
-//
-//        if !refresh {
-//            progressHUD.show(onView: view, animated: true)
-//        }
-//
-//        getCustomerService.getCustomer(customerId: customerId) { [weak self] customerData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue getting customer data (Customer GET request) - \(e)")
-//                return
-//            } else {
-//                if let customer = customerData {
-//                    if !refresh {
-//                        self.progressHUD.hide(onView: self.view, animated: true)
-//                    } else {
-//                        self.refreshControl.endRefreshing()
-//                    }
-//
-//                    self.collections = customer.collections
-//                    self.refreshCustomerData(customer: customer)
-//                    self.collectionsTableView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
     private func refreshCustomerInfoCore(customer: CustomerCore) {
         let fName = customer.firstName ?? ""
         let lName = customer.lastName ?? ""
@@ -194,9 +163,7 @@ class CustomerDetailViewController: UIViewController {
         
         return ""
     }
-}
-
-extension CustomerDetailViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return collections?.count ?? 0
     }
@@ -207,9 +174,7 @@ extension CustomerDetailViewController: UITableViewDataSource {
         cell.textLabel?.text = self.collections?[indexPath.row].collectionName
         return cell
     }
-}
-
-extension CustomerDetailViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let collection = collections?[indexPath.row]
         selectedCollection = collection
