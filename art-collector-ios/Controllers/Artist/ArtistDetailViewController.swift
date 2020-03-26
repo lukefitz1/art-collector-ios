@@ -108,25 +108,4 @@ class ArtistDetailViewController: UIViewController {
             }
         }
     }
-    
-//    private func getArtistInfo(artistId: String) {
-//        let getArtistService = GetArtistService()
-//
-//        progressHUD.show(onView: view, animated: true)
-//        getArtistService.getArtistInfo(artistId: artistId) { [weak self] artistData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue getting artist info data (Artist GET request) - \(e)")
-//                return
-//            } else {
-//                if let artist = artistData {
-//                    self.progressHUD.hide(onView: self.view, animated: true)
-//                    self.refreshArtistInfo(artist: artist)
-//                }
-//            }
-//        }
-//    }
 }
