@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionDetailViewController: UIViewController {
+class CollectionDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var collectionName: UILabel!
     @IBOutlet weak var collectionIdentifier: UILabel!
@@ -130,9 +130,7 @@ class CollectionDetailViewController: UIViewController {
         collectionIdentifier.text = collection.identifier
         collectionId.text = collection.id
     }
-}
-
-extension CollectionDetailViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return artworks?.count ?? 0
     }
@@ -143,9 +141,7 @@ extension CollectionDetailViewController: UITableViewDataSource {
         cell.textLabel?.text = self.artworks?[indexPath.row].title
         return cell
     }
-}
-
-extension CollectionDetailViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let artwork = artworks?[indexPath.row]
         selectedArtwork = artwork

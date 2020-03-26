@@ -45,7 +45,7 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             phone.text = cust.phoneNumber ?? ""
             email.text = cust.emailAddress ?? ""
-//            id.text = cust.idx
+//            id.text = cust.id
             address.text = cust.streetAddress ?? ""
             
 //            let addTwo = generateAddressTwo(customer: cust)
