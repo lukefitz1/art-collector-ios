@@ -83,7 +83,7 @@ extension GeneralInformationViewController {
                     let coreUpdatedAt = updateGI.updatedAt ?? ""
                     
                     if coreUpdatedAt != networkUpdatedAt {
-//                        let nId = networkId
+                        // let nId = networkId
                         let cId = updateGI.id?.uuidString ?? ""
                         let cCreatedAt = updateGI.createdAt ?? ""
                         let cUpdatedAt = DateUtility.getFormattedDateAsString()
@@ -113,7 +113,7 @@ extension GeneralInformationViewController {
                             saveNewItem()
                         }
                     } else {
-//                        print("No difference, no updates necessary")
+                        // print("No difference, no updates necessary")
                     }
                 } catch {
                     print("Error updating general information = \(error)")
