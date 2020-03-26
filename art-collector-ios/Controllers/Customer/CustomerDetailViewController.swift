@@ -48,9 +48,9 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
 //            id.text = cust.id
             address.text = cust.streetAddress ?? ""
             
-//            let addTwo = generateAddressTwo(customer: cust)
-//            addressTwo.text = addTwo
-//
+            let addTwo = AddressUtility.getFormattedAddressTwo(customer: cust)
+            addressTwo.text = addTwo
+
 //            if let collectionsArray = cust.collections {
 //                self.collections = collectionsArray
 //            }
@@ -69,9 +69,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     @IBAction func unwindToCustomerDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-//                if let customer = self.customer?.id {
-//                    self.getCustomer(customerId: customer, refresh: true)
-//                }
                 if let customer = self.customerCore?.id {
                     self.getCustomerInfoCore(id: customer)
                 }
@@ -114,54 +111,8 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
             address.text = customer.streetAddress
         }
         
-        let addTwo = generateAddressTwo(customer: customer)
+        let addTwo = AddressUtility.getFormattedAddressTwo(customer: customer)
         addressTwo.text = addTwo
-    }
-    
-    private func generateAddressTwo(customer: CustomerCore) -> String {
-        let city = customer.city
-        let state = customer.state
-        let zip = customer.zip
-        
-        if city != "" && state != "" && zip != "" {
-            if let city = city {
-                if let state = state {
-                    if let zip = zip {
-                        return "\(city), \(state) \(zip)"
-                    }
-                }
-            }
-        }
-        
-        if city != "" && state != "" {
-            if let city = city {
-                if let state = state {
-                    return "\(city), \(state)"
-                }
-            }
-        }
-        
-        if state != "" && zip != "" {
-            if let state = state {
-                if let zip = zip {
-                    return "\(state) \(zip)"
-                }
-            }
-        }
-        
-        if city != "" && zip != "" {
-            if let city = city {
-                if let zip = zip {
-                    return "\(city) \(zip)"
-                }
-            }
-        }
-        
-        if let zip = zip {
-            return "\(zip)"
-        }
-        
-        return ""
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

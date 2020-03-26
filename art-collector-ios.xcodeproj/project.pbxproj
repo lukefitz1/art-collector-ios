@@ -36,6 +36,7 @@
 		9B225721242C083D00332C8C /* CollectionEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225720242C083D00332C8C /* CollectionEditServiceSerializerProtocol.swift */; };
 		9B225723242C085F00332C8C /* CustomerEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225722242C085F00332C8C /* CustomerEditServiceSerializer.swift */; };
 		9B225725242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */; };
+		9B225727242D029200332C8C /* AddressUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225726242D029200332C8C /* AddressUtility.swift */; };
 		9B242C45240A0068001E0145 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */; };
 		9B267D6A23BA6E4A00203D3B /* CustomersServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */; };
 		9B267D6C23BA6EDD00203D3B /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */; };
@@ -170,6 +171,7 @@
 		9B225720242C083D00332C8C /* CollectionEditServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionEditServiceSerializerProtocol.swift; sourceTree = "<group>"; };
 		9B225722242C085F00332C8C /* CustomerEditServiceSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditServiceSerializer.swift; sourceTree = "<group>"; };
 		9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditServiceSerializerProtocol.swift; sourceTree = "<group>"; };
+		9B225726242D029200332C8C /* AddressUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressUtility.swift; sourceTree = "<group>"; };
 		9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
 		9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceProtocol.swift; sourceTree = "<group>"; };
 		9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				9BD34DB724246D7B00B9E47C /* DateUtility.swift */,
+				9B225726242D029200332C8C /* AddressUtility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				9B2A919523BF94E100CC7552 /* Artwork.swift in Sources */,
 				9B267D6C23BA6EDD00203D3B /* LoginServiceProtocol.swift in Sources */,
 				9B40783A23F094B0002E4398 /* CollectionCreateViewController.swift in Sources */,
+				9B225727242D029200332C8C /* AddressUtility.swift in Sources */,
 				9BF0F99023B6AF9A009ACE3E /* CustomersService.swift in Sources */,
 				9B7B1D9D241DA3DF00563D91 /* ArtistListViewController.swift in Sources */,
 				9B267D7223BA8A9700203D3B /* CustomerDetailViewController.swift in Sources */,

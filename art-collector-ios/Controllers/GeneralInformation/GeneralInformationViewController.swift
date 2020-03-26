@@ -23,7 +23,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var selectedGeneralInformation: GeneralInformation?
-    var selectedGI: GeneralInformation?
     var selectedGICore: GeneralInformationCore?
     var giCoreArray: [GeneralInformationCore] = [] {
         didSet {
@@ -33,17 +32,10 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
             generalInformationTableView.reloadData()
         }
     }
-    var generalInformation: [GeneralInformation] = [] {
-        didSet {
-            guard isViewLoaded else {
-                return
-            }
-            generalInformationTableView.reloadData()
-        }
-    }
     
     @objc private func refreshGeneralInformationData(_ sender: Any) {
-        getGeneralInformation(refresh: true)
+//        getGeneralInformation(refresh: true)
+        print("TODO - Add in refresh from core data")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,10 +65,8 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
         {
             print (flags)
             if flags.contains(.isWWAN) {
-//                print("mobile - reachable")
                 return true
             }
-//            print("wifi - reachable")
             return true
         }
         else if (!isNetworkReachable(with: flags)) {
@@ -91,34 +81,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
         let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
         let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
         return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
-    }
-    
-    private func getGeneralInformation(refresh: Bool) {
-        generalInformation = []
-        let generalInformationService = GeneralInformationService()
-        
-        if !refresh {
-            progressHUD.show(onView: view, animated: true)
-        }
-        generalInformationService.getGeneralInformation { [weak self] generalInformationData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue getting GeneralInformation data (GeneralInformation GET request) - \(e)")
-                return
-            } else {
-                if let generalInfo = generalInformationData {
-                    if !refresh {
-                        self.progressHUD.hide(onView: self.view, animated: true)
-                    } else {
-                        self.refreshControl.endRefreshing()
-                    }
-                    self.generalInformation = generalInfo
-                }
-            }
-        }
     }
     
     @IBAction func unwindToGeneralInformationViewController(segue: UIStoryboardSegue) {
@@ -179,4 +141,32 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
             destinationVC.generalInfoCore = selectedGICore
         }
     }
+    
+//    private func getGeneralInformation(refresh: Bool) {
+//        generalInformation = []
+//        let generalInformationService = GeneralInformationService()
+//
+//        if !refresh {
+//            progressHUD.show(onView: view, animated: true)
+//        }
+//        generalInformationService.getGeneralInformation { [weak self] generalInformationData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue getting GeneralInformation data (GeneralInformation GET request) - \(e)")
+//                return
+//            } else {
+//                if let generalInfo = generalInformationData {
+//                    if !refresh {
+//                        self.progressHUD.hide(onView: self.view, animated: true)
+//                    } else {
+//                        self.refreshControl.endRefreshing()
+//                    }
+//                    self.generalInformation = generalInfo
+//                }
+//            }
+//        }
+//    }
 }

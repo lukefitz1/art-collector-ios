@@ -13,6 +13,7 @@ import UIKit
 import CoreData
 
 extension ArtistsViewController {
+    
     func syncData() {
         let artistsService = ArtistsService()
         

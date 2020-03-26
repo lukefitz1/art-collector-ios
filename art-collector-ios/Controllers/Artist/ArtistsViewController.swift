@@ -22,7 +22,6 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
     let notOnlineTitle = "No Internet Access"
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
-    var selectedArtist: Artist?
     var selectedArtistCore: ArtistCore?
     var artistsCoreArray: [ArtistCore] = [] {
         didSet {
@@ -32,17 +31,10 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
             artistsTableView.reloadData()
         }
     }
-    var artists: [Artist] = [] {
-        didSet {
-            guard isViewLoaded else {
-                return
-            }
-            artistsTableView.reloadData()
-        }
-    }
     
     @objc private func refreshArtistsData(_ sender: Any) {
-        getArtists(refresh: true)
+//        getArtists(refresh: true)
+        print("TODO - refresh artist data")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +66,6 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
             if flags.contains(.isWWAN) {
                 return true
             }
-            
             return true
         }
         else if (!isNetworkReachable(with: flags)) {
@@ -89,34 +80,6 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
         let canConnectAutomatically = flags.contains(.connectionOnDemand) || flags.contains(.connectionOnTraffic)
         let canConnectWithoutUserInteraction = canConnectAutomatically && !flags.contains(.interventionRequired)
         return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
-    }
-
-    func getArtists(refresh: Bool) {
-        artists = []
-        let artistService = ArtistsService()
-        
-        if !refresh {
-            progressHUD.show(onView: view, animated: true)
-        }
-        artistService.getArtists { [weak self] artistData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue getting artist data (Artists GET request) - \(e)")
-                return
-            } else {
-                if let artists = artistData {
-                    if !refresh {
-                        self.progressHUD.hide(onView: self.view, animated: true)
-                    } else {
-                        self.refreshControl.endRefreshing()
-                    }
-                    self.artists = artists
-                }
-            }
-        }
     }
     
     @IBAction func unwindToArtistsViewController(segue: UIStoryboardSegue) {
@@ -177,4 +140,32 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
             destinationVC.artistCore = selectedArtistCore
         }
     }
+    
+//    func getArtists(refresh: Bool) {
+//        artists = []
+//        let artistService = ArtistsService()
+//
+//        if !refresh {
+//            progressHUD.show(onView: view, animated: true)
+//        }
+//        artistService.getArtists { [weak self] artistData, error in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            if let e = error {
+//                print("Issue getting artist data (Artists GET request) - \(e)")
+//                return
+//            } else {
+//                if let artists = artistData {
+//                    if !refresh {
+//                        self.progressHUD.hide(onView: self.view, animated: true)
+//                    } else {
+//                        self.refreshControl.endRefreshing()
+//                    }
+//                    self.artists = artists
+//                }
+//            }
+//        }
+//    }
 }
