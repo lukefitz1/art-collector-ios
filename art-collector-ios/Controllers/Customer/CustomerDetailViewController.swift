@@ -156,7 +156,7 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
         if segue.identifier == "EditCustomerSegue" {
             let destinationVC = segue.destination as! CustomerEditViewController
             
-            destinationVC.customer = customer
+            destinationVC.customerCore = customerCore
         }
     }
 }

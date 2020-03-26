@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class CustomerEditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var customer: Customer?
+    var customerCore: CustomerCore?
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -27,19 +31,21 @@ class CustomerEditViewController: UIViewController, UITextFieldDelegate, UITextV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstNameTextField.text = customer?.firstName
-        lastNameTextField.text = customer?.lastName
-        emailTextField.text = customer?.email
-        phoneTextField.text = customer?.phone
-        streetAddressTextField.text = customer?.address
-        cityTextField.text = customer?.city
-        stateTextField.text = customer?.state
-        zipTextField.text = customer?.zip
+        firstNameTextField.text = customerCore?.firstName
+        lastNameTextField.text = customerCore?.lastName
+        emailTextField.text = customerCore?.emailAddress
+        phoneTextField.text = customerCore?.phoneNumber
+        streetAddressTextField.text = customerCore?.streetAddress
+        cityTextField.text = customerCore?.city
+        stateTextField.text = customerCore?.state
+        zipTextField.text = customerCore?.zip
         referredByTextField.text = ""
         projectNotesTextView.text = ""
     }
     
     @IBAction func updateCustomerBtnPressed(_ sender: Any) {
+        guard let customerCoreId = customerCore?.id else { return }
+        
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
         let email = emailTextField.text ?? ""
@@ -49,33 +55,45 @@ class CustomerEditViewController: UIViewController, UITextFieldDelegate, UITextV
         let zip = zipTextField.text ?? ""
         let referredBy = referredByTextField.text ?? ""
         let projectNotes = projectNotesTextView.text ?? ""
-        let customerId = customer?.id ?? ""
+        let updateDate = DateUtility.getFormattedDateAsString()
         
-//        updateCustomer(id: customerId, fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes)
+        updateCustomerCoreData(id: customerCoreId, firstName: firstName, lastName: lastName, email: email, phone: phone, address: streetAddress, city: city, zip: zip, referredBy: referredBy, projectNotes: projectNotes, updatedAt: updateDate)
     }
     
-//    private func updateCustomer(id: String, fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {
-//
-//        let customerEditService = CustomerEditService()
-//        let state = "CO"
-//
-//        progressHUD.show(onView: view, animated: true)
-//        customerEditService.updateCustomer(id: id, fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes) { [weak self] customerData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue putting customer data (Customer POST request) - \(e)")
-//                return
-//            } else {
-//                print("SUCCESS - Customer PUT request")
-//
-//                if let customer = customerData {
-//                    self.progressHUD.hide(onView: self.view, animated: true)
-//                    self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
-//                }
-//            }
-//        }
-//    }
+    private func updateCustomerCoreData(id: UUID, firstName: String, lastName: String, email: String, phone: String, address: String, city: String, zip: String, referredBy: String, projectNotes: String, updatedAt: String) {
+        let request: NSFetchRequest<CustomerCore> = CustomerCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let customer = try context.fetch(request)
+            
+            let updateCustomer = customer[0] as NSManagedObject
+            updateCustomer.setValue(updatedAt, forKey: "updatedAt")
+            updateCustomer.setValue(firstName, forKey: "firstName")
+            updateCustomer.setValue(lastName, forKey: "lastName")
+            updateCustomer.setValue(email, forKey: "emailAddress")
+            updateCustomer.setValue(phone, forKey: "phoneNumber")
+            updateCustomer.setValue(address, forKey: "streetAddress")
+            updateCustomer.setValue(city, forKey: "city")
+            updateCustomer.setValue(zip, forKey: "zip")
+            updateCustomer.setValue(referredBy, forKey: "referredBy")
+            updateCustomer.setValue(projectNotes, forKey: "projectNotes")
+            
+        } catch {
+            print("Error updating customer information = \(error)")
+        }
+        
+        saveUpdatedItem()
+    }
+    
+    private func saveUpdatedItem() {
+        do {
+            try context.save()
+            self.progressHUD.hide(onView: self.view, animated: true)
+            self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
+        } catch {
+            self.progressHUD.hide(onView: self.view, animated: true)
+            print("Error saving the updated Customer to database = \(error)")
+        }
+    }
 }

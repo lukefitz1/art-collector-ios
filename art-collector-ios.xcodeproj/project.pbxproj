@@ -37,6 +37,7 @@
 		9B225723242C085F00332C8C /* CustomerEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225722242C085F00332C8C /* CustomerEditServiceSerializer.swift */; };
 		9B225725242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */; };
 		9B225727242D029200332C8C /* AddressUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225726242D029200332C8C /* AddressUtility.swift */; };
+		9B225729242D2F3400332C8C /* CustomerDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225728242D2F3400332C8C /* CustomerDataSync.swift */; };
 		9B242C45240A0068001E0145 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */; };
 		9B267D6A23BA6E4A00203D3B /* CustomersServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */; };
 		9B267D6C23BA6EDD00203D3B /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */; };
@@ -172,6 +173,7 @@
 		9B225722242C085F00332C8C /* CustomerEditServiceSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditServiceSerializer.swift; sourceTree = "<group>"; };
 		9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditServiceSerializerProtocol.swift; sourceTree = "<group>"; };
 		9B225726242D029200332C8C /* AddressUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressUtility.swift; sourceTree = "<group>"; };
+		9B225728242D2F3400332C8C /* CustomerDataSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDataSync.swift; sourceTree = "<group>"; };
 		9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
 		9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceProtocol.swift; sourceTree = "<group>"; };
 		9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				9B267D7123BA8A9700203D3B /* CustomerDetailViewController.swift */,
 				9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */,
 				9B6F9AD3240C6B78003C6E28 /* CustomerEditViewController.swift */,
+				9B225728242D2F3400332C8C /* CustomerDataSync.swift */,
 			);
 			path = Customer;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				9B222A1F23D2B33C00A2A8D0 /* GeneralInformationServiceProtocol.swift in Sources */,
 				9BDE72522410B00E00307EFC /* GetArtworkServiceDeserializer.swift in Sources */,
 				9B225721242C083D00332C8C /* CollectionEditServiceSerializerProtocol.swift in Sources */,
+				9B225729242D2F3400332C8C /* CustomerDataSync.swift in Sources */,
 				9B40783E23F09662002E4398 /* CollectionCreateServiceProtocol.swift in Sources */,
 				9BDB59A223E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift in Sources */,
 				9BDE723A241099A000307EFC /* GetArtistServiceDeserializer.swift in Sources */,
