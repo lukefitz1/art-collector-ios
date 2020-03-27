@@ -16,7 +16,9 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var artworkTableView: UITableView!
     
     var customer: Customer?
+    var customerCore: CustomerCore?
     var collection: Collection?
+    var collectionCore: CollectionCore?
     var artworks: [Artwork]? = []
     var selectedArtwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()

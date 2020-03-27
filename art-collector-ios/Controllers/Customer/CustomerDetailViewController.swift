@@ -22,10 +22,15 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var selectedCollection: Collection?
+    var selectedCollectionCore: CollectionCore?
     var customer: Customer?
     var customerCore: CustomerCore?
     var collections: [Collection]? = []
-    var collectionsCore: [CollectionCore]? = []
+    var collectionsCore: [CollectionCore]? = [] {
+        didSet {
+            collectionsTableView.reloadData()
+        }
+    }
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     private let refreshControl = UIRefreshControl()
@@ -46,7 +51,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             phone.text = cust.phoneNumber ?? ""
             email.text = cust.emailAddress ?? ""
-            // id.text = cust.id
             address.text = cust.streetAddress ?? ""
             
             let addTwo = AddressUtility.getFormattedAddressTwo(customer: cust)
@@ -59,6 +63,24 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
 //            if let collectionsArray = cust.collections {
 //                self.collectionsCore = collectionsArray
 //            }
+            
+            loadCollections()
+        }
+    }
+    
+    private func loadCollections() {
+        let id = customerCore?.id?.uuidString ?? ""
+        print("Customer ID: \(id)")
+        guard let customerId = customerCore?.id else { return }
+        
+        let request: NSFetchRequest<CollectionCore> = CollectionCore.fetchRequest()
+        request.predicate = NSPredicate(format: "customerId = %@", customerId as NSUUID)
+        
+        do {
+            let collectionsFromCore = try context.fetch(request)
+            collectionsCore = collectionsFromCore
+        } catch {
+            print("Error getting collections from core - \(error)")
         }
     }
     
@@ -121,22 +143,23 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collections?.count ?? 0
+        print("Collections count: \(collectionsCore?.count ?? 0)")
+        return collectionsCore?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CollectionCell", for: indexPath)
 
-        cell.textLabel?.text = self.collections?[indexPath.row].collectionName
+        cell.textLabel?.text = self.collectionsCore?[indexPath.row].collectionName
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let collection = collections?[indexPath.row]
-        selectedCollection = collection
+        let collection = collectionsCore?[indexPath.row]
+        selectedCollectionCore = collection
 
         let collectionDetailViewController = CollectionDetailViewController()
-        collectionDetailViewController.collection = collection
+        collectionDetailViewController.collectionCore = collection
         
         self.performSegue(withIdentifier: "CollectionDetailSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -146,8 +169,8 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
         if segue.identifier == "CollectionDetailSegue" {
             let destinationVC = segue.destination as! CollectionDetailViewController
 
-            destinationVC.customer = customer
-            destinationVC.collection = selectedCollection
+            destinationVC.customerCore = customerCore
+            destinationVC.collectionCore = selectedCollectionCore
         }
         
         if segue.identifier == "AddNewCollectionSegue" {

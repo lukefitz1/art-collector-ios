@@ -83,8 +83,6 @@ extension CustomersViewController {
                 saveNewItem()
                 
                 if customerCollections.count > 0 {
-                    print("We found some collections for Customer: \(customerFirstName) \(customerLastName)")
-                    
                     customerCollections.forEach { collection in
                         let id = collection.id
                         let name = collection.collectionName ?? ""
@@ -189,7 +187,7 @@ extension CustomersViewController {
                             let networkStreet = customer.address ?? ""
                             let networkCity = customer.city ?? ""
                             let networkZip = customer.zip ?? ""
-//                            let networkReferredBy = customer.r ?? ""
+//                            let networkReferredBy = customer.referrredBy ?? ""
 //                            let networkNotes = customer.projectNotes ?? ""
 
                             updateCustomerManagedObject.setValue(networkUpdatedAt, forKey: "updatedAt")
