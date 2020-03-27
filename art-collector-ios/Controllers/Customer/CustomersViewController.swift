@@ -91,6 +91,17 @@ class CustomersViewController: UIViewController, UITableViewDataSource, UITableV
         return isReachable && (!needsConnection || canConnectWithoutUserInteraction)
     }
     
+    @IBAction func syncCustomerDataBtnPressed(_ sender: Any) {
+        if checkReachable() {
+            self.syncData()
+        } else {
+            let alert = UIAlertController(title: notOnlineTitle, message: notOnlineMessage, preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func getCustomers(refresh: Bool) {
         customers = []
         let customerService = CustomersService()

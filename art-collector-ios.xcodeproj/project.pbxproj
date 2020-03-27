@@ -38,6 +38,14 @@
 		9B225725242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */; };
 		9B225727242D029200332C8C /* AddressUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225726242D029200332C8C /* AddressUtility.swift */; };
 		9B225729242D2F3400332C8C /* CustomerDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225728242D2F3400332C8C /* CustomerDataSync.swift */; };
+		9B22572B242D47BD00332C8C /* ArtworksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22572A242D47BD00332C8C /* ArtworksService.swift */; };
+		9B22572D242D47E100332C8C /* ArtworksServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22572C242D47E100332C8C /* ArtworksServiceProtocol.swift */; };
+		9B22572F242D488200332C8C /* ArtworksServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22572E242D488200332C8C /* ArtworksServiceDeserializer.swift */; };
+		9B225731242D488C00332C8C /* ArtworksServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225730242D488C00332C8C /* ArtworksServiceDeserializerProtocol.swift */; };
+		9B225733242D4A2800332C8C /* CollectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225732242D4A2800332C8C /* CollectionsService.swift */; };
+		9B225735242D4A3900332C8C /* CollectionsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225734242D4A3900332C8C /* CollectionsServiceProtocol.swift */; };
+		9B225737242D4AB700332C8C /* CollectionsServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225736242D4AB700332C8C /* CollectionsServiceDeserializer.swift */; };
+		9B225739242D4AC100332C8C /* CollectionsServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225738242D4AC100332C8C /* CollectionsServiceDeserializerProtocol.swift */; };
 		9B242C45240A0068001E0145 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */; };
 		9B267D6A23BA6E4A00203D3B /* CustomersServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */; };
 		9B267D6C23BA6EDD00203D3B /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */; };
@@ -174,6 +182,14 @@
 		9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditServiceSerializerProtocol.swift; sourceTree = "<group>"; };
 		9B225726242D029200332C8C /* AddressUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressUtility.swift; sourceTree = "<group>"; };
 		9B225728242D2F3400332C8C /* CustomerDataSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDataSync.swift; sourceTree = "<group>"; };
+		9B22572A242D47BD00332C8C /* ArtworksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksService.swift; sourceTree = "<group>"; };
+		9B22572C242D47E100332C8C /* ArtworksServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksServiceProtocol.swift; sourceTree = "<group>"; };
+		9B22572E242D488200332C8C /* ArtworksServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksServiceDeserializer.swift; sourceTree = "<group>"; };
+		9B225730242D488C00332C8C /* ArtworksServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
+		9B225732242D4A2800332C8C /* CollectionsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsService.swift; sourceTree = "<group>"; };
+		9B225734242D4A3900332C8C /* CollectionsServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsServiceProtocol.swift; sourceTree = "<group>"; };
+		9B225736242D4AB700332C8C /* CollectionsServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsServiceDeserializer.swift; sourceTree = "<group>"; };
+		9B225738242D4AC100332C8C /* CollectionsServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
 		9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistDetailViewController.swift; sourceTree = "<group>"; };
 		9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceProtocol.swift; sourceTree = "<group>"; };
 		9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginServiceProtocol.swift; sourceTree = "<group>"; };
@@ -427,6 +443,8 @@
 		9B2985B9240DF49E009E73D9 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				9B225732242D4A2800332C8C /* CollectionsService.swift */,
+				9B225734242D4A3900332C8C /* CollectionsServiceProtocol.swift */,
 				9B96E34C23E389B90024F388 /* CollectionService.swift */,
 				9B96E34E23E38A540024F388 /* CollectionServiceProtocol.swift */,
 				9B40783B23F09616002E4398 /* CollectionCreateService.swift */,
@@ -442,6 +460,8 @@
 		9B2985BA240DF4A2009E73D9 /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				9B22572A242D47BD00332C8C /* ArtworksService.swift */,
+				9B22572C242D47E100332C8C /* ArtworksServiceProtocol.swift */,
 				9B96E34023E380650024F388 /* ArtworkCreateService.swift */,
 				9B96E34223E380890024F388 /* ArtworkCreateServiceProtocol.swift */,
 				9BDE72492410AF4D00307EFC /* ArtworkEditService.swift */,
@@ -609,6 +629,8 @@
 		9BDE722E2410956000307EFC /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				9B225736242D4AB700332C8C /* CollectionsServiceDeserializer.swift */,
+				9B225738242D4AC100332C8C /* CollectionsServiceDeserializerProtocol.swift */,
 				9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */,
 				9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */,
 				9B40783F23F09729002E4398 /* CollectionCreateServiceDeserializerProtocol.swift */,
@@ -622,6 +644,8 @@
 		9BDE722F2410956500307EFC /* Artwork */ = {
 			isa = PBXGroup;
 			children = (
+				9B22572E242D488200332C8C /* ArtworksServiceDeserializer.swift */,
+				9B225730242D488C00332C8C /* ArtworksServiceDeserializerProtocol.swift */,
 				9B96E34A23E383860024F388 /* ArtworkCreateServiceDeserializer.swift */,
 				9B96E34823E383760024F388 /* ArtworkCreateServiceDeserializerProtocol.swift */,
 				9BDE72512410B00E00307EFC /* GetArtworkServiceDeserializer.swift */,
@@ -812,6 +836,7 @@
 				9B7A476523D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift in Sources */,
 				9BDE72342410968400307EFC /* ArtistEditServiceProtocol.swift in Sources */,
 				9B3DDBC82409F44B006D440C /* GeneralInformationDetailViewController.swift in Sources */,
+				9B225731242D488C00332C8C /* ArtworksServiceDeserializerProtocol.swift in Sources */,
 				9BDB599A23E0B48C00AB8C20 /* CustomerCreateViewController.swift in Sources */,
 				9B40784E23F0A142002E4398 /* GetCustomerServiceDeserializer.swift in Sources */,
 				9B96E34723E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift in Sources */,
@@ -820,6 +845,7 @@
 				9B16D378242A891100593898 /* GeneralInformationEditServiceSerializer.swift in Sources */,
 				9B7A475F23D5E462006D1BA4 /* GeneralInformationCreateServiceSerializer.swift in Sources */,
 				9B222A1523D26BA600A2A8D0 /* ArtistsServiceProtocol.swift in Sources */,
+				9B225733242D4A2800332C8C /* CollectionsService.swift in Sources */,
 				9B937C4A241EC43D00AFEE3B /* GeneralInformationListViewController.swift in Sources */,
 				9B90893123B2BBCF00FBE693 /* CustomersViewController.swift in Sources */,
 				9B222A1F23D2B33C00A2A8D0 /* GeneralInformationServiceProtocol.swift in Sources */,
@@ -827,6 +853,7 @@
 				9B225721242C083D00332C8C /* CollectionEditServiceSerializerProtocol.swift in Sources */,
 				9B225729242D2F3400332C8C /* CustomerDataSync.swift in Sources */,
 				9B40783E23F09662002E4398 /* CollectionCreateServiceProtocol.swift in Sources */,
+				9B225735242D4A3900332C8C /* CollectionsServiceProtocol.swift in Sources */,
 				9BDB59A223E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift in Sources */,
 				9BDE723A241099A000307EFC /* GetArtistServiceDeserializer.swift in Sources */,
 				9BDE722724108E6200307EFC /* GetGeneralInformationServiceProtocol.swift in Sources */,
@@ -884,11 +911,13 @@
 				9B267D6E23BA713900203D3B /* CustomersServiceDeserializer.swift in Sources */,
 				9B22571B242C080600332C8C /* ArtworkEditServiceSerializer.swift in Sources */,
 				9BF12F2223D3B80800BE8AA8 /* ArtistCreateServiceProtocol.swift in Sources */,
+				9B22572B242D47BD00332C8C /* ArtworksService.swift in Sources */,
 				9BDE72462410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift in Sources */,
 				9B16D376242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift in Sources */,
 				9B40784423F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift in Sources */,
 				9BF12F2023D3B7F800BE8AA8 /* ArtistCreateService.swift in Sources */,
 				9BDE72442410ABEC00307EFC /* GetCollectionServiceProtocol.swift in Sources */,
+				9B225739242D4AC100332C8C /* CollectionsServiceDeserializerProtocol.swift in Sources */,
 				9B222A1323D26B6500A2A8D0 /* ArtistsService.swift in Sources */,
 				9B7A475723D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift in Sources */,
 				9B96E34F23E38A540024F388 /* CollectionServiceProtocol.swift in Sources */,
@@ -908,6 +937,7 @@
 				9B7A475D23D5E1A1006D1BA4 /* GeneralInformationCreateServiceProtocol.swift in Sources */,
 				9B7A476123D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift in Sources */,
 				9B96E35323E38C080024F388 /* CollectionServiceDeserializer.swift in Sources */,
+				9B225737242D4AB700332C8C /* CollectionsServiceDeserializer.swift in Sources */,
 				9B222A1B23D2B04A00A2A8D0 /* GeneralInformationViewController.swift in Sources */,
 				9BF0F99223B7E2FF009ACE3E /* Customer.swift in Sources */,
 				9B144DA623A29FED00E0FE85 /* AppDelegate.swift in Sources */,
@@ -924,8 +954,10 @@
 				9B7B1D9D241DA3DF00563D91 /* ArtistListViewController.swift in Sources */,
 				9B267D7223BA8A9700203D3B /* CustomerDetailViewController.swift in Sources */,
 				9B2A919723BF94EB00CC7552 /* Artist.swift in Sources */,
+				9B22572F242D488200332C8C /* ArtworksServiceDeserializer.swift in Sources */,
 				9B616F7F242432F400204467 /* DataModel.xcdatamodeld in Sources */,
 				9BF0F98C23B64F20009ACE3E /* ApiClient.swift in Sources */,
+				9B22572D242D47E100332C8C /* ArtworksServiceProtocol.swift in Sources */,
 				9BDE722124108BC700307EFC /* GeneralInformationEditService.swift in Sources */,
 				9B96E34523E383590024F388 /* ArtworkCreateServiceSerializer.swift in Sources */,
 				9B222A2123D2B3A200A2A8D0 /* GeneralInformationServiceDeserializer.swift in Sources */,

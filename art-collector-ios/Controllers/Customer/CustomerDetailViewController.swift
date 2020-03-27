@@ -25,6 +25,7 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     var customer: Customer?
     var customerCore: CustomerCore?
     var collections: [Collection]? = []
+    var collectionsCore: [CollectionCore]? = []
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     private let refreshControl = UIRefreshControl()
@@ -45,7 +46,7 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             phone.text = cust.phoneNumber ?? ""
             email.text = cust.emailAddress ?? ""
-//            id.text = cust.id
+            // id.text = cust.id
             address.text = cust.streetAddress ?? ""
             
             let addTwo = AddressUtility.getFormattedAddressTwo(customer: cust)
@@ -53,6 +54,10 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
 
 //            if let collectionsArray = cust.collections {
 //                self.collections = collectionsArray
+//            }
+            
+//            if let collectionsArray = cust.collections {
+//                self.collectionsCore = collectionsArray
 //            }
         }
     }

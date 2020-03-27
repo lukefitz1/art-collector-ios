@@ -17,21 +17,21 @@
         <attribute name="additionalInfoText" optional="YES" attributeType="String"/>
         <attribute name="amountPaid" optional="YES" attributeType="String"/>
         <attribute name="artDescription" optional="YES" attributeType="String"/>
-        <attribute name="artistId" optional="YES" attributeType="String"/>
+        <attribute name="artistId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="artType" optional="YES" attributeType="String"/>
-        <attribute name="collectionId" optional="YES" attributeType="String"/>
+        <attribute name="collectionId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="condition" optional="YES" attributeType="String"/>
         <attribute name="createdAt" attributeType="String"/>
         <attribute name="currentLocation" optional="YES" attributeType="String"/>
         <attribute name="currentValue" optional="YES" attributeType="String"/>
-        <attribute name="customerId" optional="YES" attributeType="String"/>
+        <attribute name="customerId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="customTitle" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="dateAcquired" optional="YES" attributeType="String"/>
         <attribute name="dateAcquiredLabel" optional="YES" attributeType="String"/>
         <attribute name="dimensions" optional="YES" attributeType="String"/>
         <attribute name="frameDimensions" optional="YES" attributeType="String"/>
-        <attribute name="generalInformationId" optional="YES" attributeType="String"/>
+        <attribute name="generalInformationId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="medium" optional="YES" attributeType="String"/>
@@ -50,7 +50,7 @@
     <entity name="CollectionCore" representedClassName=".CollectionCore" syncable="YES" codeGenerationType="class">
         <attribute name="collectionName" optional="YES" attributeType="String"/>
         <attribute name="createdAt" attributeType="String"/>
-        <attribute name="customerId" optional="YES" attributeType="String"/>
+        <attribute name="customerId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="updatedAt" attributeType="String"/>
@@ -79,10 +79,10 @@
         <attribute name="updatedAt" attributeType="String"/>
     </entity>
     <elements>
-        <element name="ArtistCore" positionX="-63" positionY="18" width="128" height="163"/>
-        <element name="ArtworkCore" positionX="-18" positionY="45" width="128" height="568"/>
-        <element name="CollectionCore" positionX="-36" positionY="36" width="128" height="148"/>
-        <element name="CustomerCore" positionX="-54" positionY="27" width="128" height="238"/>
-        <element name="GeneralInformationCore" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="ArtistCore" positionX="144.63671875" positionY="-114.359375" width="128" height="163"/>
+        <element name="ArtworkCore" positionX="-58.94140625" positionY="-119.17578125" width="128" height="568"/>
+        <element name="GeneralInformationCore" positionX="142.7734375" positionY="73.26171875" width="128" height="118"/>
+        <element name="CustomerCore" positionX="-396.08984375" positionY="-116.9140625" width="128" height="238"/>
+        <element name="CollectionCore" positionX="-210.8203125" positionY="-119.01171875" width="128" height="28"/>
     </elements>
 </model>

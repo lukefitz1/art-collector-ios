@@ -1010,7 +1010,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DpW-ZZ-9Zz">
-                                <rect key="frame" x="0.0" y="172" width="414" height="641"/>
+                                <rect key="frame" x="0.0" y="206" width="414" height="607"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomerCell" id="4w0-tq-vwy">
@@ -1031,15 +1031,24 @@
                                     <segue destination="a9n-gY-OSs" kind="presentation" id="9TC-zH-2k3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H5Q-rb-kVh">
+                                <rect key="frame" x="172" y="151" width="70" height="30"/>
+                                <state key="normal" title="Sync Data"/>
+                                <connections>
+                                    <action selector="syncCustomerDataBtnPressed:" destination="5u4-uC-reg" eventType="touchUpInside" id="x5n-dE-9Dv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="vsV-I3-dPP" firstAttribute="bottom" secondItem="DpW-ZZ-9Zz" secondAttribute="bottom" id="6bu-z2-NO1"/>
+                            <constraint firstItem="H5Q-rb-kVh" firstAttribute="centerX" secondItem="vsV-I3-dPP" secondAttribute="centerX" id="6vU-5l-YpR"/>
+                            <constraint firstItem="DpW-ZZ-9Zz" firstAttribute="top" secondItem="H5Q-rb-kVh" secondAttribute="bottom" constant="25" id="MeA-n9-G0J"/>
                             <constraint firstItem="DpW-ZZ-9Zz" firstAttribute="trailing" secondItem="vsV-I3-dPP" secondAttribute="trailing" id="ODv-ED-ONl"/>
                             <constraint firstItem="7y1-vb-NPR" firstAttribute="centerX" secondItem="vsV-I3-dPP" secondAttribute="centerX" id="aBa-UC-7K6"/>
                             <constraint firstItem="7y1-vb-NPR" firstAttribute="top" secondItem="vsV-I3-dPP" secondAttribute="top" constant="25" id="b0r-kj-pQc"/>
                             <constraint firstItem="DpW-ZZ-9Zz" firstAttribute="leading" secondItem="vsV-I3-dPP" secondAttribute="leading" id="e88-Fl-LQn"/>
-                            <constraint firstItem="DpW-ZZ-9Zz" firstAttribute="top" secondItem="7y1-vb-NPR" secondAttribute="bottom" constant="29" id="sXE-8Z-iZN"/>
+                            <constraint firstItem="H5Q-rb-kVh" firstAttribute="top" secondItem="7y1-vb-NPR" secondAttribute="bottom" constant="8" id="tg6-dm-R2d"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vsV-I3-dPP"/>
                     </view>
