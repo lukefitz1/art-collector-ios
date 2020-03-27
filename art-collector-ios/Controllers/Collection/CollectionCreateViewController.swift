@@ -18,6 +18,7 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var customerId: String = ""
+    var customerCoreId: UUID = UUID()
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     
     override func viewDidLoad() {
@@ -42,15 +43,18 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
         let entity = NSEntityDescription.entity(forEntityName: "CollectionCore", in: context)!
         let newCollection = NSManagedObject(entity: entity, insertInto: context)
         
+        progressHUD.show(onView: view, animated: true)
         newCollection.setValue(UUID(), forKey: "id")
         newCollection.setValue(createdAt, forKey: "createdAt")
         newCollection.setValue(createdAt, forKey: "updatedAt")
         newCollection.setValue(name, forKey: "collectionName")
         newCollection.setValue(year, forKey: "year")
         newCollection.setValue(identifier, forKey: "identifier")
-        newCollection.setValue(customerId, forKey: "customerId")
+        newCollection.setValue(customerCoreId, forKey: "customerId")
         
         saveNewItem()
+        progressHUD.hide(onView: self.view, animated: true)
+        performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
     }
     
     private func saveNewItem() {

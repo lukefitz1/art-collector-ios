@@ -69,8 +69,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     private func loadCollections() {
-        let id = customerCore?.id?.uuidString ?? ""
-        print("Customer ID: \(id)")
         guard let customerId = customerCore?.id else { return }
         
         let request: NSFetchRequest<CollectionCore> = CollectionCore.fetchRequest()
@@ -98,6 +96,7 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
             DispatchQueue.main.async {
                 if let customer = self.customerCore?.id {
                     self.getCustomerInfoCore(id: customer)
+                    self.loadCollections()
                 }
             }
         }
@@ -176,8 +175,12 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
         if segue.identifier == "AddNewCollectionSegue" {
             let destinationVC = segue.destination as! CollectionCreateViewController
             
-            if let custId = customer?.id {
-                destinationVC.customerId = custId
+//            if let custId = customer?.id {
+//                destinationVC.customerCoreId = custId
+//            }
+            
+            if let custId = customerCore?.id {
+                destinationVC.customerCoreId = custId
             }
         }
         
