@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -20,10 +20,17 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
     @IBOutlet weak var zipTextField: UITextField!
     @IBOutlet weak var referredByTextField: UITextField!
     @IBOutlet weak var projectNotesTextView: UITextView!
+    @IBOutlet weak var stateTextField: UILabel!
+    
+    var pickerView = UIPickerView()
+    var toolBar = UIToolbar()
+    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    var selectedStateCode: String = ""
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let stateArray: [String] = ["Alaska","Alabama","Arkansas","American Samoa","Arizona","California","Colorado","Connecticut","District of Columbia","Delaware","Florida","Georgia","Guam","Hawaii","Iowa","Idaho","Illinois","Indiana","Kansas","Kentucky","Louisiana","Massachusetts","Maryland","Maine","Michigan","Minnesota","Missouri","Mississippi","Montana","North Carolina","North Dakota","Nebraska","New Hampshire","New Jersey","New Mexico","Nevada","New York","Ohio","Oklahoma","Oregon","Pennsylvania","Puerto Rico","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Virginia","Virgin Islands","Vermont","Washington","Wisconsin","West Virginia","Wyoming"]
     
-    var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    let stateCodeArray = [ "AK","AL","AR","AS","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","PR","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,15 +57,16 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         let phone = phoneTextField.text ?? ""
         let streetAddress = streetAddressTextField.text ?? ""
         let city = cityTextField.text ?? ""
+        let stateCode = selectedStateCode
         let zip = zipTextField.text ?? ""
         let referredBy = referredByTextField.text ?? ""
         let projectNotes = projectNotesTextView.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-        createCustomerCoreData(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, zip: zip, referred: referredBy, notes: projectNotes, createdAt: createDate)
+        createCustomerCoreData(fName: firstName, lName: lastName, email: email, phone: phone, street: streetAddress, city: city, state: stateCode, zip: zip, referred: referredBy, notes: projectNotes, createdAt: createDate)
     }
     
-    private func createCustomerCoreData(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String, createdAt: String) {
+    private func createCustomerCoreData(fName: String, lName: String, email: String, phone: String, street: String, city: String, state: String, zip: String, referred: String, notes: String, createdAt: String) {
         let entity = NSEntityDescription.entity(forEntityName: "CustomerCore", in: context)!
         let newCustomer = NSManagedObject(entity: entity, insertInto: context)
         
@@ -72,6 +80,7 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         newCustomer.setValue(phone, forKey: "phoneNumber")
         newCustomer.setValue(street, forKey: "streetAddress")
         newCustomer.setValue(city, forKey: "city")
+        newCustomer.setValue(state, forKey: "state")
         newCustomer.setValue(zip, forKey: "zip")
         newCustomer.setValue(referred, forKey: "referredBy")
         newCustomer.setValue(notes, forKey: "projectNotes")
@@ -87,6 +96,44 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
         } catch {
             print("Error saving the new customer to database = \(error)")
         }
+    }
+    
+    @IBAction func selectStateBtnTapped(_ sender: Any) {
+        pickerView = UIPickerView.init()
+        pickerView.delegate = self
+        pickerView.backgroundColor = UIColor.white
+        pickerView.setValue(UIColor.black, forKey: "textColor")
+        pickerView.autoresizingMask = .flexibleWidth
+        pickerView.contentMode = .center
+        pickerView.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+        self.view.addSubview(pickerView)
+
+        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+        toolBar.barStyle = .default
+        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        self.view.addSubview(toolBar)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return stateArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return stateArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedStateCode = stateCodeArray[row]
+        stateTextField.text = stateArray[row]
+    }
+    
+    @objc func onDoneButtonTapped() {
+        toolBar.removeFromSuperview()
+        pickerView.removeFromSuperview()
     }
     
 //    private func createCustomer(fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String) {

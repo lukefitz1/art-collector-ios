@@ -174,7 +174,7 @@ extension CustomersViewController {
                             print("Let's send an update to the web app")
 
                             // send network request to update web app
-                            updateCustomer(id: cId, fName: cCustomerFirstName, lName: cCustomerLastName, email: cCustomerEmail, phone: cCustomerPhone, street: cCustomerAddress, city: cCustomerCity, zip: cCustomerZip, referred: "", notes: "", createdAt: cCreatedAt, updatedAt: cUpdatedAt)
+                            updateCustomer(id: cId, fName: cCustomerFirstName, lName: cCustomerLastName, email: cCustomerEmail, phone: cCustomerPhone, street: cCustomerAddress, city: cCustomerCity, state: cCustomerState, zip: cCustomerZip, referred: "", notes: "", createdAt: cCreatedAt, updatedAt: cUpdatedAt)
                         } else {
                             print("Network is more recent")
                             print("Let's update local database")
@@ -357,10 +357,9 @@ extension CustomersViewController {
         }
     }
     
-    private func updateCustomer(id: String, fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String, createdAt: String, updatedAt: String) {
+    private func updateCustomer(id: String, fName: String, lName: String, email: String, phone: String, street: String, city: String, state: String, zip: String, referred: String, notes: String, createdAt: String, updatedAt: String) {
 
         let customerEditService = CustomerEditService()
-        let state = "CO"
 
         progressHUD.show(onView: view, animated: true)
         customerEditService.updateCustomer(id: id, fName: fName, lName: lName, email: email, phone: phone, address: street, city: city, state: state, zip: zip, referredBy: referred, projectNotes: notes, createdAt: createdAt, updatedAt: updatedAt) { [weak self] customerData, error in
