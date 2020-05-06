@@ -142,7 +142,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Collections count: \(collectionsCore?.count ?? 0)")
         return collectionsCore?.count ?? 0
     }
 
