@@ -122,7 +122,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JJf-QN-z7G">
             <objects>
-                <tabBarController id="tpy-Oy-jAq" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarNavController" id="tpy-Oy-jAq" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="gGB-LE-R1t"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1sw-oX-Ie5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -142,7 +142,7 @@
         <!--Artists-->
         <scene sceneID="TLv-hs-DjR">
             <objects>
-                <viewController id="qTq-wV-XXP" userLabel="Artists" customClass="ArtistsViewController" customModule="art_collector_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArtistsViewController" id="qTq-wV-XXP" userLabel="Artists" customClass="ArtistsViewController" customModule="art_collector_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xqj-DX-2cj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -720,7 +720,7 @@
         <!--General Information-->
         <scene sceneID="iPO-dn-xrD">
             <objects>
-                <viewController id="h3c-E8-cp9" userLabel="General Information" customClass="GeneralInformationViewController" customModule="art_collector_ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GeneralInformationViewController" id="h3c-E8-cp9" userLabel="General Information" customClass="GeneralInformationViewController" customModule="art_collector_ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sc6-bj-wpy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
