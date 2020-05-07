@@ -102,6 +102,7 @@
 		9B96E35123E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */; };
 		9B96E35323E38C080024F388 /* CollectionServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */; };
 		9BA1DCFF2437A7C000A44AD2 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1DCFE2437A7C000A44AD2 /* LoginManager.swift */; };
+		9BBD48CF2463845D007C6CB5 /* MultiSelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */; };
 		9BD34DB824246D7B00B9E47C /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD34DB724246D7B00B9E47C /* DateUtility.swift */; };
 		9BDB599A23E0B48C00AB8C20 /* CustomerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */; };
 		9BDB599C23E0BC6200AB8C20 /* CustomerCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB599B23E0BC6200AB8C20 /* CustomerCreateService.swift */; };
@@ -247,6 +248,7 @@
 		9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
 		9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionServiceDeserializer.swift; sourceTree = "<group>"; };
 		9BA1DCFE2437A7C000A44AD2 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectListViewController.swift; sourceTree = "<group>"; };
 		9BD34DB724246D7B00B9E47C /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCreateViewController.swift; sourceTree = "<group>"; };
 		9BDB599B23E0BC6200AB8C20 /* CustomerCreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerCreateService.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				9B6F9ACE240C6B4C003C6E28 /* Customer */,
 				9B3DDBC92409F452006D440C /* GeneralInformation */,
 				9B144DA923A29FED00E0FE85 /* LoginViewController.swift */,
+				9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				9B96E34723E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift in Sources */,
 				9BDE72322410967700307EFC /* ArtistEditService.swift in Sources */,
 				9BDE72502410AF7000307EFC /* GetArtworkServiceProtocol.swift in Sources */,
+				9BBD48CF2463845D007C6CB5 /* MultiSelectListViewController.swift in Sources */,
 				9B16D378242A891100593898 /* GeneralInformationEditServiceSerializer.swift in Sources */,
 				9B7A475F23D5E462006D1BA4 /* GeneralInformationCreateServiceSerializer.swift in Sources */,
 				9B222A1523D26BA600A2A8D0 /* ArtistsServiceProtocol.swift in Sources */,

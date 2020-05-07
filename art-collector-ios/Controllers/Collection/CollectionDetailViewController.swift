@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CollectionDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -15,13 +16,21 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var collectionId: UILabel!
     @IBOutlet weak var artworkTableView: UITableView!
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var customer: Customer?
     var customerCore: CustomerCore?
     var collection: Collection?
     var collectionCore: CollectionCore?
     var artworks: [Artwork]? = []
-    var selectedArtwork: Artwork?
+    var selectedArtwork: ArtworkCore?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
+    
+    var artworksCore: [ArtworkCore]? = [] {
+        didSet {
+            artworkTableView.reloadData()
+        }
+    }
     
     private let refreshControl = UIRefreshControl()
     
@@ -33,15 +42,28 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editTapped))
         
-        collectionName.text = collection?.collectionName
-        collectionIdentifier.text = collection?.identifier
-        collectionId.text = collection?.id
+        if let collection = collectionCore {
+            collectionName.text = collection.collectionName
+            collectionIdentifier.text = collection.identifier
+        }
         
         artworkTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshCollectionData(_:)), for: .valueChanged)
         
-        if let artworksArray = collection?.artworks {
-            self.artworks = artworksArray
+        loadArtCollection()
+    }
+    
+    private func loadArtCollection() {
+        guard let collectionId = collectionCore?.id else { return }
+        
+        let request: NSFetchRequest<ArtworkCore> = ArtworkCore.fetchRequest()
+        request.predicate = NSPredicate(format: "collectionId = %@", collectionId as NSUUID)
+        
+        do {
+            let artworksFromCore = try context.fetch(request)
+            artworksCore = artworksFromCore
+        } catch {
+            print("Error getting artworks from core - \(error)")
         }
     }
     
@@ -134,22 +156,22 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return artworks?.count ?? 0
+        return artworksCore?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArtworkCell", for: indexPath)
 
-        cell.textLabel?.text = self.artworks?[indexPath.row].title
+        cell.textLabel?.text = self.artworksCore?[indexPath.row].title
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let artwork = artworks?[indexPath.row]
+        let artwork = artworksCore?[indexPath.row]
         selectedArtwork = artwork
 
         let artworkDetailViewController = ArtworkDetailViewController()
-        artworkDetailViewController.artwork = artwork
+        artworkDetailViewController.artworkCore = artwork
         
         self.performSegue(withIdentifier: "ArtworkDetailSegue", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -159,7 +181,7 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
         if segue.identifier == "ArtworkDetailSegue" {
             let destinationVC = segue.destination as! ArtworkDetailViewController
 
-            destinationVC.artwork = selectedArtwork
+            destinationVC.artworkCore = selectedArtwork
         }
         
         if segue.identifier == "AddNewArtworkSegue" {
@@ -170,6 +192,14 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
             }
             if let collId = collection?.id {
                 destinationVC.collectionId = collId
+            }
+            
+            if let custCoreId = customerCore?.id {
+                destinationVC.customerCoreId = custCoreId
+            }
+            
+            if let collCoreId = collectionCore?.id {
+                destinationVC.collectionCoreId = collCoreId
             }
         }
         

@@ -188,6 +188,14 @@ class ArtworkEditViewController: UIViewController {
         self.performSegue(withIdentifier: "viewGIListFromEdit", sender: self)
     }
     
+    @IBAction func selectMultiArtistsBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "multiSelectArtistsSegueFromEdit", sender: self)
+    }
+    
+    @IBAction func selectMultiGIsBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "multiSelectGIsSegueFromEdit", sender: self)
+    }
+    
     private func getArtists() {
         let getArtistsService = ArtistsService()
         
@@ -263,6 +271,18 @@ class ArtworkEditViewController: UIViewController {
             if let giId = selectedGeneralInfoId {
                 destinationVC.selectedGI = giId
             }
+        }
+        
+        if segue.identifier == "multiSelectGIsSegueFromEdit" {
+            let destinationVC = segue.destination as! MultiSelectListViewController
+            destinationVC.sourceVC = "ArtworkEditViewController"
+            destinationVC.dataSource = "generalInformation"
+        }
+
+        if segue.identifier == "multiSelectArtistsSegueFromEdit" {
+            let destinationVC = segue.destination as! MultiSelectListViewController
+            destinationVC.sourceVC = "ArtworkEditViewController"
+            destinationVC.dataSource = "artists"
         }
     }
     

@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MultiSelectListViewControllerDelegate {
     
     @IBOutlet weak var objectIdTextField: UITextField!
     @IBOutlet weak var artTypeTextField: UITextField!
@@ -65,6 +65,9 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var artists: [Artist] = []
     var generalInformation: [GeneralInformation] = []
+    
+    var customerCoreId: UUID = UUID()
+    var collectionCoreId: UUID = UUID()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,6 +150,14 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     
     @IBAction func selectGeneralInformationBtnPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "viewGIListFromCreate", sender: self)
+    }
+    
+    @IBAction func selectMultiGIBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "multiSelectGIsFromCreateSegue", sender: self)
+    }
+    
+    @IBAction func selectMultiArtistsBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "multiSelectArtistsFromCreateSegue", sender: self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -244,7 +255,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             showGeneralInfo = false
         }
         
-        createArtworkCoreData(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo, createdAt: createDate)
+        createArtworkCoreData(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerCoreId, collectionId: collectionCoreId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo, createdAt: createDate)
         
 //        createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInfoId, showGeneralInfo: showGeneralInfo)
     }
@@ -311,18 +322,28 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "viewArtistListFromCreate" {
             let destinationVC = segue.destination as! ArtistListViewController
-
             destinationVC.source = "ArtworkCreateViewController"
-            
             destinationVC.artists = artists
         }
         
         if segue.identifier == "viewGIListFromCreate" {
             let destinationVC = segue.destination as! GeneralInformationListViewController
-
             destinationVC.source = "ArtworkCreateViewController"
-            
             destinationVC.generalInformations = generalInformation
+        }
+
+        if segue.identifier == "multiSelectGIsFromCreateSegue" {
+            let destinationVC = segue.destination as! MultiSelectListViewController
+            destinationVC.sourceVC = "ArtworkCreateViewController"
+            destinationVC.dataSource = "generalInformation"
+            destinationVC.delegate = self
+        }
+        
+        if segue.identifier == "multiSelectArtistsFromCreateSegue" {
+            let destinationVC = segue.destination as! MultiSelectListViewController
+            destinationVC.sourceVC = "ArtworkCreateViewController"
+            destinationVC.dataSource = "artists"
+            destinationVC.delegate = self
         }
     }
     
@@ -343,11 +364,12 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         }
     }
     
-    private func createArtworkCoreData(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool, createdAt: String) {
+    private func createArtworkCoreData(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: UUID, collectionId: UUID, artistId: String, generalInformationId: String, showGeneralInfo: Bool, createdAt: String) {
         
         let entity = NSEntityDescription.entity(forEntityName: "ArtworkCore", in: context)!
         let newArt = NSManagedObject(entity: entity, insertInto: context)
         
+        progressHUD.show(onView: view, animated: true)
         newArt.setValue(UUID(), forKey: "id")
         newArt.setValue(createdAt, forKey: "createdAt")
         newArt.setValue(createdAt, forKey: "updatedAt")
@@ -380,19 +402,28 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         newArt.setValue(customTitle, forKey: "customTitle")
         newArt.setValue(customerId, forKey: "customerId")
         newArt.setValue(collectionId, forKey: "collectionId")
-        newArt.setValue(artistId, forKey: "artistId")
-        newArt.setValue(generalInformationId, forKey: "generalInformationId")
+//        newArt.setValue(artistId, forKey: "artistId")
+//        newArt.setValue(generalInformationId, forKey: "generalInformationId")
         newArt.setValue(showGeneralInfo, forKey: "showGeneralInfo")
         
         saveNewItem()
+        self.progressHUD.hide(onView: self.view, animated: true)
     }
     
     private func saveNewItem() {
         do {
             try context.save()
         } catch {
-            print("Error saving the new GI to database = \(error)")
+            print("Error saving the new artwork to database = \(error)")
         }
+    }
+    
+    func sendArtistData(data: [ArtistCore]) {
+        print("Artist Data! - \(data)")
+    }
+    
+    func sendGeneralInfromationData(data: [GeneralInformationCore]) {
+        print("General Information Data! - \(data)")
     }
     
 //    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool) {

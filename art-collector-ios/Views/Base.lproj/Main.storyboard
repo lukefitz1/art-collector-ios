@@ -1755,6 +1755,20 @@
                                                     <segue destination="U9D-qx-D8T" kind="presentation" identifier="viewGIListFromCreate" id="wwl-4V-Kre"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdz-78-Mqx">
+                                                <rect key="frame" x="21" y="2945" width="46" height="30"/>
+                                                <state key="normal" title="GIs"/>
+                                                <connections>
+                                                    <action selector="selectMultiGIBtnPressed:" destination="XhJ-xb-3fZ" eventType="touchUpInside" id="m5X-ki-Ham"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12w-8d-mhd">
+                                                <rect key="frame" x="22" y="2899" width="45" height="30"/>
+                                                <state key="normal" title="Artists"/>
+                                                <connections>
+                                                    <action selector="selectMultiArtistsBtnPressed:" destination="XhJ-xb-3fZ" eventType="touchUpInside" id="55h-LX-PQ4"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -1796,6 +1810,7 @@
                                             <constraint firstItem="Mca-uq-vYX" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="AUa-Rf-BiK"/>
                                             <constraint firstItem="Bsa-ae-b6m" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="Aa1-ZB-FAe"/>
                                             <constraint firstItem="qqK-t8-FMu" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="BND-I5-wz0"/>
+                                            <constraint firstItem="gdz-78-Mqx" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="21" id="BQw-Px-2oJ"/>
                                             <constraint firstAttribute="trailing" secondItem="EMo-Q6-rCz" secondAttribute="trailing" constant="20" id="BVw-Aw-1vk"/>
                                             <constraint firstItem="KjG-oo-97a" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="C3W-Qr-jfJ"/>
                                             <constraint firstAttribute="trailing" secondItem="sNS-57-DUT" secondAttribute="trailing" constant="20" id="Chb-k0-i0X"/>
@@ -1839,11 +1854,15 @@
                                             <constraint firstAttribute="trailing" secondItem="fzG-Jr-W74" secondAttribute="trailing" constant="20" id="Mpr-SY-2bo"/>
                                             <constraint firstAttribute="trailing" secondItem="VJO-36-FWN" secondAttribute="trailing" constant="20" id="NLj-01-gax"/>
                                             <constraint firstItem="YUG-j6-xv4" firstAttribute="top" secondItem="QRy-Lr-DlA" secondAttribute="bottom" constant="8" id="NS9-8t-pee"/>
+                                            <constraint firstItem="gdz-78-Mqx" firstAttribute="top" secondItem="12w-8d-mhd" secondAttribute="bottom" constant="16" id="O3h-7d-qab"/>
+                                            <constraint firstItem="12w-8d-mhd" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="22" id="OBZ-ka-LKc"/>
                                             <constraint firstAttribute="trailing" secondItem="Ozq-3Q-d7Q" secondAttribute="trailing" constant="20" id="ODT-Co-2ki"/>
                                             <constraint firstItem="4hc-ta-7y7" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="OEN-X5-IDX"/>
+                                            <constraint firstItem="12w-8d-mhd" firstAttribute="top" secondItem="mqe-kA-s19" secondAttribute="bottom" constant="16" id="OPw-vG-Q4D"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="uq3-HP-lcE" secondAttribute="trailing" constant="347" id="OTd-wI-L6a"/>
                                             <constraint firstAttribute="trailing" secondItem="Tpp-uf-u0a" secondAttribute="trailing" constant="20" id="Oaw-Sc-vmb"/>
                                             <constraint firstItem="sNS-57-DUT" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="Oj8-6N-6QR"/>
+                                            <constraint firstItem="tJe-iE-MPE" firstAttribute="leading" secondItem="gdz-78-Mqx" secondAttribute="trailing" constant="79.5" id="Omh-rI-OYj"/>
                                             <constraint firstItem="5Ge-hq-EY7" firstAttribute="top" secondItem="i6e-Gs-1Dc" secondAttribute="bottom" constant="8" id="PBb-WN-MfF"/>
                                             <constraint firstAttribute="trailing" secondItem="AKd-AI-rT8" secondAttribute="trailing" constant="20" id="QEC-Yt-Auj"/>
                                             <constraint firstItem="GMe-Cd-Pkp" firstAttribute="top" secondItem="X9j-kp-EO3" secondAttribute="bottom" constant="8" id="Qqq-UL-MR2"/>
@@ -1892,6 +1911,7 @@
                                             <constraint firstItem="yid-Qp-KqR" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="fgi-IU-eIz"/>
                                             <constraint firstItem="vt0-vf-cU8" firstAttribute="top" secondItem="22G-sj-9Za" secondAttribute="bottom" constant="8" id="flJ-GJ-waZ"/>
                                             <constraint firstItem="fze-b9-8RY" firstAttribute="top" secondItem="v1Q-Ud-PTn" secondAttribute="bottom" constant="8" id="flU-UV-Zyf"/>
+                                            <constraint firstItem="hGE-z4-c8K" firstAttribute="leading" secondItem="12w-8d-mhd" secondAttribute="trailing" constant="48.5" id="gSJ-J0-Mcp"/>
                                             <constraint firstItem="t88-lg-1fu" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="gnI-Bk-IGY"/>
                                             <constraint firstItem="22G-sj-9Za" firstAttribute="top" secondItem="rRy-ab-Gqq" secondAttribute="bottom" constant="8" id="gwA-cx-PW7"/>
                                             <constraint firstItem="fzG-Jr-W74" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="h59-H3-AHH"/>
@@ -1924,6 +1944,7 @@
                                             <constraint firstItem="t88-lg-1fu" firstAttribute="top" secondItem="eLK-fh-3Po" secondAttribute="bottom" constant="8" id="ph4-3U-M6k"/>
                                             <constraint firstItem="2cd-RC-GQF" firstAttribute="top" secondItem="2Dk-gl-LEo" secondAttribute="bottom" constant="8" id="qg2-uS-pUr"/>
                                             <constraint firstAttribute="trailing" secondItem="Bsa-ae-b6m" secondAttribute="trailing" constant="20" id="rv6-b3-djn"/>
+                                            <constraint firstAttribute="bottom" secondItem="gdz-78-Mqx" secondAttribute="bottom" constant="37" id="sJm-B1-1FD"/>
                                             <constraint firstItem="QHB-KZ-ijr" firstAttribute="leading" secondItem="qEs-ib-QLr" secondAttribute="leading" constant="20" id="sXc-ZY-4hd"/>
                                             <constraint firstAttribute="trailing" secondItem="AuO-x1-P4P" secondAttribute="trailing" constant="20" id="sbY-5Y-Sr8"/>
                                             <constraint firstItem="6WB-vc-0TA" firstAttribute="top" secondItem="VJO-36-FWN" secondAttribute="bottom" constant="8" id="ssf-Vz-HgI"/>
@@ -2008,6 +2029,8 @@
                         <outlet property="sourceTextField" destination="ukO-qg-GF8" id="cjh-KX-lPi"/>
                         <outlet property="titleTextField" destination="yqC-mD-Jue" id="QY8-Mu-ylP"/>
                         <segue destination="O5x-bA-ti9" kind="unwind" identifier="unwindToCollectionSegue" unwindAction="unwindToCollectionViewControllerWithSegue:" id="oZy-F6-A8w"/>
+                        <segue destination="gm7-Op-qP4" kind="show" identifier="multiSelectGIsFromCreateSegue" id="ADH-Ge-b3i"/>
+                        <segue destination="gm7-Op-qP4" kind="show" identifier="multiSelectArtistsFromCreateSegue" id="1yn-fE-IcQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xs5-bR-ZWr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2062,7 +2085,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vti-Kz-8cg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="mLk-OW-Edw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6838" y="3111"/>
+            <point key="canvasLocation" x="6836" y="3895"/>
         </scene>
         <!--General Information List View Controller-->
         <scene sceneID="2fP-Hi-931">
@@ -2110,7 +2133,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1bl-Vi-TU3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="XVz-oh-rrw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="7944.9275362318849" y="3109.8214285714284"/>
+            <point key="canvasLocation" x="7941" y="3895"/>
+        </scene>
+        <!--Multi Select List View Controller-->
+        <scene sceneID="NS8-lC-TFj">
+            <objects>
+                <viewController id="gm7-Op-qP4" customClass="MultiSelectListViewController" customModule="art_collector_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qGr-8T-zaf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s9s-ex-sdr">
+                                <rect key="frame" x="0.0" y="169" width="414" height="717"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCell" id="uY0-7M-UpC">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uY0-7M-UpC" id="B5k-jA-4jQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="av2-23-q7d">
+                                <rect key="frame" x="167" y="110" width="80" height="30"/>
+                                <state key="normal" title="Select Data"/>
+                                <connections>
+                                    <action selector="selectDataBtnTapped:" destination="gm7-Op-qP4" eventType="touchUpInside" id="GT1-v4-hYc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="av2-23-q7d" firstAttribute="centerX" secondItem="6eX-nx-mIJ" secondAttribute="centerX" id="Ost-vR-zaw"/>
+                            <constraint firstItem="av2-23-q7d" firstAttribute="top" secondItem="6eX-nx-mIJ" secondAttribute="top" constant="22" id="hV9-xu-wtD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6eX-nx-mIJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xln-cK-3lG"/>
+                    <connections>
+                        <outlet property="selectDataBtn" destination="av2-23-q7d" id="iof-vA-OVk"/>
+                        <outlet property="tableView" destination="s9s-ex-sdr" id="xIP-Yf-PaF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SOL-Ca-A0y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6102.898550724638" y="3163.3928571428569"/>
         </scene>
         <!--Artwork Detail View Controller-->
         <scene sceneID="H9u-ju-UKQ">
@@ -3683,6 +3754,20 @@
                                                     <segue destination="U9D-qx-D8T" kind="presentation" identifier="viewGIListFromEdit" id="4No-Cq-j8A"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2C-8c-FaJ">
+                                                <rect key="frame" x="21" y="2899" width="45" height="30"/>
+                                                <state key="normal" title="Artists"/>
+                                                <connections>
+                                                    <action selector="selectMultiArtistsBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="C9d-0U-NzS"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRS-Mp-7Ta">
+                                                <rect key="frame" x="29" y="2954" width="30" height="30"/>
+                                                <state key="normal" title="GIs"/>
+                                                <connections>
+                                                    <action selector="selectMultiGIsBtnPressed:" destination="T30-DY-jux" eventType="touchUpInside" id="OaM-ZY-eVd"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -3743,10 +3828,12 @@
                                             <constraint firstAttribute="trailing" secondItem="d8G-ng-Got" secondAttribute="trailing" constant="281" id="GWn-LW-XT0"/>
                                             <constraint firstItem="ubW-oo-IUb" firstAttribute="top" secondItem="lGr-ZI-fI3" secondAttribute="bottom" constant="8" id="Hbc-Uu-6Rs"/>
                                             <constraint firstAttribute="trailing" secondItem="eZu-hK-ZwJ" secondAttribute="trailing" constant="20" id="Hh8-Jh-KCP"/>
+                                            <constraint firstItem="K2C-8c-FaJ" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="21" id="Htv-8K-CLG"/>
                                             <constraint firstItem="E38-ip-uiR" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="IIk-ad-OTW"/>
                                             <constraint firstItem="WIK-Mb-SNp" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="Iht-Kd-tvU"/>
                                             <constraint firstAttribute="trailing" secondItem="dIc-qC-Cln" secondAttribute="trailing" constant="20" id="JAg-Iv-pH9"/>
                                             <constraint firstAttribute="trailing" secondItem="isl-po-fOd" secondAttribute="trailing" constant="20" id="Jfm-RR-R07"/>
+                                            <constraint firstAttribute="bottom" secondItem="PRS-Mp-7Ta" secondAttribute="bottom" constant="28" id="JnG-cn-KHf"/>
                                             <constraint firstAttribute="trailing" secondItem="IyJ-te-kZK" secondAttribute="trailing" constant="20" id="KDT-Xt-JTX"/>
                                             <constraint firstAttribute="trailing" secondItem="YOo-zg-q31" secondAttribute="trailing" constant="20" id="KTt-Vk-CBY"/>
                                             <constraint firstItem="K6R-wD-4MN" firstAttribute="top" secondItem="Psl-NX-nhw" secondAttribute="bottom" constant="8" id="KbK-OL-cuA"/>
@@ -3754,6 +3841,7 @@
                                             <constraint firstAttribute="trailing" secondItem="CPe-QO-lM8" secondAttribute="trailing" constant="20" id="Low-uc-oHN"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ubW-oo-IUb" secondAttribute="trailing" constant="20" id="M5G-bg-U1x"/>
                                             <constraint firstItem="6cO-Pf-nIQ" firstAttribute="top" secondItem="96j-dB-Xop" secondAttribute="bottom" constant="8" id="M9M-fJ-qly"/>
+                                            <constraint firstItem="K2C-8c-FaJ" firstAttribute="top" secondItem="WvW-1J-HQ9" secondAttribute="bottom" constant="16" id="MHo-TX-EfY"/>
                                             <constraint firstItem="shi-KZ-zyQ" firstAttribute="top" secondItem="qkf-F2-0FK" secondAttribute="bottom" constant="8" id="Md6-WL-7iK"/>
                                             <constraint firstItem="fR9-nc-HhW" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="Mje-yt-nak"/>
                                             <constraint firstItem="5eS-P9-Qcl" firstAttribute="top" secondItem="shi-KZ-zyQ" secondAttribute="bottom" constant="8" id="Mru-ch-R32"/>
@@ -3793,6 +3881,7 @@
                                             <constraint firstItem="pOI-RL-TRm" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="aT7-sm-4Ca"/>
                                             <constraint firstItem="K6R-wD-4MN" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="aUm-zV-dzs"/>
                                             <constraint firstItem="Hzg-YN-k0M" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="c1H-VJ-HGy"/>
+                                            <constraint firstItem="dGq-Km-x5v" firstAttribute="leading" secondItem="K2C-8c-FaJ" secondAttribute="trailing" constant="49.5" id="c5H-bj-ODW"/>
                                             <constraint firstAttribute="trailing" secondItem="KOC-gv-nJR" secondAttribute="trailing" constant="20" id="cEI-Ti-Zj1"/>
                                             <constraint firstItem="UWu-Ns-oCe" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="cON-Ow-qpQ"/>
                                             <constraint firstItem="YOo-zg-q31" firstAttribute="top" secondItem="N9S-Zv-pqy" secondAttribute="bottom" constant="8" id="cnO-ZQ-PrQ"/>
@@ -3810,6 +3899,7 @@
                                             <constraint firstAttribute="trailing" secondItem="6cO-Pf-nIQ" secondAttribute="trailing" constant="20" id="f8F-Km-H5X"/>
                                             <constraint firstItem="vkv-s7-bWy" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="fTN-5A-54B"/>
                                             <constraint firstItem="IyJ-te-kZK" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="fXb-ty-EWP"/>
+                                            <constraint firstItem="3SH-PL-j7m" firstAttribute="leading" secondItem="PRS-Mp-7Ta" secondAttribute="trailing" constant="93.5" id="fmK-jO-rea"/>
                                             <constraint firstItem="Hzg-YN-k0M" firstAttribute="top" secondItem="YOo-zg-q31" secondAttribute="bottom" constant="8" id="foc-Ze-nG8"/>
                                             <constraint firstItem="Psl-NX-nhw" firstAttribute="top" secondItem="iAe-aA-dZo" secondAttribute="bottom" constant="8" id="fq6-yK-AXX"/>
                                             <constraint firstItem="LXZ-k7-MPl" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="g3P-CB-ha4"/>
@@ -3840,6 +3930,7 @@
                                             <constraint firstItem="BcA-W1-gpT" firstAttribute="top" secondItem="ypw-DG-0HD" secondAttribute="bottom" constant="8" id="mk9-nc-bJn"/>
                                             <constraint firstItem="hLx-ZK-yag" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="20" id="mt4-9v-dMi"/>
                                             <constraint firstItem="oNA-vS-Hlj" firstAttribute="top" secondItem="a4J-Ci-Iuy" secondAttribute="bottom" constant="8" id="nm7-RP-Hsa"/>
+                                            <constraint firstItem="PRS-Mp-7Ta" firstAttribute="top" secondItem="K2C-8c-FaJ" secondAttribute="bottom" constant="25" id="o4M-zI-8Os"/>
                                             <constraint firstItem="ypw-DG-0HD" firstAttribute="top" secondItem="C5l-iW-pda" secondAttribute="top" constant="68" id="oEs-Wk-AsP"/>
                                             <constraint firstItem="PiF-sz-Crq" firstAttribute="top" secondItem="Rug-H2-xiF" secondAttribute="bottom" constant="8" id="oXi-zJ-twG"/>
                                             <constraint firstAttribute="trailing" secondItem="ypw-DG-0HD" secondAttribute="trailing" constant="20" id="oYI-vF-oke"/>
@@ -3852,6 +3943,7 @@
                                             <constraint firstItem="WIK-Mb-SNp" firstAttribute="top" secondItem="n3B-fZ-94d" secondAttribute="bottom" constant="8" id="q15-zW-DTZ"/>
                                             <constraint firstAttribute="trailing" secondItem="W88-4J-YrD" secondAttribute="trailing" constant="20" id="q9i-fi-DXu"/>
                                             <constraint firstItem="hLx-ZK-yag" firstAttribute="top" secondItem="ypa-T7-8AS" secondAttribute="bottom" constant="8" id="qBg-ss-YzT"/>
+                                            <constraint firstItem="PRS-Mp-7Ta" firstAttribute="leading" secondItem="C5l-iW-pda" secondAttribute="leading" constant="29" id="qTm-4B-ovL"/>
                                             <constraint firstAttribute="trailing" secondItem="D9e-wr-P7c" secondAttribute="trailing" constant="20" id="rEU-p5-1Ro"/>
                                             <constraint firstItem="WvW-1J-HQ9" firstAttribute="top" secondItem="CjB-rS-mQk" secondAttribute="bottom" constant="8" id="rEb-LP-P7N"/>
                                             <constraint firstAttribute="trailing" secondItem="jcO-Di-Faw" secondAttribute="trailing" constant="20" id="rMc-5S-rvv"/>
@@ -3937,6 +4029,8 @@
                         <outlet property="titleTextField" destination="qkf-F2-0FK" id="CcX-u9-KNw"/>
                         <segue destination="Lb6-wK-nmb" kind="unwind" identifier="unwindToCollectionSegue" unwindAction="unwindToCollectionViewControllerWithSegue:" id="gcv-PP-kpK"/>
                         <segue destination="Lb6-wK-nmb" kind="unwind" identifier="unwindToArtworkDetailSegue" unwindAction="unwindToArtworkDetailViewControllerWithSegue:" id="sRp-04-3qS"/>
+                        <segue destination="gm7-Op-qP4" kind="show" identifier="multiSelectGIsSegueFromEdit" id="47G-y5-QEJ"/>
+                        <segue destination="gm7-Op-qP4" kind="show" identifier="multiSelectArtistsSegueFromEdit" id="dTS-Rh-cxu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6oK-rF-iDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3949,6 +4043,7 @@
         <image name="spire-logo" width="169" height="278"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="dTS-Rh-cxu"/>
         <segue reference="4No-Cq-j8A"/>
         <segue reference="XSa-Oy-dc9"/>
     </inferredMetricsTieBreakers>

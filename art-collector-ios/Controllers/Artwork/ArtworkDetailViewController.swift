@@ -41,6 +41,7 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var generalInfoNameLabel: UILabel!
     
     var artwork: Artwork?
+    var artworkCore: ArtworkCore?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var artist: Artist? {
         didSet {
