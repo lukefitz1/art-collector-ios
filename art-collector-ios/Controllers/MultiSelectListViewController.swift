@@ -74,9 +74,9 @@ class MultiSelectListViewController: UIViewController, UITableViewDataSource, UI
             }
         } else if sourceVC == "ArtworkEditViewController" {
             if dataSource == "generalInformation" {
-
+                loadInformation(dataSource: dataSource)
             } else if dataSource == "artists" {
-
+                loadInformation(dataSource: dataSource)
             }
         }
     }

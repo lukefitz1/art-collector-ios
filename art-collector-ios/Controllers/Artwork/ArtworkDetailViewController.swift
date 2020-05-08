@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ArtworkDetailViewController: UIViewController {
     
@@ -52,6 +53,17 @@ class ArtworkDetailViewController: UIViewController {
             }
         }
     }
+    
+    var artistCore: ArtistCore? {
+        didSet {
+            if let fName = artist?.firstName {
+                if let lName = artist?.lastName {
+                    artistNameLabel.text = "\(fName) \(lName)"
+                }
+            }
+        }
+    }
+    
     var generalInfo: GeneralInformation? {
         didSet {
             if let label = generalInfo?.infoLabel {
@@ -59,6 +71,16 @@ class ArtworkDetailViewController: UIViewController {
             }
         }
     }
+    
+    var generalInfoCore: GeneralInformationCore? {
+        didSet {
+            if let label = generalInfo?.infoLabel {
+                generalInfoNameLabel.text = label
+            }
+        }
+    }
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,61 +99,61 @@ class ArtworkDetailViewController: UIViewController {
         provenanceTextView.layer.borderWidth = 0.5
         provenanceTextView.layer.borderColor = UIColor.lightGray.cgColor
         
-        objectId.text = artwork?.objectId
-        artTitle.text = artwork?.title
-        artType.text = artwork?.artType
-        dateLabel.text = artwork?.date
-        mediumLabel.text = artwork?.medium
-        descriptionTextView.text = artwork?.description
-        dimensionsLabel.text = artwork?.dimensions
-        frameDimensionsLabel.text = artwork?.frameDimensions
-        conditionLabel.text = artwork?.condition
-        currentLocationLabel.text = artwork?.currentLocation
-        sourceLabel.text = artwork?.source
-        dateAcquiredLabelLabel.text = artwork?.dateAcquiredLabel
-        dateAcquiredLabel.text = artwork?.dateAcquired
-        amountPaidLabel.text = artwork?.amountPaid
-        currentValueLabel.text = artwork?.currentValue
-        notesTextView.text = artwork?.notes
-        additionalInfoLabelLabel.text = artwork?.additionalInfoLabel
-        additionalInfoTextView.text = artwork?.additionalInfoText
-        reviewedByLabel.text = artwork?.reviewedBy
-        reviewedDateLabel.text = artwork?.reviewedDate
-        provenanceTextView.text = artwork?.provenance
-        customTitleLabel.text = artwork?.customTitle
+        objectId.text = artworkCore?.objectId
+        artTitle.text = artworkCore?.title
+        artType.text = artworkCore?.artType
+        dateLabel.text = artworkCore?.date
+        mediumLabel.text = artworkCore?.medium
+        descriptionTextView.text = artworkCore?.artDescription
+        dimensionsLabel.text = artworkCore?.dimensions
+        frameDimensionsLabel.text = artworkCore?.frameDimensions
+        conditionLabel.text = artworkCore?.condition
+        currentLocationLabel.text = artworkCore?.currentLocation
+        sourceLabel.text = artworkCore?.source
+        dateAcquiredLabelLabel.text = artworkCore?.dateAcquiredLabel
+        dateAcquiredLabel.text = artworkCore?.dateAcquired
+        amountPaidLabel.text = artworkCore?.amountPaid
+        currentValueLabel.text = artworkCore?.currentValue
+        notesTextView.text = artworkCore?.notes
+        additionalInfoLabelLabel.text = artworkCore?.additionalInfoLabel
+        additionalInfoTextView.text = artworkCore?.additionalInfoText
+        reviewedByLabel.text = artworkCore?.reviewedBy
+        reviewedDateLabel.text = artworkCore?.reviewedDate
+        provenanceTextView.text = artworkCore?.provenance
+        customTitleLabel.text = artworkCore?.customTitle
         
         
-        if let imageUrl = artwork?.image?.url {
-            setImage(from: imageUrl, imageType: "mainImage")
-        }
+//        if let imageUrl = artworkCore?.image?.url {
+//            setImage(from: imageUrl, imageType: "mainImage")
+//        }
+//
+//        if let imageUrl = artworkCore?.notesImage?.url {
+//            setImage(from: imageUrl, imageType: "notesImage")
+//        }
+//
+//        if let imageUrl = artworkCore?.notesImageTwo?.url {
+//            setImage(from: imageUrl, imageType: "notesImageTwo")
+//        }
+//
+//        if let imageUrl = artworkCore?.additionalInfoImage?.url {
+//            setImage(from: imageUrl, imageType: "addInfoImage")
+//        }
+//
+//        if let imageUrl = artworkCore?.additionalInfoImageTwo?.url {
+//            setImage(from: imageUrl, imageType: "addInfoImageTwo")
+//        }
         
-        if let imageUrl = artwork?.notesImage?.url {
-            setImage(from: imageUrl, imageType: "notesImage")
-        }
-        
-        if let imageUrl = artwork?.notesImageTwo?.url {
-            setImage(from: imageUrl, imageType: "notesImageTwo")
-        }
-        
-        if let imageUrl = artwork?.additionalInfoImage?.url {
-            setImage(from: imageUrl, imageType: "addInfoImage")
-        }
-        
-        if let imageUrl = artwork?.additionalInfoImageTwo?.url {
-            setImage(from: imageUrl, imageType: "addInfoImageTwo")
-        }
-        
-        if let artistId = artwork?.artistId {
-            self.getArtistInfo(id: artistId)
+        if let artistId = artworkCore?.artistId {
+            self.getArtistInfoCore(id: artistId)
         } else {
             artistNameLabel.text = ""
         }
-        
-        if let generalInfoId = artwork?.generalInfoId {
-            self.getGeneralInfo(id: generalInfoId)
-        } else {
-            generalInfoNameLabel.text = ""
-        }
+
+//        if let generalInfoId = artworkCore?.generalInfoId {
+//            self.getGeneralInfoCore(id: generalInfoId)
+//        } else {
+//            generalInfoNameLabel.text = ""
+//        }
     }
     
     @objc
@@ -177,6 +199,34 @@ class ArtworkDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func getArtistInfoCore(id: UUID) {
+        let request: NSFetchRequest<ArtistCore> = ArtistCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let artistFromCore = try context.fetch(request)
+            artistCore = artistFromCore[0]
+        } catch {
+            print("Error getting updated artist information = \(error)")
+        }
+        self.progressHUD.hide(onView: self.view, animated: true)
+    }
+    
+    private func getGeneralInfoCore(id: UUID) {
+        let request: NSFetchRequest<GeneralInformationCore> = GeneralInformationCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
+
+        progressHUD.show(onView: view, animated: true)
+        do {
+            let giFromCore = try context.fetch(request)
+            generalInfoCore = giFromCore[0]
+        } catch {
+            print("Error getting updated general information = \(error)")
+        }
+        self.progressHUD.hide(onView: self.view, animated: true)
     }
     
     private func getArtistInfo(id: String) {
