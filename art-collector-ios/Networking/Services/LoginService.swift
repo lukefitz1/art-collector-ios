@@ -32,18 +32,11 @@ struct LoginService {
                         } else {
                             completionHandler?(nil, nil)
                         }
-//                        if let safeData = response.data {
-//                            let token = self.parseJSON(loginData: safeData)
-//                            completionHandler?(token, nil)
-//                        } else {
-//                            completionHandler?(nil, nil)
-//                        }
                     default:
                         completionHandler?(nil, response.response?.description)
                     }
         }
     }
-    // -> [String: Any]
     func parseHeaders(response: HTTPURLResponse) -> Bool {
         let headers = response.allHeaderFields
         headers.forEach { (keyVals) in
@@ -51,46 +44,20 @@ struct LoginService {
             let keyString = key as! String //dict["message"] as String
             
             if keyString == "Access-Token" || keyString == "access-token" {
-                print("Key found! \(keyString)")
-                print("Value: \(value)")
                 ApiClient.accessToken = value as! String
             } else if keyString == "Client" || keyString == "client" {
-                print("Key found! \(keyString)")
-                print("Value: \(value)")
                 ApiClient.client = value as! String
             } else if keyString == "Uid" || keyString == "uid"  {
-                print("Key found! \(keyString)")
-                print("Value: \(value)")
                 ApiClient.uid = value as! String
             } else if keyString == "Expiry" || keyString == "expiry"  {
-                print("Key found! \(keyString)")
-                print("Value: \(value)")
                 ApiClient.expiry = value as! String
             } else if keyString == "Token-Type" || keyString == "token-type"  {
-                print("Key found! \(keyString)")
-                print("Value: \(value)")
                 ApiClient.tokenType = value as! String
             }
         }
         
         return true
     }
-    
-//    func parseJSON(loginData: Data) -> String {
-//        let decoder = JSONDecoder()
-//
-//        do {
-//            let decodedData = try decoder.decode(LoginData.self, from: loginData)
-//            let authToken = decodedData.auth_token
-//            ApiClient.authToken = authToken
-//
-//            return authToken
-//        } catch  {
-//            print(error)
-//        }
-//
-//        return ""
-//    }
     
     private func buildEndpoint() -> URL {
         return URL(string: "\(ApiClient.baseUrl)auth/sign_in")!
