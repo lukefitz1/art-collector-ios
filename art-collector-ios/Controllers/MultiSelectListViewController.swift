@@ -11,7 +11,7 @@ import CoreData
 
 protocol MultiSelectListViewControllerDelegate : NSObjectProtocol{
     func sendArtistData(data: [ArtistCore])
-    func sendGeneralInfromationData(data: [GeneralInformationCore])
+    func sendGeneralInformationData(data: [GeneralInformationCore])
 }
 
 class MultiSelectListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
@@ -104,7 +104,7 @@ class MultiSelectListViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func selectDataBtnTapped(_ sender: Any) {
         if let delegate = delegate {
             if dataSource == "generalInformation" {
-                delegate.sendGeneralInfromationData(data: selectedGeneralInformation)
+                delegate.sendGeneralInformationData(data: selectedGeneralInformation)
             } else if dataSource == "artists" {
                 delegate.sendArtistData(data: selectedArtists)
             }

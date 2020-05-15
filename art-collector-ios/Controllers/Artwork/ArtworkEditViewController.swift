@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArtworkEditViewController: UIViewController {
+class ArtworkEditViewController: UIViewController, MultiSelectListViewControllerDelegate {
     
     var artwork: Artwork?
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
@@ -277,12 +277,14 @@ class ArtworkEditViewController: UIViewController {
             let destinationVC = segue.destination as! MultiSelectListViewController
             destinationVC.sourceVC = "ArtworkEditViewController"
             destinationVC.dataSource = "generalInformation"
+            destinationVC.delegate = self
         }
 
         if segue.identifier == "multiSelectArtistsSegueFromEdit" {
             let destinationVC = segue.destination as! MultiSelectListViewController
             destinationVC.sourceVC = "ArtworkEditViewController"
             destinationVC.dataSource = "artists"
+            destinationVC.delegate = self
         }
     }
     
@@ -301,6 +303,14 @@ class ArtworkEditViewController: UIViewController {
             
             self.generalInfoLabel.text = infoLabel
         }
+    }
+    
+    func sendArtistData(data: [ArtistCore]) {
+        print("Artist Data! - \(data)")
+    }
+    
+    func sendGeneralInformationData(data: [GeneralInformationCore]) {
+        print("General Information Data! - \(data)")
     }
     
 //    private func updateArtwork(id: String, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool) {

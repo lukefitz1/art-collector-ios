@@ -43,7 +43,6 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     @IBOutlet weak var generalInfoLabel: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     let imagePicker = UIImagePickerController()
     let notesImagePicker = UIImagePickerController()
     let notesImageTwoPicker = UIImagePickerController()
@@ -55,19 +54,19 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     var decodedNotesTwoImage: String?
     var decodedAdditionalInfoImage: String?
     var decodedAdditionalInfoTwoImage: String?
-    
     var customerId: String = ""
     var collectionId: String = ""
     var selectedArtistId: String?
     var selectedGeneralInfoId: String?
     var selected = 1
-    
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
     var artists: [Artist] = []
     var generalInformation: [GeneralInformation] = []
-    
     var customerCoreId: UUID = UUID()
     var collectionCoreId: UUID = UUID()
+    
+    var selectedGeneralInfoArray: String?
+    var selectedArtistsArray: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -422,7 +421,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         print("Artist Data! - \(data)")
     }
     
-    func sendGeneralInfromationData(data: [GeneralInformationCore]) {
+    func sendGeneralInformationData(data: [GeneralInformationCore]) {
         print("General Information Data! - \(data)")
     }
     
