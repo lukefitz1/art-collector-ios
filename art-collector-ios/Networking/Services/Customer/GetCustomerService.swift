@@ -19,7 +19,11 @@ struct GetCustomerService {
     func getCustomer(customerId: String, completionHandler: ((Customer?, Error?) -> Void)?) {
         let endpoint = buildEndpoint(customerId: customerId)
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         
         var data : Customer?

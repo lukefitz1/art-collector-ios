@@ -37,7 +37,11 @@ struct CustomerEditService {
         
         let fullEndpoint = buildEndpoint(customerId: id)
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         
         let parameters = buildParameters(firstName: fName, lastName: lName, email: email, phone: phone, street: address, city: city, state: state, zip: zip, referredBy: referredBy, projectNotes: projectNotes, createdAt: createdAt, updatedAt: updatedAt)

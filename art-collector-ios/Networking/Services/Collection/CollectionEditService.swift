@@ -31,7 +31,11 @@ struct CollectionEditService {
         
         let fullEndpoint = buildEndpoint(collectionId: id)
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         let parameters = buildParameters(name: name, year: year, identifier: identifier, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
         

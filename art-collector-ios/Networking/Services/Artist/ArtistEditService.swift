@@ -32,7 +32,11 @@ struct ArtistEditService {
         
         let fullEndpoint = buildEndpoint(artistId: id)
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         let parameters = buildParameters(firstName: fName, lastName: lName, biography: bio, additionalInfo: additionalInfo, artistImage: image, createdAt: createdAt, updatedAt: updatedAt)
         

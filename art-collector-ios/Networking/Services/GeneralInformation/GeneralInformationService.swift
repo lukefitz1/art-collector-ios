@@ -18,27 +18,29 @@ struct GeneralInformationService {
     
     func getGeneralInformation(completionHandler: (([GeneralInformation]?, Error?) -> Void)?) {
         let endpoint = buildEndpoint()
-                    let headers: HTTPHeaders = [
-                        "Authorization": "Bearer \(ApiClient.authToken)"
-                    ]
-                    var data : [GeneralInformation] = []
-                    
-                    AF.request(endpoint,
-                               headers: headers).responseJSON { responseJSON in
-//                         debugPrint(responseJSON)
-                                
-                                switch responseJSON.result {
-                                    case .success:
-                                        if let safeData = responseJSON.data {
-                                            data = self.parseJSON(generalInfoData: safeData)
-                                        }
-                                        
-                                        completionHandler?(data, nil)
-                                    case let .failure(error):
-                                        print(error)
-                                        completionHandler?(nil, error)
-                                }
+        let headers: HTTPHeaders = [
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
+        ]
+        var data : [GeneralInformation] = []
+        
+        AF.request(endpoint,
+                   headers: headers).responseJSON { responseJSON in
+                    switch responseJSON.result {
+                        case .success:
+                            if let safeData = responseJSON.data {
+                                data = self.parseJSON(generalInfoData: safeData)
+                            }
+                            
+                            completionHandler?(data, nil)
+                        case let .failure(error):
+                            print(error)
+                            completionHandler?(nil, error)
                     }
+        }
 
     }
     

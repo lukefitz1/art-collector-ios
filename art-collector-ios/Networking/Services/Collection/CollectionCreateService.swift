@@ -31,7 +31,11 @@ struct CollectionCreateService {
         
         let fullEndpoint = buildEndpoint()
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         let parameters = buildParameters(id: id, name: name, year: year, identifier: identifier, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
         

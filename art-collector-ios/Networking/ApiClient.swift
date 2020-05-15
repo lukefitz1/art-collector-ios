@@ -11,5 +11,9 @@ import Alamofire
 
 struct ApiClient {
     static let baseUrl = "https://spire-art-services.herokuapp.com/api/"
-    static var authToken: String = ""
+    static var accessToken: String = ""
+    static var tokenType: String = ""
+    static var client: String = ""
+    static var expiry: String = ""
+    static var uid: String = ""
 }

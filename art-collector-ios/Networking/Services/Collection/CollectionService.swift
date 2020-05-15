@@ -19,7 +19,11 @@ struct CollectionService {
     func getCollection(collectionId: String, completionHandler: ((Collection?, Error?) -> Void)?) {
         let endpoint = buildEndpoint(collectionId: collectionId)
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         var data : Collection?
         

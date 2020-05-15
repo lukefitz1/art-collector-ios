@@ -15,8 +15,16 @@ class LoginManager: NSObject {
     @objc var isLoggedIn: Bool {
         let retrievedUsername: String? = KeychainWrapper.standard.string(forKey: "username")
         let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "password")
+        let retrievedAccessToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
+        let retrievedClient: String? = KeychainWrapper.standard.string(forKey: "client")
+        let retrievedExpiry: String? = KeychainWrapper.standard.string(forKey: "expiry")
+
+        if retrievedUsername == nil || retrievedPassword == nil || retrievedAccessToken == nil || retrievedClient == nil {
+            return false
+        }
         
-        if retrievedUsername == nil && retrievedPassword == nil {
+        // TODO: Instead of checking if it is nil, check if it is expired alreaday
+        if retrievedExpiry == nil {
             return false
         }
         

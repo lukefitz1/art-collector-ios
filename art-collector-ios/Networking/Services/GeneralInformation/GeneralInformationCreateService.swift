@@ -29,7 +29,11 @@ struct GeneralInformationCreateService {
         
         let fullEndpoint = buildEndpoint()
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         let parameters = buildParameters(id: id, informationLabel: infoLabel, information: info, createdAt: createdAt, updatedAt: updatedAt)
         

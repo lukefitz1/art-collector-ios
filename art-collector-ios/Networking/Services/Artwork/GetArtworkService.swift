@@ -19,7 +19,11 @@ struct GetArtworkService {
     func getArtworkInfo(artworkId: String, completionHandler: ((Artwork?, Error?) -> Void)?) {
         let endpoint = buildEndpoint(id: artworkId)
         let headers: HTTPHeaders = [
-            "Authorization": "Bearer \(ApiClient.authToken)"
+            "access-token": ApiClient.accessToken,
+            "client": ApiClient.client,
+            "uid": ApiClient.uid,
+            "expiry": ApiClient.expiry,
+            "token-type": ApiClient.tokenType
         ]
         
         var data : Artwork?

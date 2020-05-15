@@ -40,8 +40,8 @@ class LoginViewController: UIViewController {
         passwordToggleSwtch.onTintColor = UIColor(red: 2/255, green: 99/255, blue: 150/255, alpha: 1.0)
         
         
-        usernameInputField.text = ""
-        passwordInputField.text = ""
+        usernameInputField.text = "lukefitz1@gmail.com"
+        passwordInputField.text = "pass4luke"
         
         checkOnline()
     }
@@ -94,11 +94,11 @@ class LoginViewController: UIViewController {
                     } else {
                         KeychainWrapper.standard.set(username, forKey: "username")
                         KeychainWrapper.standard.set(password, forKey: "password")
-                        
-//                        let unSaveSuccessful: Bool = KeychainWrapper.standard.set(username, forKey: "username")
-//                        let pwSaveSuccessful: Bool = KeychainWrapper.standard.set(password, forKey: "password")
-//                        print("UN save was successful: \(unSaveSuccessful)")
-//                        print("PW save was successful: \(pwSaveSuccessful)")
+                        KeychainWrapper.standard.set(username, forKey: "accessToken")
+                        KeychainWrapper.standard.set(password, forKey: "tokenType")
+                        KeychainWrapper.standard.set(username, forKey: "client")
+                        KeychainWrapper.standard.set(password, forKey: "expiry")
+                        KeychainWrapper.standard.set(username, forKey: "uid")
                         
                         self?.progressHUD.hide(onView: self!.view, animated: true)
                         self!.performSegue(withIdentifier: "TabBarSegue", sender: nil)
@@ -111,14 +111,34 @@ class LoginViewController: UIViewController {
                 
                 let retrievedUsername: String? = KeychainWrapper.standard.string(forKey: "username")
                 let retrievedPassword: String? = KeychainWrapper.standard.string(forKey: "password")
-                let retrievedToken: String? = KeychainWrapper.standard.string(forKey: "authToken")
+                let retrievedAccessToken: String? = KeychainWrapper.standard.string(forKey: "accessToken")
+                let retrievedTokenType: String? = KeychainWrapper.standard.string(forKey: "tokenType")
+                let retrievedClient: String? = KeychainWrapper.standard.string(forKey: "client")
+                let retrievedExpiry: String? = KeychainWrapper.standard.string(forKey: "expiry")
+                let retrievedUid: String? = KeychainWrapper.standard.string(forKey: "uid")
                 
                 if retrievedUsername == username && retrievedPassword == password {
                     progressHUD.hide(onView: view, animated: true)
                     performSegue(withIdentifier: "TabBarSegue", sender: nil)
+                                        
+                    if let accessToken = retrievedAccessToken {
+                        ApiClient.accessToken = accessToken
+                    }
                     
-                    if let token = retrievedToken {
-                        ApiClient.authToken = token
+                    if let tokenType = retrievedTokenType {
+                        ApiClient.tokenType = tokenType
+                    }
+                    
+                    if let client = retrievedClient {
+                        ApiClient.client = client
+                    }
+                    
+                    if let expiry = retrievedExpiry {
+                        ApiClient.expiry = expiry
+                    }
+                    
+                    if let uid = retrievedUid {
+                        ApiClient.uid = uid
                     }
                 }
             }
