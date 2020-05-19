@@ -135,12 +135,16 @@ class ArtworkDetailViewController: UIViewController {
         customTitleLabel.text = artworkCore?.customTitle
         
         if let mainImage = artworkCore?.image {
-            let decodedData = Data(base64Encoded: mainImage)
-            if let data = decodedData {
-                let decodedimage = UIImage(data: data as Data)
-                mainImageImageView.image = decodedimage
+            if mainImage != "" {
+                let decodedData = Data(base64Encoded: mainImage)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    mainImageImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - mainImageImageView")
+                }
             } else {
-                print("Error with decodedData - mainImageImageView")
+                mainImageImageView.image = UIImage(named: "spire-logo")
             }
         }
         
