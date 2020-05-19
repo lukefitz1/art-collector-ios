@@ -116,6 +116,76 @@ class ArtworkEditViewController: UIViewController, MultiSelectListViewController
         provenanceTextView.text = artworkCore?.provenance
         customTitleTextField.text = artworkCore?.customTitle
         
+        if let mainImage = artworkCore?.image {
+            if mainImage != "" {
+                let decodedData = Data(base64Encoded: mainImage)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    mainImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - mainImageImageView")
+                }
+            } else {
+                mainImageView.image = UIImage(named: "spire-logo")
+            }
+        }
+        
+        if let notesImageOne = artworkCore?.notesImage {
+            if notesImageOne != "" {
+                let decodedData = Data(base64Encoded: notesImageOne)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    notesImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - notesImageImageView")
+                }
+            } else {
+                notesImageView.image = UIImage(named: "spire-logo")
+            }
+        }
+        
+        if let notesImageTwo = artworkCore?.notesImageTwo {
+            if notesImageTwo != "" {
+                let decodedData = Data(base64Encoded: notesImageTwo)
+                if let data = decodedData {
+                   let decodedimage = UIImage(data: data as Data)
+                   notesImageTwoImageView.image = decodedimage
+                } else {
+                   print("Error with decodedData - notesImageTwoImageView")
+                }
+            } else {
+                notesImageTwoImageView.image = UIImage(named: "spire-logo")
+            }
+        }
+        
+        if let addInfoImageOne = artworkCore?.additionalInfoImage {
+            if addInfoImageOne != "" {
+                let decodedData = Data(base64Encoded: addInfoImageOne)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    additionalInfoImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - additionalInfoImageImageView")
+                }
+            } else {
+                additionalInfoImageView.image = UIImage(named: "spire-logo")
+            }
+        }
+        
+        if let addInfoImageTwo = artworkCore?.additionalInfoImageTwo {
+            if addInfoImageTwo != "" {
+                let decodedData = Data(base64Encoded: addInfoImageTwo)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    additionalInfoImageTwoImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - additionalInfoImageTwoImageView")
+            }
+            } else {
+                additionalInfoImageTwoImageView.image = UIImage(named: "spire-logo")
+            }
+        }
+        
         if let savedArtist = artworkCore?.artistIds {
             let array = savedArtist as! [String]
             artistsIds = array

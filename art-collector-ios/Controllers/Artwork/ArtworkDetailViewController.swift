@@ -149,73 +149,72 @@ class ArtworkDetailViewController: UIViewController {
         }
         
         if let notesImageOne = artworkCore?.notesImage {
-            let decodedData = Data(base64Encoded: notesImageOne)
-            if let data = decodedData {
-                let decodedimage = UIImage(data: data as Data)
-                notesImageImageView.image = decodedimage
+            if notesImageOne != "" {
+                let decodedData = Data(base64Encoded: notesImageOne)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    notesImageImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - notesImageImageView")
+                }
             } else {
-                print("Error with decodedData - notesImageImageView")
+                notesImageImageView.image = UIImage(named: "spire-logo")
             }
         }
         
         if let notesImageTwo = artworkCore?.notesImageTwo {
-            let decodedData = Data(base64Encoded: notesImageTwo)
-            if let data = decodedData {
-                let decodedimage = UIImage(data: data as Data)
-                notesImageTwoImageView.image = decodedimage
+            if notesImageTwo != "" {
+                let decodedData = Data(base64Encoded: notesImageTwo)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    notesImageTwoImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - notesImageTwoImageView")
+                }
             } else {
-                print("Error with decodedData - notesImageTwoImageView")
+                notesImageTwoImageView.image = UIImage(named: "spire-logo")
             }
         }
         
         if let addInfoImageOne = artworkCore?.additionalInfoImage {
-            let decodedData = Data(base64Encoded: addInfoImageOne)
-            if let data = decodedData {
-                let decodedimage = UIImage(data: data as Data)
-                additionalInfoImageImageView.image = decodedimage
+            if addInfoImageOne != "" {
+                let decodedData = Data(base64Encoded: addInfoImageOne)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    additionalInfoImageImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - additionalInfoImageImageView")
+                }
             } else {
-                print("Error with decodedData - additionalInfoImageImageView")
+                additionalInfoImageImageView.image = UIImage(named: "spire-logo")
             }
         }
         
         if let addInfoImageTwo = artworkCore?.additionalInfoImageTwo {
-            let decodedData = Data(base64Encoded: addInfoImageTwo)
-            if let data = decodedData {
-                let decodedimage = UIImage(data: data as Data)
-                additionalInfoImageTwoImageView.image = decodedimage
+            if addInfoImageTwo != "" {
+                let decodedData = Data(base64Encoded: addInfoImageTwo)
+                if let data = decodedData {
+                    let decodedimage = UIImage(data: data as Data)
+                    additionalInfoImageTwoImageView.image = decodedimage
+                } else {
+                    print("Error with decodedData - additionalInfoImageTwoImageView")
+                }
             } else {
-                print("Error with decodedData - additionalInfoImageTwoImageView")
+                additionalInfoImageTwoImageView.image = UIImage(named: "spire-logo")
             }
         }
         
-        
-//        if let imageUrl = artworkCore?.image?.url {
-//            setImage(from: imageUrl, imageType: "mainImage")
-//        }
-//
-//        if let imageUrl = artworkCore?.notesImage?.url {
-//            setImage(from: imageUrl, imageType: "notesImage")
-//        }
-//
-//        if let imageUrl = artworkCore?.notesImageTwo?.url {
-//            setImage(from: imageUrl, imageType: "notesImageTwo")
-//        }
-//
-//        if let imageUrl = artworkCore?.additionalInfoImage?.url {
-//            setImage(from: imageUrl, imageType: "addInfoImage")
-//        }
-//
-//        if let imageUrl = artworkCore?.additionalInfoImageTwo?.url {
-//            setImage(from: imageUrl, imageType: "addInfoImageTwo")
-//        }
-        
+        print(artworkCore?.artistIds)
         if let savedArtist = artworkCore?.artistIds {
             let array = savedArtist as! [String]
+            print(array)
             artistsIds = array
         }
         
+        print(artworkCore?.generalInfoIds)
         if let savedGIs = artworkCore?.generalInfoIds {
             let array = savedGIs as! [String]
+            print(array)
             generalInfoIds = array
         }
     }
