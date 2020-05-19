@@ -350,11 +350,6 @@ extension CustomersViewController {
                             
                         } else {
                             print("Found a network artwork that needs to be updated in core - \(artworkNetwork.title ?? "")")
-                            if (artworkNetworkId == "23aef008-29bf-4c02-b48c-a78663ee10d5") {
-                                print("FUCK")
-                                print(artworkNetworkArtistIds)
-                                print(artworkNetworkGeneralInfoIds)
-                            }
                             updateArtInCore(id: artworkNetworkId, objectId: artworkNetworkObjectId, title: artworkNetworkTitle, artType: artworkNetworkType, date: artworkNetworkDate, medium: artworkNetworkMedium, image: artworkNetworkImage, description: artworkNetworkDescription, dimensions: artworkNetworkDimensions, frameDimensions: artworkNetworkFrameDimensions, condition: artworkNetworkCondition, currentLocation: artworkNetworkCurrentLocation, source: artworkNetworkSource, dateAcquired: artworkNetworkDateAcquired, amountPaid: artworkNetworkAmountPaid, currentValue: artworkNetworkCurrentValue, notes: artworkNetworkNotes, notesImage: artworkNetworkNotesImage, additionalInfoLabel: artworkNetworkAdditionalInfoLabel, additionalInfoText: artworkNetworkAdditionalInfoText, additionalInfoImage: artworkNetworkAdditionalInfoImage, additionalPdf: "", reviewedBy: artworkNetworkReviewedBy, reviewedDate: artworkNetworkReviewedDate, provenance: artworkNetworkProvenance, dateAcquiredLabel: artworkNetworkDateAcquiredLabel, collId: artworkNetworkCollectionId, custId: artworkNetworkCustomerId, notesImageTwo: artworkNetworkNotesImageTwo, additionalInfoImageTwo: artworkNetworkAdditionalInfoImageTwo, showGeneralInfo: artworkNetworkShowGeneralInfo, customTitle: artworkNetworkCustomTitle, updatedAt: artworkNetworkUpdatedAt, artists: artworkNetworkArtistIds, generalInfos: artworkNetworkGeneralInfoIds)
                             
                         }
