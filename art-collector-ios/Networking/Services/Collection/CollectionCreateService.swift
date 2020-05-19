@@ -46,8 +46,6 @@ struct CollectionCreateService {
                    parameters: parameters,
                    encoding: JSONEncoding(),
                    headers: headers).responseJSON { responseJSON in
-                     debugPrint(responseJSON)
-                    
                     switch responseJSON.result {
                     case .success:
                         if let safeData = responseJSON.data {

@@ -35,16 +35,20 @@ struct Artwork: Decodable {
     let reviewedDate: String?
     let provenance: String?
     let dateAcquiredLabel: String?
-    let artistId: String?
     let collectionId: String?
     let customerId: String?
     let notesImageTwo: Image?
     let additionalInfoImageTwo: Image?
-    let generalInfoId: String?
     let showGeneralInfo: Bool?
     let customTitle: String?
     let createdAt: String
     let updatedAt: String
+    
+    let artistId: String?
+    let generalInfoId: String?
+    
+    let artistIds: [String]?
+    let generalInfoIds: [String]?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -83,5 +87,7 @@ struct Artwork: Decodable {
         case customTitle = "custom_title"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+        case artistIds = "artist_ids"
+        case generalInfoIds = "general_information_ids"
     }
 }

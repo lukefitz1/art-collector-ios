@@ -80,6 +80,18 @@ class ArtworkDetailViewController: UIViewController {
         }
     }
     
+    var artistsIds: [String] = [] {
+        didSet {
+            displayArtists()
+        }
+    }
+
+    var generalInfoIds: [String] = [] {
+        didSet {
+            displayGeneralInfos()
+        }
+    }
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -122,6 +134,56 @@ class ArtworkDetailViewController: UIViewController {
         provenanceTextView.text = artworkCore?.provenance
         customTitleLabel.text = artworkCore?.customTitle
         
+        if let mainImage = artworkCore?.image {
+            let decodedData = Data(base64Encoded: mainImage)
+            if let data = decodedData {
+                let decodedimage = UIImage(data: data as Data)
+                mainImageImageView.image = decodedimage
+            } else {
+                print("Error with decodedData - mainImageImageView")
+            }
+        }
+        
+        if let notesImageOne = artworkCore?.notesImage {
+            let decodedData = Data(base64Encoded: notesImageOne)
+            if let data = decodedData {
+                let decodedimage = UIImage(data: data as Data)
+                notesImageImageView.image = decodedimage
+            } else {
+                print("Error with decodedData - notesImageImageView")
+            }
+        }
+        
+        if let notesImageTwo = artworkCore?.notesImageTwo {
+            let decodedData = Data(base64Encoded: notesImageTwo)
+            if let data = decodedData {
+                let decodedimage = UIImage(data: data as Data)
+                notesImageTwoImageView.image = decodedimage
+            } else {
+                print("Error with decodedData - notesImageTwoImageView")
+            }
+        }
+        
+        if let addInfoImageOne = artworkCore?.additionalInfoImage {
+            let decodedData = Data(base64Encoded: addInfoImageOne)
+            if let data = decodedData {
+                let decodedimage = UIImage(data: data as Data)
+                additionalInfoImageImageView.image = decodedimage
+            } else {
+                print("Error with decodedData - additionalInfoImageImageView")
+            }
+        }
+        
+        if let addInfoImageTwo = artworkCore?.additionalInfoImageTwo {
+            let decodedData = Data(base64Encoded: addInfoImageTwo)
+            if let data = decodedData {
+                let decodedimage = UIImage(data: data as Data)
+                additionalInfoImageTwoImageView.image = decodedimage
+            } else {
+                print("Error with decodedData - additionalInfoImageTwoImageView")
+            }
+        }
+        
         
 //        if let imageUrl = artworkCore?.image?.url {
 //            setImage(from: imageUrl, imageType: "mainImage")
@@ -143,17 +205,15 @@ class ArtworkDetailViewController: UIViewController {
 //            setImage(from: imageUrl, imageType: "addInfoImageTwo")
 //        }
         
-        if let artistId = artworkCore?.artistId {
-            self.getArtistInfoCore(id: artistId)
-        } else {
-            artistNameLabel.text = ""
+        if let savedArtist = artworkCore?.artistIds {
+            let array = savedArtist as! [String]
+            artistsIds = array
         }
-
-//        if let generalInfoId = artworkCore?.generalInfoId {
-//            self.getGeneralInfoCore(id: generalInfoId)
-//        } else {
-//            generalInfoNameLabel.text = ""
-//        }
+        
+        if let savedGIs = artworkCore?.generalInfoIds {
+            let array = savedGIs as! [String]
+            generalInfoIds = array
+        }
     }
     
     @objc
@@ -165,7 +225,7 @@ class ArtworkDetailViewController: UIViewController {
        if segue.identifier == "EditArworkSegue" {
            let destinationVC = segue.destination as! ArtworkEditViewController
 
-           destinationVC.artwork = artwork
+           destinationVC.artworkCore = artworkCore
        }
     }
     
@@ -201,32 +261,48 @@ class ArtworkDetailViewController: UIViewController {
         }
     }
     
-    private func getArtistInfoCore(id: UUID) {
+    private func getArtistInfoCore(id: UUID) -> ArtistCore? {
+        defer {
+            self.progressHUD.hide(onView: self.view, animated: true)
+        }
+        
         let request: NSFetchRequest<ArtistCore> = ArtistCore.fetchRequest()
         request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
 
         progressHUD.show(onView: view, animated: true)
         do {
             let artistFromCore = try context.fetch(request)
-            artistCore = artistFromCore[0]
+            if artistFromCore.count > 0 {
+                let artist = artistFromCore[0]
+                return artist
+            }
         } catch {
             print("Error getting updated artist information = \(error)")
         }
-        self.progressHUD.hide(onView: self.view, animated: true)
+        
+        return nil
     }
     
-    private func getGeneralInfoCore(id: UUID) {
+    private func getGeneralInfoCore(id: UUID) -> GeneralInformationCore? {
+        defer {
+            self.progressHUD.hide(onView: self.view, animated: true)
+        }
+        
         let request: NSFetchRequest<GeneralInformationCore> = GeneralInformationCore.fetchRequest()
         request.predicate = NSPredicate(format: "id = %@", id as NSUUID)
 
         progressHUD.show(onView: view, animated: true)
         do {
             let giFromCore = try context.fetch(request)
-            generalInfoCore = giFromCore[0]
+            if giFromCore.count > 0 {
+                let gi = giFromCore[0]
+                return gi
+            }
         } catch {
             print("Error getting updated general information = \(error)")
         }
-        self.progressHUD.hide(onView: self.view, animated: true)
+        
+        return nil
     }
     
     private func getArtistInfo(id: String) {
@@ -323,5 +399,42 @@ class ArtworkDetailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func displayArtists() {
+        var artistNames: [String] = []
+        artistsIds.forEach { artistId in
+            if let uuidId = UUID(uuidString: artistId) {
+                let artistFromCore = getArtistInfoCore(id: uuidId)
+                
+                if let coreArtist = artistFromCore {
+                    let fName = coreArtist.firstName ?? ""
+                    let lName = coreArtist.lastName ?? ""
+                    
+                    let name = "\(fName) \(lName)"
+                    artistNames.append(name)
+                }
+            }
+        }
+        
+        let artistNameDisplay = artistNames.joined(separator: ", ")
+        artistNameLabel.text = artistNameDisplay
+    }
+    
+    private func displayGeneralInfos() {
+        var generalInfoLabels: [String] = []
+        generalInfoIds.forEach { gi in
+            if let uuidId = UUID(uuidString: gi) {
+                let giFromCore = getGeneralInfoCore(id: uuidId)
+                
+                if let coreGI = giFromCore {
+                    let giLabel = coreGI.informationLabel ?? ""
+                    generalInfoLabels.append(giLabel)
+                }
+            }
+        }
+        
+        let giLabelDisplay = generalInfoLabels.joined(separator: ", ")
+        generalInfoNameLabel.text = giLabelDisplay
     }
 }

@@ -15,14 +15,12 @@ struct CollectionEditServiceSerializer {
                    year: String,
 //                   artworks: [Artwork] // TODO
                    customerId: String,
-                   createdAt: String,
                    updatedAt: String) -> Parameters {
         
         let parameters: Parameters = [ "collectionName": collectionName,
                                        "identifier": identifier,
                                        "year": year,
                                        "customer_id": customerId,
-                                       "created_at": createdAt,
                                        "updated_at": updatedAt]
         
         return parameters

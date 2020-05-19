@@ -14,7 +14,6 @@ protocol CollectionEditServiceSerializerProtocol {
                    identifier: String,
                    year: String,
                    customerId: String,
-                   createdAt: String,
                    updatedAt: String) -> Parameters
 }
 

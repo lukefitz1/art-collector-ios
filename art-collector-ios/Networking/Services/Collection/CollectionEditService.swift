@@ -25,7 +25,6 @@ struct CollectionEditService {
                           year: String,
                           identifier: String,
                           customerId: String,
-                          createdAt: String,
                           updatedAt: String,
                           completionHandler: ((Collection?, Error?) -> Void)?) {
         
@@ -37,7 +36,7 @@ struct CollectionEditService {
             "expiry": ApiClient.expiry,
             "token-type": ApiClient.tokenType
         ]
-        let parameters = buildParameters(name: name, year: year, identifier: identifier, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
+        let parameters = buildParameters(name: name, year: year, identifier: identifier, customerId: customerId, updatedAt: updatedAt)
         
         var data : Collection?
         
@@ -82,10 +81,9 @@ struct CollectionEditService {
                                  year: String,
                                  identifier: String,
                                  customerId: String,
-                                 createdAt: String,
                                  updatedAt: String) -> Parameters {
         
-        let parameters = serializer.serialize(collectionName: name, identifier: identifier, year: year, customerId: customerId, createdAt: createdAt, updatedAt: updatedAt)
+        let parameters = serializer.serialize(collectionName: name, identifier: identifier, year: year, customerId: customerId, updatedAt: updatedAt)
         return parameters
     }
 }

@@ -18,6 +18,7 @@
         <attribute name="amountPaid" optional="YES" attributeType="String"/>
         <attribute name="artDescription" optional="YES" attributeType="String"/>
         <attribute name="artistId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="artistIds" optional="YES" attributeType="Transformable" valueTransformerName=""/>
         <attribute name="artType" optional="YES" attributeType="String"/>
         <attribute name="collectionId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="condition" optional="YES" attributeType="String"/>
@@ -31,13 +32,14 @@
         <attribute name="dateAcquiredLabel" optional="YES" attributeType="String"/>
         <attribute name="dimensions" optional="YES" attributeType="String"/>
         <attribute name="frameDimensions" optional="YES" attributeType="String"/>
+        <attribute name="generalInfoIds" optional="YES" attributeType="Transformable"/>
         <attribute name="generalInformationId" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="medium" optional="YES" attributeType="String"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
-        <attribute name="notesImage" optional="YES" attributeType="String"/>
-        <attribute name="notesImageTwo" optional="YES" attributeType="String"/>
+        <attribute name="notesImage" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="notesImageTwo" optional="YES" attributeType="String" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String"/>
         <attribute name="provenance" optional="YES" attributeType="String"/>
         <attribute name="reviewedBy" optional="YES" attributeType="String"/>
@@ -80,9 +82,9 @@
     </entity>
     <elements>
         <element name="ArtistCore" positionX="144.63671875" positionY="-114.359375" width="128" height="163"/>
-        <element name="ArtworkCore" positionX="-58.94140625" positionY="-119.17578125" width="128" height="568"/>
-        <element name="GeneralInformationCore" positionX="142.7734375" positionY="73.26171875" width="128" height="118"/>
-        <element name="CustomerCore" positionX="-396.08984375" positionY="-116.9140625" width="128" height="238"/>
+        <element name="ArtworkCore" positionX="-58.94140625" positionY="-119.17578125" width="128" height="28"/>
         <element name="CollectionCore" positionX="-210.8203125" positionY="-119.01171875" width="128" height="28"/>
+        <element name="CustomerCore" positionX="-396.08984375" positionY="-116.9140625" width="128" height="238"/>
+        <element name="GeneralInformationCore" positionX="142.7734375" positionY="73.26171875" width="128" height="118"/>
     </elements>
 </model>

@@ -45,12 +45,34 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
         if let collection = collectionCore {
             collectionName.text = collection.collectionName
             collectionIdentifier.text = collection.identifier
+            collectionId.text = collection.id?.uuidString
         }
         
         artworkTableView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshCollectionData(_:)), for: .valueChanged)
         
         loadArtCollection()
+    }
+    
+    private func loadCollection() {
+        guard let collectionId = collectionCore?.id else { return }
+        
+        let request: NSFetchRequest<CollectionCore> = CollectionCore.fetchRequest()
+        request.predicate = NSPredicate(format: "collectionId = %@", collectionId as NSUUID)
+        
+        do {
+            let collectionFromCore = try context.fetch(request)
+            collectionCore = collectionFromCore[0]
+            refreshCollectionCoreInfo()
+        } catch {
+            print("Error getting collection from core - \(error)")
+        }
+    }
+    
+    private func refreshCollectionCoreInfo() {
+        collectionName.text = collectionCore?.collectionName
+        collectionIdentifier.text = collectionCore?.identifier
+        collectionId.text = collectionCore?.id?.uuidString
     }
     
     private func loadArtCollection() {
@@ -75,8 +97,8 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
     @IBAction func unwindToCollectionViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                if let collection = self.collection?.id {
-                    self.getCollection(collectionId: collection, refresh: false)
+                if (self.collectionCore?.id) != nil {
+                    self.loadArtCollection()
                 }
             }
         }
@@ -121,29 +143,9 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
     @IBAction func unwindToCollectionDetailViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-                if let collection = self.collection?.id {
-                    self.getCollectionInfo(collectionId: collection)
-                }
-            }
-        }
-    }
-    
-    private func getCollectionInfo(collectionId: String) {
-        let getCollectionService = GetCollectionService()
-        
-        progressHUD.show(onView: view, animated: true)
-        getCollectionService.getCollectionInfo(collectionId: collectionId) { [weak self] collectionData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue getting collection info data (Collection GET request) - \(e)")
-                return
-            } else {
-                if let collection = collectionData {
-                    self.progressHUD.hide(onView: self.view, animated: true)
-                    self.refreshCollectionInfo(collection: collection)
+                if (self.collectionCore?.id) != nil {
+                    self.loadArtCollection()
+                    self.refreshCollectionCoreInfo()
                 }
             }
         }
@@ -206,8 +208,8 @@ class CollectionDetailViewController: UIViewController, UITableViewDataSource, U
         if segue.identifier == "EditCollectionSegue" {
             let destinationVC = segue.destination as! CollectionEditViewController
             
-            destinationVC.customer = customer
-            destinationVC.collection = collection
+            destinationVC.customerCore = customerCore
+            destinationVC.collectionCore = collectionCore
         }
     }
 }

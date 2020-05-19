@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ArtworkEditServiceProtocol {
-    func udpateArtwork(id: String,
+    func updateArtwork(id: String,
                        objectId: String,
                        artType: String,
                        title: String,
@@ -39,8 +39,6 @@ protocol ArtworkEditServiceProtocol {
                        customTitle: String,
                        customerId: String,
                        collectionId: String,
-                       artistId: String,
-                       generalInformationId: String,
                        showGeneralInfo: Bool,
                        createdAt: String,
                        updatedAt: String,

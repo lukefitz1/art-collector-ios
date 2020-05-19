@@ -14,7 +14,6 @@ protocol CollectionEditServiceProtocol {
                           year: String,
                           identifier: String,
                           customerId: String,
-                          createdAt: String,
                           updatedAt: String,
                           completionHandler: ((Collection?, Error?) -> Void)?)
 }

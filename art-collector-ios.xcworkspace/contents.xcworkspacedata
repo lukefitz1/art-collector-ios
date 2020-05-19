@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/lukefitzgerald/Dev/art-collector-ios/art-collector-ios/Models/ArtworkCore+CoreDataClass.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/lukefitzgerald/Dev/art-collector-ios/art-collector-ios/Models/ArtworkCore+CoreDataProperties.swift">
+   </FileRef>
+   <FileRef
       location = "group:art-collector-ios.xcodeproj">
    </FileRef>
    <FileRef

@@ -35,8 +35,7 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
         let collIdentifier = collectionIdentifierTextField.text ?? ""
         let createDate = DateUtility.getFormattedDateAsString()
         
-         createCollectionCoreData(name: collName, year: collYear, identifier: collIdentifier, createdAt: createDate)
-//        createCollection(name: collName, year: collYear, identifier: collIdentifier)
+        createCollectionCoreData(name: collName, year: collYear, identifier: collIdentifier, createdAt: createDate)
     }
     
     private func createCollectionCoreData(name: String, year: String, identifier: String, createdAt: String) {
@@ -64,27 +63,4 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
             print("Error saving the new collection to database = \(error)")
         }
     }
-    
-//    private func createCollection(name: String, year: String, identifier: String) {
-//        let collectionCreateService = CollectionCreateService()
-//
-//        progressHUD.show(onView: view, animated: true)
-//        collectionCreateService.createCollection(name: name, year: year, identifier: identifier, customerId: customerId) { [weak self] collectionData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue posting artist data (Collection POST request) - \(e)")
-//                return
-//            } else {
-//                print("SUCCESS - Collection POST request")
-//
-//                if let collection = collectionData {
-//                    self.progressHUD.hide(onView: self.view, animated: true)
-//                    self.performSegue(withIdentifier: "unwindToCustomerDetailSegue", sender: self)
-//                }
-//            }
-//        }
-//    }
 }
