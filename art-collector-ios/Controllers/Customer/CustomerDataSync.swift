@@ -111,18 +111,10 @@ extension CustomersViewController {
                         let cCustomerPhone = updateCustomerData.phoneNumber ?? ""
                         let cCustomerEmail = updateCustomerData.emailAddress ?? ""
 
-                        print("The updated at dates differ, let's make an update!")
-
                         if coreUpdatedAt > networkUpdatedAt {
-                            print("Core is more recent")
-                            print("Let's send an update to the web app")
-
                             // send network request to update web app
                             updateCustomer(id: cId, fName: cCustomerFirstName, lName: cCustomerLastName, email: cCustomerEmail, phone: cCustomerPhone, street: cCustomerAddress, city: cCustomerCity, state: cCustomerState, zip: cCustomerZip, referred: "", notes: "", createdAt: cCreatedAt, updatedAt: cUpdatedAt)
                         } else {
-                            print("Network is more recent")
-                            print("Let's update local database")
-
                             // update core with latest customer
                             let networkFirstName = customer.firstName
                             let networkLastName = customer.lastName
@@ -155,7 +147,6 @@ extension CustomersViewController {
                     print("Error updating customer = \(error)")
                 }
                 
-                print("Check to see if any of the customer's local collections need updated")
                 updateLocalCollections(customerId: uuid!)
             }
         
@@ -217,18 +208,18 @@ extension CustomersViewController {
                     let networkUpdatedAt = collection.updatedAt
                     
                     if networkUpdatedAt == updatedAt {
-                        print("No difference found, no update necessary for collection: \(id)")
+//                        print("No difference found, no update necessary for collection: \(id)")
 //                        print("Let's check all of the artwork in the collection")
                         
                         self.updateArtwork(collectionId: id, networkArtworkCollectionData: collection.artworks!)
                     } else {
-                        print("Network updated at: \(networkUpdatedAt)")
-                        print("Local updated at: \(updatedAt)")
+//                        print("Network updated at: \(networkUpdatedAt)")
+//                        print("Local updated at: \(updatedAt)")
                         if networkUpdatedAt > updatedAt {
-                            print("Newer version found from network, updated locally - \(id)")
+//                            print("Newer version found from network, updated locally - \(id)")
                             self.updateCollectionInCore(id: id, collectionName: name, identifier: identifier, year: year, custId: customerId, updatedAt: networkUpdatedAt)
                         } else {
-                            print("Newer version found locally, updating the network - \(id)")
+//                            print("Newer version found locally, updating the network - \(id)")
                             let collName = collectionCore.collectionName ?? ""
                             let collIdentifier = collectionCore.identifier ?? ""
                             let collYear = collectionCore.year ?? ""
@@ -283,11 +274,15 @@ extension CustomersViewController {
             let artworkCoreDateAcquiredLabel = artworkCore.dateAcquiredLabel ?? ""
             let artworkCoreShowGeneralInfo = artworkCore.showGeneralInfo
             let artworkCoreCustomTitle = artworkCore.customTitle ?? ""
+            
+            // images
             let artworkCoreImage = artworkCore.image ?? ""
             let artworkCoreNotesImage = artworkCore.notesImage ?? ""
             let artworkCoreNotesImageTwo = artworkCore.notesImageTwo ?? ""
             let artworkCoreAdditionalInfoImage = artworkCore.additionalInfoImage ?? ""
             let artworkCoreAdditionalInfoImageTwo = artworkCore.additionalInfoImageTwo ?? ""
+            
+            // artist and general info arrays
 //            let artworkCoreArtistIds = artworkCore.artistIds ?? []
 //            let artworkCoreGeneralInfoIds = artworkCore.generalInfoIds ?? []
             
@@ -295,6 +290,42 @@ extension CustomersViewController {
             networkArtworkCollectionData.forEach { artworkNetwork in
                 let artworkNetworkId = artworkNetwork.id
                 let artworkNetworkUpdatedAt = artworkNetwork.updatedAt
+                let artworkNetworkCustomerId = artworkNetwork.customerId ?? ""
+                let artworkNetworkCollectionId = artworkNetwork.collectionId ?? ""
+                let artworkNetworkObjectId = artworkNetwork.objectId ?? ""
+                let artworkNetworkTitle = artworkNetwork.title ?? ""
+                let artworkNetworkType = artworkNetwork.artType ?? ""
+                let artworkNetworkDate = artworkNetwork.date ?? ""
+                let artworkNetworkMedium = artworkNetwork.medium ?? ""
+                let artworkNetworkDescription = artworkNetwork.description ?? ""
+                let artworkNetworkDimensions = artworkNetwork.dimensions ?? ""
+                let artworkNetworkFrameDimensions = artworkNetwork.frameDimensions ?? ""
+                let artworkNetworkCondition = artworkNetwork.condition ?? ""
+                let artworkNetworkCurrentLocation = artworkNetwork.currentLocation ?? ""
+                let artworkNetworkSource = artworkNetwork.source ?? ""
+                let artworkNetworkDateAcquired = artworkNetwork.dateAcquired ?? ""
+                let artworkNetworkAmountPaid = artworkNetwork.amountPaid ?? ""
+                let artworkNetworkCurrentValue = artworkNetwork.currentValue ?? ""
+                let artworkNetworkNotes = artworkNetwork.notes ?? ""
+                let artworkNetworkAdditionalInfoLabel = artworkNetwork.additionalInfoLabel ?? ""
+                let artworkNetworkAdditionalInfoText = artworkNetwork.additionalInfoText ?? ""
+                let artworkNetworkReviewedBy = artworkNetwork.reviewedBy ?? ""
+                let artworkNetworkReviewedDate = artworkNetwork.reviewedDate ?? ""
+                let artworkNetworkProvenance = artworkNetwork.provenance ?? ""
+                let artworkNetworkDateAcquiredLabel = artworkNetwork.dateAcquiredLabel ?? ""
+                let artworkNetworkShowGeneralInfo = artworkNetwork.showGeneralInfo ?? false
+                let artworkNetworkCustomTitle = artworkNetwork.customTitle ?? ""
+                
+                // images
+                let artworkNetworkImage = artworkNetwork.image?.thumb?.url ?? ""
+                let artworkNetworkNotesImage = artworkNetwork.notesImage?.thumb?.url ?? ""
+                let artworkNetworkNotesImageTwo = artworkNetwork.notesImageTwo?.thumb?.url ?? ""
+                let artworkNetworkAdditionalInfoImage = artworkNetwork.additionalInfoImage?.thumb?.url ?? ""
+                let artworkNetworkAdditionalInfoImageTwo = artworkNetwork.additionalInfoImageTwo?.thumb?.url ?? ""
+                
+                // artist and general info arrays
+    //            let artworkNetworkArtistIds = artworkNetwork.artistIds ?? []
+    //            let artworkNetworkGeneralInfoIds = artworkNetwork.generalInfoIds ?? []
                 
                 if coreStringId.caseInsensitiveCompare(artworkNetworkId) == .orderedSame {
                     matchFound = true
@@ -303,9 +334,13 @@ extension CustomersViewController {
 //                        print("No updates needed to this piece of art")
                     } else {
                         if artworkCoreUpdatedAt > artworkNetworkUpdatedAt {
-                            print("FUCK - Found a local artwork that needs to be updated in web - \(artworkCore.title ?? "")")
+                            // print("Found a local artwork that needs to be updated in web - \(artworkCore.title ?? "")")
+                            updateArtworkInWeb(id: artworkCoreId, objectId: artworkCoreObjectId, artType: artworkCoreType, title: artworkCoreTitle, date: artworkCoreDate, medium: artworkCoreMedium, description: artworkCoreDescription, mainImage: artworkCoreImage, dimensions: artworkCoreDimensions, frameDimensions: artworkCoreFrameDimensions, condition: artworkCoreCondition, currentLocation: artworkCoreCurrentLocation, source: artworkCoreSource, dateAcquiredLabel: artworkCoreDateAcquiredLabel, dateAcquired: artworkCoreDateAcquired, amountPaid: artworkCoreAmountPaid, currentValue: artworkCoreCurrentValue, notes: artworkCoreNotes, notesImage: artworkCoreNotesImage, notesImageTwo: artworkCoreNotesImageTwo, additionalInfoLabel: artworkCoreAdditionalInfoLabel, additionalInfoText: artworkCoreAdditionalInfoText, additionalInfoImage: artworkCoreAdditionalInfoImage, additionalInfoImageTwo: artworkCoreAdditionalInfoImageTwo, reviewedBy: artworkCoreReviewedBy, reviewedDate: artworkCoreReviewedDate, provenance: artworkCoreProvenance, customTitle: artworkCoreCustomTitle, customerId: artworkCoreCustomerId, collectionId: artworkCoreCollectionId, showGeneralInfo: artworkCoreShowGeneralInfo, createdAt: artworkCoreCreatedAt, updatedAt: artworkCoreUpdatedAt)
+                            
                         } else {
-                            print("FUCK - Found a network artwork that needs to be updated in core - \(artworkNetwork.title ?? "")")
+                            // print("Found a network artwork that needs to be updated in core - \(artworkNetwork.title ?? "")")
+                            updateArtInCore(id: artworkNetworkId, objectId: artworkNetworkObjectId, title: artworkNetworkTitle, artType: artworkNetworkType, date: artworkNetworkDate, medium: artworkNetworkMedium, image: artworkNetworkImage, description: artworkNetworkDescription, dimensions: artworkNetworkDimensions, frameDimensions: artworkNetworkFrameDimensions, condition: artworkNetworkCondition, currentLocation: artworkNetworkCurrentLocation, source: artworkNetworkSource, dateAcquired: artworkNetworkDateAcquired, amountPaid: artworkNetworkAmountPaid, currentValue: artworkNetworkCurrentValue, notes: artworkNetworkNotes, notesImage: artworkNetworkNotesImage, additionalInfoLabel: artworkNetworkAdditionalInfoLabel, additionalInfoText: artworkNetworkAdditionalInfoText, additionalInfoImage: artworkNetworkAdditionalInfoImage, additionalPdf: "", reviewedBy: artworkNetworkReviewedBy, reviewedDate: artworkNetworkReviewedDate, provenance: artworkNetworkProvenance, dateAcquiredLabel: artworkNetworkDateAcquiredLabel, collId: artworkNetworkCollectionId, custId: artworkNetworkCustomerId, notesImageTwo: artworkNetworkNotesImageTwo, additionalInfoImageTwo: artworkNetworkAdditionalInfoImageTwo, showGeneralInfo: artworkNetworkShowGeneralInfo, customTitle: artworkNetworkCustomTitle, updatedAt: artworkNetworkUpdatedAt)
+                            
                         }
                     }
                 }
@@ -519,15 +554,19 @@ extension CustomersViewController {
             let customTitle = art.customTitle ?? ""
             let createdAt = art.createdAt
             let updatedAt = art.updatedAt
-//            let image = art.image ?? ""
-//            let notesImage = art.notesImage ?? ""
-//            let notesImageTwo = art.notesImageTwo ?? ""
-//            let additionalInfoImage = art.additionalInfoImage ?? ""
-//            let additionalInfoImageTwo = art.additionalInfoImageTwo ?? ""
+            
+            // images
+            let image = art.image?.thumb?.url ?? ""
+            let notesImage = art.notesImage?.thumb?.url ?? ""
+            let notesImageTwo = art.notesImageTwo?.thumb?.url ?? ""
+            let additionalInfoImage = art.additionalInfoImage?.thumb?.url ?? ""
+            let additionalInfoImageTwo = art.additionalInfoImageTwo?.thumb?.url ?? ""
+            
+            // artist and gi arrays
             let artistIds = art.artistIds ?? []
             let generalInfoIds = art.generalInfoIds ?? []
             
-            saveArtToCore(id: id, objectId: objectId, title: title, artType: artType, date: date, medium: medium, image: "", description: description, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: "", additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: "", additionalPdf: "", reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, dateAcquiredLabel: dateAcquiredLabel, collId: collectionId, custId: customerId, notesImageTwo: "", additionalInfoImageTwo: "", showGeneralInfo: showGeneralInfo, customTitle: customTitle, createdAt: createdAt, updatedAt: updatedAt, artistIds: artistIds, generalInfoIds: generalInfoIds)
+            saveArtToCore(id: id, objectId: objectId, title: title, artType: artType, date: date, medium: medium, image: image, description: description, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalPdf: "", reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, dateAcquiredLabel: dateAcquiredLabel, collId: collectionId, custId: customerId, notesImageTwo: notesImageTwo, additionalInfoImageTwo: additionalInfoImageTwo, showGeneralInfo: showGeneralInfo, customTitle: customTitle, createdAt: createdAt, updatedAt: updatedAt, artistIds: artistIds, generalInfoIds: generalInfoIds)
         }
     }
 
@@ -566,14 +605,89 @@ extension CustomersViewController {
         newArtwork.setValue(dateAcquiredLabel, forKey: "dateAcquiredLabel")
         newArtwork.setValue(showGeneralInfo, forKey: "showGeneralInfo")
         newArtwork.setValue(customTitle, forKey: "customTitle")
-        newArtwork.setValue(image, forKey: "image")
-        newArtwork.setValue(notesImage, forKey: "notesImage")
-        newArtwork.setValue(notesImageTwo, forKey: "notesImageTwo")
-        newArtwork.setValue(additionalInfoImage, forKey: "additionalInfoImage")
-        newArtwork.setValue(additionalInfoImageTwo, forKey: "additionalInfoImageTwo")
+        
+        // artist and GI arrays
         newArtwork.setValue(artistIds, forKey: "artistIds")
         newArtwork.setValue(generalInfoIds, forKey: "generalInfoIds")
         
+        // images
+        let mainImageNetwork = downloadImage(url: image)
+        let notesImageNetwork = downloadImage(url: notesImage)
+        let notesImageTwoNetwork = downloadImage(url: notesImageTwo)
+        let additionalInfoImageNetwork = downloadImage(url: additionalInfoImage)
+        let additionalInfoImageTwoNetwork = downloadImage(url: additionalInfoImageTwo)
+        
+        newArtwork.setValue(mainImageNetwork, forKey: "image")
+        newArtwork.setValue(notesImageNetwork, forKey: "notesImage")
+        newArtwork.setValue(notesImageTwoNetwork, forKey: "notesImageTwo")
+        newArtwork.setValue(additionalInfoImageNetwork, forKey: "additionalInfoImage")
+        newArtwork.setValue(additionalInfoImageTwoNetwork, forKey: "additionalInfoImageTwo")
+        
+        saveNewItem()
+    }
+    
+    private func updateArtInCore(id: String, objectId: String, title: String, artType: String, date: String, medium: String, image: String, description: String, dimensions: String, frameDimensions: String, condition: String, currentLocation: String, source: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalPdf: String, reviewedBy: String, reviewedDate: String, provenance: String, dateAcquiredLabel: String, collId: String, custId: String, notesImageTwo: String, additionalInfoImageTwo: String, showGeneralInfo: Bool, customTitle: String, updatedAt: String) {
+        
+        let artworkId = UUID(uuidString: id)
+        let collectionId = UUID(uuidString: collId)
+        let customerId = UUID(uuidString: custId)
+        
+        let request: NSFetchRequest<ArtworkCore> = ArtworkCore.fetchRequest()
+        request.predicate = NSPredicate(format: "id = %@", artworkId! as NSUUID)
+          
+        do {
+            let artwork = try context.fetch(request)
+
+            let updateArtwork = artwork[0] as NSManagedObject
+            updateArtwork.setValue(artworkId    , forKey: "id")
+//            updateArtwork.setValue(createdAt, forKey: "createdAt")
+            updateArtwork.setValue(updatedAt, forKey: "updatedAt")
+            updateArtwork.setValue(customerId, forKey: "customerId")
+            updateArtwork.setValue(collectionId, forKey: "collectionId")
+            updateArtwork.setValue(objectId, forKey: "objectId")
+            updateArtwork.setValue(title, forKey: "title")
+            updateArtwork.setValue(artType, forKey: "artType")
+            updateArtwork.setValue(date, forKey: "date")
+            updateArtwork.setValue(medium, forKey: "medium")
+            updateArtwork.setValue(description, forKey: "artDescription")
+            updateArtwork.setValue(dimensions, forKey: "dimensions")
+            updateArtwork.setValue(frameDimensions, forKey: "frameDimensions")
+            updateArtwork.setValue(condition, forKey: "condition")
+            updateArtwork.setValue(currentLocation, forKey: "currentLocation")
+            updateArtwork.setValue(source, forKey: "source")
+            updateArtwork.setValue(dateAcquired, forKey: "dateAcquired")
+            updateArtwork.setValue(amountPaid, forKey: "amountPaid")
+            updateArtwork.setValue(notes, forKey: "notes")
+            updateArtwork.setValue(additionalInfoLabel, forKey: "additionalInfoLabel")
+            updateArtwork.setValue(additionalInfoText, forKey: "additionalInfoText")
+            updateArtwork.setValue(reviewedBy, forKey: "reviewedBy")
+            updateArtwork.setValue(reviewedDate, forKey: "reviewedDate")
+            updateArtwork.setValue(provenance, forKey: "provenance")
+            updateArtwork.setValue(dateAcquiredLabel, forKey: "dateAcquiredLabel")
+            updateArtwork.setValue(showGeneralInfo, forKey: "showGeneralInfo")
+            updateArtwork.setValue(customTitle, forKey: "customTitle")
+            
+            // artist and GI arrays
+//            updateArtwork.setValue(artistIds, forKey: "artistIds")
+//            updateArtwork.setValue(generalInfoIds, forKey: "generalInfoIds")
+            
+            // images
+            let mainImageNetwork = downloadImage(url: image)
+            let notesImageNetwork = downloadImage(url: notesImage)
+            let notesImageTwoNetwork = downloadImage(url: notesImageTwo)
+            let additionalInfoImageNetwork = downloadImage(url: additionalInfoImage)
+            let additionalInfoImageTwoNetwork = downloadImage(url: additionalInfoImageTwo)
+            
+            updateArtwork.setValue(mainImageNetwork, forKey: "image")
+            updateArtwork.setValue(notesImageNetwork, forKey: "notesImage")
+            updateArtwork.setValue(notesImageTwoNetwork, forKey: "notesImageTwo")
+            updateArtwork.setValue(additionalInfoImageNetwork, forKey: "additionalInfoImage")
+            updateArtwork.setValue(additionalInfoImageTwoNetwork, forKey: "additionalInfoImageTwo")
+
+        } catch {
+            print("Error updating artwork information = \(error)")
+        }
+            
         saveNewItem()
     }
     
@@ -583,6 +697,14 @@ extension CustomersViewController {
         } catch {
             print("Error saving the new customer data to database = \(error)")
         }
+    }
+    
+    private func downloadImage(url: String) -> String? {
+        guard let imageURL = URL(string: url) else { return nil }
+        guard let imageData = try? Data(contentsOf: imageURL) else { return nil }
+        
+        let strBase64 =  imageData.base64EncodedString()
+        return strBase64
     }
     
     private func createCustomer(id: String, fName: String, lName: String, email: String, phone: String, street: String, city: String, zip: String, referred: String, notes: String, createdAt: String) {
