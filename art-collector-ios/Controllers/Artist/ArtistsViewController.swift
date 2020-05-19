@@ -140,32 +140,4 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
             destinationVC.artistCore = selectedArtistCore
         }
     }
-    
-//    func getArtists(refresh: Bool) {
-//        artists = []
-//        let artistService = ArtistsService()
-//
-//        if !refresh {
-//            progressHUD.show(onView: view, animated: true)
-//        }
-//        artistService.getArtists { [weak self] artistData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue getting artist data (Artists GET request) - \(e)")
-//                return
-//            } else {
-//                if let artists = artistData {
-//                    if !refresh {
-//                        self.progressHUD.hide(onView: self.view, animated: true)
-//                    } else {
-//                        self.refreshControl.endRefreshing()
-//                    }
-//                    self.artists = artists
-//                }
-//            }
-//        }
-//    }
 }

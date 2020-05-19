@@ -79,31 +79,4 @@ class CollectionEditViewController: UIViewController {
             print("Error saving the updated collection to database = \(error)")
         }
     }
-    
-//    private func updateCollection(collId: String, name: String, year: String, collIdentifier: String, customerId: String) {
-//        let collectionEditService = CollectionEditService()
-//        
-//        progressHUD.show(onView: view, animated: true)
-//        collectionEditService.updateCollection(id: collId,
-//                                               name: name,
-//                                               year: year,
-//                                               identifier: collIdentifier,
-//                                               customerId: customerId) { [weak self] collectionData, error in
-//                                                guard let self = self else {
-//                                                    return
-//                                                }
-//                                                
-//                                                if let e = error {
-//                                                    print("Issue updating collection data (Collection PUT request) - \(e)")
-//                                                    return
-//                                                } else {
-//                                                    print("SUCCESS - collection PUT request")
-//                                                    
-//                                                    if let collection = collectionData {
-//                                                        self.progressHUD.hide(onView: self.view, animated: true)
-//                                                        self.performSegue(withIdentifier: "unwindToCollectionDetailSegue", sender: self)
-//                                                    }
-//                                                }
-//        }
-//    }
 }

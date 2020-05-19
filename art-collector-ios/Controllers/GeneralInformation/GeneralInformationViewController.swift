@@ -141,32 +141,4 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
             destinationVC.generalInfoCore = selectedGICore
         }
     }
-    
-//    private func getGeneralInformation(refresh: Bool) {
-//        generalInformation = []
-//        let generalInformationService = GeneralInformationService()
-//
-//        if !refresh {
-//            progressHUD.show(onView: view, animated: true)
-//        }
-//        generalInformationService.getGeneralInformation { [weak self] generalInformationData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue getting GeneralInformation data (GeneralInformation GET request) - \(e)")
-//                return
-//            } else {
-//                if let generalInfo = generalInformationData {
-//                    if !refresh {
-//                        self.progressHUD.hide(onView: self.view, animated: true)
-//                    } else {
-//                        self.refreshControl.endRefreshing()
-//                    }
-//                    self.generalInformation = generalInfo
-//                }
-//            }
-//        }
-//    }
 }

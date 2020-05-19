@@ -55,14 +55,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
             
             let addTwo = AddressUtility.getFormattedAddressTwo(customer: cust)
             addressTwo.text = addTwo
-
-//            if let collectionsArray = cust.collections {
-//                self.collections = collectionsArray
-//            }
-            
-//            if let collectionsArray = cust.collections {
-//                self.collectionsCore = collectionsArray
-//            }
             
             loadCollections()
         }
@@ -173,10 +165,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
         
         if segue.identifier == "AddNewCollectionSegue" {
             let destinationVC = segue.destination as! CollectionCreateViewController
-            
-//            if let custId = customer?.id {
-//                destinationVC.customerCoreId = custId
-//            }
             
             if let custId = customerCore?.id {
                 destinationVC.customerCoreId = custId
