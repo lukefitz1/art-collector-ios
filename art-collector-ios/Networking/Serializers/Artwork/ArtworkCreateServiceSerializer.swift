@@ -44,7 +44,9 @@ struct ArtworkCreateServiceSerializer {
                    generalInformationId: String,
                    showGeneralInfo: Bool,
                    createdAt: String,
-                   updatedAt: String) -> Parameters {
+                   updatedAt: String,
+                   artistIds: [String],
+                   generalInfoIds: [String]) -> Parameters {
         
         let parameters: Parameters = [ "id": id,
                                        "ojbId": objectId,
@@ -79,7 +81,9 @@ struct ArtworkCreateServiceSerializer {
                                        "general_information_id": generalInformationId,
                                        "show_general_info": showGeneralInfo,
                                        "created_at": createdAt,
-                                       "updated_at": updatedAt]
+                                       "updated_at": updatedAt,
+                                       "general_information_ids": generalInfoIds,
+                                       "artist_ids": artistIds]
         
         return parameters
     }

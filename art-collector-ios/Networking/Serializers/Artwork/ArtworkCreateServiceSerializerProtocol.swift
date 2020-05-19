@@ -44,7 +44,9 @@ protocol ArtworkCreateServiceSerializerProtocol {
                    generalInformationId: String,
                    showGeneralInfo: Bool,
                    createdAt: String,
-                   updatedAt: String) -> Parameters
+                   updatedAt: String,
+                   artistIds: [String],
+                   generalInfoIds: [String]) -> Parameters
 }
 
 extension ArtworkCreateServiceSerializer: ArtworkCreateServiceSerializerProtocol {}

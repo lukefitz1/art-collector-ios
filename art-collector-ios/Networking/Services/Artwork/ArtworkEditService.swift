@@ -53,6 +53,8 @@ struct ArtworkEditService {
                        showGeneralInfo: Bool,
                        createdAt: String,
                        updatedAt: String,
+                       artistIds: [String],
+                       generalInfoIds: [String],
                        completionHandler: ((Artwork?, Error?) -> Void)?) {
         
         let fullEndpoint = buildEndpoint(artworkId: id)
@@ -64,7 +66,7 @@ struct ArtworkEditService {
             "token-type": ApiClient.tokenType
         ]
         
-        let parameters = buildParameters(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt)
+        let parameters = buildParameters(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt, artistIds: artistIds, generalInfoIds: generalInfoIds)
         
         var data : Artwork?
         
@@ -77,11 +79,13 @@ struct ArtworkEditService {
                     switch responseJSON.result {
                     case .success:
                         if let safeData = responseJSON.data {
+                            print("Successfully updated a piece of art via the API")
                             data = self.parseJSON(artworkData: safeData)
                         }
                         
                         completionHandler?(data, nil)
                     case let .failure(error):
+                        print("Error updating a piece of art via the API")
                         print(error)
                         completionHandler?(nil, error)
                     }
@@ -136,9 +140,11 @@ struct ArtworkEditService {
                                  collectionId: String,
                                  showGeneralInfo: Bool,
                                  createdAt: String,
-                                 updatedAt: String) -> Parameters {
+                                 updatedAt: String,
+                                 artistIds: [String],
+                                 generalInfoIds: [String]) -> Parameters {
         
-        let parameters = serializer.serialize(objectId: objectId, artType: artType, title: title, date: date, medium: medium, mainImage: mainImage, description: description, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt)
+        let parameters = serializer.serialize(objectId: objectId, artType: artType, title: title, date: date, medium: medium, mainImage: mainImage, description: description, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt, artistIds: artistIds, generalInfoIds: generalInfoIds)
         return parameters
     }
 }

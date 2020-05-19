@@ -382,7 +382,7 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
             if let id = artistInfo.id?.uuidString {
                 artistIdArray.append(id)
             }
-        }
+        }	
         
         artistsIds = artistIdArray
     }
@@ -478,68 +478,4 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         
         return nil
     }
-    
-//    private func createArtwork(objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: String, collectionId: String, artistId: String, generalInformationId: String, showGeneralInfo: Bool) {
-//        
-//        let artworkCreateService = ArtworkCreateService()
-//        
-//        addNewArtworkBtn.isEnabled = false
-//        progressHUD.show(onView: view, animated: true)
-//        artworkCreateService.createArtwork(objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, customerId: customerId, collectionId: collectionId, artistId: artistId, generalInformationId: generalInformationId, showGeneralInfo: showGeneralInfo) { [weak self] artworkData, error in
-//            guard let self = self else {
-//                return
-//            }
-//            
-//            if let e = error {
-//                print("Issue creating artwork data (artwork POST request) - \(e)")
-//                return
-//            } else {
-//                print("SUCCESS - artwork request")
-//                
-//                if let artworkInfo = artworkData {
-//                    self.progressHUD.hide(onView: self.view, animated: true)
-//                    self.addNewArtworkBtn.isEnabled = true
-//                    self.performSegue(withIdentifier: "unwindToCollectionSegue", sender: self)
-//                }
-//            }
-//        }
-//    }
-    
-//    private func getArtists() {
-//        let getArtistsService = ArtistsService()
-//
-//        getArtistsService.getArtists { [weak self] artistData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue getting artist info data (Artist GET request) - \(e)")
-//                return
-//            } else {
-//                if let artists = artistData {
-//                    self.artists = artists
-//                }
-//            }
-//        }
-//    }
-//
-//    private func getGeneralInformation() {
-//        let getGeneralInformationService = GeneralInformationService()
-//
-//        getGeneralInformationService.getGeneralInformation() { [weak self] generalInformationData, error in
-//            guard let self = self else {
-//                return
-//            }
-//
-//            if let e = error {
-//                print("Issue getting general info data (General Info GET request) - \(e)")
-//                return
-//            } else {
-//                if let gi = generalInformationData {
-//                    self.generalInformation = gi
-//                }
-//            }
-//        }
-//    }
 }

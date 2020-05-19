@@ -204,17 +204,13 @@ class ArtworkDetailViewController: UIViewController {
             }
         }
         
-        print(artworkCore?.artistIds)
-        if let savedArtist = artworkCore?.artistIds {
-            let array = savedArtist as! [String]
-            print(array)
+        if let savedArtists = artworkCore?.artistIds {
+            let array = savedArtists as! [String]
             artistsIds = array
         }
         
-        print(artworkCore?.generalInfoIds)
         if let savedGIs = artworkCore?.generalInfoIds {
             let array = savedGIs as! [String]
-            print(array)
             generalInfoIds = array
         }
     }

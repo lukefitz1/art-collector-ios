@@ -41,7 +41,9 @@ protocol ArtworkEditServiceSerializerProtocol {
                    collectionId: String,
                    showGeneralInfo: Bool,
                    createdAt: String,
-                   updatedAt: String) -> Parameters
+                   updatedAt: String,
+                   artistIds: [String],
+                   generalInfoIds: [String]) -> Parameters
 }
 
 extension ArtworkEditServiceSerializer: ArtworkEditServiceSerializerProtocol {}

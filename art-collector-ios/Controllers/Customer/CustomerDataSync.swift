@@ -281,8 +281,21 @@ extension CustomersViewController {
             let artworkCoreAdditionalInfoImageTwo = artworkCore.additionalInfoImageTwo ?? ""
             
             // artist and general info arrays
-//            let artworkCoreArtistIds = artworkCore.artistIds ?? []
-//            let artworkCoreGeneralInfoIds = artworkCore.generalInfoIds ?? []
+            var artworkCoreArtistIds: [String] = []
+            if let savedArtists = artworkCore.artistIds {
+                let array = savedArtists as! [String]
+                array.forEach { id in
+                    artworkCoreArtistIds.append(id.lowercased())
+                }
+            }
+            
+            var artworkCoreGeneralInfoIds: [String] = []
+            if let savedGIs = artworkCore.generalInfoIds {
+                let array = savedGIs as! [String]
+                array.forEach { id in
+                    artworkCoreGeneralInfoIds.append(id.lowercased())
+                }
+            }
             
             var matchFound: Bool = false
             networkArtworkCollectionData.forEach { artworkNetwork in
@@ -332,8 +345,8 @@ extension CustomersViewController {
 //                        print("No updates needed to this piece of art")
                     } else {
                         if artworkCoreUpdatedAt > artworkNetworkUpdatedAt {
-                             print("Found a local artwork that needs to be updated in web - \(artworkCore.title ?? "")")
-                            updateArtworkInWeb(id: artworkCoreId, objectId: artworkCoreObjectId, artType: artworkCoreType, title: artworkCoreTitle, date: artworkCoreDate, medium: artworkCoreMedium, description: artworkCoreDescription, mainImage: artworkCoreImage, dimensions: artworkCoreDimensions, frameDimensions: artworkCoreFrameDimensions, condition: artworkCoreCondition, currentLocation: artworkCoreCurrentLocation, source: artworkCoreSource, dateAcquiredLabel: artworkCoreDateAcquiredLabel, dateAcquired: artworkCoreDateAcquired, amountPaid: artworkCoreAmountPaid, currentValue: artworkCoreCurrentValue, notes: artworkCoreNotes, notesImage: artworkCoreNotesImage, notesImageTwo: artworkCoreNotesImageTwo, additionalInfoLabel: artworkCoreAdditionalInfoLabel, additionalInfoText: artworkCoreAdditionalInfoText, additionalInfoImage: artworkCoreAdditionalInfoImage, additionalInfoImageTwo: artworkCoreAdditionalInfoImageTwo, reviewedBy: artworkCoreReviewedBy, reviewedDate: artworkCoreReviewedDate, provenance: artworkCoreProvenance, customTitle: artworkCoreCustomTitle, customerId: artworkCoreCustomerId, collectionId: artworkCoreCollectionId, showGeneralInfo: artworkCoreShowGeneralInfo, createdAt: artworkCoreCreatedAt, updatedAt: artworkCoreUpdatedAt)
+                            print("Found a local artwork that needs to be updated in web - \(artworkCore.title ?? "")")
+                            updateArtworkInWeb(id: artworkCoreId, objectId: artworkCoreObjectId, artType: artworkCoreType, title: artworkCoreTitle, date: artworkCoreDate, medium: artworkCoreMedium, description: artworkCoreDescription, mainImage: artworkCoreImage, dimensions: artworkCoreDimensions, frameDimensions: artworkCoreFrameDimensions, condition: artworkCoreCondition, currentLocation: artworkCoreCurrentLocation, source: artworkCoreSource, dateAcquiredLabel: artworkCoreDateAcquiredLabel, dateAcquired: artworkCoreDateAcquired, amountPaid: artworkCoreAmountPaid, currentValue: artworkCoreCurrentValue, notes: artworkCoreNotes, notesImage: artworkCoreNotesImage, notesImageTwo: artworkCoreNotesImageTwo, additionalInfoLabel: artworkCoreAdditionalInfoLabel, additionalInfoText: artworkCoreAdditionalInfoText, additionalInfoImage: artworkCoreAdditionalInfoImage, additionalInfoImageTwo: artworkCoreAdditionalInfoImageTwo, reviewedBy: artworkCoreReviewedBy, reviewedDate: artworkCoreReviewedDate, provenance: artworkCoreProvenance, customTitle: artworkCoreCustomTitle, customerId: artworkCoreCustomerId, collectionId: artworkCoreCollectionId, showGeneralInfo: artworkCoreShowGeneralInfo, createdAt: artworkCoreCreatedAt, updatedAt: artworkCoreUpdatedAt, artists: artworkCoreArtistIds, generalInfos: artworkCoreGeneralInfoIds)
                             
                         } else {
                             print("Found a network artwork that needs to be updated in core - \(artworkNetwork.title ?? "")")
@@ -350,7 +363,8 @@ extension CustomersViewController {
             }
             
             if !matchFound {
-                createArtworkInWeb(id: artworkCoreId, objectId: artworkCoreObjectId, artType: artworkCoreType, title: artworkCoreTitle, date: artworkCoreDate, medium: artworkCoreMedium, description: artworkCoreDescription, mainImage: artworkCoreImage, dimensions: artworkCoreDimensions, frameDimensions: artworkCoreFrameDimensions, condition: artworkCoreCondition, currentLocation: artworkCoreCurrentLocation, source: artworkCoreSource, dateAcquiredLabel: artworkCoreDateAcquiredLabel, dateAcquired: artworkCoreDateAcquired, amountPaid: artworkCoreAmountPaid, currentValue: artworkCoreCurrentValue, notes: artworkCoreNotes, notesImage: artworkCoreNotesImage, notesImageTwo: artworkCoreNotesImageTwo, additionalInfoLabel: artworkCoreAdditionalInfoLabel, additionalInfoText: artworkCoreAdditionalInfoText, additionalInfoImage: artworkCoreAdditionalInfoImage, additionalInfoImageTwo: artworkCoreAdditionalInfoImageTwo, reviewedBy: artworkCoreReviewedBy, reviewedDate: artworkCoreReviewedDate, provenance: artworkCoreProvenance, customTitle: artworkCoreCustomTitle, customerId: artworkCoreCustomerId, collectionId: artworkCoreCollectionId, showGeneralInfo: artworkCoreShowGeneralInfo, createdAt: artworkCoreCreatedAt, updatedAt: artworkCoreUpdatedAt)
+                print("Found a local artwork that needs to be sent to the web - \(artworkCore.title ?? "")")
+                createArtworkInWeb(id: artworkCoreId, objectId: artworkCoreObjectId, artType: artworkCoreType, title: artworkCoreTitle, date: artworkCoreDate, medium: artworkCoreMedium, description: artworkCoreDescription, mainImage: artworkCoreImage, dimensions: artworkCoreDimensions, frameDimensions: artworkCoreFrameDimensions, condition: artworkCoreCondition, currentLocation: artworkCoreCurrentLocation, source: artworkCoreSource, dateAcquiredLabel: artworkCoreDateAcquiredLabel, dateAcquired: artworkCoreDateAcquired, amountPaid: artworkCoreAmountPaid, currentValue: artworkCoreCurrentValue, notes: artworkCoreNotes, notesImage: artworkCoreNotesImage, notesImageTwo: artworkCoreNotesImageTwo, additionalInfoLabel: artworkCoreAdditionalInfoLabel, additionalInfoText: artworkCoreAdditionalInfoText, additionalInfoImage: artworkCoreAdditionalInfoImage, additionalInfoImageTwo: artworkCoreAdditionalInfoImageTwo, reviewedBy: artworkCoreReviewedBy, reviewedDate: artworkCoreReviewedDate, provenance: artworkCoreProvenance, customTitle: artworkCoreCustomTitle, customerId: artworkCoreCustomerId, collectionId: artworkCoreCollectionId, showGeneralInfo: artworkCoreShowGeneralInfo, createdAt: artworkCoreCreatedAt, updatedAt: artworkCoreUpdatedAt, artists: artworkCoreArtistIds, generalInfos: artworkCoreGeneralInfoIds)
             }
         }
     }
@@ -792,7 +806,7 @@ extension CustomersViewController {
         }
     }
     
-    private func createArtworkInWeb(id: UUID, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: UUID, collectionId: UUID, showGeneralInfo: Bool, createdAt: String, updatedAt: String) {
+    private func createArtworkInWeb(id: UUID, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: UUID, collectionId: UUID, showGeneralInfo: Bool, createdAt: String, updatedAt: String, artists: [String], generalInfos: [String]) {
 
         let artworkCreateService = ArtworkCreateService()
 
@@ -800,7 +814,7 @@ extension CustomersViewController {
         let customerId = customerId.uuidString
         let collectionId = collectionId.uuidString
         
-        artworkCreateService.createArtwork(id: artId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, customerId: customerId, collectionId: collectionId, artistId: "", generalInformationId: "", showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt) { [weak self] artworkData, error in
+        artworkCreateService.createArtwork(id: artId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: provenance, customerId: customerId, collectionId: collectionId, artistId: "", generalInformationId: "", showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt, artistIds: artists, generalInfoIds: generalInfos) { [weak self] artworkData, error in
             guard let self = self else {
                 return
             }
@@ -814,14 +828,14 @@ extension CustomersViewController {
         }
     }
     
-    private func updateArtworkInWeb(id: UUID, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: UUID, collectionId: UUID, showGeneralInfo: Bool, createdAt: String, updatedAt: String) {
+    private func updateArtworkInWeb(id: UUID, objectId: String, artType: String, title: String, date: String, medium: String, description: String, mainImage: String, dimensions: String, frameDimensions:  String, condition: String, currentLocation: String, source: String, dateAcquiredLabel: String, dateAcquired: String, amountPaid: String, currentValue: String, notes: String, notesImage: String, notesImageTwo: String, additionalInfoLabel: String, additionalInfoText: String, additionalInfoImage: String, additionalInfoImageTwo: String, reviewedBy: String, reviewedDate: String, provenance: String, customTitle: String, customerId: UUID, collectionId: UUID, showGeneralInfo: Bool, createdAt: String, updatedAt: String, artists: [String], generalInfos: [String]) {
 
         let artworkEditService = ArtworkEditService()
         let artId = id.uuidString
         let customerId = customerId.uuidString
         let collectionId = collectionId.uuidString
         
-        artworkEditService.updateArtwork(id: artId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt) { artworkData, error  in
+        artworkEditService.updateArtwork(id: artId, objectId: objectId, artType: artType, title: title, date: date, medium: medium, description: description, mainImage: mainImage, dimensions: dimensions, frameDimensions: frameDimensions, condition: condition, currentLocation: currentLocation, source: source, dateAcquiredLabel: dateAcquiredLabel, dateAcquired: dateAcquired, amountPaid: amountPaid, currentValue: currentValue, notes: notes, notesImage: notesImage, notesImageTwo: notesImageTwo, additionalInfoLabel: additionalInfoLabel, additionalInfoText: additionalInfoText, additionalInfoImage: additionalInfoImage, additionalInfoImageTwo: additionalInfoImageTwo, reviewedBy: reviewedBy, reviewedDate: reviewedDate, provenance: provenance, customTitle: customTitle, customerId: customerId, collectionId: collectionId, showGeneralInfo: showGeneralInfo, createdAt: createdAt, updatedAt: updatedAt, artistIds: artists, generalInfoIds: generalInfos) { artworkData, error  in
             
             if let e = error {
                 print("Issue updating artwork data (artwork PUT request) - \(e)")
