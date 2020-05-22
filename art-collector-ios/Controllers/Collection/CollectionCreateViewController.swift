@@ -24,9 +24,26 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
         collectionNameTextField.delegate = self
         collectionYearTextField.delegate = self
         collectionIdentifierTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func newCollectiontBtnPressed(_ sender: Any) {
@@ -61,6 +78,18 @@ class CollectionCreateViewController: UIViewController, UITextFieldDelegate {
             try context.save()
         } catch {
             print("Error saving the new collection to database = \(error)")
+        }
+    }
+}
+
+extension CollectionCreateViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
         }
     }
 }

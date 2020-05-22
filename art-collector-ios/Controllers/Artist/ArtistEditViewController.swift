@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArtistEditViewController: UIViewController {
+class ArtistEditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     var artist: Artist?
     var artistCore: ArtistCore?
@@ -25,10 +25,44 @@ class ArtistEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        firstNameTextField.delegate = self
+        lastNameTextField.delegate = self
+        additionalInfoTextField.delegate = self
+        biographyTextField.delegate = self
+        
         firstNameTextField.text = artistCore?.firstName
         lastNameTextField.text = artistCore?.lastName
         additionalInfoTextField.text = artistCore?.additionalInfo
         biographyTextField.text = artistCore?.biography
+        
+        biographyTextField.layer.borderWidth = 0.5
+        biographyTextField.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func updateArtistBtnPressed(_ sender: Any) {
@@ -72,6 +106,18 @@ class ArtistEditViewController: UIViewController {
         } catch {
             self.progressHUD.hide(onView: self.view, animated: true)
             print("Error saving the updated Artist to database = \(error)")
+        }
+    }
+}
+
+extension ArtistEditViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
         }
     }
 }

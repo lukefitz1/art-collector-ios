@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CollectionEditViewController: UIViewController {
+class CollectionEditViewController: UIViewController, UITextFieldDelegate {
     
     var customer: Customer?
     var customerCore: CustomerCore?
@@ -26,9 +26,30 @@ class CollectionEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
+        collectionNameTextField.delegate = self
+        collectionYearTextField.delegate = self
+        collectionIdentifierTextField.delegate = self
+        
         collectionNameTextField.text = collectionCore?.collectionName
         collectionYearTextField.text = collectionCore?.year
         collectionIdentifierTextField.text = collectionCore?.identifier
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func updateCollectionBtnPressed(_ sender: Any) {
@@ -77,6 +98,18 @@ class CollectionEditViewController: UIViewController {
             self.performSegue(withIdentifier: "unwindToCollectionDetailSegue", sender: self)
         } catch {
             print("Error saving the updated collection to database = \(error)")
+        }
+    }
+}
+
+extension CollectionEditViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
         }
     }
 }

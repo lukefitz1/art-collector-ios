@@ -35,6 +35,11 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         emailTextField.delegate = self
@@ -47,6 +52,27 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
 
         projectNotesTextView.layer.borderWidth = 0.5
         projectNotesTextView.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func addCustomerBtnPressed(_ sender: Any) {
@@ -134,5 +160,17 @@ class CustomerCreateViewController: UIViewController, UITextFieldDelegate, UITex
     @objc func onDoneButtonTapped() {
         toolBar.removeFromSuperview()
         pickerView.removeFromSuperview()
+    }
+}
+
+extension CustomerCreateViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
+        }
     }
 }

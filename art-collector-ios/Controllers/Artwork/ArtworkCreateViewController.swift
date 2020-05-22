@@ -83,6 +83,11 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
         descriptionTextView.layer.borderWidth = 0.5
         descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -94,6 +99,50 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         
         provenanceTextView.layer.borderWidth = 0.5
         provenanceTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        objectIdTextField.delegate = self
+        artTypeTextField.delegate = self
+        titleTextField.delegate = self
+        dateTextField.delegate = self
+        dateTextField.delegate = self
+        descriptionTextView.delegate = self
+        dimensionsTextField.delegate = self
+        frameDimensionsTextField.delegate = self
+        conditionTextField.delegate = self
+        currentLocationTextField.delegate = self
+        sourceTextField.delegate = self
+        dateAcquiredLabelTextField.delegate = self
+        dateAcquiredTextField.delegate = self
+        amountPaidTextField.delegate = self
+        currentValueTextField.delegate = self
+        notesTextView.delegate = self
+        additionalInfoLabelTextField.delegate = self
+        additionalInfoTextView.delegate = self
+        reviewedByTextField.delegate = self
+        reviewedDateTextField.delegate = self
+        provenanceTextView.delegate = self
+        customTitleTextField.delegate = self
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func takeImageBtnPressed(_ sender: Any) {
@@ -477,5 +526,17 @@ class ArtworkCreateViewController: UIViewController, UITextFieldDelegate, UIText
         }
         
         return nil
+    }
+}
+
+extension ArtworkCreateViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
+        }
     }
 }

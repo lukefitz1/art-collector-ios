@@ -10,7 +10,7 @@ import UIKit
 import Reachability
 import SwiftKeychainWrapper
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameInputField: UITextField!
     @IBOutlet weak var passwordInputField: UITextField!
@@ -39,11 +39,18 @@ class LoginViewController: UIViewController {
         passwordToggleSwtch.isOn = false
         passwordToggleSwtch.onTintColor = UIColor(red: 2/255, green: 99/255, blue: 150/255, alpha: 1.0)
         
+        usernameInputField.delegate = self
+        passwordInputField.delegate = self
         
         usernameInputField.text = ""
         passwordInputField.text = ""
         
         checkOnline()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
     }
     
     private func checkOnline() {
@@ -161,7 +168,13 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     @objc func keyboardWillChange(notification: Notification) {
-        view.frame.origin.y = -75
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
+        }
     }
 }
 

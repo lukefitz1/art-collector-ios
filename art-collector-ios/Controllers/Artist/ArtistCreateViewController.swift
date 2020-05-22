@@ -23,6 +23,11 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
         firstNameTextField.delegate = self
         lastNameTextField.delegate = self
         additionalInfoTextField.delegate = self
@@ -30,6 +35,27 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
         
         biographyTextField.layer.borderWidth = 0.5
         biographyTextField.layer.borderColor = UIColor.lightGray.cgColor
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
     @IBAction func newArtistBtnPressed(_ sender: Any) {
@@ -66,6 +92,18 @@ class ArtistCreateViewController: UIViewController, UITextFieldDelegate, UITextV
             try context.save()
         } catch {
             print("Error saving the new artist to database = \(error)")
+        }
+    }
+}
+
+extension ArtistCreateViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
         }
     }
 }

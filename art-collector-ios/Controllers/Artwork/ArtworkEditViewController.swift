@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ArtworkEditViewController: UIViewController, MultiSelectListViewControllerDelegate {
+class ArtworkEditViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, MultiSelectListViewControllerDelegate {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -81,6 +81,11 @@ class ArtworkEditViewController: UIViewController, MultiSelectListViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Listen to keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
         descriptionTextView.layer.borderWidth = 0.5
         descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
         
@@ -92,6 +97,29 @@ class ArtworkEditViewController: UIViewController, MultiSelectListViewController
         
         provenanceTextView.layer.borderWidth = 0.5
         provenanceTextView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        objectIdTextField.delegate = self
+        artTypeTextField.delegate = self
+        titleTextField.delegate = self
+        dateTextField.delegate = self
+        dateTextField.delegate = self
+        descriptionTextView.delegate = self
+        dimensionsTextField.delegate = self
+        frameDimensionsTextField.delegate = self
+        conditionTextField.delegate = self
+        currentLocationTextField.delegate = self
+        sourceTextField.delegate = self
+        dateAcquiredLabelTextField.delegate = self
+        dateAcquiredTextField.delegate = self
+        amountPaidTextField.delegate = self
+        currentValueTextField.delegate = self
+        notesTextView.delegate = self
+        additionalInfoLabelTextField.delegate = self
+        additionalInfoTextView.delegate = self
+        reviewedByTextField.delegate = self
+        reviewedDateTextField.delegate = self
+        provenanceTextView.delegate = self
+        customTitleTextField.delegate = self
         
         objectIdTextField.text = artworkCore?.objectId
         artTypeTextField.text = artworkCore?.artType
@@ -195,6 +223,27 @@ class ArtworkEditViewController: UIViewController, MultiSelectListViewController
             let array = savedGIs as! [String]
             generalInfoIds = array
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+      textField.resignFirstResponder()
+      return true;
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        return true
+    }
+    
+    deinit {
+        // Stop listening to keyboard events
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
 
     @IBAction func updateArtworkBtnPressed(_ sender: Any) {
@@ -516,6 +565,18 @@ class ArtworkEditViewController: UIViewController, MultiSelectListViewController
         } catch {
             self.progressHUD.hide(onView: self.view, animated: true)
             print("Error saving the updated artwork to database - \(error)")
+        }
+    }
+}
+
+extension ArtworkEditViewController {
+    @objc func keyboardWillChange(notification: Notification) {
+        if notification.name.rawValue == "UIKeyboardWillShowNotification" {
+            view.frame.origin.y = -75
+        }
+        
+        if notification.name.rawValue == "UIKeyboardWillHideNotification" {
+            view.frame.origin.y = 0
         }
     }
 }
