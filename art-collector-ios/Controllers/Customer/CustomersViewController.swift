@@ -14,8 +14,9 @@ class CustomersViewController: UIViewController, UITableViewDataSource, UITableV
 
     @IBOutlet weak var customersTableView: UITableView!
 
-    private let refreshControl = UIRefreshControl()
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://spire-art-services.herokuapp.com/")
+    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let notOnlineMessage = "Syncing data requires internet access"
@@ -42,10 +43,6 @@ class CustomersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    @objc private func refreshCustomerData(_ sender: Any) {
-        getCustomers(refresh: true)
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
@@ -60,8 +57,7 @@ class CustomersViewController: UIViewController, UITableViewDataSource, UITableV
         customersTableView.delegate = self
         customersTableView.dataSource = self
         
-        customersTableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshCustomerData(_:)), for: .valueChanged)
+        print("Data file path: \(dataFilePath)")
     }
     
     private func checkReachable() -> Bool {
@@ -102,34 +98,6 @@ class CustomersViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
     
-    func getCustomers(refresh: Bool) {
-        customers = []
-        let customerService = CustomersService()
-        
-        if !refresh {
-            progressHUD.show(onView: view, animated: true)
-        }
-        customerService.getCustomers { [weak self] customerData, error in
-            guard let self = self else {
-                return
-            }
-            
-            if let e = error {
-                print("Issue getting customer data (Customers GET request) - \(e)")
-                return
-            } else {
-                if let customers = customerData {
-                    if !refresh {
-                        self.progressHUD.hide(onView: self.view, animated: true)
-                    } else {
-                        self.refreshControl.endRefreshing()
-                    }
-                    self.customers = customers
-                }
-            }
-        }
-    }
-    
     @IBAction func addNewCustomerBtnPressed(_ sender: Any) {
     
     }
@@ -137,7 +105,6 @@ class CustomersViewController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func unwindToCustomersViewController(segue: UIStoryboardSegue) {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
-//                self.getCustomers(refresh: false)
                 self.loadItems()
             }
         }

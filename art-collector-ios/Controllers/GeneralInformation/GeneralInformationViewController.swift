@@ -14,7 +14,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
     
     @IBOutlet weak var generalInformationTableView: UITableView!
     
-    private let refreshControl = UIRefreshControl()
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://spire-art-services.herokuapp.com/")
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -33,11 +32,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
         }
     }
     
-    @objc private func refreshGeneralInformationData(_ sender: Any) {
-//        getGeneralInformation(refresh: true)
-        print("TODO - Add in refresh from core data")
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
@@ -51,9 +45,6 @@ class GeneralInformationViewController: UIViewController, UITableViewDataSource,
         title = "General Information"
         generalInformationTableView.delegate = self
         generalInformationTableView.dataSource = self
-        
-        generalInformationTableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshGeneralInformationData(_:)), for: .valueChanged)
     }
     
     private func checkReachable() -> Bool {

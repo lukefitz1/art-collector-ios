@@ -33,7 +33,6 @@ class CustomerDetailViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     var progressHUD: MBProgressHUDProtocol = MBProgressHUDClient()
-    private let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()

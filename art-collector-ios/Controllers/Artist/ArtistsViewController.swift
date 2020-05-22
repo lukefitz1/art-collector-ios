@@ -14,7 +14,6 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
     
     @IBOutlet weak var artistsTableView: UITableView!
     
-    private let refreshControl = UIRefreshControl()
     private let reachability = SCNetworkReachabilityCreateWithName(nil, "https://spire-art-services.herokuapp.com/")
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -32,11 +31,6 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
         }
     }
     
-    @objc private func refreshArtistsData(_ sender: Any) {
-//        getArtists(refresh: true)
-        print("TODO - refresh artist data")
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         navigationController?.isNavigationBarHidden = true
@@ -51,9 +45,6 @@ class ArtistsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         artistsTableView.delegate = self
         artistsTableView.dataSource = self
-        
-        artistsTableView.refreshControl = refreshControl
-        refreshControl.addTarget(self, action: #selector(refreshArtistsData(_:)), for: .valueChanged)
     }
     
     private func checkReachable() -> Bool {
