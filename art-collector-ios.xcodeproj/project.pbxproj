@@ -65,6 +65,7 @@
 		9B3F34D92480311D0007AC39 /* GeneralInformationServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34D82480311D0007AC39 /* GeneralInformationServiceDeserializerSpec.swift */; };
 		9B3F34DB248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34DA248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift */; };
 		9B3F34DE248045500007AC39 /* CustomersServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34DD248045500007AC39 /* CustomersServiceDeserializerSpec.swift */; };
+		9B3F34E4248064100007AC39 /* CollectionsServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34E3248064100007AC39 /* CollectionsServiceDeserializerSpec.swift */; };
 		9B40783A23F094B0002E4398 /* CollectionCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */; };
 		9B40783C23F09616002E4398 /* CollectionCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783B23F09616002E4398 /* CollectionCreateService.swift */; };
 		9B40783E23F09662002E4398 /* CollectionCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */; };
@@ -226,6 +227,7 @@
 		9B3F34D82480311D0007AC39 /* GeneralInformationServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationServiceDeserializerSpec.swift; sourceTree = "<group>"; };
 		9B3F34DA248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsServiceDeserializerSpec.swift; sourceTree = "<group>"; };
 		9B3F34DD248045500007AC39 /* CustomersServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceDeserializerSpec.swift; sourceTree = "<group>"; };
+		9B3F34E3248064100007AC39 /* CollectionsServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsServiceDeserializerSpec.swift; sourceTree = "<group>"; };
 		9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCreateViewController.swift; sourceTree = "<group>"; };
 		9B40783B23F09616002E4398 /* CollectionCreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCreateService.swift; sourceTree = "<group>"; };
 		9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCreateServiceProtocol.swift; sourceTree = "<group>"; };
@@ -560,6 +562,8 @@
 		9B3F34D7248030F90007AC39 /* Deserializers */ = {
 			isa = PBXGroup;
 			children = (
+				9B3F34E2248063F20007AC39 /* Artwork */,
+				9B3F34E1248063EA0007AC39 /* Collection */,
 				9B3F34E0248057FD0007AC39 /* Artist */,
 				9B3F34DF248057F50007AC39 /* GeneralInformation */,
 				9B3F34DC248045450007AC39 /* Customer */,
@@ -589,6 +593,21 @@
 				9B3F34DA248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift */,
 			);
 			path = Artist;
+			sourceTree = "<group>";
+		};
+		9B3F34E1248063EA0007AC39 /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				9B3F34E3248064100007AC39 /* CollectionsServiceDeserializerSpec.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		9B3F34E2248063F20007AC39 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Artwork;
 			sourceTree = "<group>";
 		};
 		9B6F9ACC240C6B2F003C6E28 /* Artwork */ = {
@@ -1140,6 +1159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B3F34DE248045500007AC39 /* CustomersServiceDeserializerSpec.swift in Sources */,
+				9B3F34E4248064100007AC39 /* CollectionsServiceDeserializerSpec.swift in Sources */,
 				9B3F34DB248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift in Sources */,
 				9B3F34D92480311D0007AC39 /* GeneralInformationServiceDeserializerSpec.swift in Sources */,
 			);
