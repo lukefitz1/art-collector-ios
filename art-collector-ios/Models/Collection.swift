@@ -8,7 +8,18 @@
 
 import Foundation
 
-struct Collection: Decodable {
+struct Collection: Decodable, Equatable {
+    static func == (lhs: Collection, rhs: Collection) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.collectionName == rhs.collectionName &&
+            lhs.identifier == rhs.identifier &&
+            lhs.year == rhs.year &&
+            lhs.artworks == rhs.artworks &&
+            lhs.customerId == rhs.customerId &&
+            lhs.createdAt == rhs.createdAt &&
+            lhs.updatedAt == rhs.updatedAt
+    }
+    
     let id: String
     let collectionName: String?
     let identifier: String?

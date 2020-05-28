@@ -8,7 +8,46 @@
 
 import Foundation
 
-struct Artwork: Decodable {
+struct Artwork: Decodable, Equatable {
+    static func == (lhs: Artwork, rhs: Artwork) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.objectId == rhs.objectId &&
+            lhs.artType == rhs.artType &&
+            lhs.title == rhs.title &&
+            lhs.date == rhs.date &&
+            lhs.medium == rhs.medium &&
+            lhs.image == rhs.image &&
+            lhs.description == rhs.description &&
+            lhs.dimensions == rhs.dimensions &&
+            lhs.frameDimensions == rhs.frameDimensions &&
+            lhs.condition == rhs.condition &&
+            lhs.currentLocation == rhs.currentLocation &&
+            lhs.source == rhs.source &&
+            lhs.dateAcquired == rhs.dateAcquired &&
+            lhs.amountPaid == rhs.amountPaid &&
+            lhs.currentValue == rhs.currentValue &&
+            lhs.notes == rhs.notes &&
+            lhs.notesImage == rhs.notesImage &&
+            lhs.additionalInfoLabel == rhs.additionalInfoLabel &&
+            lhs.additionalInfoText == rhs.additionalInfoText &&
+            lhs.additionalInfoImage == rhs.additionalInfoImage &&
+            lhs.additionalPdf == rhs.additionalPdf &&
+            lhs.reviewedBy == rhs.reviewedBy &&
+            lhs.reviewedDate == rhs.reviewedDate &&
+            lhs.provenance == rhs.provenance &&
+            lhs.dateAcquiredLabel == rhs.dateAcquiredLabel &&
+            lhs.collectionId == rhs.collectionId &&
+            lhs.customerId == rhs.customerId &&
+            lhs.notesImageTwo == rhs.notesImageTwo &&
+            lhs.additionalInfoImageTwo == rhs.additionalInfoImageTwo &&
+            lhs.showGeneralInfo == rhs.showGeneralInfo &&
+            lhs.customTitle == rhs.customTitle &&
+            lhs.artistIds == rhs.artistIds &&
+            lhs.generalInfoIds == rhs.generalInfoIds &&
+            lhs.createdAt == rhs.createdAt &&
+            lhs.updatedAt == rhs.updatedAt
+    }
+    
     let id: String
     let objectId: String?
     let artType: String?

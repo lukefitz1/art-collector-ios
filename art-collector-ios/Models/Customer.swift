@@ -8,7 +8,22 @@
 
 import Foundation
 
-struct Customer: Decodable {
+struct Customer: Decodable, Equatable {
+    static func == (lhs: Customer, rhs: Customer) -> Bool {
+        return lhs.id == rhs.id &&
+        lhs.firstName == rhs.firstName &&
+        lhs.lastName == rhs.lastName &&
+        lhs.city == rhs.city &&
+        lhs.state == rhs.state &&
+        lhs.zip == rhs.zip &&
+        lhs.address == rhs.address &&
+        lhs.phone == rhs.phone &&
+        lhs.email == rhs.email &&
+        lhs.collections == rhs.collections &&
+        lhs.createdAt == rhs.createdAt &&
+        lhs.updatedAt == rhs.updatedAt
+    }
+    
     let id: String
     let firstName: String
     let lastName: String

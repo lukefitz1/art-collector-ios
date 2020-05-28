@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GeneralInformation: Decodable {
+struct GeneralInformation: Decodable, Equatable {
     let id: String
     let infoLabel: String?
     let information: String

@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct Pdf: Decodable {
+struct Pdf: Decodable, Equatable {
     let url: String?
 }

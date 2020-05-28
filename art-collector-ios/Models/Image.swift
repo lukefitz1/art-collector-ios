@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct Image: Decodable {
+struct Image: Decodable, Equatable {
     let url: String?
     let thumb: ThumbImage?
 }
 
-struct ThumbImage: Decodable {
+struct ThumbImage: Decodable, Equatable {
     let url: String?
 }

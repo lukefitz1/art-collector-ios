@@ -8,7 +8,18 @@
 
 import Foundation
 
-struct Artist: Decodable {
+struct Artist: Decodable, Equatable {
+    static func == (lhs: Artist, rhs: Artist) -> Bool {
+        return lhs.id == rhs.id &&
+            lhs.firstName == rhs.firstName &&
+            lhs.lastName == rhs.lastName &&
+            lhs.biography == rhs.biography &&
+            lhs.additionalInfo == rhs.additionalInfo &&
+            lhs.artistImage == rhs.artistImage &&
+            lhs.createdAt == rhs.createdAt &&
+            lhs.updatedAt == rhs.updatedAt
+    }
+    
     let id: String
     let firstName: String?
     let lastName: String?
