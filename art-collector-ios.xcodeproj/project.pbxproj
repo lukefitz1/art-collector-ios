@@ -67,6 +67,10 @@
 		9B3F34DE248045500007AC39 /* CustomersServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34DD248045500007AC39 /* CustomersServiceDeserializerSpec.swift */; };
 		9B3F34E4248064100007AC39 /* CollectionsServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34E3248064100007AC39 /* CollectionsServiceDeserializerSpec.swift */; };
 		9B3F34E624806DA20007AC39 /* ArtworksServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34E524806DA20007AC39 /* ArtworksServiceDeserializerSpec.swift */; };
+		9B3F34E8248071620007AC39 /* GetArtistServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34E7248071620007AC39 /* GetArtistServiceDeserializerSpec.swift */; };
+		9B3F34EA248073470007AC39 /* GetGeneralInformationServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34E9248073470007AC39 /* GetGeneralInformationServiceDeserializerSpec.swift */; };
+		9B3F34EC248074BF0007AC39 /* GeneralInformationCreateServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34EB248074BF0007AC39 /* GeneralInformationCreateServiceDeserializerSpec.swift */; };
+		9B3F34EE2480760B0007AC39 /* ArtistCreateServiceDeserializerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3F34ED2480760B0007AC39 /* ArtistCreateServiceDeserializerSpec.swift */; };
 		9B40783A23F094B0002E4398 /* CollectionCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */; };
 		9B40783C23F09616002E4398 /* CollectionCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783B23F09616002E4398 /* CollectionCreateService.swift */; };
 		9B40783E23F09662002E4398 /* CollectionCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */; };
@@ -230,6 +234,10 @@
 		9B3F34DD248045500007AC39 /* CustomersServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersServiceDeserializerSpec.swift; sourceTree = "<group>"; };
 		9B3F34E3248064100007AC39 /* CollectionsServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsServiceDeserializerSpec.swift; sourceTree = "<group>"; };
 		9B3F34E524806DA20007AC39 /* ArtworksServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworksServiceDeserializerSpec.swift; sourceTree = "<group>"; };
+		9B3F34E7248071620007AC39 /* GetArtistServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetArtistServiceDeserializerSpec.swift; sourceTree = "<group>"; };
+		9B3F34E9248073470007AC39 /* GetGeneralInformationServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGeneralInformationServiceDeserializerSpec.swift; sourceTree = "<group>"; };
+		9B3F34EB248074BF0007AC39 /* GeneralInformationCreateServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationCreateServiceDeserializerSpec.swift; sourceTree = "<group>"; };
+		9B3F34ED2480760B0007AC39 /* ArtistCreateServiceDeserializerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCreateServiceDeserializerSpec.swift; sourceTree = "<group>"; };
 		9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCreateViewController.swift; sourceTree = "<group>"; };
 		9B40783B23F09616002E4398 /* CollectionCreateService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCreateService.swift; sourceTree = "<group>"; };
 		9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCreateServiceProtocol.swift; sourceTree = "<group>"; };
@@ -585,6 +593,8 @@
 			isa = PBXGroup;
 			children = (
 				9B3F34D82480311D0007AC39 /* GeneralInformationServiceDeserializerSpec.swift */,
+				9B3F34E9248073470007AC39 /* GetGeneralInformationServiceDeserializerSpec.swift */,
+				9B3F34EB248074BF0007AC39 /* GeneralInformationCreateServiceDeserializerSpec.swift */,
 			);
 			path = GeneralInformation;
 			sourceTree = "<group>";
@@ -593,6 +603,8 @@
 			isa = PBXGroup;
 			children = (
 				9B3F34DA248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift */,
+				9B3F34E7248071620007AC39 /* GetArtistServiceDeserializerSpec.swift */,
+				9B3F34ED2480760B0007AC39 /* ArtistCreateServiceDeserializerSpec.swift */,
 			);
 			path = Artist;
 			sourceTree = "<group>";
@@ -1164,8 +1176,12 @@
 				9B3F34DE248045500007AC39 /* CustomersServiceDeserializerSpec.swift in Sources */,
 				9B3F34E4248064100007AC39 /* CollectionsServiceDeserializerSpec.swift in Sources */,
 				9B3F34DB248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift in Sources */,
+				9B3F34E8248071620007AC39 /* GetArtistServiceDeserializerSpec.swift in Sources */,
+				9B3F34EE2480760B0007AC39 /* ArtistCreateServiceDeserializerSpec.swift in Sources */,
 				9B3F34E624806DA20007AC39 /* ArtworksServiceDeserializerSpec.swift in Sources */,
+				9B3F34EA248073470007AC39 /* GetGeneralInformationServiceDeserializerSpec.swift in Sources */,
 				9B3F34D92480311D0007AC39 /* GeneralInformationServiceDeserializerSpec.swift in Sources */,
+				9B3F34EC248074BF0007AC39 /* GeneralInformationCreateServiceDeserializerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
