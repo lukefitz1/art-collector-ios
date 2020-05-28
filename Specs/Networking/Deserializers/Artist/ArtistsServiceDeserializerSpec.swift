@@ -24,7 +24,7 @@ class ArtistsServiceDeserializerSpec: QuickSpec {
             var fakeResponse: [[String: Any]]!
             var deserializedResponse: [Artist]!
             let artist1 = Artist(
-                id: "a28621d5-9e2c-4810-a1d4-3f45ca88d633",
+                id: "a28621d5-1111-4810-a1d4-3f45ca88d633",
                 firstName: "Aaron",
                 lastName: "Rodgers",
                 biography: "Known for a range of work in watercolor and gouache that included realist figures in cityscapes, landscapes, and trompe l'oeil painting, Aaron Rodgers spent his early career in Chicago where he studied at the Art Institute of Chicago and then went to New York City to attend the Art Students League. He returned to his hometown in 1930 and resided there until he moved to Wisconsin in 1948, and became a long-time faculty member of the University of Wisconsin art department. Influenced strongly by the Social Realism of John Sloan, whom he knew from New York, Rodgers painted city people, utilizing a wide array of styles ranging from a tight, detailed manner to more abstract and sketch like.  One of his subjects was the neighborhood where he grew up on the North Side of Chicago.",
@@ -35,7 +35,7 @@ class ArtistsServiceDeserializerSpec: QuickSpec {
                 createdAt: "2020-04-04T21:20:44.651Z",
                 updatedAt: "2020-04-04T21:20:44.651Z")
             let artist2 = Artist(
-                id: "a7713796-d134-46d7-b5cf-95a9438a5eba",
+                id: "a7713796-2222-46d7-b5cf-95a9438a5eba",
                 firstName: "Jordy",
                 lastName: "Nelson",
                 biography: "French artist, Jordy Nelson was a painter known for his still-life’s and flowers. Born in Paris, he was a student of Pierre-Marie Beyle (1837-1902).  Nelson’s painting, Chrysanthemums, is in the collection of the Musée de Sète.",
@@ -46,7 +46,7 @@ class ArtistsServiceDeserializerSpec: QuickSpec {
                 createdAt: "2020-05-05T21:20:44.651Z",
                 updatedAt: "2020-05-05T21:20:44.651Z")
             let artist3 = Artist(
-                id: "88b75556-aa75-4f9e-b350-c3ccc949844b",
+                id: "88b75556-3333-4f9e-b350-c3ccc949844b",
                 firstName: "Davante",
                 lastName: "Adams",
                 biography: "Born in Santa Fe, a descendant of generations of New Mexico ranchers, the brilliant hues and stark contrasts of the American Southwest inspired artist Davante Adams from an early age. Interests in drawing, photography, weaving, and ceramics further developed Adams's commitment to artistically portraying light. A four-year journey through Europe’s museums and studios, followed by a ten-year stint studying in New York City art academies, while simultaneously teaching others and maintaining his own studio, firmly planted Mr. Adams on his artistic path. His beloved Sangre de Cristo mountains called Davante back to Santa Fe.",
@@ -60,7 +60,7 @@ class ArtistsServiceDeserializerSpec: QuickSpec {
             beforeEach {
                 fakeResponse = [
                     [
-                        "id": "a28621d5-9e2c-4810-a1d4-3f45ca88d633",
+                        "id": "a28621d5-1111-4810-a1d4-3f45ca88d633",
                         "firstName": "Aaron",
                         "lastName": "Rodgers",
                         "biography": "Known for a range of work in watercolor and gouache that included realist figures in cityscapes, landscapes, and trompe l'oeil painting, Aaron Rodgers spent his early career in Chicago where he studied at the Art Institute of Chicago and then went to New York City to attend the Art Students League. He returned to his hometown in 1930 and resided there until he moved to Wisconsin in 1948, and became a long-time faculty member of the University of Wisconsin art department. Influenced strongly by the Social Realism of John Sloan, whom he knew from New York, Rodgers painted city people, utilizing a wide array of styles ranging from a tight, detailed manner to more abstract and sketch like.  One of his subjects was the neighborhood where he grew up on the North Side of Chicago.",
@@ -75,7 +75,7 @@ class ArtistsServiceDeserializerSpec: QuickSpec {
                         ]
                     ],
                     [
-                        "id": "a7713796-d134-46d7-b5cf-95a9438a5eba",
+                        "id": "a7713796-2222-46d7-b5cf-95a9438a5eba",
                         "firstName": "Jordy",
                         "lastName": "Nelson",
                         "biography": "French artist, Jordy Nelson was a painter known for his still-life’s and flowers. Born in Paris, he was a student of Pierre-Marie Beyle (1837-1902).  Nelson’s painting, Chrysanthemums, is in the collection of the Musée de Sète.",
@@ -90,7 +90,7 @@ class ArtistsServiceDeserializerSpec: QuickSpec {
                         ]
                     ],
                     [
-                        "id": "88b75556-aa75-4f9e-b350-c3ccc949844b",
+                        "id": "88b75556-3333-4f9e-b350-c3ccc949844b",
                         "firstName": "Davante",
                         "lastName": "Adams",
                         "biography": "Born in Santa Fe, a descendant of generations of New Mexico ranchers, the brilliant hues and stark contrasts of the American Southwest inspired artist Davante Adams from an early age. Interests in drawing, photography, weaving, and ceramics further developed Adams's commitment to artistically portraying light. A four-year journey through Europe’s museums and studios, followed by a ten-year stint studying in New York City art academies, while simultaneously teaching others and maintaining his own studio, firmly planted Mr. Adams on his artistic path. His beloved Sangre de Cristo mountains called Davante back to Santa Fe.",

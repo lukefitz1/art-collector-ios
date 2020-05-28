@@ -25,7 +25,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
             var deserializedResponse: [Customer]!
             
             let collection1 = Collection(
-                id: "51d7074c-b4fd-497d-be59-f48846ea3214",
+                id: "51d7074c-2525-497d-be59-f48846ea3214",
                 collectionName: "ART COLLECTION - Denver",
                 identifier: "DEN",
                 year: "2019",
@@ -35,7 +35,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                 updatedAt: "2019-01-28T15:09:01.916Z")
 
             let collection2 = Collection(
-                id: "e46f0ac4-d022-4e00-9aba-3618e686d618",
+                id: "e46f0ac4-3636-4e00-9aba-3618e686d618",
                 collectionName: "ART COLLECTION - Topeka",
                 identifier: "TOP",
                 year: "2020",
@@ -45,7 +45,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                 updatedAt: "2019-01-28T15:09:01.916Z")
 
             let collection3 = Collection(
-                id: "189ea27d-77a6-43d9-a7ae-7213e22b150a",
+                id: "189ea27d-4747-43d9-a7ae-7213e22b150a",
                 collectionName: "ART COLLECTION - Nashville",
                 identifier: "NASH",
                 year: "2018",
@@ -55,7 +55,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                 updatedAt: "2018-01-04T13:57:17.167Z")
             
             let customer1 = Customer(
-                id: "a28621d5-9e2c-4810-a1d4-3f45ca88d633",
+                id: "a28621d5-9999-4810-a1d4-3f45ca88d633",
                 firstName: "Bill",
                 lastName: "Self",
                 city: "Lawrence",
@@ -69,7 +69,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                 updatedAt: "2020-04-04T21:20:44.651Z")
             
             let customer2 = Customer(
-                id: "a7713796-d134-46d7-b5cf-95a9438a5eba",
+                id: "a7713796-8888-46d7-b5cf-95a9438a5eba",
                 firstName: "Roy",
                 lastName: "Williams",
                 city: "Chapel Hill",
@@ -83,7 +83,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                 updatedAt: "2020-05-05T21:20:44.651Z")
             
             let customer3 = Customer(
-                id: "88b75556-aa75-4f9e-b350-c3ccc949844b",
+                id: "88b75556-7777-4f9e-b350-c3ccc949844b",
                 firstName: "John",
                 lastName: "Calipari",
                 city: "Lexington",
@@ -99,7 +99,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
             beforeEach {
                 fakeResponse = [
                     [
-                        "id": "a28621d5-9e2c-4810-a1d4-3f45ca88d633",
+                        "id": "a28621d5-9999-4810-a1d4-3f45ca88d633",
                         "created_at": "2020-04-04T21:20:44.651Z",
                         "updated_at": "2020-04-04T21:20:44.651Z",
                         "firstName": "Bill",
@@ -111,7 +111,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                         "state": "KS",
                         "zip": "66612",
                         "collections": [
-                            [ "id": "51d7074c-b4fd-497d-be59-f48846ea3214",
+                            [ "id": "51d7074c-2525-497d-be59-f48846ea3214",
                                 "created_at": "2019-01-28T15:09:01.916Z",
                                 "updated_at": "2019-01-28T15:09:01.916Z",
                                 "collectionName": "ART COLLECTION - Denver",
@@ -122,7 +122,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                         ]
                     ],
                     [
-                        "id": "a7713796-d134-46d7-b5cf-95a9438a5eba",
+                        "id": "a7713796-8888-46d7-b5cf-95a9438a5eba",
                         "created_at": "2020-05-05T21:20:44.651Z",
                         "updated_at": "2020-05-05T21:20:44.651Z",
                         "firstName": "Roy",
@@ -134,7 +134,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                         "state": "NC",
                         "zip": "27514",
                         "collections": [
-                            [ "id": "e46f0ac4-d022-4e00-9aba-3618e686d618",
+                            [ "id": "e46f0ac4-3636-4e00-9aba-3618e686d618",
                               "created_at": "2019-01-28T15:09:01.916Z",
                               "updated_at": "2019-01-28T15:09:01.916Z",
                               "collectionName": "ART COLLECTION - Topeka",
@@ -142,7 +142,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                               "year": "2020",
                               "customer_id": "a7713796-d134-46d7-b5cf-95a9438a5eba",
                               "artworks": []],
-                            [ "id": "189ea27d-77a6-43d9-a7ae-7213e22b150a",
+                            [ "id": "189ea27d-4747-43d9-a7ae-7213e22b150a",
                               "created_at": "2018-01-04T13:57:17.167Z",
                               "updated_at": "2018-01-04T13:57:17.167Z",
                               "collectionName": "ART COLLECTION - Nashville",
@@ -153,7 +153,7 @@ class CustomersServiceDeserializerSpec: QuickSpec {
                         ]
                     ],
                     [
-                        "id": "88b75556-aa75-4f9e-b350-c3ccc949844b",
+                        "id": "88b75556-7777-4f9e-b350-c3ccc949844b",
                         "created_at": "2020-03-03T21:20:44.651Z",
                         "updated_at": "2020-03-03T21:20:44.651Z",
                         "firstName": "John",
