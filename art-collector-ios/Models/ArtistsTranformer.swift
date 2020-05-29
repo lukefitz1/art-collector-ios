@@ -19,14 +19,11 @@ class ArtistsTranformer: ValueTransformer {
     
     override func transformedValue(_ value: Any?) -> Any? {
         let array = value as! [String]
-        print("Transforming")
-        print(array)
         return array
     }
     
     override func reverseTransformedValue(_ value: Any?) -> Any? {
         let array = value as! [String]
-        print(array)
         return array
     }
 }
