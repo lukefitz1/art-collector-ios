@@ -27,6 +27,7 @@ struct CollectionsService {
         ]
         var data : [Collection] = []
         
+        print("Network Request: \(endpoint)")
         AF.request(endpoint,
                    headers: headers).responseJSON { responseJSON in
                     switch responseJSON.result {

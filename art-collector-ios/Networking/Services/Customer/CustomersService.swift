@@ -27,6 +27,7 @@ struct CustomersService {
         ]
         var data : [Customer] = []
         
+        print("Network Request: \(endpoint)")
         AF.request(endpoint,
                    headers: headers).responseJSON { responseJSON in
                     switch responseJSON.result {
