@@ -9,7 +9,7 @@
 import Quick
 import Nimble
 
-@testable import art_collector_ios
+@testable import art_collector_ios_dev
 
 class GeneralInformationCreateServiceDeserializerSpec: QuickSpec {
     

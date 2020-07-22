@@ -8,7 +8,148 @@
 
 /* Begin PBXBuildFile section */
 		749A3669BAB812CEA71D346B /* Pods_art_collector_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E4A08B7B8C8936F73CEE51 /* Pods_art_collector_ios.framework */; };
-		98D1AF41201122C55E96E17C /* libPods-Specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E47B8B2F18D829A474E76B4 /* libPods-Specs.a */; };
+		80FECFB15B1B613D202F2885 /* Pods_art_collector_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E4A08B7B8C8936F73CEE51 /* Pods_art_collector_ios.framework */; };
+		9B087797248F0BAB001B23D5 /* SpireNetworkingProd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087796248F0BAB001B23D5 /* SpireNetworkingProd.swift */; };
+		9B0877B3248FBF5B001B23D5 /* CustomerEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AD3240C6B78003C6E28 /* CustomerEditViewController.swift */; };
+		9B0877B4248FBF5B001B23D5 /* GetCollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72412410ABE400307EFC /* GetCollectionService.swift */; };
+		9B0877B5248FBF5B001B23D5 /* GeneralInformationCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A476423D5E7D4006D1BA4 /* GeneralInformationCreateServiceDeserializer.swift */; };
+		9B0877B6248FBF5B001B23D5 /* ArtistEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72332410968400307EFC /* ArtistEditServiceProtocol.swift */; };
+		9B0877B7248FBF5B001B23D5 /* GeneralInformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3DDBC72409F44B006D440C /* GeneralInformationDetailViewController.swift */; };
+		9B0877B8248FBF5B001B23D5 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1DCFE2437A7C000A44AD2 /* LoginManager.swift */; };
+		9B0877B9248FBF5B001B23D5 /* ArtworksServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225730242D488C00332C8C /* ArtworksServiceDeserializerProtocol.swift */; };
+		9B0877BA248FBF5B001B23D5 /* CustomerCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB599923E0B48C00AB8C20 /* CustomerCreateViewController.swift */; };
+		9B0877BB248FBF5B001B23D5 /* GetCustomerServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784D23F0A142002E4398 /* GetCustomerServiceDeserializer.swift */; };
+		9B0877BC248FBF5B001B23D5 /* ArtworkCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34623E383630024F388 /* ArtworkCreateServiceSerializerProtocol.swift */; };
+		9B0877BD248FBF5B001B23D5 /* ArtistEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72312410967700307EFC /* ArtistEditService.swift */; };
+		9B0877BE248FBF5B001B23D5 /* GetArtworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE724F2410AF7000307EFC /* GetArtworkServiceProtocol.swift */; };
+		9B0877BF248FBF5B001B23D5 /* ArtistsTranformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6889D2470988F00C93D20 /* ArtistsTranformer.swift */; };
+		9B0877C0248FBF5B001B23D5 /* GeneralInformationTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6889F2470A41C00C93D20 /* GeneralInformationTransformer.swift */; };
+		9B0877C1248FBF5B001B23D5 /* MultiSelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */; };
+		9B0877C2248FBF5B001B23D5 /* GeneralInformationEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16D377242A891100593898 /* GeneralInformationEditServiceSerializer.swift */; };
+		9B0877C3248FBF5B001B23D5 /* GeneralInformationCreateServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475E23D5E462006D1BA4 /* GeneralInformationCreateServiceSerializer.swift */; };
+		9B0877C4248FBF5B001B23D5 /* ArtistsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1423D26BA600A2A8D0 /* ArtistsServiceProtocol.swift */; };
+		9B0877C5248FBF5B001B23D5 /* CollectionsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225732242D4A2800332C8C /* CollectionsService.swift */; };
+		9B0877C6248FBF5B001B23D5 /* CustomersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B90893023B2BBCF00FBE693 /* CustomersViewController.swift */; };
+		9B0877C7248FBF5B001B23D5 /* GeneralInformationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1E23D2B33C00A2A8D0 /* GeneralInformationServiceProtocol.swift */; };
+		9B0877C8248FBF5B001B23D5 /* GetArtworkServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72512410B00E00307EFC /* GetArtworkServiceDeserializer.swift */; };
+		9B0877C9248FBF5B001B23D5 /* CollectionEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225720242C083D00332C8C /* CollectionEditServiceSerializerProtocol.swift */; };
+		9B0877CA248FBF5B001B23D5 /* CustomerDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225728242D2F3400332C8C /* CustomerDataSync.swift */; };
+		9B0877CB248FBF5B001B23D5 /* CollectionCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783D23F09662002E4398 /* CollectionCreateServiceProtocol.swift */; };
+		9B0877CC248FBF5B001B23D5 /* CollectionsServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225734242D4A3900332C8C /* CollectionsServiceProtocol.swift */; };
+		9B0877CD248FBF5B001B23D5 /* CustomerCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A123E0BDFC00AB8C20 /* CustomerCreateServiceSerializerProtocol.swift */; };
+		9B0877CE248FBF5B001B23D5 /* GetArtistServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7239241099A000307EFC /* GetArtistServiceDeserializer.swift */; };
+		9B0877CF248FBF5B001B23D5 /* GetGeneralInformationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE722624108E6200307EFC /* GetGeneralInformationServiceProtocol.swift */; };
+		9B0877D0248FBF5B001B23D5 /* ArtistEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225711242BF76600332C8C /* ArtistEditServiceSerializer.swift */; };
+		9B0877D1248FBF5B001B23D5 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */; };
+		9B0877D2248FBF5B001B23D5 /* GetArtworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE724D2410AF6400307EFC /* GetArtworkService.swift */; };
+		9B0877D3248FBF5B001B23D5 /* CustomerCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A323E0BE1900AB8C20 /* CustomerCreateServiceDeserializer.swift */; };
+		9B0877D4248FBF5B001B23D5 /* ArtistCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2823D3BD0400BE8AA8 /* ArtistCreateServiceDeserializerProtocol.swift */; };
+		9B0877D5248FBF5B001B23D5 /* ArtistDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22570F242BC1EF00332C8C /* ArtistDataSync.swift */; };
+		9B0877D6248FBF5B001B23D5 /* CollectionCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784123F09735002E4398 /* CollectionCreateServiceDeserializer.swift */; };
+		9B0877D7248FBF5B001B23D5 /* CollectionCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783B23F09616002E4398 /* CollectionCreateService.swift */; };
+		9B0877D8248FBF5B001B23D5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919A23BF991300CC7552 /* Image.swift */; };
+		9B0877D9248FBF5B001B23D5 /* ArtworkEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72492410AF4D00307EFC /* ArtworkEditService.swift */; };
+		9B0877DA248FBF5B001B23D5 /* GetArtistServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE7237241096AC00307EFC /* GetArtistServiceProtocol.swift */; };
+		9B0877DB248FBF5B001B23D5 /* ArtistEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */; };
+		9B0877DC248FBF5B001B23D5 /* CustomerEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2985BD240DF577009E73D9 /* CustomerEditService.swift */; };
+		9B0877DD248FBF5B001B23D5 /* GeneralInformationCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475823D4BC9B006D1BA4 /* GeneralInformationCreateViewController.swift */; };
+		9B0877DE248FBF5B001B23D5 /* ArtistCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2423D3BAB800BE8AA8 /* ArtistCreateServiceSerializerProtocol.swift */; };
+		9B0877DF248FBF5B001B23D5 /* CollectionEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22571E242C083100332C8C /* CollectionEditServiceSerializer.swift */; };
+		9B0877E0248FBF5B001B23D5 /* CollectionEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE723F2410A86A00307EFC /* CollectionEditServiceProtocol.swift */; };
+		9B0877E1248FBF5B001B23D5 /* GeneralInformationCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A476223D5E7C4006D1BA4 /* GeneralInformationCreateServiceDeserializerProtocol.swift */; };
+		9B0877E2248FBF5B001B23D5 /* ArtistEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225713242BF77400332C8C /* ArtistEditServiceSerializerProtocol.swift */; };
+		9B0877E3248FBF5B001B23D5 /* ArtworkCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34A23E383860024F388 /* ArtworkCreateServiceDeserializer.swift */; };
+		9B0877E4248FBF5B001B23D5 /* ArtistCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2A23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift */; };
+		9B0877E5248FBF5B001B23D5 /* CustomerEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2985BF240DF583009E73D9 /* CustomerEditServiceProtocol.swift */; };
+		9B0877E6248FBF5B001B23D5 /* ArtworkEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22571C242C081300332C8C /* ArtworkEditServiceSerializerProtocol.swift */; };
+		9B0877E7248FBF5B001B23D5 /* ArtistsServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1823D26C3E00A2A8D0 /* ArtistsServiceDeserializerProtocol.swift */; };
+		9B0877E8248FBF5B001B23D5 /* GetArtworkServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72532410B01E00307EFC /* GetArtworkServiceDeserializerProtocol.swift */; };
+		9B0877E9248FBF5B001B23D5 /* GeneralInformationEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE722224108BD300307EFC /* GeneralInformationEditServiceProtocol.swift */; };
+		9B0877EA248FBF5B001B23D5 /* Pdf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919C23BF991D00CC7552 /* Pdf.swift */; };
+		9B0877EC248FBF5B001B23D5 /* CollectionEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE723D2410A85F00307EFC /* CollectionEditService.swift */; };
+		9B0877ED248FBF5B001B23D5 /* GetCollectionServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72472410ACE800307EFC /* GetCollectionServiceDeserializer.swift */; };
+		9B0877EE248FBF5B001B23D5 /* ArtworkEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */; };
+		9B0877EF248FBF5B001B23D5 /* GeneralInformationCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475A23D5E17E006D1BA4 /* GeneralInformationCreateService.swift */; };
+		9B0877F0248FBF5B001B23D5 /* ArtistDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B242C44240A0068001E0145 /* ArtistDetailViewController.swift */; };
+		9B0877F1248FBF5B001B23D5 /* GetGeneralInformationServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE722824108F4600307EFC /* GetGeneralInformationServiceDeserializerProtocol.swift */; };
+		9B0877F2248FBF5B001B23D5 /* GeneralInformationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */; };
+		9B0877F3248FBF5B001B23D5 /* SpireNetworkingDev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B087794248F0B9E001B23D5 /* SpireNetworkingDev.swift */; };
+		9B0877F4248FBF5B001B23D5 /* ArtworkEditServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE724B2410AF5600307EFC /* ArtworkEditServiceProtocol.swift */; };
+		9B0877F5248FBF5B001B23D5 /* ArtistCreateServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2623D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift */; };
+		9B0877F6248FBF5B001B23D5 /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD34DB724246D7B00B9E47C /* DateUtility.swift */; };
+		9B0877F7248FBF5B001B23D5 /* CustomerCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB599D23E0BCA100AB8C20 /* CustomerCreateServiceProtocol.swift */; };
+		9B0877F8248FBF5B001B23D5 /* ArtistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1023D265F400A2A8D0 /* ArtistsViewController.swift */; };
+		9B0877F9248FBF5B001B23D5 /* GeneralInformationDataSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16D373242A776200593898 /* GeneralInformationDataSync.swift */; };
+		9B0877FA248FBF5B001B23D5 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98D23B64F7F009ACE3E /* LoginService.swift */; };
+		9B0877FB248FBF5B001B23D5 /* GetCustomerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784923F0A081002E4398 /* GetCustomerServiceProtocol.swift */; };
+		9B0877FC248FBF5B001B23D5 /* CustomerCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A523E0BE2800AB8C20 /* CustomerCreateServiceDeserializerProtocol.swift */; };
+		9B0877FD248FBF5B001B23D5 /* GetCustomerServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784B23F0A137002E4398 /* GetCustomerServiceDeserializerProtocol.swift */; };
+		9B0877FE248FBF5B001B23D5 /* GeneralInformationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1C23D2B30700A2A8D0 /* GeneralInformationService.swift */; };
+		9B0877FF248FBF5B001B23D5 /* ArtistCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F1D23D3B26D00BE8AA8 /* ArtistCreateViewController.swift */; };
+		9B087800248FBF5B001B23D5 /* GetArtistService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72352410969F00307EFC /* GetArtistService.swift */; };
+		9B087801248FBF5B001B23D5 /* GetGeneralInformationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE722424108E5400307EFC /* GetGeneralInformationService.swift */; };
+		9B087802248FBF5B001B23D5 /* GeneralInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919823BF94F700CC7552 /* GeneralInformation.swift */; };
+		9B087803248FBF5B001B23D5 /* CustomersServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6923BA6E4A00203D3B /* CustomersServiceProtocol.swift */; };
+		9B087804248FBF5B001B23D5 /* ArtworkCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34023E380650024F388 /* ArtworkCreateService.swift */; };
+		9B087805248FBF5B001B23D5 /* CustomersServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6D23BA713900203D3B /* CustomersServiceDeserializer.swift */; };
+		9B087806248FBF5B001B23D5 /* ArtworkEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22571A242C080600332C8C /* ArtworkEditServiceSerializer.swift */; };
+		9B087807248FBF5B001B23D5 /* ArtistCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2123D3B80800BE8AA8 /* ArtistCreateServiceProtocol.swift */; };
+		9B087808248FBF5B001B23D5 /* ArtworksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22572A242D47BD00332C8C /* ArtworksService.swift */; };
+		9B087809248FBF5B001B23D5 /* GetCollectionServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72452410ACE000307EFC /* GetCollectionServiceDeserializerProtocol.swift */; };
+		9B08780A248FBF5B001B23D5 /* GeneralInformationEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B16D375242A890100593898 /* GeneralInformationEditServiceSerializerProtocol.swift */; };
+		9B08780B248FBF5B001B23D5 /* CollectionCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784323F097BB002E4398 /* CollectionCreateServiceSerializerProtocol.swift */; };
+		9B08780C248FBF5B001B23D5 /* ArtistCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F1F23D3B7F800BE8AA8 /* ArtistCreateService.swift */; };
+		9B08780D248FBF5B001B23D5 /* GetCollectionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE72432410ABEC00307EFC /* GetCollectionServiceProtocol.swift */; };
+		9B08780E248FBF5B001B23D5 /* CollectionsServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225738242D4AC100332C8C /* CollectionsServiceDeserializerProtocol.swift */; };
+		9B08780F248FBF5B001B23D5 /* ArtistsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1223D26B6500A2A8D0 /* ArtistsService.swift */; };
+		9B087810248FBF5B001B23D5 /* MBProgressHUDProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475623D4B7ED006D1BA4 /* MBProgressHUDProtocol.swift */; };
+		9B087811248FBF5B001B23D5 /* CollectionServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34E23E38A540024F388 /* CollectionServiceProtocol.swift */; };
+		9B087812248FBF5B001B23D5 /* CustomersServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6F23BA71AD00203D3B /* CustomersServiceDeserializerProtocol.swift */; };
+		9B087813248FBF5B001B23D5 /* ArtworkCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34823E383760024F388 /* ArtworkCreateServiceDeserializerProtocol.swift */; };
+		9B087814248FBF5B001B23D5 /* CustomerCreateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB599B23E0BC6200AB8C20 /* CustomerCreateService.swift */; };
+		9B087815248FBF5B001B23D5 /* CustomerEditServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225724242C086700332C8C /* CustomerEditServiceSerializerProtocol.swift */; };
+		9B087816248FBF5B001B23D5 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */; };
+		9B087817248FBF5B001B23D5 /* CollectionCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783F23F09729002E4398 /* CollectionCreateServiceDeserializerProtocol.swift */; };
+		9B087818248FBF5B001B23D5 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919223BF94D600CC7552 /* Collection.swift */; };
+		9B087819248FBF5B001B23D5 /* GetArtistServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE723B241099AA00307EFC /* GetArtistServiceDeserializerProtocol.swift */; };
+		9B08781A248FBF5B001B23D5 /* CollectionCreateServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784523F097C6002E4398 /* CollectionCreateServiceSerializer.swift */; };
+		9B08781B248FBF5B001B23D5 /* GeneralInformationServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A2223D2B3AF00A2A8D0 /* GeneralInformationServiceDeserializerProtocol.swift */; };
+		9B08781C248FBF5B001B23D5 /* ArtworkCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34223E380890024F388 /* ArtworkCreateServiceProtocol.swift */; };
+		9B08781D248FBF5B001B23D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B144DA923A29FED00E0FE85 /* LoginViewController.swift */; };
+		9B08781E248FBF5B001B23D5 /* GetGeneralInformationServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE722A24108F4F00307EFC /* GetGeneralInformationServiceDeserializer.swift */; };
+		9B08781F248FBF5B001B23D5 /* GeneralInformationCreateServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A475C23D5E1A1006D1BA4 /* GeneralInformationCreateServiceProtocol.swift */; };
+		9B087820248FBF5B001B23D5 /* GeneralInformationCreateServiceSerializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A476023D5E477006D1BA4 /* GeneralInformationCreateServiceSerializerProtocol.swift */; };
+		9B087821248FBF5B001B23D5 /* CollectionServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */; };
+		9B087822248FBF5B001B23D5 /* CollectionsServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225736242D4AB700332C8C /* CollectionsServiceDeserializer.swift */; };
+		9B087823248FBF5B001B23D5 /* GeneralInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1A23D2B04A00A2A8D0 /* GeneralInformationViewController.swift */; };
+		9B087824248FBF5B001B23D5 /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F99123B7E2FF009ACE3E /* Customer.swift */; };
+		9B087825248FBF5B001B23D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B144DA523A29FED00E0FE85 /* AppDelegate.swift */; };
+		9B087826248FBF5B001B23D5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B144DA723A29FED00E0FE85 /* SceneDelegate.swift */; };
+		9B087827248FBF5B001B23D5 /* CustomerEditServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225722242C085F00332C8C /* CustomerEditServiceSerializer.swift */; };
+		9B087828248FBF5B001B23D5 /* CustomerCreateServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB599F23E0BDEF00AB8C20 /* CustomerCreateServiceSerializer.swift */; };
+		9B087829248FBF5B001B23D5 /* ArtworkCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDB59A723E0D42500AB8C20 /* ArtworkCreateViewController.swift */; };
+		9B08782A248FBF5B001B23D5 /* CollectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34C23E389B90024F388 /* CollectionService.swift */; };
+		9B08782B248FBF5B001B23D5 /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919423BF94E100CC7552 /* Artwork.swift */; };
+		9B08782C248FBF5B001B23D5 /* LoginServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D6B23BA6EDD00203D3B /* LoginServiceProtocol.swift */; };
+		9B08782D248FBF5B001B23D5 /* CollectionCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40783923F094B0002E4398 /* CollectionCreateViewController.swift */; };
+		9B08782E248FBF5B001B23D5 /* AddressUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B225726242D029200332C8C /* AddressUtility.swift */; };
+		9B08782F248FBF5B001B23D5 /* CustomersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98F23B6AF9A009ACE3E /* CustomersService.swift */; };
+		9B087830248FBF5B001B23D5 /* CustomerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B267D7123BA8A9700203D3B /* CustomerDetailViewController.swift */; };
+		9B087831248FBF5B001B23D5 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2A919623BF94EB00CC7552 /* Artist.swift */; };
+		9B087832248FBF5B001B23D5 /* ArtworksServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22572E242D488200332C8C /* ArtworksServiceDeserializer.swift */; };
+		9B087833248FBF5B001B23D5 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B616F7D242432F400204467 /* DataModel.xcdatamodeld */; };
+		9B087834248FBF5B001B23D5 /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF0F98B23B64F20009ACE3E /* ApiClient.swift */; };
+		9B087835248FBF5B001B23D5 /* ArtworksServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B22572C242D47E100332C8C /* ArtworksServiceProtocol.swift */; };
+		9B087836248FBF5B001B23D5 /* GeneralInformationEditService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BDE722024108BC700307EFC /* GeneralInformationEditService.swift */; };
+		9B087837248FBF5B001B23D5 /* ArtworkCreateServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E34423E383590024F388 /* ArtworkCreateServiceSerializer.swift */; };
+		9B087838248FBF5B001B23D5 /* GeneralInformationServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A2023D2B3A200A2A8D0 /* GeneralInformationServiceDeserializer.swift */; };
+		9B087839248FBF5B001B23D5 /* CollectionServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */; };
+		9B08783A248FBF5B001B23D5 /* CollectionEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AD1240C6B6D003C6E28 /* CollectionEditViewController.swift */; };
+		9B08783B248FBF5B001B23D5 /* GetCustomerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B40784723F0A06C002E4398 /* GetCustomerService.swift */; };
+		9B08783C248FBF5B001B23D5 /* ArtistsServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B222A1623D26C3300A2A8D0 /* ArtistsServiceDeserializer.swift */; };
+		9B087840248FBF5B001B23D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B144DB023A29FEF00E0FE85 /* LaunchScreen.storyboard */; };
+		9B087841248FBF5B001B23D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B144DAE23A29FEF00E0FE85 /* Assets.xcassets */; };
+		9B087842248FBF5B001B23D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B144DAB23A29FED00E0FE85 /* Main.storyboard */; };
 		9B144DA623A29FED00E0FE85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B144DA523A29FED00E0FE85 /* AppDelegate.swift */; };
 		9B144DA823A29FED00E0FE85 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B144DA723A29FED00E0FE85 /* SceneDelegate.swift */; };
 		9B144DAA23A29FED00E0FE85 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B144DA923A29FED00E0FE85 /* LoginViewController.swift */; };
@@ -85,6 +226,7 @@
 		9B616F7F242432F400204467 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B616F7D242432F400204467 /* DataModel.xcdatamodeld */; };
 		9B68BDA023D39BCE006ACF15 /* CollectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */; };
 		9B68BDA223D3A65F006ACF15 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */; };
+		9B6DBEBF2481AB49009C0993 /* GeneralInformationServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6DBEBE2481AB49009C0993 /* GeneralInformationServiceSpec.swift */; };
 		9B6F9AC9240C5B31003C6E28 /* GeneralInformationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */; };
 		9B6F9ACB240C5B74003C6E28 /* ArtistEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */; };
 		9B6F9AD0240C6B60003C6E28 /* ArtworkEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */; };
@@ -158,23 +300,29 @@
 		9BF12F2723D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2623D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift */; };
 		9BF12F2923D3BD0400BE8AA8 /* ArtistCreateServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2823D3BD0400BE8AA8 /* ArtistCreateServiceDeserializerProtocol.swift */; };
 		9BF12F2B23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BF12F2A23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift */; };
+		CBF3CB7E5FA51A5F3FE98E1C /* Pods_art_collector_ios_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC84EF96DA3BBBF65B5A0177 /* Pods_art_collector_ios_dev.framework */; };
+		ED675B4B58E693ECCC747172 /* Pods_Specs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C300F99585EF248519F0CCFB /* Pods_Specs.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9BA80F54247C1BE1006FB31B /* PBXContainerItemProxy */ = {
+		9B20C30C248FD17D001D190B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9B144D9A23A29FED00E0FE85 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9B144DA123A29FED00E0FE85;
-			remoteInfo = "art-collector-ios";
+			remoteGlobalIDString = 9B0877B0248FBF5B001B23D5;
+			remoteInfo = "art-collector-ios-dev";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D9C813D4BF34CE4AF2BDA1D /* Pods-Specs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specs.debug.xcconfig"; path = "Target Support Files/Pods-Specs/Pods-Specs.debug.xcconfig"; sourceTree = "<group>"; };
-		30A6F5E646AE8F912610DAA7 /* Pods-art-collector-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-collector-ios.debug.xcconfig"; path = "Target Support Files/Pods-art-collector-ios/Pods-art-collector-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		2A5E2234C9F38EDC5B89FF86 /* Pods-art-collector-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-collector-ios.debug.xcconfig"; path = "Target Support Files/Pods-art-collector-ios/Pods-art-collector-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		31E4A08B7B8C8936F73CEE51 /* Pods_art_collector_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_art_collector_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E47B8B2F18D829A474E76B4 /* libPods-Specs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Specs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D28C471B8AA192EE14FAB2 /* Pods-art-collector-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-collector-ios.release.xcconfig"; path = "Target Support Files/Pods-art-collector-ios/Pods-art-collector-ios.release.xcconfig"; sourceTree = "<group>"; };
+		645AE883D62576542A345A54 /* Pods-art-collector-ios-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-collector-ios-dev.release.xcconfig"; path = "Target Support Files/Pods-art-collector-ios-dev/Pods-art-collector-ios-dev.release.xcconfig"; sourceTree = "<group>"; };
+		9B087794248F0B9E001B23D5 /* SpireNetworkingDev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpireNetworkingDev.swift; sourceTree = "<group>"; };
+		9B087796248F0BAB001B23D5 /* SpireNetworkingProd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpireNetworkingProd.swift; sourceTree = "<group>"; };
+		9B087847248FBF5B001B23D5 /* art-collector-ios-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "art-collector-ios-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B144DA223A29FED00E0FE85 /* art-collector-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "art-collector-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B144DA523A29FED00E0FE85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B144DA723A29FED00E0FE85 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -253,6 +401,7 @@
 		9B616F7E242432F400204467 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		9B68BD9F23D39BCE006ACF15 /* CollectionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDetailViewController.swift; sourceTree = "<group>"; };
 		9B68BDA123D3A65F006ACF15 /* ArtworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewController.swift; sourceTree = "<group>"; };
+		9B6DBEBE2481AB49009C0993 /* GeneralInformationServiceSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationServiceSpec.swift; sourceTree = "<group>"; };
 		9B6F9AC8240C5B31003C6E28 /* GeneralInformationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralInformationEditViewController.swift; sourceTree = "<group>"; };
 		9B6F9ACA240C5B73003C6E28 /* ArtistEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistEditViewController.swift; sourceTree = "<group>"; };
 		9B6F9ACF240C6B60003C6E28 /* ArtworkEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkEditViewController.swift; sourceTree = "<group>"; };
@@ -330,16 +479,27 @@
 		9BF12F2623D3BAC500BE8AA8 /* ArtistCreateServiceSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCreateServiceSerializer.swift; sourceTree = "<group>"; };
 		9BF12F2823D3BD0400BE8AA8 /* ArtistCreateServiceDeserializerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCreateServiceDeserializerProtocol.swift; sourceTree = "<group>"; };
 		9BF12F2A23D3BD1600BE8AA8 /* ArtistCreateServiceDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCreateServiceDeserializer.swift; sourceTree = "<group>"; };
-		E99682F11013E74018886D55 /* Pods-art-collector-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-collector-ios.release.xcconfig"; path = "Target Support Files/Pods-art-collector-ios/Pods-art-collector-ios.release.xcconfig"; sourceTree = "<group>"; };
+		AC84EF96DA3BBBF65B5A0177 /* Pods_art_collector_ios_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_art_collector_ios_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B834301B90CEF507BB5655E6 /* Pods-art-collector-ios-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-art-collector-ios-dev.debug.xcconfig"; path = "Target Support Files/Pods-art-collector-ios-dev/Pods-art-collector-ios-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		C300F99585EF248519F0CCFB /* Pods_Specs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Specs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC9CE5A6E9E7D7F3B3B51155 /* Pods-Specs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Specs.release.xcconfig"; path = "Target Support Files/Pods-Specs/Pods-Specs.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9B08783D248FBF5B001B23D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBF3CB7E5FA51A5F3FE98E1C /* Pods_art_collector_ios_dev.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B144D9F23A29FED00E0FE85 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				749A3669BAB812CEA71D346B /* Pods_art_collector_ios.framework in Frameworks */,
+				80FECFB15B1B613D202F2885 /* Pods_art_collector_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +507,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98D1AF41201122C55E96E17C /* libPods-Specs.a in Frameworks */,
+				ED675B4B58E693ECCC747172 /* Pods_Specs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,10 +517,12 @@
 		3E8DCFF0D810FC3F50A5099F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				30A6F5E646AE8F912610DAA7 /* Pods-art-collector-ios.debug.xcconfig */,
-				E99682F11013E74018886D55 /* Pods-art-collector-ios.release.xcconfig */,
 				1D9C813D4BF34CE4AF2BDA1D /* Pods-Specs.debug.xcconfig */,
 				EC9CE5A6E9E7D7F3B3B51155 /* Pods-Specs.release.xcconfig */,
+				2A5E2234C9F38EDC5B89FF86 /* Pods-art-collector-ios.debug.xcconfig */,
+				60D28C471B8AA192EE14FAB2 /* Pods-art-collector-ios.release.xcconfig */,
+				B834301B90CEF507BB5655E6 /* Pods-art-collector-ios-dev.debug.xcconfig */,
+				645AE883D62576542A345A54 /* Pods-art-collector-ios-dev.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -371,9 +533,19 @@
 				9BA80F5B247C204E006FB31B /* Nimble.framework */,
 				9BA80F59247C1C2A006FB31B /* Quick.framework */,
 				31E4A08B7B8C8936F73CEE51 /* Pods_art_collector_ios.framework */,
-				5E47B8B2F18D829A474E76B4 /* libPods-Specs.a */,
+				C300F99585EF248519F0CCFB /* Pods_Specs.framework */,
+				AC84EF96DA3BBBF65B5A0177 /* Pods_art_collector_ios_dev.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9B087793248F0B84001B23D5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				9B087794248F0B9E001B23D5 /* SpireNetworkingDev.swift */,
+				9B087796248F0BAB001B23D5 /* SpireNetworkingProd.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		9B144D9923A29FED00E0FE85 = {
@@ -392,6 +564,7 @@
 			children = (
 				9B144DA223A29FED00E0FE85 /* art-collector-ios.app */,
 				9BA80F4F247C1BE1006FB31B /* Specs.xctest */,
+				9B087847248FBF5B001B23D5 /* art-collector-ios-dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -399,6 +572,7 @@
 		9B144DA423A29FED00E0FE85 /* art-collector-ios */ = {
 			isa = PBXGroup;
 			children = (
+				9B20C309248FC7F3001D190B /* Supporting Files */,
 				9BD34DB624246D6A00B9E47C /* Utilities */,
 				9B7A475523D4B7C1006D1BA4 /* ProtocolWrappers */,
 				9BF0F98723B64C09009ACE3E /* Networking */,
@@ -407,12 +581,19 @@
 				9B144DA723A29FED00E0FE85 /* SceneDelegate.swift */,
 				9B144DAE23A29FEF00E0FE85 /* Assets.xcassets */,
 				9B144DB023A29FEF00E0FE85 /* LaunchScreen.storyboard */,
-				9B144DB323A29FEF00E0FE85 /* Info.plist */,
 				9B755BF923A2AA85004574A0 /* Controllers */,
 				9B755BF823A2AA80004574A0 /* Views */,
 				9B755BF723A2AA7A004574A0 /* Models */,
 			);
 			path = "art-collector-ios";
+			sourceTree = "<group>";
+		};
+		9B20C309248FC7F3001D190B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9B144DB323A29FEF00E0FE85 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		9B225715242C059600332C8C /* GeneralInformation */ = {
@@ -719,6 +900,7 @@
 		9BA80F48247C16CC006FB31B /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9B6DBEBE2481AB49009C0993 /* GeneralInformationServiceSpec.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -819,6 +1001,7 @@
 		9BF0F98723B64C09009ACE3E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				9B087793248F0B84001B23D5 /* Constants */,
 				9BF12F2323D3B85800BE8AA8 /* Serializers */,
 				9BF0F98A23B64C72009ACE3E /* Deserializers */,
 				9BF0F98923B64C6A009ACE3E /* Services */,
@@ -868,6 +1051,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		9B0877B0248FBF5B001B23D5 /* art-collector-ios-dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9B087844248FBF5B001B23D5 /* Build configuration list for PBXNativeTarget "art-collector-ios-dev" */;
+			buildPhases = (
+				877F6DCA1A1CCE6C3794AB69 /* [CP] Check Pods Manifest.lock */,
+				9B0877B2248FBF5B001B23D5 /* Sources */,
+				9B08783D248FBF5B001B23D5 /* Frameworks */,
+				9B08783F248FBF5B001B23D5 /* Resources */,
+				B03D9FDA1F4ED72BC1C392DA /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "art-collector-ios-dev";
+			productName = "art-collector-ios";
+			productReference = 9B087847248FBF5B001B23D5 /* art-collector-ios-dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9B144DA123A29FED00E0FE85 /* art-collector-ios */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B144DB623A29FEF00E0FE85 /* Build configuration list for PBXNativeTarget "art-collector-ios" */;
@@ -895,11 +1097,12 @@
 				9BA80F4B247C1BE1006FB31B /* Sources */,
 				9BA80F4C247C1BE1006FB31B /* Frameworks */,
 				9BA80F4D247C1BE1006FB31B /* Resources */,
+				C32C80C7D0BD349672016F06 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9BA80F55247C1BE1006FB31B /* PBXTargetDependency */,
+				9B20C30D248FD17D001D190B /* PBXTargetDependency */,
 			);
 			name = Specs;
 			productName = Specs;
@@ -921,7 +1124,7 @@
 					};
 					9BA80F4E247C1BE1006FB31B = {
 						CreatedOnToolsVersion = 11.3.1;
-						TestTargetID = 9B144DA123A29FED00E0FE85;
+						TestTargetID = 9B0877B0248FBF5B001B23D5;
 					};
 				};
 			};
@@ -939,12 +1142,23 @@
 			projectRoot = "";
 			targets = (
 				9B144DA123A29FED00E0FE85 /* art-collector-ios */,
+				9B0877B0248FBF5B001B23D5 /* art-collector-ios-dev */,
 				9BA80F4E247C1BE1006FB31B /* Specs */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9B08783F248FBF5B001B23D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B087840248FBF5B001B23D5 /* LaunchScreen.storyboard in Resources */,
+				9B087841248FBF5B001B23D5 /* Assets.xcassets in Resources */,
+				9B087842248FBF5B001B23D5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B144DA023A29FED00E0FE85 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -982,6 +1196,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-art-collector-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		877F6DCA1A1CCE6C3794AB69 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-art-collector-ios-dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1027,9 +1263,187 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B03D9FDA1F4ED72BC1C392DA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-art-collector-ios-dev/Pods-art-collector-ios-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-art-collector-ios-dev/Pods-art-collector-ios-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-art-collector-ios-dev/Pods-art-collector-ios-dev-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C32C80C7D0BD349672016F06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Specs/Pods-Specs-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Specs/Pods-Specs-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Specs/Pods-Specs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9B0877B2248FBF5B001B23D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9B0877B3248FBF5B001B23D5 /* CustomerEditViewController.swift in Sources */,
+				9B0877B4248FBF5B001B23D5 /* GetCollectionService.swift in Sources */,
+				9B0877B5248FBF5B001B23D5 /* GeneralInformationCreateServiceDeserializer.swift in Sources */,
+				9B0877B6248FBF5B001B23D5 /* ArtistEditServiceProtocol.swift in Sources */,
+				9B0877B7248FBF5B001B23D5 /* GeneralInformationDetailViewController.swift in Sources */,
+				9B0877B8248FBF5B001B23D5 /* LoginManager.swift in Sources */,
+				9B0877B9248FBF5B001B23D5 /* ArtworksServiceDeserializerProtocol.swift in Sources */,
+				9B0877BA248FBF5B001B23D5 /* CustomerCreateViewController.swift in Sources */,
+				9B0877BB248FBF5B001B23D5 /* GetCustomerServiceDeserializer.swift in Sources */,
+				9B0877BC248FBF5B001B23D5 /* ArtworkCreateServiceSerializerProtocol.swift in Sources */,
+				9B0877BD248FBF5B001B23D5 /* ArtistEditService.swift in Sources */,
+				9B0877BE248FBF5B001B23D5 /* GetArtworkServiceProtocol.swift in Sources */,
+				9B0877BF248FBF5B001B23D5 /* ArtistsTranformer.swift in Sources */,
+				9B0877C0248FBF5B001B23D5 /* GeneralInformationTransformer.swift in Sources */,
+				9B0877C1248FBF5B001B23D5 /* MultiSelectListViewController.swift in Sources */,
+				9B0877C2248FBF5B001B23D5 /* GeneralInformationEditServiceSerializer.swift in Sources */,
+				9B0877C3248FBF5B001B23D5 /* GeneralInformationCreateServiceSerializer.swift in Sources */,
+				9B0877C4248FBF5B001B23D5 /* ArtistsServiceProtocol.swift in Sources */,
+				9B0877C5248FBF5B001B23D5 /* CollectionsService.swift in Sources */,
+				9B0877C6248FBF5B001B23D5 /* CustomersViewController.swift in Sources */,
+				9B0877C7248FBF5B001B23D5 /* GeneralInformationServiceProtocol.swift in Sources */,
+				9B0877C8248FBF5B001B23D5 /* GetArtworkServiceDeserializer.swift in Sources */,
+				9B0877C9248FBF5B001B23D5 /* CollectionEditServiceSerializerProtocol.swift in Sources */,
+				9B0877CA248FBF5B001B23D5 /* CustomerDataSync.swift in Sources */,
+				9B0877CB248FBF5B001B23D5 /* CollectionCreateServiceProtocol.swift in Sources */,
+				9B0877CC248FBF5B001B23D5 /* CollectionsServiceProtocol.swift in Sources */,
+				9B0877CD248FBF5B001B23D5 /* CustomerCreateServiceSerializerProtocol.swift in Sources */,
+				9B0877CE248FBF5B001B23D5 /* GetArtistServiceDeserializer.swift in Sources */,
+				9B0877CF248FBF5B001B23D5 /* GetGeneralInformationServiceProtocol.swift in Sources */,
+				9B0877D0248FBF5B001B23D5 /* ArtistEditServiceSerializer.swift in Sources */,
+				9B0877D1248FBF5B001B23D5 /* CollectionDetailViewController.swift in Sources */,
+				9B0877D2248FBF5B001B23D5 /* GetArtworkService.swift in Sources */,
+				9B0877D3248FBF5B001B23D5 /* CustomerCreateServiceDeserializer.swift in Sources */,
+				9B0877D4248FBF5B001B23D5 /* ArtistCreateServiceDeserializerProtocol.swift in Sources */,
+				9B0877D5248FBF5B001B23D5 /* ArtistDataSync.swift in Sources */,
+				9B0877D6248FBF5B001B23D5 /* CollectionCreateServiceDeserializer.swift in Sources */,
+				9B0877D7248FBF5B001B23D5 /* CollectionCreateService.swift in Sources */,
+				9B0877D8248FBF5B001B23D5 /* Image.swift in Sources */,
+				9B0877D9248FBF5B001B23D5 /* ArtworkEditService.swift in Sources */,
+				9B0877DA248FBF5B001B23D5 /* GetArtistServiceProtocol.swift in Sources */,
+				9B0877DB248FBF5B001B23D5 /* ArtistEditViewController.swift in Sources */,
+				9B0877DC248FBF5B001B23D5 /* CustomerEditService.swift in Sources */,
+				9B0877DD248FBF5B001B23D5 /* GeneralInformationCreateViewController.swift in Sources */,
+				9B0877DE248FBF5B001B23D5 /* ArtistCreateServiceSerializerProtocol.swift in Sources */,
+				9B0877DF248FBF5B001B23D5 /* CollectionEditServiceSerializer.swift in Sources */,
+				9B0877E0248FBF5B001B23D5 /* CollectionEditServiceProtocol.swift in Sources */,
+				9B0877E1248FBF5B001B23D5 /* GeneralInformationCreateServiceDeserializerProtocol.swift in Sources */,
+				9B0877E2248FBF5B001B23D5 /* ArtistEditServiceSerializerProtocol.swift in Sources */,
+				9B0877E3248FBF5B001B23D5 /* ArtworkCreateServiceDeserializer.swift in Sources */,
+				9B0877E4248FBF5B001B23D5 /* ArtistCreateServiceDeserializer.swift in Sources */,
+				9B0877E5248FBF5B001B23D5 /* CustomerEditServiceProtocol.swift in Sources */,
+				9B0877E6248FBF5B001B23D5 /* ArtworkEditServiceSerializerProtocol.swift in Sources */,
+				9B0877E7248FBF5B001B23D5 /* ArtistsServiceDeserializerProtocol.swift in Sources */,
+				9B0877E8248FBF5B001B23D5 /* GetArtworkServiceDeserializerProtocol.swift in Sources */,
+				9B0877E9248FBF5B001B23D5 /* GeneralInformationEditServiceProtocol.swift in Sources */,
+				9B0877EA248FBF5B001B23D5 /* Pdf.swift in Sources */,
+				9B0877EC248FBF5B001B23D5 /* CollectionEditService.swift in Sources */,
+				9B0877ED248FBF5B001B23D5 /* GetCollectionServiceDeserializer.swift in Sources */,
+				9B0877EE248FBF5B001B23D5 /* ArtworkEditViewController.swift in Sources */,
+				9B0877EF248FBF5B001B23D5 /* GeneralInformationCreateService.swift in Sources */,
+				9B0877F0248FBF5B001B23D5 /* ArtistDetailViewController.swift in Sources */,
+				9B0877F1248FBF5B001B23D5 /* GetGeneralInformationServiceDeserializerProtocol.swift in Sources */,
+				9B0877F2248FBF5B001B23D5 /* GeneralInformationEditViewController.swift in Sources */,
+				9B0877F3248FBF5B001B23D5 /* SpireNetworkingDev.swift in Sources */,
+				9B0877F4248FBF5B001B23D5 /* ArtworkEditServiceProtocol.swift in Sources */,
+				9B0877F5248FBF5B001B23D5 /* ArtistCreateServiceSerializer.swift in Sources */,
+				9B0877F6248FBF5B001B23D5 /* DateUtility.swift in Sources */,
+				9B0877F7248FBF5B001B23D5 /* CustomerCreateServiceProtocol.swift in Sources */,
+				9B0877F8248FBF5B001B23D5 /* ArtistsViewController.swift in Sources */,
+				9B0877F9248FBF5B001B23D5 /* GeneralInformationDataSync.swift in Sources */,
+				9B0877FA248FBF5B001B23D5 /* LoginService.swift in Sources */,
+				9B0877FB248FBF5B001B23D5 /* GetCustomerServiceProtocol.swift in Sources */,
+				9B0877FC248FBF5B001B23D5 /* CustomerCreateServiceDeserializerProtocol.swift in Sources */,
+				9B0877FD248FBF5B001B23D5 /* GetCustomerServiceDeserializerProtocol.swift in Sources */,
+				9B0877FE248FBF5B001B23D5 /* GeneralInformationService.swift in Sources */,
+				9B0877FF248FBF5B001B23D5 /* ArtistCreateViewController.swift in Sources */,
+				9B087800248FBF5B001B23D5 /* GetArtistService.swift in Sources */,
+				9B087801248FBF5B001B23D5 /* GetGeneralInformationService.swift in Sources */,
+				9B087802248FBF5B001B23D5 /* GeneralInformation.swift in Sources */,
+				9B087803248FBF5B001B23D5 /* CustomersServiceProtocol.swift in Sources */,
+				9B087804248FBF5B001B23D5 /* ArtworkCreateService.swift in Sources */,
+				9B087805248FBF5B001B23D5 /* CustomersServiceDeserializer.swift in Sources */,
+				9B087806248FBF5B001B23D5 /* ArtworkEditServiceSerializer.swift in Sources */,
+				9B087807248FBF5B001B23D5 /* ArtistCreateServiceProtocol.swift in Sources */,
+				9B087808248FBF5B001B23D5 /* ArtworksService.swift in Sources */,
+				9B087809248FBF5B001B23D5 /* GetCollectionServiceDeserializerProtocol.swift in Sources */,
+				9B08780A248FBF5B001B23D5 /* GeneralInformationEditServiceSerializerProtocol.swift in Sources */,
+				9B08780B248FBF5B001B23D5 /* CollectionCreateServiceSerializerProtocol.swift in Sources */,
+				9B08780C248FBF5B001B23D5 /* ArtistCreateService.swift in Sources */,
+				9B08780D248FBF5B001B23D5 /* GetCollectionServiceProtocol.swift in Sources */,
+				9B08780E248FBF5B001B23D5 /* CollectionsServiceDeserializerProtocol.swift in Sources */,
+				9B08780F248FBF5B001B23D5 /* ArtistsService.swift in Sources */,
+				9B087810248FBF5B001B23D5 /* MBProgressHUDProtocol.swift in Sources */,
+				9B087811248FBF5B001B23D5 /* CollectionServiceProtocol.swift in Sources */,
+				9B087812248FBF5B001B23D5 /* CustomersServiceDeserializerProtocol.swift in Sources */,
+				9B087813248FBF5B001B23D5 /* ArtworkCreateServiceDeserializerProtocol.swift in Sources */,
+				9B087814248FBF5B001B23D5 /* CustomerCreateService.swift in Sources */,
+				9B087815248FBF5B001B23D5 /* CustomerEditServiceSerializerProtocol.swift in Sources */,
+				9B087816248FBF5B001B23D5 /* ArtworkDetailViewController.swift in Sources */,
+				9B087817248FBF5B001B23D5 /* CollectionCreateServiceDeserializerProtocol.swift in Sources */,
+				9B087818248FBF5B001B23D5 /* Collection.swift in Sources */,
+				9B087819248FBF5B001B23D5 /* GetArtistServiceDeserializerProtocol.swift in Sources */,
+				9B08781A248FBF5B001B23D5 /* CollectionCreateServiceSerializer.swift in Sources */,
+				9B08781B248FBF5B001B23D5 /* GeneralInformationServiceDeserializerProtocol.swift in Sources */,
+				9B08781C248FBF5B001B23D5 /* ArtworkCreateServiceProtocol.swift in Sources */,
+				9B08781D248FBF5B001B23D5 /* LoginViewController.swift in Sources */,
+				9B08781E248FBF5B001B23D5 /* GetGeneralInformationServiceDeserializer.swift in Sources */,
+				9B08781F248FBF5B001B23D5 /* GeneralInformationCreateServiceProtocol.swift in Sources */,
+				9B087820248FBF5B001B23D5 /* GeneralInformationCreateServiceSerializerProtocol.swift in Sources */,
+				9B087821248FBF5B001B23D5 /* CollectionServiceDeserializer.swift in Sources */,
+				9B087822248FBF5B001B23D5 /* CollectionsServiceDeserializer.swift in Sources */,
+				9B087823248FBF5B001B23D5 /* GeneralInformationViewController.swift in Sources */,
+				9B087824248FBF5B001B23D5 /* Customer.swift in Sources */,
+				9B087825248FBF5B001B23D5 /* AppDelegate.swift in Sources */,
+				9B087826248FBF5B001B23D5 /* SceneDelegate.swift in Sources */,
+				9B087827248FBF5B001B23D5 /* CustomerEditServiceSerializer.swift in Sources */,
+				9B087828248FBF5B001B23D5 /* CustomerCreateServiceSerializer.swift in Sources */,
+				9B087829248FBF5B001B23D5 /* ArtworkCreateViewController.swift in Sources */,
+				9B08782A248FBF5B001B23D5 /* CollectionService.swift in Sources */,
+				9B08782B248FBF5B001B23D5 /* Artwork.swift in Sources */,
+				9B08782C248FBF5B001B23D5 /* LoginServiceProtocol.swift in Sources */,
+				9B08782D248FBF5B001B23D5 /* CollectionCreateViewController.swift in Sources */,
+				9B08782E248FBF5B001B23D5 /* AddressUtility.swift in Sources */,
+				9B08782F248FBF5B001B23D5 /* CustomersService.swift in Sources */,
+				9B087830248FBF5B001B23D5 /* CustomerDetailViewController.swift in Sources */,
+				9B087831248FBF5B001B23D5 /* Artist.swift in Sources */,
+				9B087832248FBF5B001B23D5 /* ArtworksServiceDeserializer.swift in Sources */,
+				9B087833248FBF5B001B23D5 /* DataModel.xcdatamodeld in Sources */,
+				9B087834248FBF5B001B23D5 /* ApiClient.swift in Sources */,
+				9B087835248FBF5B001B23D5 /* ArtworksServiceProtocol.swift in Sources */,
+				9B087836248FBF5B001B23D5 /* GeneralInformationEditService.swift in Sources */,
+				9B087837248FBF5B001B23D5 /* ArtworkCreateServiceSerializer.swift in Sources */,
+				9B087838248FBF5B001B23D5 /* GeneralInformationServiceDeserializer.swift in Sources */,
+				9B087839248FBF5B001B23D5 /* CollectionServiceDeserializerProtocol.swift in Sources */,
+				9B08783A248FBF5B001B23D5 /* CollectionEditViewController.swift in Sources */,
+				9B08783B248FBF5B001B23D5 /* GetCustomerService.swift in Sources */,
+				9B08783C248FBF5B001B23D5 /* ArtistsServiceDeserializer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9B144D9E23A29FED00E0FE85 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1090,6 +1504,7 @@
 				9BDE72542410B01E00307EFC /* GetArtworkServiceDeserializerProtocol.swift in Sources */,
 				9BDE722324108BD300307EFC /* GeneralInformationEditServiceProtocol.swift in Sources */,
 				9B2A919D23BF991D00CC7552 /* Pdf.swift in Sources */,
+				9B087797248F0BAB001B23D5 /* SpireNetworkingProd.swift in Sources */,
 				9BDE723E2410A85F00307EFC /* CollectionEditService.swift in Sources */,
 				9BDE72482410ACE800307EFC /* GetCollectionServiceDeserializer.swift in Sources */,
 				9B6F9AD0240C6B60003C6E28 /* ArtworkEditViewController.swift in Sources */,
@@ -1179,6 +1594,7 @@
 			files = (
 				9B3F34DE248045500007AC39 /* CustomersServiceDeserializerSpec.swift in Sources */,
 				9B3F34E4248064100007AC39 /* CollectionsServiceDeserializerSpec.swift in Sources */,
+				9B6DBEBF2481AB49009C0993 /* GeneralInformationServiceSpec.swift in Sources */,
 				9B3F34DB248037A00007AC39 /* ArtistsServiceDeserializerSpec.swift in Sources */,
 				9B3F34E8248071620007AC39 /* GetArtistServiceDeserializerSpec.swift in Sources */,
 				9B3F34EE2480760B0007AC39 /* ArtistCreateServiceDeserializerSpec.swift in Sources */,
@@ -1192,10 +1608,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9BA80F55247C1BE1006FB31B /* PBXTargetDependency */ = {
+		9B20C30D248FD17D001D190B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B144DA123A29FED00E0FE85 /* art-collector-ios */;
-			targetProxy = 9BA80F54247C1BE1006FB31B /* PBXContainerItemProxy */;
+			target = 9B0877B0248FBF5B001B23D5 /* art-collector-ios-dev */;
+			targetProxy = 9B20C30C248FD17D001D190B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1219,6 +1635,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9B087845248FBF5B001B23D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B834301B90CEF507BB5655E6 /* Pods-art-collector-ios-dev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.2;
+				DEVELOPMENT_TEAM = ZA3944NWNK;
+				INFOPLIST_FILE = "art-collector-ios/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukefitzgerald.spire;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9B087846248FBF5B001B23D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 645AE883D62576542A345A54 /* Pods-art-collector-ios-dev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1.2;
+				DEVELOPMENT_TEAM = ZA3944NWNK;
+				INFOPLIST_FILE = "art-collector-ios/Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lukefitzgerald.spire;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		9B144DB423A29FEF00E0FE85 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1337,14 +1799,14 @@
 		};
 		9B144DB723A29FEF00E0FE85 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30A6F5E646AE8F912610DAA7 /* Pods-art-collector-ios.debug.xcconfig */;
+			baseConfigurationReference = 2A5E2234C9F38EDC5B89FF86 /* Pods-art-collector-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_TEAM = ZA3944NWNK;
-				INFOPLIST_FILE = "art-collector-ios/Info.plist";
+				INFOPLIST_FILE = "art-collector-ios/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1360,14 +1822,14 @@
 		};
 		9B144DB823A29FEF00E0FE85 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E99682F11013E74018886D55 /* Pods-art-collector-ios.release.xcconfig */;
+			baseConfigurationReference = 60D28C471B8AA192EE14FAB2 /* Pods-art-collector-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.2;
 				DEVELOPMENT_TEAM = ZA3944NWNK;
-				INFOPLIST_FILE = "art-collector-ios/Info.plist";
+				INFOPLIST_FILE = "art-collector-ios/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1398,7 +1860,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/art-collector-ios.app/art-collector-ios";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/art-collector-ios-dev.app/art-collector-ios-dev";
 			};
 			name = Debug;
 		};
@@ -1419,13 +1881,22 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/art-collector-ios.app/art-collector-ios";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/art-collector-ios-dev.app/art-collector-ios-dev";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9B087844248FBF5B001B23D5 /* Build configuration list for PBXNativeTarget "art-collector-ios-dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9B087845248FBF5B001B23D5 /* Debug */,
+				9B087846248FBF5B001B23D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9B144D9D23A29FED00E0FE85 /* Build configuration list for PBXProject "art-collector-ios" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

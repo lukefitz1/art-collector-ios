@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 struct ApiClient {
-    static let baseUrl = "https://spire-art-services.herokuapp.com/api/"
+    static let baseUrl = SpireNetworkingConstants.baseURLString
     static var accessToken: String = ""
     static var tokenType: String = ""
     static var client: String = ""

@@ -22,7 +22,6 @@ class GeneralInformationTransformer: ValueTransformer {
         var uuidArray: [UUID] = []
         
         stringArray.forEach { (id) in
-            print("Fuck: \(id)")
             uuidArray.append(UUID(uuidString: id)!)
         }
         
@@ -34,7 +33,7 @@ class GeneralInformationTransformer: ValueTransformer {
         var stringArray: [String] = []
         
         uuidArray.forEach { (id) in
-            print("Fuck in reverse: \(id)")
+            print("Transforming in reverse: \(id)")
             stringArray.append(id.uuidString)
         }
         
