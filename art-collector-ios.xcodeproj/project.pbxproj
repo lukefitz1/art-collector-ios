@@ -252,6 +252,8 @@
 		9B96E35123E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35023E38BFC0024F388 /* CollectionServiceDeserializerProtocol.swift */; };
 		9B96E35323E38C080024F388 /* CollectionServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */; };
 		9BA1DCFF2437A7C000A44AD2 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1DCFE2437A7C000A44AD2 /* LoginManager.swift */; };
+		9BA9F35624C7D2350084EC4B /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA9F35524C7D2350084EC4B /* LoginViewController.storyboard */; };
+		9BA9F35724C7DA070084EC4B /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA9F35524C7D2350084EC4B /* LoginViewController.storyboard */; };
 		9BBD48CF2463845D007C6CB5 /* MultiSelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */; };
 		9BD34DB824246D7B00B9E47C /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD34DB724246D7B00B9E47C /* DateUtility.swift */; };
 		9BD6889E2470988F00C93D20 /* ArtistsTranformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6889D2470988F00C93D20 /* ArtistsTranformer.swift */; };
@@ -430,6 +432,7 @@
 		9BA80F53247C1BE1006FB31B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9BA80F59247C1C2A006FB31B /* Quick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Quick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BA80F5B247C204E006FB31B /* Nimble.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Nimble.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BA9F35524C7D2350084EC4B /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectListViewController.swift; sourceTree = "<group>"; };
 		9BD34DB724246D7B00B9E47C /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		9BD6889D2470988F00C93D20 /* ArtistsTranformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsTranformer.swift; sourceTree = "<group>"; };
@@ -859,6 +862,7 @@
 			isa = PBXGroup;
 			children = (
 				9B144DAB23A29FED00E0FE85 /* Main.storyboard */,
+				9BA9F35524C7D2350084EC4B /* LoginViewController.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1151,6 +1155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B087840248FBF5B001B23D5 /* LaunchScreen.storyboard in Resources */,
+				9BA9F35724C7DA070084EC4B /* LoginViewController.storyboard in Resources */,
 				9B087841248FBF5B001B23D5 /* Assets.xcassets in Resources */,
 				9B087842248FBF5B001B23D5 /* Main.storyboard in Resources */,
 			);
@@ -1161,6 +1166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B144DB223A29FEF00E0FE85 /* LaunchScreen.storyboard in Resources */,
+				9BA9F35624C7D2350084EC4B /* LoginViewController.storyboard in Resources */,
 				9B144DAF23A29FEF00E0FE85 /* Assets.xcassets in Resources */,
 				9B144DAD23A29FED00E0FE85 /* Main.storyboard in Resources */,
 			);
