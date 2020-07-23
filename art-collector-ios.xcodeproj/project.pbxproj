@@ -253,6 +253,7 @@
 		9B96E35323E38C080024F388 /* CollectionServiceDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B96E35223E38C080024F388 /* CollectionServiceDeserializer.swift */; };
 		9BA1DCFF2437A7C000A44AD2 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA1DCFE2437A7C000A44AD2 /* LoginManager.swift */; };
 		9BA9F35624C7D2350084EC4B /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA9F35524C7D2350084EC4B /* LoginViewController.storyboard */; };
+		9BA9F35724C7DA070084EC4B /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BA9F35524C7D2350084EC4B /* LoginViewController.storyboard */; };
 		9BBD48CF2463845D007C6CB5 /* MultiSelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD48CE2463845D007C6CB5 /* MultiSelectListViewController.swift */; };
 		9BD34DB824246D7B00B9E47C /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD34DB724246D7B00B9E47C /* DateUtility.swift */; };
 		9BD6889E2470988F00C93D20 /* ArtistsTranformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD6889D2470988F00C93D20 /* ArtistsTranformer.swift */; };
@@ -1154,6 +1155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B087840248FBF5B001B23D5 /* LaunchScreen.storyboard in Resources */,
+				9BA9F35724C7DA070084EC4B /* LoginViewController.storyboard in Resources */,
 				9B087841248FBF5B001B23D5 /* Assets.xcassets in Resources */,
 				9B087842248FBF5B001B23D5 /* Main.storyboard in Resources */,
 			);

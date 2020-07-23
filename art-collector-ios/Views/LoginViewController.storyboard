@@ -11,17 +11,18 @@
         <scene sceneID="bmg-6Y-PF7">
             <objects>
                 <navigationController id="ClS-G1-0EJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="OJa-VT-dBI"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="f1w-iA-vxr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cTA-nD-1oB" kind="relationship" relationship="rootViewController" id="hnZ-fH-Hu1"/>
+                        <segue destination="cTA-nD-1oB" kind="relationship" relationship="rootViewController" id="Kzi-9W-zts"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fW2-wN-bYh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="78" y="138"/>
+            <point key="canvasLocation" x="-146" y="100"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="pqz-r9-oyp">
@@ -38,43 +39,43 @@
                                         <rect key="frame" x="0.0" y="0.0" width="417" height="808"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v5g-eA-eDD">
-                                                <rect key="frame" x="86" y="295" width="245" height="34"/>
+                                                <rect key="frame" x="86" y="339" width="245" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jL8-Wp-reL">
-                                                <rect key="frame" x="86" y="224" width="245" height="34"/>
+                                                <rect key="frame" x="86" y="268" width="245" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="username"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggR-pU-Ksz">
-                                                <rect key="frame" x="171.5" y="266" width="74" height="21"/>
+                                                <rect key="frame" x="171.5" y="310" width="74" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emails" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAa-xR-2qb">
-                                                <rect key="frame" x="184" y="195" width="49.5" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAa-xR-2qb">
+                                                <rect key="frame" x="188" y="239" width="41" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spire-logo" translatesAutoresizingMaskIntoConstraints="NO" id="Bpf-iI-StX">
-                                                <rect key="frame" x="88.5" y="40" width="240" height="128"/>
+                                                <rect key="frame" x="88.5" y="84" width="240" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="l2u-0g-BY1"/>
                                                     <constraint firstAttribute="width" constant="240" id="vVs-Ek-xzR"/>
                                                 </constraints>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIy-p9-DFl">
-                                                <rect key="frame" x="189.5" y="404" width="38" height="30"/>
+                                                <rect key="frame" x="189.5" y="448" width="38" height="30"/>
                                                 <state key="normal" title="Login"/>
                                                 <connections>
                                                     <action selector="loginBtnPressed:" destination="cTA-nD-1oB" eventType="touchUpInside" id="ov1-KS-Ldq"/>
                                                 </connections>
                                             </button>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvW-O6-CUU">
-                                                <rect key="frame" x="86" y="335" width="51" height="31"/>
+                                                <rect key="frame" x="86" y="379" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="passwordTogglePressed:" destination="cTA-nD-1oB" eventType="valueChanged" id="idw-DM-kkk"/>
                                                 </connections>
@@ -128,22 +129,22 @@
                         <outlet property="passwordToggleSwtch" destination="dvW-O6-CUU" id="iIe-HI-gkW"/>
                         <outlet property="scrollView" destination="mYg-98-d2B" id="XQs-Vk-zEl"/>
                         <outlet property="usernameInputField" destination="jL8-Wp-reL" id="LPa-QN-KN6"/>
-                        <segue destination="Ws1-0A-l4n" kind="show" identifier="TabBarSegue" id="6jt-Ye-mCm"/>
+                        <segue destination="02q-jt-atk" kind="show" identifier="TabBarSegue" id="TQs-Vv-fEi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMJ-gb-94e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1042.0289855072465" y="137.94642857142856"/>
+            <point key="canvasLocation" x="707" y="100"/>
         </scene>
         <!--Main-->
-        <scene sceneID="KYg-Cl-VRV">
+        <scene sceneID="edT-F1-eg8">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" id="Ws1-0A-l4n" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="IT2-Us-YCH"/>
+                <viewControllerPlaceholder storyboardName="Main" id="02q-jt-atk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dBG-k0-9dH"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="juw-FP-xmc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iyb-KJ-4Nj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="91"/>
+            <point key="canvasLocation" x="1640" y="103"/>
         </scene>
     </scenes>
     <resources>
